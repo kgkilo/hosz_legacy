@@ -70,7 +70,7 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q366", Nothing, "366", "Elektronika", 2
     g_oKodszotar.Load "sp_Q367", Nothing, "367", "Raktár állapot", 2
     g_oKodszotar.Load "sp_Q334", Nothing, "334", "Dolgozó", 3
-     
+    g_oKodszotar.Load "sp_FillRaktarKepv", Nothing, "KEPVIS", "Közös képviselõ", 4
     Init = True
     Exit Function
     
@@ -254,32 +254,37 @@ errsetAllapot:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "setAllapot"
 End Function    'setAllapot
 
-'   LoadInfo
+'   Load
 '
 '   Feltölti a kiválasztott objektum adataival a képernyõt.
 '   Paraméterek:    frm as Object   -   a feltöltendõ képernyõ
 '                   sID as String   -   a raktár rekord id-je
+'                   sKategoria      -   BER, ha berendezés, KEP ha képviselõ
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
-Public Function LoadInfo(ByRef frm As Object, ByVal sID As Long) As Boolean
-    On Error GoTo errLoadInfo
-    LoadInfo = False
+Public Function Load(ByRef frm As Object, ByVal sID As Long, ByVal sKategoria As String) As Boolean
+    On Error GoTo errLoad
+    Load = False
     
     Dim sQuery As String
+    Select Case sKategoria
+        Case "BER":
+            sQuery = "sp_LoadRaktarInfo"
+        Case "KEP"
+            sQuery = "sp_LoadRaktarKepv"
+    End Select
+    
     Dim lstParams As New Collection 'Betesszük az azonosítót a lekérdezés paraméterei közé
-    
-    sQuery = "sp_LoadRaktarInfo"
-    
     lstParams.Add sID, "pID"
     
     Dim rs As New ADODB.Recordset   'Betöltjük az azonosító alapján a rekordot
     If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
         If ControlsSet(rs, frm) Then    'Ha sikerült, feltöltjük a képernyõ kontrolljait adatokkal.
-            LoadInfo = True
+            Load = True
         End If
     End If
     Exit Function
     
-errLoadInfo:
-    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "LoadInfo"
-End Function    'LoadInfo
+errLoad:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Load"
+End Function    'Load
 

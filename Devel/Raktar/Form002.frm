@@ -592,7 +592,7 @@ Private Sub datSZLEVEL_DAT_CallbackKeyDown(ByVal Keycode As Integer, ByVal Shift
 End Sub
 
 Private Sub grdGrid_SelChange()
-    util.loadinfo Me, grdGrid.TextMatrix(grdGrid.Row, 1)
+    util.Load Me, grdGrid.TextMatrix(grdGrid.Row, 1), "BER"
 End Sub
 
 Private Sub optOBJTIP_Click(Index As Integer)
