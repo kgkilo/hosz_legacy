@@ -298,14 +298,15 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
     
     lstParams.Add sOBJTIP, "pOBJTIP"
     iMerge = 2
-    Select Case sOBJTIP
-        Case HOOSSZEGZO
-            sFormatstring = "<||Gy.sz.|Hit.|Tip.|Elh.|Imp.|Leolv.|Fesz.|Plomba"
-        Case VIZORA
-            sFormatstring = "<||Gy.sz.|Hit.|Tip.|Elh.|Imp.|Átm.|Plomba"
-        Case ERZEKELO
-            sFormatstring = "<||Gy.sz.|Hit.|Elh.|Szonda|Hossz|Plomba"
-    End Select
+    sFormatstring = "<||Gy.sz.|Tip.|Dátum"
+    'Select Case sOBJTIP
+    '    Case HOOSSZEGZO
+    '        sFormatstring = "<||Gy.sz.|Hit.|Tip.|Elh.|Imp.|Leolv.|Fesz.|Plomba"
+    '    Case VIZORA
+    '        sFormatstring = "<||Gy.sz.|Hit.|Tip.|Elh.|Imp.|Átm.|Plomba"
+    '    Case ERZEKELO
+    '        sFormatstring = "<||Gy.sz.|Hit.|Elh.|Szonda|Hossz|Plomba"
+    'End Select
     
     Select Case sKateg
         Case "FELSZERELVE"
@@ -319,5 +320,24 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
     End Select
     
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
-End Function    'GridderX
+End Function    'Gridder
+
+' Áthelyez egy rekordot a RAKTAR, SZALLITONAL, FELSZERELT táblák között
+Public Function Athelyez(ByRef sHonnan As String, ByRef sHova As String, _
+    ByRef sID As String) As Boolean
+    On Error GoTo errAthelyez
+    Athelyez = False
+    
+    Dim sQuery As String
+    Dim lstParams As New Collection
+    
+    sQuery = "sp_" + sHonnan + "2" + sHova
+    lstParams.Add sID, "pID"
+    
+    Athelyez = oAdmin.Exec(sQuery, lstParams)
+    Exit Function
+    
+errAthelyez:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Athelyez"
+End Function    'Athelyez
 

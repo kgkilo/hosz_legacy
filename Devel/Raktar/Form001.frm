@@ -9,12 +9,61 @@ Begin VB.Form Form001
    ClientTop       =   450
    ClientWidth     =   8880
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8100
+   LockControls    =   -1  'True
+   ScaleHeight     =   11115
    ScaleMode       =   0  'User
-   ScaleWidth      =   9506.57
+   ScaleWidth      =   16315.33
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
-   Begin VB.TextBox Text19 
+   Begin VB.CommandButton cmdSzallitonal2Felszerelve 
+      Caption         =   "<<<"
+      Height          =   375
+      Left            =   7680
+      TabIndex        =   50
+      Top             =   3600
+      Width           =   615
+   End
+   Begin VB.CommandButton cmdFelszerel2Szallitonal 
+      Caption         =   ">>>"
+      Height          =   375
+      Left            =   3600
+      TabIndex        =   49
+      Top             =   3600
+      Width           =   615
+   End
+   Begin VB.CommandButton cmdSzallitonal2Raktar 
+      Caption         =   "<"
+      Height          =   375
+      Left            =   7680
+      TabIndex        =   48
+      Top             =   2520
+      Width           =   615
+   End
+   Begin VB.CommandButton cmdRaktar2Szallitonal 
+      Caption         =   ">"
+      Height          =   375
+      Left            =   7680
+      TabIndex        =   47
+      Top             =   1920
+      Width           =   615
+   End
+   Begin VB.CommandButton cmdRaktar2Felszerelt 
+      Caption         =   "<"
+      Height          =   375
+      Left            =   3600
+      TabIndex        =   46
+      Top             =   2520
+      Width           =   615
+   End
+   Begin VB.CommandButton cmdFelszerelt2Raktar 
+      Caption         =   ">"
+      Height          =   375
+      Left            =   3600
+      TabIndex        =   45
+      Top             =   1920
+      Width           =   615
+   End
+   Begin VB.TextBox txtE_PLOMBA1 
       Height          =   285
       Left            =   9480
       TabIndex        =   41
@@ -22,7 +71,7 @@ Begin VB.Form Form001
       Top             =   7080
       Width           =   2175
    End
-   Begin VB.TextBox Text18 
+   Begin VB.TextBox txtE_PLOMBA2 
       Height          =   285
       Left            =   9480
       TabIndex        =   40
@@ -30,7 +79,7 @@ Begin VB.Form Form001
       Top             =   7440
       Width           =   2175
    End
-   Begin VB.TextBox Text17 
+   Begin VB.TextBox txtE_VEZHOSSZ 
       Height          =   285
       Left            =   9480
       TabIndex        =   39
@@ -39,6 +88,7 @@ Begin VB.Form Form001
       Width           =   2175
    End
    Begin VB.TextBox Text16 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   9480
       TabIndex        =   38
@@ -46,7 +96,7 @@ Begin VB.Form Form001
       Top             =   6720
       Width           =   2175
    End
-   Begin VB.TextBox Text15 
+   Begin VB.TextBox txtE_BENYHOSSZ 
       Height          =   285
       Left            =   9480
       TabIndex        =   37
@@ -54,7 +104,7 @@ Begin VB.Form Form001
       Top             =   6000
       Width           =   2175
    End
-   Begin VB.TextBox Text14 
+   Begin VB.TextBox txtE_GYSZAM 
       Height          =   285
       Left            =   9480
       TabIndex        =   36
@@ -62,7 +112,7 @@ Begin VB.Form Form001
       Top             =   4560
       Width           =   2175
    End
-   Begin VB.TextBox Text13 
+   Begin VB.TextBox txtE_HITIDO 
       Height          =   285
       Left            =   9480
       TabIndex        =   35
@@ -70,7 +120,8 @@ Begin VB.Form Form001
       Top             =   4920
       Width           =   2175
    End
-   Begin VB.TextBox Text12 
+   Begin VB.TextBox txtE_TIPUS 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   9480
       TabIndex        =   34
@@ -78,7 +129,7 @@ Begin VB.Form Form001
       Top             =   5280
       Width           =   2175
    End
-   Begin VB.TextBox Text11 
+   Begin VB.TextBox txtE_ELHELYEZ 
       Height          =   285
       Left            =   9480
       TabIndex        =   33
@@ -86,7 +137,7 @@ Begin VB.Form Form001
       Top             =   5640
       Width           =   2175
    End
-   Begin VB.TextBox Text10 
+   Begin VB.TextBox txtV_KULCS 
       Height          =   285
       Left            =   5400
       TabIndex        =   32
@@ -94,7 +145,7 @@ Begin VB.Form Form001
       Top             =   7440
       Width           =   2175
    End
-   Begin VB.TextBox Text9 
+   Begin VB.TextBox txtV_MEGJ 
       Height          =   285
       Left            =   5400
       TabIndex        =   31
@@ -102,7 +153,7 @@ Begin VB.Form Form001
       Top             =   7800
       Width           =   2175
    End
-   Begin VB.TextBox Text8 
+   Begin VB.TextBox txtV_PLOMBA 
       Height          =   285
       Left            =   5400
       TabIndex        =   30
@@ -110,7 +161,7 @@ Begin VB.Form Form001
       Top             =   7080
       Width           =   2175
    End
-   Begin VB.TextBox Text7 
+   Begin VB.TextBox txtV_ATMERO 
       Height          =   285
       Left            =   5400
       TabIndex        =   29
@@ -119,6 +170,7 @@ Begin VB.Form Form001
       Width           =   2175
    End
    Begin VB.TextBox Text6 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   5400
       TabIndex        =   28
@@ -126,7 +178,7 @@ Begin VB.Form Form001
       Top             =   6720
       Width           =   2175
    End
-   Begin VB.TextBox Text5 
+   Begin VB.TextBox txtV_IMPULZUS 
       Height          =   285
       Left            =   5400
       TabIndex        =   27
@@ -134,7 +186,7 @@ Begin VB.Form Form001
       Top             =   6000
       Width           =   2175
    End
-   Begin VB.TextBox Text4 
+   Begin VB.TextBox txtV_GYSZAM 
       Height          =   285
       Left            =   5400
       TabIndex        =   26
@@ -142,7 +194,7 @@ Begin VB.Form Form001
       Top             =   4560
       Width           =   2175
    End
-   Begin VB.TextBox Text3 
+   Begin VB.TextBox txtV_HITIDO 
       Height          =   285
       Left            =   5400
       TabIndex        =   25
@@ -150,7 +202,7 @@ Begin VB.Form Form001
       Top             =   4920
       Width           =   2175
    End
-   Begin VB.TextBox Text2 
+   Begin VB.TextBox txtV_TIPUS 
       Height          =   285
       Left            =   5400
       TabIndex        =   24
@@ -158,7 +210,7 @@ Begin VB.Form Form001
       Top             =   5280
       Width           =   2175
    End
-   Begin VB.TextBox Text1 
+   Begin VB.TextBox txtV_ELHELYEZ 
       Height          =   285
       Left            =   5400
       TabIndex        =   23
@@ -166,7 +218,7 @@ Begin VB.Form Form001
       Top             =   5640
       Width           =   2175
    End
-   Begin VB.TextBox txtGYSZAM 
+   Begin VB.TextBox txtH_GYSZAM 
       Height          =   285
       Left            =   1320
       TabIndex        =   22
@@ -174,7 +226,7 @@ Begin VB.Form Form001
       Top             =   4560
       Width           =   2175
    End
-   Begin VB.TextBox txtMEGJ 
+   Begin VB.TextBox txtH_MEGJ 
       Height          =   285
       Left            =   1320
       TabIndex        =   21
@@ -182,7 +234,7 @@ Begin VB.Form Form001
       Top             =   7800
       Width           =   2175
    End
-   Begin VB.TextBox txtKULCS 
+   Begin VB.TextBox txtH_KULCS 
       Height          =   285
       Left            =   1320
       TabIndex        =   20
@@ -190,7 +242,7 @@ Begin VB.Form Form001
       Top             =   7440
       Width           =   2175
    End
-   Begin VB.TextBox txtPLOMBA 
+   Begin VB.TextBox txtH_PLOMBA 
       Height          =   285
       Left            =   1320
       TabIndex        =   19
@@ -198,7 +250,7 @@ Begin VB.Form Form001
       Top             =   7080
       Width           =   2175
    End
-   Begin VB.TextBox txtFESZULT 
+   Begin VB.TextBox txtH_FESZULT 
       Height          =   285
       Left            =   1320
       TabIndex        =   18
@@ -206,7 +258,7 @@ Begin VB.Form Form001
       Top             =   6720
       Width           =   2175
    End
-   Begin VB.TextBox txtLEOLV 
+   Begin VB.TextBox txtH_LEOLV 
       Height          =   285
       Left            =   1320
       TabIndex        =   17
@@ -214,7 +266,7 @@ Begin VB.Form Form001
       Top             =   6360
       Width           =   2175
    End
-   Begin VB.TextBox txtIMPULZUS 
+   Begin VB.TextBox txtH_IMPULZUS 
       Height          =   285
       Left            =   1320
       TabIndex        =   16
@@ -222,7 +274,7 @@ Begin VB.Form Form001
       Top             =   6000
       Width           =   2175
    End
-   Begin VB.TextBox txtELHELYEZ 
+   Begin VB.TextBox txtH_ELHELYEZ 
       Height          =   285
       Left            =   1320
       TabIndex        =   15
@@ -230,7 +282,7 @@ Begin VB.Form Form001
       Top             =   5640
       Width           =   2175
    End
-   Begin VB.TextBox txtTIPUS 
+   Begin VB.TextBox txtH_TIPUS 
       Height          =   285
       Left            =   1320
       TabIndex        =   14
@@ -238,7 +290,7 @@ Begin VB.Form Form001
       Top             =   5280
       Width           =   2175
    End
-   Begin VB.TextBox txtHITIDO 
+   Begin VB.TextBox txtH_HITIDO 
       Height          =   285
       Left            =   1320
       TabIndex        =   13
@@ -448,7 +500,37 @@ Private Sub frissit()
             tmrVILLOG.Enabled = True
         End If
     End If
-    iRefresh = 0
+    'iRefresh = 0
+End Sub
+
+Private Sub cmdFelszerel2Szallitonal_Click()
+    util.athelyez "Felszerelt", "Szallito", grdFelszerelve.TextMatrix(grdFelszerelve.Row, 1)
+    frissit
+End Sub
+
+Private Sub cmdFelszerelt2Raktar_Click()
+    util.athelyez "Felszerelt", "Raktar", grdFelszerelve.TextMatrix(grdFelszerelve.Row, 1)
+    frissit
+End Sub
+
+Private Sub cmdRaktar2Felszerelt_Click()
+    util.athelyez "Raktar", "Felszerelt", grdRaktaron.TextMatrix(grdRaktaron.Row, 1)
+    frissit
+End Sub
+
+Private Sub cmdRaktar2Szallitonal_Click()
+    util.athelyez "Raktar", "Szallito", grdRaktaron.TextMatrix(grdRaktaron.Row, 1)
+    frissit
+End Sub
+
+Private Sub cmdSzallitonal2Felszerelve_Click()
+    util.athelyez "Szallito", "Felszerelt", grdSzallitonal.TextMatrix(grdSzallitonal.Row, 1)
+    frissit
+End Sub
+
+Private Sub cmdSzallitonal2Raktar_Click()
+    util.athelyez "Szallito", "Raktar", grdSzallitonal.TextMatrix(grdSzallitonal.Row, 1)
+    frissit
 End Sub
 
 Private Sub Form_Initialize()
