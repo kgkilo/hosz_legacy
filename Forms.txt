@@ -1,0 +1,33 @@
+KEP     Aktív   Megnev
+654     +       Általános adatok karbantartása
+656     +       Gépészeti adatok karbantartása
+658     +       Villamos adatok karbantartása
+660     +       Üzemeltetési adatok karbantartása
+662     +       Épület adatok karbantartása
+664     +       Kapcsolatok karbantartása
+665     +       Általános lekérdezés, listázás
+666     +       Kapcsolatok lekérdezése
+722     +       Hierarchia lekérdezése
+
+675     +       Karbantartási tervek
+677     +       Karbantartási terv lekérdezése
+680     +       Karbantartások lekérdezése
+683     +       Jegyzõkönyvek
+693     +       Jegyzõkönyvek lekérdezése
+
+695     +       Kontírozó törzs karbantartás
+697     +       Dolgozó törzs karbantartás
+699     +       Üzemeltetési munkalap
+700     +       Üzemfenntartási munkalap
+701     -       Munkalap lekérdezés, listázás
+702     +       Munkaóra összesítõ listák
+
+714     ?       Szolgáltatások karbantartása
+715     ?       Szolgáltatások lekérdezése
+716     ?       Közös képviselõk
+717     ?       Közös képviselõk lekérdezése
+718     ?       Szerzõdések
+719     ?       Szerzõdések lekérdezése
+720     ?       Számlák lekérdezése
+721     ?       Számlák megtekintése
+723     ?       Egyedi számlák
