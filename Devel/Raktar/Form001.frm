@@ -286,7 +286,7 @@ Begin VB.Form Form001
          EndProperty
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   23658497
+         Format          =   23461889
          CurrentDate     =   37013
       End
       Begin VB.Line Line3 
@@ -504,7 +504,7 @@ Begin VB.Form Form001
          EndProperty
          CheckBox        =   -1  'True
          DateIsNull      =   -1  'True
-         Format          =   23658497
+         Format          =   23461889
          CurrentDate     =   37013
       End
       Begin VB.Line Line2 

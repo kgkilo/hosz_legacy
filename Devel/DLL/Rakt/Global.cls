@@ -160,8 +160,8 @@ Public Function GetComboErtek(ByRef cmbCombo As Object) As String
     GetComboErtek = ComboBoxGet(Nothing, cmbCombo)
 End Function    'GetComboErtek
 
-Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
-        ByRef sOBJTIP As String, Optional ByRef sALLAPOT As String) As Boolean
+Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
+        ByRef sALLAPOT As String) As Boolean
     Dim sFormatstring As String
     Dim sQuery As String
     Dim iMerge As Integer
@@ -169,34 +169,14 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
     Dim lstParams As New Collection
     
     lstParams.Add sOBJTIP, "pOBJTIP"
-    If sKateg = "RAKTAR" Then
-        lstParams.Add sALLAPOT, "pALLAPOT"
-    End If
+    lstParams.Add sALLAPOT, "pALLAPOT"
+    
     iMerge = 2
-    sFormatstring = "<||Gy.sz.|Tip.|Dátum"
-    sQuery = "sp_Fill" + sKateg
+    sFormatstring = "<||Gy.sz.|Tip.|Dátum|Állapot"
+    sQuery = "sp_LekerdRaktar"
     
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
 End Function    'Gridder
-
-' Áthelyez egy rekordot a RAKTAR, SZALLITONAL, FELSZERELT táblák között
-Public Function Athelyez(ByRef sHonnan As String, ByRef sHova As String, _
-    ByRef sID As String) As Boolean
-    On Error GoTo errAthelyez
-    Athelyez = False
-    
-    Dim sQuery As String
-    Dim lstParams As New Collection
-    
-    sQuery = "sp_" + sHonnan + "2" + sHova
-    lstParams.Add sID, "pID"
-    
-    Athelyez = oAdmin.Exec(sQuery, lstParams)
-    Exit Function
-    
-errAthelyez:
-    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Athelyez"
-End Function    'Athelyez
 
 Public Function Save(ByRef frm As Object, ByVal sKategoria As String) As Boolean
     On Error GoTo errSave
@@ -255,6 +235,4 @@ Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String) As Boo
 errsetAllapot:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "setAllapot"
 End Function    'setAllapot
-
-
 

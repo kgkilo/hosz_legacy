@@ -1,6 +1,6 @@
 Type=OleDll
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#D:\WINNT\System32\stdole2.tlb#OLE Automation
-Reference=*\G{00000200-0000-0010-8000-00AA006D2EA4}#2.0#0#D:\Program Files\Common Files\system\ado\msado20.tlb#Microsoft ActiveX Data Objects 2.0 Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#E:\WINNT\System32\stdole2.tlb#OLE Automation
+Reference=*\G{00000200-0000-0010-8000-00AA006D2EA4}#2.0#0#E:\Program Files\Common Files\system\ado\msado20.tlb#Microsoft ActiveX Data Objects 2.0 Library
 Module=Utility; Utility.bas
 Class=Global; Global.cls
 Class=CadminADO; ..\..\Common\CadminADOSqlS.cls
@@ -18,7 +18,7 @@ CompatibleMode="1"
 CompatibleEXE32="Rakt.dll"
 MajorVer=1
 MinorVer=0
-RevisionVer=26
+RevisionVer=28
 AutoIncrementVer=1
 ServerSupportFiles=0
 VersionCompanyName="Formel Kft."

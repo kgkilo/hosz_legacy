@@ -72,7 +72,7 @@ Private Sub cmdExit_Click()
 End Sub
 
 Private Sub cmdRaktar_Click()
-    Form001.Show vbModal
+    Form002.Show vbModal
 End Sub
 
 Private Sub Form_Initialize()

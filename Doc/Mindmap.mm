@@ -43,8 +43,9 @@
 <node TEXT="DOLGOZO t&#xf6;rzsbe felvinni"/>
 </node>
 </node>
-<node COLOR="#ff0000" TEXT="Rakt&#xe1;r" POSITION="left">
-<node COLOR="#990000" TEXT="Nyilv&#xe1;ntartand&#xf3; entit&#xe1;sok">
+<node COLOR="#b3b95c" TEXT="Rakt&#xe1;r-eredeti" FOLDED="true" POSITION="left">
+<icon BUILTIN="stop"/>
+<node COLOR="#990000" TEXT="Nyilv&#xe1;ntartand&#xf3; entit&#xe1;sok" FOLDED="true">
 <node COLOR="#990000" TEXT="K&#xf6;z&#xf6;s k&#xe9;pvisel&#x151; R_KEPVIS" FOLDED="true">
 <node COLOR="#990000" TEXT="K&#xf6;z&#xf6;s k&#xe9;pvisel&#x151; v. megb&#xed;zott"/>
 <node COLOR="#990000" TEXT="N&#xe9;v"/>
@@ -305,7 +306,7 @@
 </node>
 </node>
 <node COLOR="#990000" TEXT="Riportok">
-<node COLOR="#990000" TEXT="Sz&#xe1;ll&#xed;t&#xf3;lev&#xe9;l SZLEVEL_FEJ">
+<node COLOR="#990000" TEXT="Sz&#xe1;ll&#xed;t&#xf3;lev&#xe9;l SZLEVEL_FEJ" FOLDED="true">
 <icon BUILTIN="flag"/>
 <node TEXT="TAB_R03">
 <node TEXT="ADAT">
@@ -414,8 +415,10 @@
 <icon BUILTIN="desktop_new"/>
 </node>
 </node>
-<node COLOR="#990000" TEXT="4 tervezett karbantart&#xe1;s nem j&#xf6;n le, G&#xe9;za ideadta az anyagot">
+<node COLOR="#338800" TEXT="4 tervezett karbantart&#xe1;s nem j&#xf6;n le, G&#xe9;za ideadta az anyagot" FOLDED="true">
 <icon BUILTIN="messagebox_warning"/>
+<icon BUILTIN="button_ok"/>
+<node TEXT="Nem keletkezett KARBAN rekord hozz&#xe1;.&#xa;Ha &#xfa;jra vissza&#xed;rja, OK"/>
 </node>
 <node COLOR="#338800" TEXT="Csak az akt&#xed;v objektumok l&#xe1;tsz&#xf3;djanak a comboboxokban" FOLDED="true">
 <icon BUILTIN="button_ok"/>
@@ -443,10 +446,15 @@
 </node>
 <node TEXT="OK 2004.10.08. Rev 33"/>
 </node>
-<node COLOR="#338800" TEXT="Munka&#xf3;ra &#xe1;ltal&#xe1;nos lek&#xe9;rdez&#xe9;s kiakad KEP701">
+<node COLOR="#338800" TEXT="Munka&#xf3;ra &#xe1;ltal&#xe1;nos lek&#xe9;rdez&#xe9;s kiakad KEP701" FOLDED="true">
 <node TEXT="Bejelentve 2004.10.18."/>
 <node COLOR="#338800" TEXT="&#xd3;ra &#xf6;sszes&#xed;t&#xe9;sn&#xe9;l el&#xed;r&#xe1;s"/>
 <node TEXT="OK 2004.10.18."/>
+</node>
+<node TEXT="&#xda;j riport kell, havi jelent&#xe9;s, napi munka&#xf3;r&#xe1;k dolgoz&#xf3;nk&#xe9;nt, csoportonk&#xe9;nti bont&#xe1;sban">
+<icon BUILTIN="messagebox_warning"/>
+<node TEXT="Bejelentve 2004.12.03."/>
+<node TEXT="Hoszolg/aaa.sql a t&#xe1;bl&#xe1;t l&#xe9;trehozza (TAB409)"/>
 </node>
 </node>
 <node TEXT="MunkVB" FOLDED="true">
@@ -477,6 +485,138 @@
 </node>
 <node TEXT="V&#xed;z&#xf3;ra" POSITION="left">
 <icon BUILTIN="pencil"/>
+</node>
+<node TEXT="Rakt&#xe1;r" POSITION="left">
+<node TEXT="Mozg&#xe1;sok">
+<node TEXT="&#xc9;p&#xfc;let-Leszerel&#xe9;s-Dolgoz&#xf3;">
+<node TEXT="F-&gt;D"/>
+</node>
+<node TEXT="Dolgoz&#xf3;-Felszerel&#xe9;s-&#xc9;p&#xfc;let">
+<node TEXT="D-&gt;F"/>
+</node>
+<node TEXT="Rakt&#xe1;r-Kiad&#xe1;s-Dolgoz&#xf3;">
+<node TEXT="R-&gt;D"/>
+</node>
+<node TEXT="Dolgoz&#xf3;-Bev&#xe9;tel-Rakt&#xe1;r">
+<node TEXT="D-&gt;R"/>
+</node>
+<node TEXT="Rakt&#xe1;r-Ellen&#x151;rz&#xe9;sre-Sz&#xe1;ll&#xed;t&#xf3;">
+<node TEXT="R-&gt;E"/>
+</node>
+<node TEXT="Rakt&#xe1;r-Jav&#xed;t&#xe1;s,hiteles&#xed;t&#xe9;sre-Sz&#xe1;ll&#xed;t&#xf3;">
+<node TEXT="R-&gt;J"/>
+</node>
+<node TEXT="Sz&#xe1;ll&#xed;t&#xf3;-Vissz&#xe1;ru (j&#xf3;/rossz)-Rakt&#xe1;r">
+<node TEXT="E-&gt;R, J-&gt;R"/>
+</node>
+<node TEXT="Sz&#xe1;ll&#xed;t&#xf3;-&#xda;j alkatr&#xe9;sz, p&#xf3;tl&#xe1;s-Rakt&#xe1;r"/>
+<node TEXT="Rakt&#xe1;r-Selejtez&#xe9;s">
+<node TEXT="R-&gt;S"/>
+</node>
+</node>
+<node TEXT="&#xc1;llapotok">
+<node COLOR="#338800" TEXT="RAKTAR" FOLDED="true">
+<node TEXT="OBJTIP"/>
+<node TEXT="OBJID"/>
+<node TEXT="DATUMTOL"/>
+<node TEXT="DATUMIG"/>
+<node TEXT="MEGJ"/>
+<node TEXT="ALLAPOT"/>
+<node TEXT="DOLG_ID"/>
+<node TEXT="SZLEVEL_SZAM"/>
+<node TEXT="SZLEVEL_DATUM"/>
+</node>
+<node COLOR="#338800" TEXT="RAKTHISTORY" FOLDED="true">
+<node TEXT="OBJTIP"/>
+<node TEXT="OBJID"/>
+<node TEXT="DATUMTOL"/>
+<node TEXT="DATUMIG"/>
+<node TEXT="MEGJ"/>
+<node TEXT="ALLAPOT"/>
+<node TEXT="DOLG_ID"/>
+<node TEXT="SZLEVEL_SZAM"/>
+<node TEXT="SZLEVEL_DATUM"/>
+</node>
+</node>
+<node COLOR="#338800" TEXT="&#xc1;llapotok megnevez&#xe9;se Q367">
+<edge WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="12"/>
+<icon BUILTIN="button_ok"/>
+<node TEXT="F - Felszerelt"/>
+<node TEXT="D - Dolgoz&#xf3;n&#xe1;l"/>
+<node TEXT="R - Rakt&#xe1;ron"/>
+<node TEXT="E - Sz&#xe1;ll&#xed;t&#xf3;n&#xe1;l-Ellen&#x151;rz&#xe9;sre"/>
+<node TEXT="J - Sz&#xe1;ll&#xed;t&#xf3;n&#xe1;l-JavHit"/>
+<node TEXT="S - Selejt"/>
+</node>
+<node TEXT="Munkafolyamatok">
+<node TEXT="Munkalap">
+<node TEXT="Pontos c&#xed;mre">
+<node COLOR="#999999" TEXT="hiteles&#xed;t&#xe9;s, jav&#xed;t&#xe1;s, ellen&#x151;rz&#xe9;s">
+<font NAME="Default" SIZE="10"/>
+</node>
+<node TEXT="Kapcsolatfelv&#xe9;tel" FOLDED="true">
+<node TEXT="K&#xf6;z&#xf6;s k&#xe9;pvisel&#x151;"/>
+<node TEXT="Megb&#xed;zott"/>
+<node TEXT="Kulcs tulaj"/>
+</node>
+<node ID="_" TEXT="Id&#x151;pont egyeztet&#xe9;s"/>
+<node TEXT="Adatlap nyomtat&#xe1;s"/>
+<node TEXT="Munkacsoport meghat&#xe1;roz&#xe1;sa"/>
+<node TEXT="Alkatr&#xe9;szek felv&#xe9;tele rakt&#xe1;rb&#xf3;l" FOLDED="true">
+<node TEXT="Rakt&#xe1;rmozg&#xe1;s r&#xf6;gz&#xed;t&#xe9;se"/>
+</node>
+<node TEXT="Ter&#xfc;leten feladat elv&#xe9;gz&#xe9;se"/>
+<node TEXT="Alkatr&#xe9;szek lead&#xe1;sa (felhaszn&#xe1;lt, nem felhaszn&#xe1;lt)"/>
+<node TEXT="Adatr&#xf6;gz&#xed;t&#xe9;s (rakt&#xe1;rmozg&#xe1;s, &#xe9;p&#xfc;let v&#xe1;ltoz&#xe1;sok)"/>
+</node>
+<node TEXT="Ter&#xfc;let">
+<node COLOR="#999999" TEXT="hiteles&#xed;t&#xe9;s">
+<font NAME="Default" SIZE="10"/>
+</node>
+<node TEXT="Sz&#x171;r&#x151;k alkalmaz&#xe1;sa" FOLDED="true">
+<node TEXT="Ter&#xfc;let"/>
+<node TEXT="Alkatr&#xe9;sz t&#xed;pus"/>
+<node TEXT="Hiteles&#xed;t&#xe9;si id&#x151;pont"/>
+<node TEXT="Stb."/>
+</node>
+<node TEXT="Id&#x151;pont egyeztet&#xe9;s">
+<arrowlink ENDARROW="Default" DESTINATION="_" STARTARROW="None"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Berendez&#xe9;s &#xe9;letciklusa" FOLDED="true">
+<node TEXT="&#xda;j m&#xe9;r&#x151;"/>
+<node ID="_Freemind_Link_1974023323" TEXT="Rakt&#xe1;r">
+<node TEXT="Kiad&#xe1;s dolgoz&#xf3;nak"/>
+<node TEXT="Felszerel&#xe9;s?">
+<node TEXT="Nem">
+<node TEXT="J&#xf3;?">
+<node TEXT="Igen">
+<arrowlink ENDARROW="Default" DESTINATION="_Freemind_Link_1974023323" STARTARROW="None"/>
+</node>
+<node TEXT="Nem">
+<arrowlink ENDARROW="Default" DESTINATION="_Freemind_Link_1863900854" STARTARROW="None"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Felszerelve"/>
+<node TEXT="Leszerelve"/>
+<node TEXT="Bev&#xe9;tel dolgoz&#xf3;t&#xf3;l">
+<arrowlink ENDARROW="Default" DESTINATION="_Freemind_Link_1974023323" STARTARROW="None"/>
+</node>
+</node>
+<node ID="_Freemind_Link_1863900854" TEXT="Hiteles&#xed;t&#xe9;s/jav&#xed;t&#xe1;s">
+<node TEXT="J&#xf3;">
+<arrowlink ENDARROW="Default" DESTINATION="_Freemind_Link_1974023323" STARTARROW="None"/>
+</node>
+<node TEXT="Nem j&#xf3;">
+<node TEXT="Selejt"/>
+</node>
+</node>
+</node>
 </node>
 </node>
 </map>
