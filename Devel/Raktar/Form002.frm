@@ -11,27 +11,36 @@ Begin VB.Form Form002
    ClientWidth     =   11880
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
-   ScaleHeight     =   11115
-   ScaleWidth      =   15240
+   ScaleHeight     =   8595
+   ScaleWidth      =   11880
    WindowState     =   2  'Maximized
-   Begin VB.TextBox txtTALALAT 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H80000004&
-      BorderStyle     =   0  'None
+   Begin VB.CommandButton cmdJELLEMZOK 
+      Caption         =   "Jellemzõk"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Name            =   "Arial"
+         Size            =   9.75
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      Height          =   375
+      Left            =   128
+      TabIndex        =   15
+      ToolTipText     =   "F 5"
+      Top             =   3600
+      Width           =   1275
+   End
+   Begin VB.TextBox txtTALALAT 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000004&
+      BorderStyle     =   0  'None
       Height          =   285
       Left            =   10815
       Locked          =   -1  'True
-      TabIndex        =   39
+      TabIndex        =   40
       TabStop         =   0   'False
       Top             =   2625
       Width           =   960
@@ -41,7 +50,7 @@ Begin VB.Form Form002
       Height          =   195
       Index           =   3
       Left            =   385
-      TabIndex        =   36
+      TabIndex        =   4
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
       Top             =   1455
       Width           =   1335
@@ -50,34 +59,34 @@ Begin VB.Form Form002
       Caption         =   "Érzékelõ"
       Height          =   2430
       Left            =   8505
-      TabIndex        =   23
+      TabIndex        =   26
       Top             =   5985
       Width           =   3270
       Begin VB.TextBox txtE_PLOMBA 
          Height          =   285
          Left            =   945
-         TabIndex        =   35
+         TabIndex        =   38
          Top             =   1260
          Width           =   1170
       End
       Begin VB.TextBox txtE_HITIDO 
          Height          =   285
          Left            =   945
-         TabIndex        =   34
+         TabIndex        =   37
          Top             =   945
          Width           =   1170
       End
       Begin VB.TextBox txtE_TIPUS 
          Height          =   285
          Left            =   945
-         TabIndex        =   33
+         TabIndex        =   36
          Top             =   630
          Width           =   1170
       End
       Begin VB.TextBox txtE_GYSZAM 
          Height          =   285
          Left            =   945
-         TabIndex        =   32
+         TabIndex        =   35
          Top             =   315
          Width           =   1170
       End
@@ -86,34 +95,34 @@ Begin VB.Form Form002
       Caption         =   "Vízmérõ"
       Height          =   2430
       Left            =   5040
-      TabIndex        =   22
+      TabIndex        =   25
       Top             =   5985
       Width           =   3270
       Begin VB.TextBox txtV_PLOMBA 
          Height          =   285
          Left            =   945
-         TabIndex        =   31
+         TabIndex        =   34
          Top             =   1260
          Width           =   1170
       End
       Begin VB.TextBox txtV_HITIDO 
          Height          =   285
          Left            =   945
-         TabIndex        =   30
+         TabIndex        =   33
          Top             =   945
          Width           =   1170
       End
       Begin VB.TextBox txtV_TIPUS 
          Height          =   285
          Left            =   945
-         TabIndex        =   29
+         TabIndex        =   32
          Top             =   630
          Width           =   1170
       End
       Begin VB.TextBox txtV_GYSZAM 
          Height          =   285
          Left            =   945
-         TabIndex        =   28
+         TabIndex        =   31
          Top             =   315
          Width           =   1170
       End
@@ -122,58 +131,49 @@ Begin VB.Form Form002
       Caption         =   "Hõösszegzõ"
       Height          =   2430
       Left            =   1575
-      TabIndex        =   21
+      TabIndex        =   24
       Top             =   5985
       Width           =   3270
       Begin VB.TextBox txtH_PLOMBA 
          Height          =   285
          Left            =   945
-         TabIndex        =   27
+         TabIndex        =   30
          Top             =   1260
          Width           =   1170
       End
       Begin VB.TextBox txtH_HITIDO 
          Height          =   285
          Left            =   945
-         TabIndex        =   26
+         TabIndex        =   29
          Top             =   945
          Width           =   1170
       End
       Begin VB.TextBox txtH_TIPUS 
          Height          =   285
          Left            =   945
-         TabIndex        =   25
+         TabIndex        =   28
          Top             =   630
          Width           =   1170
       End
       Begin VB.TextBox txtH_GYSZAM 
          Height          =   285
          Left            =   945
-         TabIndex        =   24
+         TabIndex        =   27
          Top             =   315
          Width           =   1170
       End
    End
    Begin VB.TextBox txtSZLEVEL_SZAM 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   330
       Left            =   8715
-      TabIndex        =   17
+      TabIndex        =   10
       Top             =   1050
       Width           =   3000
    End
    Begin VB.ComboBox cmbMove 
       Height          =   315
       Left            =   3516
-      TabIndex        =   10
+      TabIndex        =   12
       Tag             =   "367"
       Top             =   2505
       Width           =   3000
@@ -191,23 +191,15 @@ Begin VB.Form Form002
       EndProperty
       Height          =   375
       Left            =   2205
-      TabIndex        =   9
+      TabIndex        =   13
       ToolTipText     =   "F 5"
       Top             =   2505
       Width           =   1275
    End
-   Begin VB.ComboBox cmbALLAPOT 
-      Height          =   315
-      Left            =   3465
-      TabIndex        =   8
-      Tag             =   "367"
-      Top             =   630
-      Width           =   3000
-   End
    Begin VB.CheckBox chkFrissit 
       Height          =   285
       Left            =   770
-      TabIndex        =   6
+      TabIndex        =   5
       TabStop         =   0   'False
       Top             =   2100
       Width           =   285
@@ -217,7 +209,7 @@ Begin VB.Form Form002
       Height          =   195
       Index           =   0
       Left            =   385
-      TabIndex        =   5
+      TabIndex        =   1
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
       Top             =   690
       Value           =   -1  'True
@@ -228,7 +220,7 @@ Begin VB.Form Form002
       Height          =   195
       Index           =   2
       Left            =   385
-      TabIndex        =   4
+      TabIndex        =   3
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
       Top             =   1200
       Width           =   1335
@@ -238,7 +230,7 @@ Begin VB.Form Form002
       Height          =   195
       Index           =   1
       Left            =   385
-      TabIndex        =   3
+      TabIndex        =   2
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
       Top             =   945
       Width           =   1335
@@ -256,7 +248,7 @@ Begin VB.Form Form002
       EndProperty
       Height          =   375
       Left            =   128
-      TabIndex        =   1
+      TabIndex        =   16
       ToolTipText     =   "E s c "
       Top             =   8040
       Width           =   1275
@@ -274,7 +266,7 @@ Begin VB.Form Form002
       EndProperty
       Height          =   375
       Left            =   128
-      TabIndex        =   0
+      TabIndex        =   14
       ToolTipText     =   "F 5"
       Top             =   2985
       Width           =   1275
@@ -299,7 +291,7 @@ Begin VB.Form Form002
    Begin vsFlexLib.vsFlexArray grdGrid 
       Height          =   2985
       Left            =   1635
-      TabIndex        =   2
+      TabIndex        =   0
       Top             =   2985
       Width           =   10095
       _Version        =   196608
@@ -321,7 +313,7 @@ Begin VB.Form Form002
       EndProperty
       Height          =   330
       Left            =   8715
-      TabIndex        =   18
+      TabIndex        =   11
       Top             =   1470
       Width           =   1455
       _ExtentX        =   2566
@@ -338,17 +330,37 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23003137
+      Format          =   23134209
       CurrentDate     =   38353
    End
-   Begin MSForms.Label lblTALALAT 
-      Height          =   240
-      Left            =   10080
-      TabIndex        =   40
-      Top             =   2640
-      Width           =   825
-      Caption         =   "Találatok:"
-      Size            =   "1455;423"
+   Begin MSForms.ComboBox cmbDOLG_ID 
+      Height          =   315
+      Left            =   8730
+      TabIndex        =   9
+      Tag             =   "334"
+      Top             =   630
+      Width           =   3000
+      VariousPropertyBits=   746604571
+      DisplayStyle    =   3
+      Size            =   "5292;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmbEPUL 
+      Height          =   315
+      Left            =   3465
+      TabIndex        =   8
+      Tag             =   "MEGNEV01"
+      Top             =   1890
+      Width           =   3000
+      VariousPropertyBits=   746604571
+      DisplayStyle    =   3
+      Size            =   "5292;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -356,16 +368,43 @@ Begin VB.Form Form002
    Begin MSForms.ComboBox cmbFUTOMU 
       Height          =   315
       Left            =   3465
-      TabIndex        =   38
+      TabIndex        =   7
       Tag             =   "MEGNEV03"
-      Top             =   1470
+      Top             =   1485
       Width           =   3000
       VariousPropertyBits=   746604571
       DisplayStyle    =   3
       Size            =   "5292;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
-      FontName        =   "Arial"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmbALLAPOT 
+      Height          =   330
+      Left            =   3465
+      TabIndex        =   6
+      Tag             =   "367"
+      Top             =   630
+      Width           =   3000
+      VariousPropertyBits=   746604571
+      DisplayStyle    =   3
+      Size            =   "5292;582"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.Label lblTALALAT 
+      Height          =   240
+      Left            =   10080
+      TabIndex        =   41
+      Top             =   2640
+      Width           =   825
+      Caption         =   "Találatok:"
+      Size            =   "1455;423"
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -375,25 +414,16 @@ Begin VB.Form Form002
       Caption         =   "Fûtõmû:"
       Height          =   255
       Left            =   1890
-      TabIndex        =   37
+      TabIndex        =   39
       Top             =   1515
       Width           =   1515
    End
    Begin VB.Label lblSZLEVEL_SZAM 
       Alignment       =   1  'Right Justify
       Caption         =   "Szállítólevél száma:"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   270
       Left            =   7140
-      TabIndex        =   20
+      TabIndex        =   23
       Tag             =   "007"
       Top             =   1110
       Width           =   1515
@@ -401,45 +431,19 @@ Begin VB.Form Form002
    Begin VB.Label lvlSZLEVEL_DAT 
       Alignment       =   1  'Right Justify
       Caption         =   "Szállítólevél dátuma:"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   270
       Left            =   7140
-      TabIndex        =   19
+      TabIndex        =   22
       Tag             =   "007"
       Top             =   1515
       Width           =   1515
-   End
-   Begin MSForms.ComboBox cmbDOLG_ID 
-      Height          =   315
-      Left            =   8730
-      TabIndex        =   16
-      Tag             =   "334"
-      Top             =   630
-      Width           =   3000
-      VariousPropertyBits=   746604571
-      DisplayStyle    =   3
-      Size            =   "5292;556"
-      MatchEntry      =   1
-      ShowDropButtonWhen=   2
-      FontName        =   "Arial"
-      FontHeight      =   165
-      FontCharSet     =   0
-      FontPitchAndFamily=   2
    End
    Begin VB.Label lblDOLG_ID 
       Alignment       =   1  'Right Justify
       Caption         =   "Dolgozó:"
       Height          =   255
       Left            =   7140
-      TabIndex        =   15
+      TabIndex        =   21
       Top             =   690
       Width           =   1515
    End
@@ -460,7 +464,7 @@ Begin VB.Form Form002
       Height          =   420
       Index           =   0
       Left            =   5604
-      TabIndex        =   14
+      TabIndex        =   20
       Top             =   45
       Width           =   2665
    End
@@ -479,7 +483,7 @@ Begin VB.Form Form002
       Height          =   240
       Index           =   0
       Left            =   1890
-      TabIndex        =   13
+      TabIndex        =   19
       Top             =   690
       Width           =   1515
    End
@@ -488,31 +492,14 @@ Begin VB.Form Form002
       Caption         =   "Épület:"
       Height          =   255
       Left            =   1890
-      TabIndex        =   12
+      TabIndex        =   18
       Top             =   1950
       Width           =   1515
-   End
-   Begin MSForms.ComboBox cmbEPUL 
-      Height          =   315
-      Left            =   3465
-      TabIndex        =   11
-      Tag             =   "MEGNEV01"
-      Top             =   1890
-      Width           =   3000
-      VariousPropertyBits=   746604571
-      DisplayStyle    =   3
-      Size            =   "5292;556"
-      MatchEntry      =   1
-      ShowDropButtonWhen=   2
-      FontName        =   "Arial"
-      FontHeight      =   165
-      FontCharSet     =   0
-      FontPitchAndFamily=   2
    End
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   150
-      TabIndex        =   7
+      TabIndex        =   17
       Top             =   1875
       Width           =   1500
       Caption         =   "Azonnali frissítés"
@@ -538,6 +525,26 @@ Public strSZLEVEL_DATUM As String
 Public strMEGJ As String
 Public strKovetkezoAllapot As String
     
+Private Sub cmbALLAPOT_Change()
+    iRefresh = 1
+    frissit
+End Sub
+
+Private Sub cmbDOLG_ID_Change()
+    iRefresh = 1
+    frissit
+End Sub
+
+Private Sub cmbEPUL_Change()
+    iRefresh = 1
+    frissit
+End Sub
+
+Private Sub cmbFUTOMU_Change()
+    iRefresh = 1
+    frissit
+End Sub
+
 Private Sub cmdExit_Click()
     Unload Me
 End Sub
@@ -546,6 +553,19 @@ Private Sub cmdFRISSIT_Click()
     tmrVILLOG.Enabled = False
     cmdFRISSIT.Caption = "Frissítés"
     GridFeltolt
+End Sub
+
+Private Sub cmdJELLEMZOK_Click()
+    Dim iTab As Integer
+    Form003.lOBJID = grdGrid.TextMatrix(grdGrid.Row, 1)
+    Select Case sOBJTIP
+        Case HOOSSZEGZO: iTab = 0
+        Case VIZORA: iTab = 1
+        Case ERZEKELO: iTab = 2
+        Case Else: iTab = 0
+    End Select
+    Form003.TabForm03.Tab = iTab
+    Form003.Show vbModal
 End Sub
 
 Private Sub cmdMove_Click()
@@ -566,8 +586,13 @@ Private Sub cmdMove_Click()
     End If
 End Sub
 
+Private Sub datSZLEVEL_DAT_CallbackKeyDown(ByVal Keycode As Integer, ByVal Shift As Integer, ByVal CallbackField As String, CallbackDate As Date)
+    iRefresh = 1
+    frissit
+End Sub
+
 Private Sub grdGrid_SelChange()
-    util.LoadInfo Me, grdGrid.TextMatrix(grdGrid.Row, 1)
+    util.loadinfo Me, grdGrid.TextMatrix(grdGrid.Row, 1)
 End Sub
 
 Private Sub optOBJTIP_Click(Index As Integer)
@@ -621,7 +646,7 @@ Private Sub GridFeltolt()
     
     grdGrid.Redraw = True
     grdGrid.ExtendLastCol = True
-    txtTALALAT = grdGrid.Rows
+    txtTALALAT = grdGrid.Rows - 1
     
     Screen.MousePointer = vbDefault
 End Sub
@@ -638,3 +663,7 @@ Private Sub frissit()
     'iRefresh = 0
 End Sub
 
+Private Sub txtSZLEVEL_SZAM_Change()
+    iRefresh = 1
+    frissit
+End Sub

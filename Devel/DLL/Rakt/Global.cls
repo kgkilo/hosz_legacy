@@ -192,14 +192,12 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
 End Function    'Gridder
 
-Public Function Save(ByRef frm As Object, ByVal sKategoria As String) As Boolean
+Public Function Save(ByRef frm As Object) As Boolean
     On Error GoTo errSave
     Save = False
     
-    Dim lstParams As New Collection 'és átadjuk majd paraméterként
-    
+    Dim lstParams As New Collection
     ControlsGet lstParams, frm  'Lekérdezzük az összes látható kontroll értékét
-    lstParams.Add sKategoria, "pOBJTIP"
     
     If oAdmin.Exec("sp_UpdRaktarObj", lstParams) = True Then 'Végrehajtjuk a frissítést
         Save = True
