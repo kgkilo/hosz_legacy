@@ -2146,7 +2146,7 @@ Public Function KarbanLekerd(ByRef lstControls As Access.Controls, _
         
         .MergeCells = flexMergeRestrictColumns
         Dim i As Integer
-        For i = 1 To 12
+        For i = 1 To 11
             .MergeCol(i) = True
         Next i
     End With
