@@ -20,6 +20,7 @@ truncate table hocserelo
 truncate table hokozpont
 truncate table hoosszegzo
 truncate table jegyz
+truncate table jogos
 truncate table kapcsolat
 truncate table karban
 truncate table karbterv
