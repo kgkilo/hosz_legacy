@@ -560,7 +560,7 @@ Public Function SetPermis(ByRef cmbOBJTIP As Object, ByRef lstControls As Access
                     
                 Case 1
                     oControl.Visible = True
-                    oControl.ForeColor = 9868950 * iEnable  'szürke
+                    oControl.ForeColor = 0  '9868950 * iEnable  'szürke
                     
                 Case 2
                     oControl.Visible = True
