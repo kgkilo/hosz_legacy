@@ -1,9 +1,9 @@
 Type=OleDll
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#D:\WINNT\System32\stdole2.tlb#OLE Automation
-Reference=*\G{00000200-0000-0010-8000-00AA006D2EA4}#2.0#0#D:\Program Files\Common Files\system\ado\msado20.tlb#Microsoft ActiveX Data Objects 2.0 Library
-Reference=*\G{00000300-0000-0010-8000-00AA006D2EA4}#2.0#0#D:\Program Files\Common Files\system\ado\msador15.dll#Microsoft ActiveX Data Objects Recordset 2.0 Library
-Reference=*\G{4AFFC9A0-5F99-101B-AF4E-00AA003F0F07}#8.0#0#..\..\..\..\..\..\Program Files\Office97\Office\MSACC8.OLB#Microsoft Access 8.0 Object Library
-Reference=*\G{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0#D:\WINNT\system32\Vsflex3.ocx#:-) VideoSoft vsFlex3 Controls
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#E:\WINNT\System32\stdole2.tlb#OLE Automation
+Reference=*\G{00000200-0000-0010-8000-00AA006D2EA4}#2.0#0#E:\Program Files\Common Files\system\ado\msado20.tlb#Microsoft ActiveX Data Objects 2.0 Library
+Reference=*\G{00000300-0000-0010-8000-00AA006D2EA4}#2.0#0#E:\Program Files\Common Files\system\ado\msador15.dll#Microsoft ActiveX Data Objects Recordset 2.0 Library
+Reference=*\G{4AFFC9A0-5F99-101B-AF4E-00AA003F0F07}#8.0#0#E:\Program Files\Microsoft Office\Office\MSACC8.OLB#Microsoft Access 8.0 Object Library
+Reference=*\G{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0#E:\WINNT\System32\VSFLEX3.OCX#:-) VideoSoft vsFlex3 Controls
 Class=CadminADO; ..\..\Common\CadminADOSqlS.cls
 Class=CKod; ..\..\Common\Ckod.cls
 Class=CKodSection; ..\..\Common\Ckodsect.cls

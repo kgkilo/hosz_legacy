@@ -69,7 +69,8 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q365", Nothing, "365", "Hõösszegzõ helyzet", 2
     g_oKodszotar.Load "sp_Q366", Nothing, "366", "Elektronika", 2
     g_oKodszotar.Load "sp_Q367", Nothing, "367", "Raktár állapot", 2
-    
+    g_oKodszotar.Load "sp_Q334", Nothing, "334", "Dolgozó", 3
+     
     Init = True
     Exit Function
     
@@ -161,7 +162,7 @@ Public Function GetComboErtek(ByRef cmbCombo As Object) As String
 End Function    'GetComboErtek
 
 Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
-        ByRef sALLAPOT As String) As Boolean
+        ByRef sALLAPOT As String, ByRef frm As Object) As Boolean
     Dim sFormatstring As String
     Dim sQuery As String
     Dim iMerge As Integer
@@ -170,9 +171,17 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     
     lstParams.Add sOBJTIP, "pOBJTIP"
     lstParams.Add sALLAPOT, "pALLAPOT"
+    sParam = GetComboErtek(frm.Controls("cmbEPUL"))
+    lstParams.Add sParam, "pEPULET_ID"
+    sParam = GetComboErtek(frm.Controls("cmbDOLG_ID"))
+    lstParams.Add sParam, "pDOLG_ID"
+    sParam = frm.Controls("txtSZLEVEL_SZAM").Text
+    lstParams.Add sParam, "pSZLEVEL_SZAM"
+    sParam = IIf(IsNull(frm.Controls("datSZLEVEL_DAT").Value), "", frm.Controls("datSZLEVEL_DAT").Value)
+    lstParams.Add sParam, "pSZLEVEL_DAT"
     
     iMerge = 2
-    sFormatstring = "<||Gy.sz.|Tip.|Dátum|Állapot"
+    sFormatstring = "<||Gy.sz.|Tip.|Dátum|Állapot|Épület|Áramkör|Dolgozó|Sz.levél száma|Sz.levél dátuma|"
     sQuery = "sp_LekerdRaktar"
     
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
@@ -221,7 +230,8 @@ errPrepareTab:
 End Function
 
 ' Egy rekord állapotát változtatja (Aktív, selejt, nem felszerelhetõ) a RAKTAR táblában
-Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String) As Boolean
+Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String, Optional ByRef lDOLG_ID As Long, _
+                        Optional ByRef sSZLEVEL_SZAM As String, Optional ByRef sSZLEVEL_DAT As String) As Boolean
     On Error GoTo errsetAllapot
     setAllapot = False
     
@@ -229,6 +239,9 @@ Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String) As Boo
     
     lstParams.Add sID, "pID"
     lstParams.Add sALLAPOT, "pALLAPOT"
+    lstParams.Add lDOLG_ID, "pDOLG_ID"
+    lstParams.Add sSZLEVEL_SZAM, "pSZLEVEL_SZAM"
+    lstParams.Add sSZLEVEL_DAT, "pSZLEVEL_DATUM"
     setAllapot = oAdmin.Exec("sp_UpdRaktarAllapot", lstParams)
     Exit Function
     
