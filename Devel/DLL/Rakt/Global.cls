@@ -35,9 +35,9 @@ End Sub
 '   Szerverre bejelentkezik, beállítja a dátum formátumot, feltölti a kódszótárat
 '   Paraméterek:    -
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
-Public Function Init(ByRef sReportDir As String) As Boolean
+Public Function Init(ByRef sReportDir As String) As String
     On Error GoTo errInit
-    Init = False
+    Init = ""
 
     'A formel.ini file-ból a szükséges adatok betöltése
     Dim FileNum, iCount As Integer
@@ -72,7 +72,7 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q368", Nothing, "368", "Szolgáltatói tulajdon", 1
     g_oKodszotar.Load "sp_Q334", Nothing, "334", "Dolgozó", 3
     g_oKodszotar.Load "sp_FillRaktarKepv", Nothing, "KEPVIS", "Közös képviselõ", 4
-    Init = True
+    Init = m_sConnect
     Exit Function
     
 errInit:
@@ -232,7 +232,7 @@ errSave:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Save"
 End Function    'Save
 
-Public Function PrepareTAB(ByRef sTAB As String, Optional ByRef sOBJTIP As String) As Boolean
+Public Function PrepareTAB(ByRef sTAB As String, Optional ByRef sParam As String) As Boolean
     On Error GoTo errPrepareTab
     PrepareTAB = False
     
@@ -246,7 +246,10 @@ Public Function PrepareTAB(ByRef sTAB As String, Optional ByRef sOBJTIP As Strin
         Case "R02"
         
         Case "R03"  'Szállítólevél objektum típusra szûrve
-            lstParams.Add sOBJTIP, "pOBJTIP"
+            lstParams.Add sParam, "pOBJTIP"
+            
+        Case "R04"  'Hõmenyiségmérõk adatai
+            lstParams.Add sParam, "pID"
     End Select
     
     PrepareTAB = oAdmin.Exec(sQuery, lstParams)

@@ -76,9 +76,9 @@ Private Sub cmdRaktar_Click()
 End Sub
 
 Private Sub Form_Initialize()
-    sReportDir = "J:\GABOR\WORK\HOSZOLG"
+    sReportDir = "aaa"
     Set util = CreateObject("Rakt.Global")
-    util.Init sReportDir
+    sConnectString = util.Init(sReportDir)
     
     HOOSSZEGZO = "18"
     VIZORA = "19"

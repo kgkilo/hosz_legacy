@@ -14,6 +14,24 @@ Begin VB.Form Form002
    ScaleHeight     =   8595
    ScaleWidth      =   11880
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdNyomtat 
+      Caption         =   "Nyomtat"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   105
+      TabIndex        =   22
+      ToolTipText     =   "F 5"
+      Top             =   5040
+      Width           =   1275
+   End
    Begin VB.TextBox txtSZUKSHOSSZ 
       Height          =   330
       Left            =   10185
@@ -75,7 +93,7 @@ Begin VB.Form Form002
       Height          =   285
       Left            =   10815
       Locked          =   -1  'True
-      TabIndex        =   46
+      TabIndex        =   47
       TabStop         =   0   'False
       Top             =   3465
       Width           =   960
@@ -94,34 +112,34 @@ Begin VB.Form Form002
       Caption         =   "Érzékelõ"
       Height          =   1695
       Left            =   8505
-      TabIndex        =   32
+      TabIndex        =   33
       Top             =   6825
       Width           =   3270
       Begin VB.TextBox txtE_PLOMBA 
          Height          =   285
          Left            =   945
-         TabIndex        =   44
+         TabIndex        =   45
          Top             =   1260
          Width           =   1170
       End
       Begin VB.TextBox txtE_HITIDO 
          Height          =   285
          Left            =   945
-         TabIndex        =   43
+         TabIndex        =   44
          Top             =   945
          Width           =   1170
       End
       Begin VB.TextBox txtE_TIPUS 
          Height          =   285
          Left            =   945
-         TabIndex        =   42
+         TabIndex        =   43
          Top             =   630
          Width           =   1170
       End
       Begin VB.TextBox txtE_GYSZAM 
          Height          =   285
          Left            =   945
-         TabIndex        =   41
+         TabIndex        =   42
          Top             =   315
          Width           =   1170
       End
@@ -130,34 +148,34 @@ Begin VB.Form Form002
       Caption         =   "Vízmérõ"
       Height          =   1695
       Left            =   5040
-      TabIndex        =   31
+      TabIndex        =   32
       Top             =   6825
       Width           =   3270
       Begin VB.TextBox txtV_PLOMBA 
          Height          =   285
          Left            =   945
-         TabIndex        =   40
+         TabIndex        =   41
          Top             =   1260
          Width           =   1170
       End
       Begin VB.TextBox txtV_HITIDO 
          Height          =   285
          Left            =   945
-         TabIndex        =   39
+         TabIndex        =   40
          Top             =   945
          Width           =   1170
       End
       Begin VB.TextBox txtV_TIPUS 
          Height          =   285
          Left            =   945
-         TabIndex        =   38
+         TabIndex        =   39
          Top             =   630
          Width           =   1170
       End
       Begin VB.TextBox txtV_GYSZAM 
          Height          =   285
          Left            =   945
-         TabIndex        =   37
+         TabIndex        =   38
          Top             =   315
          Width           =   1170
       End
@@ -166,34 +184,34 @@ Begin VB.Form Form002
       Caption         =   "Hõösszegzõ"
       Height          =   1695
       Left            =   1575
-      TabIndex        =   30
+      TabIndex        =   31
       Top             =   6825
       Width           =   3270
       Begin VB.TextBox txtH_PLOMBA 
          Height          =   285
          Left            =   945
-         TabIndex        =   36
+         TabIndex        =   37
          Top             =   1260
          Width           =   1170
       End
       Begin VB.TextBox txtH_HITIDO 
          Height          =   285
          Left            =   945
-         TabIndex        =   35
+         TabIndex        =   36
          Top             =   945
          Width           =   1170
       End
       Begin VB.TextBox txtH_TIPUS 
          Height          =   285
          Left            =   945
-         TabIndex        =   34
+         TabIndex        =   35
          Top             =   630
          Width           =   1170
       End
       Begin VB.TextBox txtH_GYSZAM 
          Height          =   285
          Left            =   945
-         TabIndex        =   33
+         TabIndex        =   34
          Top             =   315
          Width           =   1170
       End
@@ -283,7 +301,7 @@ Begin VB.Form Form002
       EndProperty
       Height          =   375
       Left            =   128
-      TabIndex        =   22
+      TabIndex        =   23
       ToolTipText     =   "E s c "
       Top             =   8145
       Width           =   1275
@@ -406,7 +424,7 @@ Begin VB.Form Form002
       Caption         =   "Szüks. hossz:"
       Height          =   270
       Left            =   8820
-      TabIndex        =   53
+      TabIndex        =   54
       Tag             =   "007"
       Top             =   2790
       Width           =   1275
@@ -416,7 +434,7 @@ Begin VB.Form Form002
       Caption         =   "Vez. hossz:"
       Height          =   270
       Left            =   6510
-      TabIndex        =   52
+      TabIndex        =   53
       Tag             =   "007"
       Top             =   2790
       Width           =   1275
@@ -426,7 +444,7 @@ Begin VB.Form Form002
       Caption         =   "Beny. hossz:"
       Height          =   270
       Left            =   4200
-      TabIndex        =   51
+      TabIndex        =   52
       Tag             =   "007"
       Top             =   2790
       Width           =   1275
@@ -436,7 +454,7 @@ Begin VB.Form Form002
       Caption         =   "Átmérõ:"
       Height          =   270
       Left            =   1890
-      TabIndex        =   50
+      TabIndex        =   51
       Tag             =   "007"
       Top             =   2790
       Width           =   1275
@@ -446,7 +464,7 @@ Begin VB.Form Form002
       Caption         =   "Típus:"
       Height          =   270
       Left            =   1890
-      TabIndex        =   49
+      TabIndex        =   50
       Tag             =   "007"
       Top             =   2370
       Width           =   1275
@@ -456,7 +474,7 @@ Begin VB.Form Form002
       Caption         =   "Hitelesítés idõpontja:"
       Height          =   270
       Left            =   7140
-      TabIndex        =   48
+      TabIndex        =   49
       Tag             =   "007"
       Top             =   2355
       Width           =   1515
@@ -528,7 +546,7 @@ Begin VB.Form Form002
    Begin MSForms.Label lblTALALAT 
       Height          =   240
       Left            =   10080
-      TabIndex        =   47
+      TabIndex        =   48
       Top             =   3480
       Width           =   825
       Caption         =   "Találatok:"
@@ -542,7 +560,7 @@ Begin VB.Form Form002
       Caption         =   "Fûtõmû:"
       Height          =   255
       Left            =   1890
-      TabIndex        =   45
+      TabIndex        =   46
       Top             =   1515
       Width           =   1275
    End
@@ -551,7 +569,7 @@ Begin VB.Form Form002
       Caption         =   "Szállítólevél száma:"
       Height          =   270
       Left            =   7140
-      TabIndex        =   29
+      TabIndex        =   30
       Tag             =   "007"
       Top             =   1110
       Width           =   1515
@@ -561,7 +579,7 @@ Begin VB.Form Form002
       Caption         =   "Szállítólevél dátuma:"
       Height          =   270
       Left            =   7140
-      TabIndex        =   28
+      TabIndex        =   29
       Tag             =   "007"
       Top             =   1515
       Width           =   1515
@@ -571,7 +589,7 @@ Begin VB.Form Form002
       Caption         =   "Dolgozó:"
       Height          =   255
       Left            =   7140
-      TabIndex        =   27
+      TabIndex        =   28
       Top             =   690
       Width           =   1515
    End
@@ -592,7 +610,7 @@ Begin VB.Form Form002
       Height          =   420
       Index           =   0
       Left            =   5604
-      TabIndex        =   26
+      TabIndex        =   27
       Top             =   45
       Width           =   2665
    End
@@ -611,7 +629,7 @@ Begin VB.Form Form002
       Height          =   240
       Index           =   0
       Left            =   1890
-      TabIndex        =   25
+      TabIndex        =   26
       Top             =   690
       Width           =   1275
    End
@@ -620,14 +638,14 @@ Begin VB.Form Form002
       Caption         =   "Épület:"
       Height          =   255
       Left            =   1890
-      TabIndex        =   24
+      TabIndex        =   25
       Top             =   1950
       Width           =   1275
    End
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   150
-      TabIndex        =   23
+      TabIndex        =   24
       Top             =   1875
       Width           =   1500
       Caption         =   "Azonnali frissítés"
@@ -730,6 +748,13 @@ Private Sub cmdMove_Click()
         util.setAllapot grdGrid.TextMatrix(grdGrid.Row, 1), strKovetkezoAllapot, _
             lDOLG_ID, strSZLEVEL_SZAM, strSZLEVEL_DATUM, strMEGJ
         cmbMove.ListIndex = -1
+    End If
+End Sub
+
+Private Sub cmdNyomtat_Click()
+    If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
+        util.PrepareTAB "R04", grdGrid.TextMatrix(grdGrid.Row, 1)
+        Nyomtat "TAB_R04.rpt", 0
     End If
 End Sub
 

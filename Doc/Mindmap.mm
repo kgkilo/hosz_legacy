@@ -54,7 +54,7 @@
 <node COLOR="#990000" TEXT="Tel mh"/>
 <node COLOR="#990000" TEXT="Tel mobil"/>
 </node>
-<node COLOR="#990000" TEXT="H&#x151;&#xf6;sszegz&#x151; 18">
+<node COLOR="#990000" TEXT="H&#x151;&#xf6;sszegz&#x151; 18" FOLDED="true">
 <node COLOR="#338800" TEXT="&#xc1;ltal&#xe1;nos adatok OBJEKTUM" FOLDED="true">
 <node TEXT="Gy&#xe1;ri sz&#xe1;m">
 <node TEXT="GYSZAM"/>
@@ -110,7 +110,7 @@
 <node TEXT="Tel mh"/>
 </node>
 </node>
-<node COLOR="#990000" TEXT="V&#xed;z&#xf3;ra 19">
+<node COLOR="#990000" TEXT="V&#xed;z&#xf3;ra 19" FOLDED="true">
 <node COLOR="#338800" TEXT="&#xc1;ltal&#xe1;nos adatok OBJEKTUM" FOLDED="true">
 <node TEXT="Gy&#xe1;ri sz&#xe1;m" FOLDED="true">
 <node TEXT="GYSZAM"/>
@@ -125,7 +125,7 @@
 <node TEXT="ELHELYEZ"/>
 </node>
 </node>
-<node COLOR="#338800" TEXT="M&#x171;szaki adatok VIZORA" FOLDED="true">
+<node COLOR="#338800" TEXT="M&#x171;szaki adatok VIZORA">
 <node COLOR="#338800" TEXT="Impulzus" FOLDED="true">
 <node TEXT="IMPULZUS"/>
 </node>
@@ -152,7 +152,7 @@
 <node TEXT="Tel mh"/>
 </node>
 </node>
-<node COLOR="#990000" TEXT="&#xc9;rz&#xe9;kel&#x151; 20">
+<node COLOR="#990000" TEXT="&#xc9;rz&#xe9;kel&#x151; 20" FOLDED="true">
 <node COLOR="#338800" TEXT="&#xc1;ltal&#xe1;nos adatok OBJEKTUM" FOLDED="true">
 <node TEXT="Gy&#xe1;ri sz&#xe1;m" FOLDED="true">
 <node COLOR="#000000" TEXT="GYSZAM"/>
@@ -456,6 +456,10 @@
 <node TEXT="Bejelentve 2004.12.03."/>
 <node TEXT="Hoszolg/aaa.sql a t&#xe1;bl&#xe1;t l&#xe9;trehozza (TAB409)"/>
 </node>
+<node TEXT="Jegyz&#x151;k&#xf6;ny b&#x151;v&#xed;t&#xe9;s">
+<node TEXT="5. Folyamat szab&#xe1;lyz&#xe1;s"/>
+<node TEXT="12. K&#xe9;tpont szab. I, II (k&#xfc;l&#xf6;n venni)"/>
+</node>
 </node>
 <node TEXT="MunkVB" FOLDED="true">
 <node COLOR="#338800" TEXT="Minden d&#xe1;tum mez&#x151; DTPicker legyen">
@@ -488,33 +492,33 @@
 </node>
 <node TEXT="Rakt&#xe1;r" POSITION="left">
 <node TEXT="Mozg&#xe1;sok">
-<node TEXT="&#xc9;p&#xfc;let-Leszerel&#xe9;s-Dolgoz&#xf3;">
+<node COLOR="#338800" TEXT="&#xc9;p&#xfc;let-Leszerel&#xe9;s-Dolgoz&#xf3;" FOLDED="true">
 <node TEXT="F-&gt;D"/>
 </node>
-<node TEXT="Dolgoz&#xf3;-Felszerel&#xe9;s-&#xc9;p&#xfc;let">
+<node COLOR="#338800" TEXT="Dolgoz&#xf3;-Felszerel&#xe9;s-&#xc9;p&#xfc;let" FOLDED="true">
 <node TEXT="D-&gt;F"/>
 </node>
-<node TEXT="Rakt&#xe1;r-Kiad&#xe1;s-Dolgoz&#xf3;">
+<node COLOR="#338800" TEXT="Rakt&#xe1;r-Kiad&#xe1;s-Dolgoz&#xf3;" FOLDED="true">
 <node TEXT="R-&gt;D"/>
 </node>
-<node TEXT="Dolgoz&#xf3;-Bev&#xe9;tel-Rakt&#xe1;r">
+<node COLOR="#338800" TEXT="Dolgoz&#xf3;-Bev&#xe9;tel-Rakt&#xe1;r" FOLDED="true">
 <node TEXT="D-&gt;R"/>
 </node>
-<node TEXT="Rakt&#xe1;r-Ellen&#x151;rz&#xe9;sre-Sz&#xe1;ll&#xed;t&#xf3;">
+<node COLOR="#338800" TEXT="Rakt&#xe1;r-Ellen&#x151;rz&#xe9;sre-Sz&#xe1;ll&#xed;t&#xf3;" FOLDED="true">
 <node TEXT="R-&gt;E"/>
 </node>
-<node TEXT="Rakt&#xe1;r-Jav&#xed;t&#xe1;s,hiteles&#xed;t&#xe9;sre-Sz&#xe1;ll&#xed;t&#xf3;">
+<node COLOR="#338800" TEXT="Rakt&#xe1;r-Jav&#xed;t&#xe1;s,hiteles&#xed;t&#xe9;sre-Sz&#xe1;ll&#xed;t&#xf3;" FOLDED="true">
 <node TEXT="R-&gt;J"/>
 </node>
-<node TEXT="Sz&#xe1;ll&#xed;t&#xf3;-Vissz&#xe1;ru (j&#xf3;/rossz)-Rakt&#xe1;r">
+<node COLOR="#338800" TEXT="Sz&#xe1;ll&#xed;t&#xf3;-Vissz&#xe1;ru (j&#xf3;/rossz)-Rakt&#xe1;r" FOLDED="true">
 <node TEXT="E-&gt;R, J-&gt;R"/>
 </node>
-<node TEXT="Sz&#xe1;ll&#xed;t&#xf3;-&#xda;j alkatr&#xe9;sz, p&#xf3;tl&#xe1;s-Rakt&#xe1;r"/>
-<node TEXT="Rakt&#xe1;r-Selejtez&#xe9;s">
+<node COLOR="#990000" TEXT="Sz&#xe1;ll&#xed;t&#xf3;-&#xda;j alkatr&#xe9;sz, p&#xf3;tl&#xe1;s-Rakt&#xe1;r"/>
+<node COLOR="#338800" TEXT="Rakt&#xe1;r-Selejtez&#xe9;s" FOLDED="true">
 <node TEXT="R-&gt;S"/>
 </node>
 </node>
-<node TEXT="&#xc1;llapotok">
+<node COLOR="#000000" TEXT="&#xc1;llapotok" FOLDED="true">
 <node COLOR="#338800" TEXT="RAKTAR" FOLDED="true">
 <node TEXT="OBJTIP"/>
 <node TEXT="OBJID"/>
@@ -525,6 +529,8 @@
 <node TEXT="DOLG_ID"/>
 <node TEXT="SZLEVEL_SZAM"/>
 <node TEXT="SZLEVEL_DATUM"/>
+<node TEXT="KEPVIS"/>
+<node TEXT="KULCS"/>
 </node>
 <node COLOR="#338800" TEXT="RAKTHISTORY" FOLDED="true">
 <node TEXT="OBJTIP"/>
@@ -537,8 +543,7 @@
 <node TEXT="SZLEVEL_SZAM"/>
 <node TEXT="SZLEVEL_DATUM"/>
 </node>
-</node>
-<node COLOR="#338800" TEXT="&#xc1;llapotok megnevez&#xe9;se Q367">
+<node COLOR="#338800" TEXT="&#xc1;llapotok megnevez&#xe9;se Q367" FOLDED="true">
 <edge WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="button_ok"/>
@@ -549,13 +554,57 @@
 <node TEXT="J - Sz&#xe1;ll&#xed;t&#xf3;n&#xe1;l-JavHit"/>
 <node TEXT="S - Selejt"/>
 </node>
-<node TEXT="Munkafolyamatok">
+</node>
+<node TEXT="R&#xe9;szletes adatok" FOLDED="true">
+<node COLOR="#338800" TEXT="Lek&#xe9;rdez&#xe9;s"/>
+<node COLOR="#338800" TEXT="T&#xf6;rt&#xe9;nelem"/>
+<node COLOR="#338800" TEXT="Ment&#xe9;s"/>
+<node COLOR="#990000" TEXT="K&#xf6;z&#xf6;s k&#xe9;pvisel&#x151; / megb&#xed;zott" FOLDED="true">
+<icon BUILTIN="help"/>
+<node TEXT="RAKTAR.KEPVIS -&gt; RAKTKEPVIS.ID"/>
+</node>
+<node COLOR="#338800" TEXT="Kulcs tal&#xe1;lhat&#xf3;" FOLDED="true">
+<icon BUILTIN="help"/>
+<node TEXT="RAKTAR.KULCS"/>
+<node TEXT="RAKTAR.KULCS_LAKTEL"/>
+<node TEXT="RAKTAR.KULCS_MOBTEL"/>
+<node TEXT="RAKTAR.KULCS_MUNTEL"/>
+</node>
+<node COLOR="#338800" TEXT="Q368 Szolg&#xe1;ltat&#xf3;i tulajdon?" FOLDED="true">
+<node TEXT="OBJEKTUM.TULAJDON"/>
+</node>
+</node>
+<node TEXT="Lek&#xe9;rdez&#xe9;sek, sz&#x171;r&#x151;k">
+<node COLOR="#338800" TEXT="T&#xed;pus"/>
+<node COLOR="#338800" TEXT="V&#xed;z&#xf3;ra" FOLDED="true">
+<node COLOR="#338800" TEXT="&#xc1;tm&#xe9;r&#x151;"/>
+</node>
+<node COLOR="#338800" TEXT="&#xc9;rz&#xe9;kel&#x151;" FOLDED="true">
+<node COLOR="#338800" TEXT="Beny. hossz"/>
+<node COLOR="#338800" TEXT="Vez. hossz"/>
+<node COLOR="#338800" TEXT="Sz&#xfc;ks. hossz"/>
+</node>
+<node COLOR="#990000" TEXT="Hiteles&#xed;t&#xe9;si id&#x151;"/>
+<node COLOR="#990000" TEXT="Szlev&#xe9;l d&#xe1;tuma"/>
+<node COLOR="#338800" TEXT="Szlev&#xe9;l sz&#xe1;ma"/>
+<node COLOR="#338800" TEXT="Dolgoz&#xf3;"/>
+<node COLOR="#338800" TEXT="F&#x171;t&#x151;m&#x171;"/>
+<node COLOR="#990000" TEXT="&#xc9;p&#xfc;let"/>
+</node>
+<node TEXT="List&#xe1;k">
+<node TEXT="Sz&#xe1;ll&#xed;t&#xf3;lev&#xe9;l"/>
+<node TEXT="R&#xe9;szletes adatok">
+<node TEXT="TAB_R04"/>
+</node>
+<node TEXT="&#xc9;p&#xfc;let teljes t&#xf6;rt&#xe9;net"/>
+</node>
+<node TEXT="Munkafolyamatok" FOLDED="true">
 <node TEXT="Munkalap">
 <node TEXT="Pontos c&#xed;mre">
 <node COLOR="#999999" TEXT="hiteles&#xed;t&#xe9;s, jav&#xed;t&#xe1;s, ellen&#x151;rz&#xe9;s">
 <font NAME="Default" SIZE="10"/>
 </node>
-<node TEXT="Kapcsolatfelv&#xe9;tel" FOLDED="true">
+<node TEXT="Kapcsolatfelv&#xe9;tel">
 <node TEXT="K&#xf6;z&#xf6;s k&#xe9;pvisel&#x151;"/>
 <node TEXT="Megb&#xed;zott"/>
 <node TEXT="Kulcs tulaj"/>
