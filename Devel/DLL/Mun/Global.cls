@@ -482,6 +482,8 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "FSZAM"
             sParam = GetComboErtek(frm.Controls("cmbALLAPOT"))
             lstParams.Add sParam, "ALLAPOT"
+            sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
+            lstParams.Add sParam, "OBJTIP"
             sParam = GetComboErtek(frm.Controls("cmbOBJID"))
             lstParams.Add sParam, "OBJID"
             sParam = GetComboErtek(frm.Controls("cmbDOLGID"))
@@ -496,7 +498,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "MUNDATIG"
             sParam = frm.Controls("txtMUNKALAPID").Text
             lstParams.Add sParam, "MUNKALAPID"
-            sParam = GetComboErtek(frm.Controls("cmbTELEPHSZ"))
+            sParam = GetComboNev(frm.Controls("cmbTELEPHSZ"))
             lstParams.Add sParam, "TELEPHSZ"
 
 ' Lekérdezem a munkalap darabszámot

@@ -192,7 +192,7 @@ Begin VB.Form Form001
       Width           =   960
    End
    Begin VB.CommandButton cmdEXIT 
-      Caption         =   "Vissza"
+      Caption         =   "Kilépés"
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   9.75
@@ -307,7 +307,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23658497
+      Format          =   23527425
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -339,7 +339,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23658497
+      Format          =   23527425
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMTOL 
@@ -371,7 +371,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23658497
+      Format          =   23527425
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -403,7 +403,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23658497
+      Format          =   23527425
       CurrentDate     =   37013
    End
    Begin MSForms.ComboBox cmbTELEPHSZ 
@@ -981,20 +981,25 @@ End Sub
 
 Private Sub cmdFRISSIT_Click()
     Screen.MousePointer = vbHourglass
+    
     util.gridderx grdMUNKALAP, "MUNKALAP", Me
-    Dim z As Long
+    
+    Dim iOra As Long
     Dim i As Long
     Dim t As String
-    z = 0
-    For i = 1 To grdMUNKALAP.Rows - 1
-        t = grdMUNKALAP.TextMatrix(i, 13)
-        If t <> "" Then z = z + CLng(t)
-    Next i
-    txtMUNOSZ = z
+    iOra = 0
+    With grdMUNKALAP
+        For i = 1 To .Rows - 1
+            t = .TextMatrix(i, 13)
+            If t <> "" Then iOra = iOra + CLng(t)
+        Next i
+    End With
+    txtMUNOSZ = iOra
+    
     tmrVILLOG.Enabled = False
     cmdFRISSIT.Caption = "Frissítés"
+    enableCsoportosNyomtatas
     Screen.MousePointer = vbDefault
-    csoportosnyomtatas
 End Sub
 
 Private Sub cmdMODOSIT_Click()
@@ -1063,14 +1068,13 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
    If MsgBox(Msg, vbQuestion + vbYesNo, "Tisztelt felhasználó!") = vbNo Then Cancel = True
 End Sub
 
-Sub csoportosnyomtatas()
-    Set frmCurrentForm = Screen.ActiveForm
-    If frmCurrentForm![cmbMLAPTIP].ListIndex <> -1 And util.getcomboertek(frmCurrentForm![cmbALLAPOT]) = "1" Then
-        frmCurrentForm![cmdCSOPLIST].Enabled = True
-        frmCurrentForm![cmdLIST].Enabled = True
+Sub enableCsoportosNyomtatas()
+    If cmbMLAPTIP.ListIndex <> -1 And util.getcomboertek(cmbALLAPOT) = "1" Then
+        cmdCSOPLIST.Enabled = True
+        cmdLIST.Enabled = True
     Else
-        frmCurrentForm![cmdCSOPLIST].Enabled = False
-        frmCurrentForm![cmdLIST].Enabled = False
+        cmdCSOPLIST.Enabled = False
+        cmdLIST.Enabled = False
     End If
 End Sub
 
