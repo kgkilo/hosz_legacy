@@ -26,39 +26,19 @@ Private Sub cmdEXIT_Click()
 End Sub
 
 Private Sub cmdLEKERD_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    modosVizsg
-    switchoffGrid
-    enableCmbMegnev
-    cmdOK.Enabled = False
+    onLekerdMouseDown
 End Sub
 
 Private Sub cmdMODOSIT_Click()
-    If cmdMODOSIT = True Then
-        cmdOK.Enabled = True
-        util.setpermis cmbOBJTIP, Me.sub.Controls, 1
-    Else
-        cmdOK.Enabled = False
-    End If
-    parok = 1
+    onModositClick
 End Sub
 
 Private Sub cmdNEZET_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    modosVizsg
-    cmbMEGNEV = Null
-    activateGrid
-    util.gridder cmbOBJTIP, cmbMEGNEV, Me![sub]![grdGRID], Nothing, Nothing, Nothing, "Alt"
-    disableCmbMegnev
-    disableModDupPrnDel
-    cmdOK.Enabled = False
-    cmdMODOSIT = False
+    onNezetMouseDown
 End Sub
 
 Private Sub cmdOK_Click()
-    felir
-End Sub
-
-Private Sub cmdPrint_Click()
-    cmdMODOSIT = False
+    onOK
 End Sub
 
 Private Sub Form_Load()

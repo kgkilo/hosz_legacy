@@ -2,11 +2,11 @@ Option Compare Database
 Option Explicit
 
 Private Sub cmbALLAPOT_Updated(Code As Integer)
-    csoportosbaszasvizsgalat
+    enableCsoportosButton
 End Sub
 
 Private Sub cmbMLAPTIP_Updated(Code As Integer)
-    csoportosbaszasvizsgalat
+    enableCsoportosButton
 End Sub
 
 Private Sub cmbOBJTIP_Enter()
@@ -127,6 +127,14 @@ Private Sub grdGRID_DblClick()
             .cmdLEKERD.Enabled = False
             .cmdMODOSIT.Enabled = False
         End With
+    End If
+End Sub
+
+Sub enableCsoportosButton()
+    If cmbMLAPTIP.ListIndex <> -1 And util.getcomboertek(cmbALLAPOT) = "1" Then
+        cmdCSOPORTOS.Enabled = True
+    Else
+        cmdCSOPORTOS.Enabled = False
     End If
 End Sub
 

@@ -46,7 +46,7 @@ Private Sub cmdODA_Click()
     Msg = "Biztosan kapcsolni szeretné?"
     DoCmd.Beep
     Response = MsgBox(Msg, DgDef, title)
-    If Response = IDYES Then
+    If Response = vbYes Then
         DoCmd.Hourglass True
         util.karbtervkapcsol Controls
         Karbtervlekerd
@@ -60,7 +60,7 @@ Private Sub cmdVISSZA_Click()
     Msg = "Biztosan le szeretné kapcsolni?"
     DoCmd.Beep
     Response = MsgBox(Msg, DgDef, title)
-    If Response = IDYES Then
+    If Response = vbYes Then
         DoCmd.Hourglass True
         util.karbtervszetkapcsol grdKAPCSOLT
         Karbtervlekerd

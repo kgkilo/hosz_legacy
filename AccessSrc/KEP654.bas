@@ -43,19 +43,9 @@ Private Sub cmd1_AfterUpdate()
             parok = 1
             util.setpermis cmbOBJTIP, [sub].Controls, 1
         Case 4  'Lekerd
-            'modosvizsg
-            switchoffGrid
-            enableCmbMegnev
-            cmdOK.Enabled = False
+            onLekerdMouseDown
         Case 5  'grid view
-            modosVizsg
-            cmbMEGNEV = Null
-            activateGrid
-            util.gridder cmbOBJTIP, cmbMEGNEV, Me![sub]![grdGRID], Nothing, Nothing, Nothing, "Alt"
-            disableCmbMegnev
-            disableModDupPrnDel
-            cmdOK.Enabled = False
-            cmdMODOSIT = False
+            onNezetMouseDown
     End Select
  End Sub
 
@@ -71,21 +61,11 @@ Private Sub cmdDUPLIKAL_Click()
 End Sub
 
 Private Sub cmdMODOSIT_Click()
-    If cmdMODOSIT = True Then
-        cmdOK.Enabled = True
-        util.setpermis cmbOBJTIP, [sub].Controls, 1
-    Else
-        cmdOK.Enabled = False
-    End If
-    parok = 1
+    onModositClick
 End Sub
 
 Private Sub cmdOK_Click()
-    felir
-End Sub
-
-Private Sub cmdPrint_Click()
-    cmdMODOSIT = False
+    onOK
 End Sub
 
 Private Sub Form_Load()

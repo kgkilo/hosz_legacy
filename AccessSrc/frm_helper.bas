@@ -2,9 +2,14 @@ Option Compare Database
 Option Explicit
 
 Public glbPERMIS
-Public Const PERM_NULL = 0
-Public Const PERM_RO = 1
-Public Const PERM_RW = 2
+Global Const PERM_NULL = 0
+Global Const PERM_RO = 1
+Global Const PERM_RW = 2
+
+Global Const MB_YESNO = 4
+Global Const MB_ICONSTOP = 32
+Global Const MB_DEFBUTTON2 = 256
+Global Const DgDef = MB_YESNO + MB_ICONSTOP + MB_DEFBUTTON2
 
 Sub onObjtipEnter(Optional hasSubinf As Boolean)
     With Screen.ActiveForm
@@ -22,6 +27,7 @@ End Sub
 
 'Ha objektum típust választott, feltölti a Megnevezés comboboxot
 Sub onObjtipUpdated()
+    DoCmd.Hourglass True
     With Screen.ActiveForm
         If .cmbOBJTIP.ListIndex <> -1 Then
             fillCmbMegnev
@@ -30,9 +36,11 @@ Sub onObjtipUpdated()
             .cmd1 = 6   'Beszúr/Lekérdez/Nézet csoport állapotát állítjuk
         End If
     End With
+    DoCmd.Hourglass False
 End Sub
 
 Sub onMegnevEnter(Optional hasSubinf As Boolean)
+    DoCmd.Hourglass True
     With Screen.ActiveForm
         modosVizsg
         .cmbMEGNEV = Null
@@ -41,9 +49,11 @@ Sub onMegnevEnter(Optional hasSubinf As Boolean)
         If hasSubinf = True Then subinfTorol
         switchoffGrid
     End With
+    DoCmd.Hourglass False
 End Sub
 
 Sub onMegnevUpdated(strKategoria As String)
+    DoCmd.Hourglass True
     With Screen.ActiveForm
         If .cmbMEGNEV.ListIndex <> -1 Then
             LEKERD
@@ -54,6 +64,7 @@ Sub onMegnevUpdated(strKategoria As String)
             enableModDupPrnDel
         End If
     End With
+    DoCmd.Hourglass False
 End Sub
 
 Sub BACK_BTN()
@@ -64,6 +75,51 @@ End Sub
 Sub EXIT_APP()
     modosVizsg
     kilep
+End Sub
+
+Sub onLekerdMouseDown()
+    DoCmd.Hourglass True
+    With Screen.ActiveForm
+        modosVizsg
+        switchoffGrid
+        enableCmbMegnev
+        .cmdOK.Enabled = False
+    End With
+    DoCmd.Hourglass False
+End Sub
+
+Sub onModositClick()
+    DoCmd.Hourglass True
+    With Screen.ActiveForm
+        If .cmdMODOSIT = True Then
+            .cmdOK.Enabled = True
+            util.setpermis .cmbOBJTIP, .sub.Controls, 1
+        Else
+            .cmdOK.Enabled = False
+        End If
+        .parok = 1
+    End With
+    DoCmd.Hourglass False
+End Sub
+
+Sub onNezetMouseDown()
+    DoCmd.Hourglass True
+    With Screen.ActiveForm
+        .cmbMEGNEV = Null
+        activateGrid
+        util.gridder ![cmbOBJTIP], ![cmbMEGNEV], ![sub]![grdGRID], Nothing, Nothing, Nothing, "Alt"
+        disableCmbMegnev
+        disableModDupPrnDel
+        .cmdOK.Enabled = False
+        .cmdMODOSIT = False
+    End With
+    DoCmd.Hourglass False
+End Sub
+
+Sub onOK()
+    DoCmd.Hourglass True
+    felir
+    DoCmd.Hourglass False
 End Sub
 
 'Engedélyezi a Módosít/Nyomtat/Töröl/Duplikál gombokat
@@ -151,7 +207,7 @@ Sub enableCmbMegnev()
     If glbPERMIS = PERM_RO Or glbPERMIS = PERM_RW Then
         With Screen.ActiveForm
             ![cmbMEGNEV].Enabled = True
-            ![lbMEGNEV].ForeColor = 0
+            ![lbMEGNEV].ForeColor = vbBlack
         End With
     End If
 End Sub
@@ -160,7 +216,7 @@ End Sub
 Sub disableCmbMegnev()
     With Screen.ActiveForm
         ![cmbMEGNEV].Enabled = False
-        ![lbMEGNEV].ForeColor = 9868950
+        '![lbMEGNEV].ForeColor = vbGrayText '9868950
     End With
 End Sub
 
@@ -195,12 +251,88 @@ Public Function checkPermis(frm As Form)
 End Function
 
 Public Function fillCmbMegnev()
+    DoCmd.Hourglass True
     With Screen.ActiveForm
         If .cmbOBJTIP.ListIndex <> -1 Then
-            DoCmd.Hourglass True
             enableCmbMegnev
             util.megnevfeltolt .cmbMEGNEV, .cmbOBJTIP, "MEGNEV"
-            DoCmd.Hourglass False
         End If
     End With
+    DoCmd.Hourglass False
 End Function
+
+Sub kilep()
+    DoCmd.Beep
+    If MsgBox("Biztosan ki szeretne lépni?", DgDef, "Tisztelt " & CurrentUser() & " felhasználó!") = vbYes Then
+        DoCmd.Quit
+    End If
+End Sub
+
+Sub fullPermiss()
+    DoCmd.Hourglass True
+    Dim oControl As Access.Control
+
+    Dim bEnabled As Boolean
+    Dim bVisible As Boolean
+    Dim iColor As Long
+
+    Select Case glbPERMIS
+        Case PERM_NULL:
+            iColor = vbGrayText
+            bEnabled = False
+            bVisible = False
+
+        Case PERM_RO:
+            iColor = vbGrayText
+            bEnabled = False
+            bVisible = True
+
+        Case PERM_RW:
+            iColor = vbBlack
+            bEnabled = True
+            bVisible = True
+    End Select
+
+    With Screen.ActiveForm
+        For Each oControl In .sub.Controls
+            Select Case Left(oControl.Name, 3)
+                Case "txt", "cmb", "chk", "spc", "grp"
+                    oControl.Enabled = bEnabled
+                    oControl.Visible = bVisible
+
+                Case "lbl"
+                    oControl.ForeColor = iColor
+                    oControl.Visible = bVisible
+            End Select
+        Next
+    End With
+    DoCmd.Hourglass False
+End Sub
+
+Sub subTorol()
+    DoCmd.Hourglass True
+    Dim oControl As Access.Control
+    With Screen.ActiveForm
+        For Each oControl In .sub.Controls
+            Select Case Left(oControl.Name, 3)
+                Case "txt", "cmb", "chk":
+                    oControl = Null
+            End Select
+        Next
+    End With
+    DoCmd.Hourglass False
+End Sub
+
+Sub subinfTorol()
+    DoCmd.Hourglass True
+    Dim oControl As Access.Control
+    With Screen.ActiveForm
+        For Each oControl In .subinf.Controls
+            Select Case Left(oControl.Name, 3)
+                Case "txt", "cmb", "chk":
+                    oControl = Null
+            End Select
+        Next
+    End With
+    DoCmd.Hourglass False
+End Sub
