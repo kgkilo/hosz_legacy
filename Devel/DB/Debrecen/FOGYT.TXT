@@ -1,0 +1,21 @@
+
+
+	FOGYASZTOT™RZS
+	--------------
+
+	FOGYT.ARJ file, a FOGYT.DBF  llom nyt tartalmazza.
+
+	TIPUS mez‹ lehets‚ges ‚rt‚kei
+		0 - megsznt
+		1 - lak s
+		2 - res lak s
+		3 - k”zlet
+		4 - k”z”s helyis‚g
+		5 - gar zs
+		6 - l‚pcs‹h z
+
+	Ha KEPV_AZON<>00000
+		    - akkor a k”z”s k‚pvisel‹ adatai k”vetkeznek,
+		    - kl”nben a tov bbi mez‹k nincsenek kit”ltve.
+
+

@@ -1,0 +1,12 @@
+Microsoft Visual Studio Solution File, Format Version 1.00
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "Hoszolg", "Hoszolg.dbp", "{FFE0B860-48CD-4AE8-8570-CEB962B1F644}"
+EndProject
+Global
+	GlobalSection(LocalDeployment) = postSolution
+		StartupProject = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(BuildOrder) = postSolution
+	EndGlobalSection
+	GlobalSection(DeploymentRoot) = postSolution
+	EndGlobalSection
+EndGlobal
