@@ -69,6 +69,7 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q365", Nothing, "365", "Hõösszegzõ helyzet", 2
     g_oKodszotar.Load "sp_Q366", Nothing, "366", "Elektronika", 2
     g_oKodszotar.Load "sp_Q367", Nothing, "367", "Raktár állapot", 2
+    g_oKodszotar.Load "sp_Q368", Nothing, "368", "Szolgáltatói tulajdon", 1
     g_oKodszotar.Load "sp_Q334", Nothing, "334", "Dolgozó", 3
     g_oKodszotar.Load "sp_FillRaktarKepv", Nothing, "KEPVIS", "Közös képviselõ", 4
     Init = True
@@ -167,6 +168,8 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     lstParams.Add sALLAPOT, "pALLAPOT"
     sParam = GetComboErtek(frm.Controls("cmbEPUL"))
     lstParams.Add sParam, "pEPULET_ID"
+    sParam = GetComboErtek(frm.Controls("cmbFUTOMU"))
+    lstParams.Add sParam, "pFUTOMU_ID"
     sParam = GetComboErtek(frm.Controls("cmbDOLG_ID"))
     lstParams.Add sParam, "pDOLG_ID"
     sParam = frm.Controls("txtSZLEVEL_SZAM").Text
@@ -304,21 +307,21 @@ Public Function RefreshCombo(ByRef cmbCombo As Object) As Boolean
     Dim sTag As String
     sTag = cmbCombo.Tag
     
-    Dim sSQL As String
+    Dim sSql As String
     Dim sName As String
     Dim sLongName As String
     Dim iSize As Byte
     
     With g_oKodszotar
         With .Section(sTag)
-            sSQL = .SQL
+            sSql = .SQL
             sName = .Name
             sLongName = .LongName
             iSize = .Size
         End With
         
         .Remove sTag
-        .Load sSQL, Nothing, sName, sLongName, iSize
+        .Load sSql, Nothing, sName, sLongName, iSize
     End With
     RefreshCombo = True
     Exit Function

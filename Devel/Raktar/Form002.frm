@@ -300,6 +300,7 @@ Begin VB.Form Form002
       _StockProps     =   228
       Appearance      =   1
       ConvInfo        =   1418783674
+      FocusRect       =   2
    End
    Begin MSComCtl2.DTPicker datSZLEVEL_DAT 
       BeginProperty DataFormat 
@@ -564,7 +565,8 @@ Private Sub cmdJELLEMZOK_Click()
         Case ERZEKELO: iTab = 2
         Case Else: iTab = 0
     End Select
-    Form003.TabForm03.Tab = iTab
+    'Form003.TabForm03.Tab = iTab
+    'Form003.iTab = iTab
     Form003.Show vbModal
 End Sub
 
@@ -625,7 +627,7 @@ End Sub
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     
-    util.setcombo Me
+    util.setCombo Me
     util.megnevFeltolt cmbFUTOMU, "03" 'Fûtõmûvekkel kell feltölteni
     util.megnevFeltolt cmbEPUL, "01"   'Épületekkel kell feltölteni
     iRefresh = 1
@@ -639,7 +641,6 @@ End Sub
 
 Private Sub GridFeltolt()
     Screen.MousePointer = vbHourglass
-    
     grdGrid.Redraw = False
     
     util.Gridder grdGrid, sOBJTIP, util.getComboErtek(cmbALLAPOT), Me
@@ -647,7 +648,6 @@ Private Sub GridFeltolt()
     grdGrid.Redraw = True
     grdGrid.ExtendLastCol = True
     txtTALALAT = grdGrid.Rows - 1
-    
     Screen.MousePointer = vbDefault
 End Sub
 
