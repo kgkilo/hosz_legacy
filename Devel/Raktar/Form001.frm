@@ -10,12 +10,12 @@ Begin VB.Form Form001
    ClientWidth     =   8880
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
-   ScaleHeight     =   11115
+   ScaleHeight     =   15252.25
    ScaleMode       =   0  'User
-   ScaleWidth      =   16315.33
+   ScaleWidth      =   28000.63
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
-   Begin VB.CommandButton cmdSzallitonal2Felszerelve 
+   Begin VB.CommandButton cmdSzallitonal2Felszerelt 
       Caption         =   "<<<"
       Height          =   375
       Left            =   7680
@@ -23,7 +23,7 @@ Begin VB.Form Form001
       Top             =   3600
       Width           =   615
    End
-   Begin VB.CommandButton cmdFelszerel2Szallitonal 
+   Begin VB.CommandButton cmdFelszerelt2Szallitonal 
       Caption         =   ">>>"
       Height          =   375
       Left            =   3600
@@ -63,11 +63,10 @@ Begin VB.Form Form001
       Top             =   1920
       Width           =   615
    End
-   Begin VB.TextBox txtE_PLOMBA1 
+   Begin VB.TextBox txtE_PLOMBA 
       Height          =   285
       Left            =   9480
       TabIndex        =   41
-      Text            =   "Plomba száma 1"
       Top             =   7080
       Width           =   2175
    End
@@ -75,7 +74,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   40
-      Text            =   "Plomba száma 2"
       Top             =   7440
       Width           =   2175
    End
@@ -83,7 +81,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   39
-      Text            =   "Hossz"
       Top             =   6360
       Width           =   2175
    End
@@ -92,7 +89,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   38
-      Text            =   "Szükséges hossz"
       Top             =   6720
       Width           =   2175
    End
@@ -100,7 +96,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   37
-      Text            =   "Szonda hossza"
       Top             =   6000
       Width           =   2175
    End
@@ -108,7 +103,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   36
-      Text            =   "Gy.szám"
       Top             =   4560
       Width           =   2175
    End
@@ -116,7 +110,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   35
-      Text            =   "Hit. idõ"
       Top             =   4920
       Width           =   2175
    End
@@ -125,7 +118,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   34
-      Text            =   "Típus"
       Top             =   5280
       Width           =   2175
    End
@@ -133,7 +125,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   9480
       TabIndex        =   33
-      Text            =   "Elhelyezkedés"
       Top             =   5640
       Width           =   2175
    End
@@ -141,7 +132,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   32
-      Text            =   "Kulcs található"
       Top             =   7440
       Width           =   2175
    End
@@ -149,7 +139,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   31
-      Text            =   "Megjegyzés"
       Top             =   7800
       Width           =   2175
    End
@@ -157,7 +146,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   30
-      Text            =   "Plomba száma"
       Top             =   7080
       Width           =   2175
    End
@@ -165,7 +153,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   29
-      Text            =   "Átmérõ"
       Top             =   6360
       Width           =   2175
    End
@@ -174,7 +161,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   28
-      Text            =   "Terv. t.á.m."
       Top             =   6720
       Width           =   2175
    End
@@ -182,7 +168,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   27
-      Text            =   "Impulzus"
       Top             =   6000
       Width           =   2175
    End
@@ -190,7 +175,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   26
-      Text            =   "Gy.szám"
       Top             =   4560
       Width           =   2175
    End
@@ -198,7 +182,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   25
-      Text            =   "Hit. idõ"
       Top             =   4920
       Width           =   2175
    End
@@ -206,7 +189,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   24
-      Text            =   "Típus"
       Top             =   5280
       Width           =   2175
    End
@@ -214,7 +196,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   5400
       TabIndex        =   23
-      Text            =   "Elhelyezkedés"
       Top             =   5640
       Width           =   2175
    End
@@ -222,7 +203,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   22
-      Text            =   "Gy.szám"
       Top             =   4560
       Width           =   2175
    End
@@ -230,7 +210,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   21
-      Text            =   "Megjegyzés"
       Top             =   7800
       Width           =   2175
    End
@@ -238,7 +217,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   20
-      Text            =   "Kulcs található"
       Top             =   7440
       Width           =   2175
    End
@@ -246,7 +224,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   19
-      Text            =   "Plomba száma"
       Top             =   7080
       Width           =   2175
    End
@@ -254,7 +231,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   18
-      Text            =   "Feszültség"
       Top             =   6720
       Width           =   2175
    End
@@ -262,7 +238,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   17
-      Text            =   "Leolvasás módja"
       Top             =   6360
       Width           =   2175
    End
@@ -270,7 +245,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   16
-      Text            =   "Impulzus"
       Top             =   6000
       Width           =   2175
    End
@@ -278,7 +252,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   15
-      Text            =   "Elhelyezkedés"
       Top             =   5640
       Width           =   2175
    End
@@ -286,7 +259,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   14
-      Text            =   "Típus"
       Top             =   5280
       Width           =   2175
    End
@@ -294,7 +266,6 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   1320
       TabIndex        =   13
-      Text            =   "Hit. idõ"
       Top             =   4920
       Width           =   2175
    End
@@ -331,6 +302,78 @@ Begin VB.Form Form001
       TabIndex        =   5
       Top             =   4320
       Width           =   3495
+      Begin VB.Label Label11 
+         Caption         =   "Szüks. h:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   79
+         Top             =   2430
+         Width           =   900
+      End
+      Begin VB.Label lblE_VEZHOSSZ 
+         Caption         =   "Hossz:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   78
+         Top             =   2070
+         Width           =   900
+      End
+      Begin VB.Label lblE_PLOMBA2 
+         Caption         =   "Plomba 2:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   77
+         Top             =   3150
+         Width           =   900
+      End
+      Begin VB.Label lblE_PLOMBA 
+         Caption         =   "Plomba 1:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   76
+         Top             =   2790
+         Width           =   900
+      End
+      Begin VB.Label lblE_BENYHOSSZ 
+         Caption         =   "Sz. hossz:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   75
+         Top             =   1710
+         Width           =   900
+      End
+      Begin VB.Label lblE_ELHELYEZ 
+         Caption         =   "Hely:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   74
+         Top             =   1350
+         Width           =   900
+      End
+      Begin VB.Label lblE_TIPUS 
+         Caption         =   "Típus:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   73
+         Top             =   990
+         Width           =   900
+      End
+      Begin VB.Label lblE_HITIDO 
+         Caption         =   "Hit. idõ:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   72
+         Top             =   630
+         Width           =   900
+      End
+      Begin VB.Label lblE_GYSZAM 
+         Caption         =   "Gy.szám:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   71
+         Top             =   270
+         Width           =   915
+      End
    End
    Begin VB.Frame boxVIZMERO 
       Caption         =   "Vízmérõ"
@@ -339,14 +382,86 @@ Begin VB.Form Form001
       TabIndex        =   4
       Top             =   4320
       Width           =   3495
-   End
-   Begin VB.Frame boxHOOSSZEGZO 
-      Caption         =   "Hõösszegzõ"
-      Height          =   3920
-      Left            =   120
-      TabIndex        =   3
-      Top             =   4320
-      Width           =   3495
+      Begin VB.Label Label10 
+         Caption         =   "Terv. t.á.:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   70
+         Top             =   2430
+         Width           =   900
+      End
+      Begin VB.Label lblV_ATMERO 
+         Caption         =   "Átmérõ:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   69
+         Top             =   2070
+         Width           =   900
+      End
+      Begin VB.Label lblV_MEGJ 
+         Caption         =   "Megjegyzés:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   68
+         Top             =   3510
+         Width           =   900
+      End
+      Begin VB.Label lblV_KULCS 
+         Caption         =   "Kulcs:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   67
+         Top             =   3150
+         Width           =   900
+      End
+      Begin VB.Label lblV_PLOMBA 
+         Caption         =   "Plomba:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   66
+         Top             =   2790
+         Width           =   900
+      End
+      Begin VB.Label lblV_IMPULZUS 
+         Caption         =   "Impulzus:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   65
+         Top             =   1710
+         Width           =   900
+      End
+      Begin VB.Label lblV_ELHELYEZ 
+         Caption         =   "Hely:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   64
+         Top             =   1350
+         Width           =   900
+      End
+      Begin VB.Label lblV_TIPUS 
+         Caption         =   "Típus:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   63
+         Top             =   990
+         Width           =   900
+      End
+      Begin VB.Label lblV_HITIDO 
+         Caption         =   "Hit. idõ:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   62
+         Top             =   630
+         Width           =   900
+      End
+      Begin VB.Label lblV_GYSZAM 
+         Caption         =   "Gy.szám:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   61
+         Top             =   270
+         Width           =   915
+      End
    End
    Begin VB.OptionButton optOBJTIP 
       Caption         =   "Vízmérõ"
@@ -397,7 +512,7 @@ Begin VB.Form Form001
       Height          =   975
       Left            =   120
       TabIndex        =   11
-      Top             =   120
+      Top             =   195
       Width           =   3495
       Begin MSForms.Label lblFRISSIT 
          Height          =   240
@@ -426,7 +541,7 @@ Begin VB.Form Form001
       Appearance      =   1
       ConvInfo        =   1413783674
    End
-   Begin vsFlexLib.vsFlexArray grdFelszerelve 
+   Begin vsFlexLib.vsFlexArray grdFelszerelt 
       Height          =   2790
       Left            =   120
       TabIndex        =   43
@@ -452,7 +567,95 @@ Begin VB.Form Form001
       Appearance      =   1
       ConvInfo        =   1413783674
    End
-   Begin VB.Label Label2 
+   Begin VB.Frame boxHOOSSZEGZO 
+      Caption         =   "Hõösszegzõ"
+      Height          =   3920
+      Left            =   150
+      TabIndex        =   3
+      Top             =   4320
+      Width           =   3495
+      Begin VB.Label lblH_MEGJ 
+         Caption         =   "Megjegyzés:"
+         Height          =   255
+         Left            =   180
+         TabIndex        =   60
+         Top             =   3510
+         Width           =   900
+      End
+      Begin VB.Label lblH_KULCS 
+         Caption         =   "Kulcs:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   59
+         Top             =   3150
+         Width           =   895
+      End
+      Begin VB.Label lblH_PLOMBA 
+         Caption         =   "Plomba:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   58
+         Top             =   2790
+         Width           =   895
+      End
+      Begin VB.Label lblH_FESZULTS 
+         Caption         =   "Feszültség:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   57
+         Top             =   2430
+         Width           =   895
+      End
+      Begin VB.Label lblH_LEOLV 
+         Caption         =   "Leolvasás:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   56
+         Top             =   2070
+         Width           =   895
+      End
+      Begin VB.Label lblH_IMPULZUS 
+         Caption         =   "Impulzus:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   55
+         Top             =   1710
+         Width           =   895
+      End
+      Begin VB.Label lblH_ELHELYEZ 
+         Caption         =   "Hely:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   54
+         Top             =   1350
+         Width           =   895
+      End
+      Begin VB.Label lblH_TIPUS 
+         Caption         =   "Típus:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   53
+         Top             =   990
+         Width           =   895
+      End
+      Begin VB.Label lblH_HITIDO 
+         Caption         =   "Hit. idõ:"
+         Height          =   255
+         Left            =   185
+         TabIndex        =   52
+         Top             =   630
+         Width           =   895
+      End
+      Begin VB.Label lblH_GYSZAM 
+         Caption         =   "Gy.szám:"
+         Height          =   255
+         Left            =   165
+         TabIndex        =   51
+         Top             =   270
+         Width           =   915
+      End
+   End
+   Begin VB.Label lblSZALLITONAL 
       Alignment       =   2  'Center
       Caption         =   "S Z Á L L Í T Ó N Á L"
       Height          =   255
@@ -461,7 +664,7 @@ Begin VB.Form Form001
       Top             =   1200
       Width           =   3495
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lblRAKTARON 
       Alignment       =   2  'Center
       Caption         =   "R A K T Á R O N"
       Height          =   255
@@ -492,24 +695,13 @@ Const HOOSSZEGZO = "18"
 Const VIZORA = "19"
 Const ERZEKELO = "20"
 
-Private Sub frissit()
-    If iRefresh = 1 Then
-        If chkFrissit = 1 Then
-            GridFeltolt
-        Else
-            tmrVILLOG.Enabled = True
-        End If
-    End If
-    'iRefresh = 0
-End Sub
-
-Private Sub cmdFelszerel2Szallitonal_Click()
-    util.athelyez "Felszerelt", "Szallito", grdFelszerelve.TextMatrix(grdFelszerelve.Row, 1)
+Private Sub cmdFelszerelt2Szallitonal_Click()
+    util.athelyez "Felszerelt", "Szallito", grdFelszerelt.TextMatrix(grdFelszerelt.Row, 1)
     frissit
 End Sub
 
 Private Sub cmdFelszerelt2Raktar_Click()
-    util.athelyez "Felszerelt", "Raktar", grdFelszerelve.TextMatrix(grdFelszerelve.Row, 1)
+    util.athelyez "Felszerelt", "Raktar", grdFelszerelt.TextMatrix(grdFelszerelt.Row, 1)
     frissit
 End Sub
 
@@ -523,7 +715,7 @@ Private Sub cmdRaktar2Szallitonal_Click()
     frissit
 End Sub
 
-Private Sub cmdSzallitonal2Felszerelve_Click()
+Private Sub cmdSzallitonal2Felszerelt_Click()
     util.athelyez "Szallito", "Felszerelt", grdSzallitonal.TextMatrix(grdSzallitonal.Row, 1)
     frissit
 End Sub
@@ -537,6 +729,21 @@ Private Sub Form_Initialize()
     sReportDir = "J:\GABOR\WORK\HOSZOLG"
     Set util = CreateObject("Rakt.Global")
     util.Init sReportDir
+End Sub
+
+Private Sub grdFelszerelt_SelChange()
+    InfoTorol
+    util.LoadInfo Me, grdFelszerelt.TextMatrix(grdFelszerelt.Row, 1), "Felszerelt"
+End Sub
+
+Private Sub grdRaktaron_SelChange()
+    InfoTorol
+    util.LoadInfo Me, grdRaktaron.TextMatrix(grdRaktaron.Row, 1), "Raktar"
+End Sub
+
+Private Sub grdSzallitonal_SelChange()
+    InfoTorol
+    util.LoadInfo Me, grdSzallitonal.TextMatrix(grdSzallitonal.Row, 1), "Szallitonal"
 End Sub
 
 Private Sub optOBJTIP_Click(Index As Integer)
@@ -595,20 +802,41 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
         Then Cancel = True
 End Sub
 
+Private Sub frissit()
+    If iRefresh = 1 Then
+        If chkFrissit = 1 Then
+            GridFeltolt
+        Else
+            tmrVILLOG.Enabled = True
+        End If
+    End If
+    'iRefresh = 0
+End Sub
+
 Private Sub GridFeltolt()
     Screen.MousePointer = vbHourglass
     
-    grdFelszerelve.Redraw = False
+    grdFelszerelt.Redraw = False
     grdRaktaron.Redraw = False
     grdSzallitonal.Redraw = False
     
-    util.Gridder grdFelszerelve, "FELSZERELVE", sOBJTIP, Me
+    util.Gridder grdFelszerelt, "FELSZERELT", sOBJTIP, Me
     util.Gridder grdRaktaron, "RAKTAR", sOBJTIP, Me
     util.Gridder grdSzallitonal, "SZALLITONAL", sOBJTIP, Me
     
-    grdFelszerelve.Redraw = True
+    grdFelszerelt.Redraw = True
     grdRaktaron.Redraw = True
     grdSzallitonal.Redraw = True
     
     Screen.MousePointer = vbDefault
+End Sub
+
+Private Sub InfoTorol()
+    Dim oControl As Control
+    For Each oControl In Controls
+        Select Case Left(oControl.Name, 5)
+            Case "txtH_", "txtV_", "txtE_"
+                oControl.Text = ""
+        End Select
+    Next
 End Sub
