@@ -1,0 +1,47 @@
+20040923
+
+Feladat:
+Új mûveletek/típushibák
+    Szabályozó szelepek
+    Külsõ ellenõrzés
+    Mechanikus tisztítás
+
+Install:
+    293-as kód max értékét ellenõrízni (319?)
+    20040822.sql
+
+Megjegyzések:
+    A Negyedéves-hez 95 rekord kapcsolódik, nem lenne szerencsés törölni
+    A Próbához 0.
+    De azért mindkettõt helyben is ellenõrízni kell!
+---------------------------------------------------------------------
+
+Feladat:
+    Új munkalap: dátum mezõk mindenhol maszkolva legyenek.
+    Új munkalap: telepítési helyszám szûrõ combobox legyen.
+
+Install:
+    MunkVB.dll
+    MunkVB.exe
+    sp_FillObjTelephsz.sql
+
+Megjegyzések:
+    -
+---------------------------------------------------------------------
+
+Feladat:
+    Objektumok közül csak azok szerepeljenek lekérdezésekben, amelyek aktívak.
+
+Install:
+    OBJEKTUM tábla ADATUM elé AKTIV varchar(1) NOT NULL DEFAULT 'y' mezõt felvenni
+    KTORZS.MDB
+    SZtkdll.dll
+    PERMIS tábla végére AKTIV int NULL
+    Update PERMIS set AKTIV=1
+    sp_InsObjAlt
+    sp_UpdObjAlt
+    sp_FillObjMegnev
+    sp_FillObjTelephsz
+
+Megjegyzések:
+    Most csak levenni lehet az aktív jelzõt, visszatenni még nem, mivel nem jelenik meg a választható objektumok között az, amelyik inaktív...

@@ -61,7 +61,7 @@ majd a PERM táblából, hogy az adott formra az adott kapcsoló engedélyezve van-e
 
 
 KEPXXX
-sub Form_Open -> CheckPermiss
+sub Form_Open -> CheckPermis
 -------------
 utilba belehív, az a képernyõ neve és a login név alapján alábbiakat adja vissza:
 0 - nincs jog

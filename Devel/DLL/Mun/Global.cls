@@ -214,6 +214,43 @@ Public Function MegnevFelt(ByRef cmbMegnev As Object, ByRef cmbOBJTIP As Object,
 errMegnevFelt:
 End Function    'MegnevFelt
 
+'   TelephszFeltolt
+'
+'   Feltölti a telepítési helyszámokat tartalmazó combobox-ot a választott objektumtípusnak megfelelõen.
+'
+'   Paraméterek:    cmbTelephsz As Object   -   a feltöltendõ combobox
+'                   cmbOBJTIP As Object -   az objektumtípusok combobox-a
+'
+'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
+'
+Public Function TelephszFeltolt(ByRef cmbTelephsz As Object, ByRef cmbOBJTIP As Object, Optional ByVal zzz As String) As Boolean
+    On Error GoTo errTelephszFeltolt
+    TelephszFeltolt = False
+    
+    Dim sSectName As String
+    If TypeName(zzz) = "Nothing" Then
+        sSectName = "TELEPHSZ"
+    Else
+        sSectName = zzz
+    End If
+    
+    g_oKodszotar.Remove sSectName    'Töröljük az ál-kódszótári MEGNEV szekciót
+    
+    Dim sOBJTIP As String
+    If TypeName(cmbOBJTIP) = "Nothing" Then
+        sOBJTIP = "01"
+    Else
+        sOBJTIP = ComboBoxGet(Nothing, cmbOBJTIP)   'Lekérdezzük az objektumtípust
+    End If
+    
+    g_oKodszotar.Load "sp_FillObjTelephsz", Array("pObjTip", sOBJTIP), sSectName, "Objektum telepítési helyszáma", 100
+    TelephszFeltolt = ComboBoxSet(cmbTelephsz, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
+    cmbTelephsz.ListWidth = 350
+    Exit Function
+    
+errTelephszFeltolt:
+End Function    'TelephszFeltolt
+
 '   RekordFeltolt
 '
 '   Feltölti a kiválasztott objektum adatival a képernyõt.
@@ -449,19 +486,17 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "OBJID"
             sParam = GetComboErtek(frm.Controls("cmbDOLGID"))
             lstParams.Add sParam, "DOLGID"
-            sParam = frm.Controls("txtDATUMTOL").Text
+            sParam = IIf(IsNull(frm.Controls("datDATUMTOL").Value), "", frm.Controls("datDATUMTOL").Value)
             lstParams.Add sParam, "DATUMTOL"
-            sParam = frm.Controls("txtDATUMIG").Text
+            sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
             lstParams.Add sParam, "DATUMIG"
-'            sParam = frm.Controls("txtMUNDATTOL").Text
             sParam = IIf(IsNull(frm.Controls("datMUNDATTOL").Value), "", frm.Controls("datMUNDATTOL").Value)
             lstParams.Add sParam, "MUNDATTOL"
-'            sParam = frm.Controls("txtMUNDATIG").Text
             sParam = IIf(IsNull(frm.Controls("datMUNDATIG").Value), "", frm.Controls("datMUNDATIG").Value)
             lstParams.Add sParam, "MUNDATIG"
             sParam = frm.Controls("txtMUNKALAPID").Text
             lstParams.Add sParam, "MUNKALAPID"
-            sParam = frm.Controls("txtTELEPHSZ").Text
+            sParam = GetComboErtek(frm.Controls("cmbTELEPHSZ"))
             lstParams.Add sParam, "TELEPHSZ"
 
 ' Lekérdezem a munkalap darabszámot

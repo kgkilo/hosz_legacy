@@ -19,7 +19,6 @@ Begin VB.Form Form001
    EndProperty
    Icon            =   "Form001.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   8595
@@ -40,28 +39,10 @@ Begin VB.Form Form001
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   41
+      TabIndex        =   7
       ToolTipText     =   "Munkalapok összekapcsolása (plombázás)"
       Top             =   7155
       Width           =   1275
-   End
-   Begin VB.TextBox txtTELEPHSZ 
-      Alignment       =   2  'Center
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      Left            =   8145
-      MaxLength       =   10
-      TabIndex        =   39
-      Top             =   2925
-      Width           =   1050
    End
    Begin VB.TextBox txtMUNKALAPID 
       Alignment       =   2  'Center
@@ -77,43 +58,8 @@ Begin VB.Form Form001
       Height          =   360
       Left            =   3285
       MaxLength       =   10
-      TabIndex        =   35
+      TabIndex        =   14
       Top             =   2925
-      Width           =   1050
-   End
-   Begin VB.TextBox txtDATUMIG 
-      Alignment       =   2  'Center
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      Left            =   4545
-      TabIndex        =   34
-      Top             =   2475
-      Width           =   1050
-   End
-   Begin VB.TextBox txtDATUMTOL 
-      Alignment       =   2  'Center
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      Left            =   3285
-      MaxLength       =   10
-      TabIndex        =   33
-      Top             =   2475
       Width           =   1050
    End
    Begin VB.CommandButton cmdCSOPLIST 
@@ -242,7 +188,7 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   360
       Locked          =   -1  'True
-      TabIndex        =   31
+      TabIndex        =   38
       TabStop         =   0   'False
       Top             =   1575
       Width           =   960
@@ -260,7 +206,7 @@ Begin VB.Form Form001
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   15
+      TabIndex        =   23
       ToolTipText     =   "E s c "
       Top             =   8040
       Width           =   1275
@@ -282,7 +228,7 @@ Begin VB.Form Form001
       Height          =   285
       Left            =   360
       Locked          =   -1  'True
-      TabIndex        =   20
+      TabIndex        =   27
       TabStop         =   0   'False
       Top             =   900
       Width           =   960
@@ -296,7 +242,7 @@ Begin VB.Form Form001
    Begin VB.CheckBox chkFrissit 
       Height          =   285
       Left            =   720
-      TabIndex        =   16
+      TabIndex        =   22
       TabStop         =   0   'False
       Top             =   2565
       Width           =   285
@@ -346,7 +292,7 @@ Begin VB.Form Form001
       EndProperty
       Height          =   330
       Left            =   8145
-      TabIndex        =   37
+      TabIndex        =   19
       Top             =   2475
       Width           =   1455
       _ExtentX        =   2566
@@ -363,7 +309,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23592961
+      Format          =   23527425
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -378,7 +324,7 @@ Begin VB.Form Form001
       EndProperty
       Height          =   330
       Left            =   9945
-      TabIndex        =   38
+      TabIndex        =   20
       Top             =   2475
       Width           =   1455
       _ExtentX        =   2566
@@ -395,8 +341,95 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23592961
+      Format          =   23527425
       CurrentDate     =   37013
+   End
+   Begin MSComCtl2.DTPicker datDATUMTOL 
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy/MM/dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
+      Height          =   330
+      Left            =   3285
+      TabIndex        =   12
+      Top             =   2482
+      Width           =   1455
+      _ExtentX        =   2566
+      _ExtentY        =   582
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CheckBox        =   -1  'True
+      DateIsNull      =   -1  'True
+      Format          =   23527425
+      CurrentDate     =   37013
+   End
+   Begin MSComCtl2.DTPicker datDATUMIG 
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy/MM/dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
+      Height          =   330
+      Left            =   5085
+      TabIndex        =   13
+      Top             =   2482
+      Width           =   1455
+      _ExtentX        =   2566
+      _ExtentY        =   582
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CheckBox        =   -1  'True
+      DateIsNull      =   -1  'True
+      Format          =   23527425
+      CurrentDate     =   37013
+   End
+   Begin MSForms.ComboBox cmbTELEPHSZ 
+      Height          =   315
+      Left            =   8145
+      TabIndex        =   21
+      Tag             =   "TELEPHSZ"
+      Top             =   2925
+      Width           =   3255
+      VariousPropertyBits=   746604571
+      DisplayStyle    =   3
+      Size            =   "5741;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin VB.Line Line1 
+      X1              =   5178.297
+      X2              =   5322.823
+      Y1              =   2640
+      Y2              =   2640
    End
    Begin VB.Label lblTELEPHSZ 
       Alignment       =   1  'Right Justify
@@ -413,7 +446,7 @@ Begin VB.Form Form001
       Height          =   255
       Index           =   1
       Left            =   6435
-      TabIndex        =   40
+      TabIndex        =   41
       Top             =   2970
       Width           =   1650
    End
@@ -432,14 +465,14 @@ Begin VB.Form Form001
       Height          =   255
       Index           =   0
       Left            =   1575
-      TabIndex        =   36
+      TabIndex        =   40
       Top             =   2970
       Width           =   1650
    End
    Begin MSForms.Label lblMUNOSZ 
       Height          =   240
       Left            =   405
-      TabIndex        =   32
+      TabIndex        =   39
       Top             =   1305
       Width           =   915
       Caption         =   "Munkaóra"
@@ -464,15 +497,15 @@ Begin VB.Form Form001
       Height          =   255
       Index           =   0
       Left            =   6435
-      TabIndex        =   30
+      TabIndex        =   37
       Top             =   2520
       Width           =   1650
    End
    Begin VB.Line Line2 
-      X1              =   10405.84
-      X2              =   10550.37
-      Y1              =   2655
-      Y2              =   2655
+      X1              =   10381.22
+      X2              =   10525.74
+      Y1              =   2640
+      Y2              =   2640
    End
    Begin VB.Label lblMUNIDO 
       Alignment       =   1  'Right Justify
@@ -489,15 +522,9 @@ Begin VB.Form Form001
       Height          =   255
       Index           =   1
       Left            =   1575
-      TabIndex        =   29
+      TabIndex        =   36
       Top             =   2520
       Width           =   1650
-   End
-   Begin VB.Line Line1 
-      X1              =   4672.993
-      X2              =   4817.519
-      Y1              =   2655
-      Y2              =   2655
    End
    Begin VB.Label lblKAPCSOLAT 
       Alignment       =   1  'Right Justify
@@ -514,14 +541,14 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   5
       Left            =   6660
-      TabIndex        =   28
+      TabIndex        =   35
       Top             =   2115
       Width           =   1410
    End
    Begin MSForms.ComboBox cmbDOLGID 
       Height          =   315
       Left            =   8145
-      TabIndex        =   14
+      TabIndex        =   18
       Tag             =   "334"
       Top             =   2070
       Width           =   3255
@@ -550,7 +577,7 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   3
       Left            =   6660
-      TabIndex        =   27
+      TabIndex        =   34
       Top             =   1710
       Width           =   1410
    End
@@ -569,7 +596,7 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   0
       Left            =   6660
-      TabIndex        =   26
+      TabIndex        =   33
       Top             =   900
       Width           =   1410
    End
@@ -588,14 +615,14 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   1
       Left            =   6660
-      TabIndex        =   25
+      TabIndex        =   32
       Top             =   1275
       Width           =   1410
    End
    Begin MSForms.ComboBox cmbALLAPOT 
       Height          =   315
       Left            =   8145
-      TabIndex        =   11
+      TabIndex        =   15
       Tag             =   "335"
       Top             =   855
       Width           =   3255
@@ -612,7 +639,7 @@ Begin VB.Form Form001
    Begin MSForms.ComboBox cmbOBJTIP 
       Height          =   315
       Left            =   8145
-      TabIndex        =   12
+      TabIndex        =   16
       Tag             =   "296"
       Top             =   1260
       Width           =   3255
@@ -629,7 +656,7 @@ Begin VB.Form Form001
    Begin MSForms.ComboBox cmbOBJID 
       Height          =   315
       Left            =   8145
-      TabIndex        =   13
+      TabIndex        =   17
       Tag             =   "MEGNEV"
       Top             =   1665
       Width           =   3255
@@ -658,14 +685,14 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   2
       Left            =   1800
-      TabIndex        =   24
+      TabIndex        =   31
       Top             =   2115
       Width           =   1410
    End
    Begin MSForms.ComboBox cmbMLAPTIP 
       Height          =   315
       Left            =   3285
-      TabIndex        =   10
+      TabIndex        =   11
       Tag             =   "337"
       Top             =   2070
       Width           =   3255
@@ -694,14 +721,14 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   0
       Left            =   1800
-      TabIndex        =   23
+      TabIndex        =   30
       Top             =   1710
       Width           =   1410
    End
    Begin MSForms.ComboBox cmbFSZAM 
       Height          =   315
       Left            =   3285
-      TabIndex        =   9
+      TabIndex        =   10
       Tag             =   "310a"
       Top             =   1665
       Width           =   3255
@@ -722,7 +749,7 @@ Begin VB.Form Form001
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   135
-      TabIndex        =   22
+      TabIndex        =   29
       Top             =   2295
       Width           =   1500
       Caption         =   "Azonnali frissítés"
@@ -735,7 +762,7 @@ Begin VB.Form Form001
    Begin MSForms.Label lblTALALAT 
       Height          =   240
       Left            =   450
-      TabIndex        =   21
+      TabIndex        =   28
       Top             =   630
       Width           =   825
       Caption         =   "Találatok"
@@ -748,7 +775,7 @@ Begin VB.Form Form001
    Begin MSForms.ComboBox cmbTIPUSH 
       Height          =   315
       Left            =   3285
-      TabIndex        =   8
+      TabIndex        =   9
       Tag             =   "293"
       Top             =   1260
       Width           =   3255
@@ -766,7 +793,7 @@ Begin VB.Form Form001
    Begin MSForms.ComboBox cmbSZOLGJELL 
       Height          =   315
       Left            =   3285
-      TabIndex        =   7
+      TabIndex        =   8
       Tag             =   "291"
       Top             =   855
       Width           =   3255
@@ -805,7 +832,7 @@ Begin VB.Form Form001
       Height          =   420
       Index           =   0
       Left            =   5235
-      TabIndex        =   19
+      TabIndex        =   26
       Top             =   45
       Width           =   2490
    End
@@ -824,7 +851,7 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   0
       Left            =   1665
-      TabIndex        =   18
+      TabIndex        =   25
       Top             =   870
       Width           =   1545
    End
@@ -843,7 +870,7 @@ Begin VB.Form Form001
       Height          =   240
       Index           =   1
       Left            =   1800
-      TabIndex        =   17
+      TabIndex        =   24
       Top             =   1305
       Width           =   1410
    End
@@ -861,10 +888,6 @@ Private Sub frissit()
             grdMUNKALAP.Redraw = False
             util.gridderx grdMUNKALAP, "MUNKALAP", Me
             grdMUNKALAP.Redraw = True
-            'util.setcombo Me
-            'util.setcombo3 cmbTULAJNEV
-            'util.setcombo3 cmbCEG
-            'util.setcombo3 cmbKAPCSOLAT
         Else
             tmrVILLOG.Enabled = True
         End If
@@ -872,212 +895,184 @@ Private Sub frissit()
     iRefresh = 0
 End Sub
 
-Private Sub cmbALLAPOT_Change()
-    'csoportosnyomtatas
-End Sub
-
-Private Sub cmbMLAPTIP_Change()
-    'csoportosnyomtatas
-End Sub
-
 Private Sub cmbOBJTIP_Change()
     If cmbOBJTIP.ListIndex <> -1 Then
+        Screen.MousePointer = vbHourglass
         util.megnevfeltolt cmbOBJID, cmbOBJTIP, "MEGNEV"
+        util.telephszfeltolt cmbTELEPHSZ, cmbOBJTIP, "TELEPHSZ"
+        Screen.MousePointer = vbDefault
     End If
 End Sub
 
 Private Sub cmbOBJTIP_GotFocus()
-    Me!cmbOBJTIP = Null
-    Me!cmbOBJID = Null
+    cmbOBJTIP = Null
+    cmbOBJID = Null
+    cmbTELEPHSZ = Null
 End Sub
 
 Private Sub cmdCSOPLIST_Click()
     If MsgBox("Biztosan nyomtatni szeretné a választott munkalapokat?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
         Dim i As Integer
-        If util.getcomboertek(cmbMLAPTIP) = 1 Then
-            For i = 1 To grdMUNKALAP.Rows - 1
-                util.printmunkalap "1", grdMUNKALAP.TextMatrix(i, 1)
-                Nyomtat "munuf.rpt", 1
-                util.munkalapallapot grdMUNKALAP.TextMatrix(i, 1), 2
-            Next i
-        Else
-            For i = 1 To grdMUNKALAP.Rows - 1
-                util.printmunkalap "2", grdMUNKALAP.TextMatrix(i, 1)
-                Nyomtat "munue.rpt", 1
-                util.munkalapallapot grdMUNKALAP.TextMatrix(i, 1), 2
-            Next i
-        End If
+        With grdMUNKALAP
+            If util.getcomboertek(cmbMLAPTIP) = 1 Then
+                For i = 1 To grdMUNKALAP.Rows - 1
+                    util.printmunkalap "1", .TextMatrix(i, 1)
+                    Nyomtat "munuf.rpt", 1
+                    util.munkalapallapot .TextMatrix(i, 1), 2
+                Next i
+            Else
+                For i = 1 To .Rows - 1
+                    util.printmunkalap "2", .TextMatrix(i, 1)
+                    Nyomtat "munue.rpt", 1
+                    util.munkalapallapot .TextMatrix(i, 1), 2
+                Next i
+            End If
+        End With
     End If
 End Sub
 
 Private Sub cmdEXIT_Click()
- Unload Form001
+    Unload Form001
 End Sub
 
 Private Sub cmdLIST_Click()
- If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
-   util.munkalapallapot grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1), 2
-   util.printmunkalap "1", grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
-   Nyomtat "munuf.rpt", 1
- End If
+    If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
+        util.munkalapallapot grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1), 2
+        util.printmunkalap "1", grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+        Nyomtat "munuf.rpt", 1
+    End If
 End Sub
 
 Private Sub cmdMASOL_Click()
-Screen.MousePointer = vbHourglass
- util.duplikalmunk grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
- 'Form001a.mode = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
- 'Form001a.Show 1
- cmdFRISSIT_Click
-Screen.MousePointer = vbDefault
+    Screen.MousePointer = vbHourglass
+    util.duplikalmunk grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+    cmdFRISSIT_Click
+    Screen.MousePointer = vbDefault
 End Sub
 
 Private Sub cmdVISSZAI_Click()
- Form002.mode = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
- Form002.txtID = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
- Form002.Show 1
- frissit
+    Form002.mode = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+    Form002.txtID = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+    Form002.Show 1
+    frissit
 End Sub
 
-
 Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
- 'Keycode = 0
+    KeyCommand Keycode
 End Sub
 
 Private Sub grdmunkalap_GotFocus()
- KeyPreview = False
-
+    KeyPreview = False
 End Sub
 
 Private Sub grdmunkalap_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
- 'Keycode = 0
+    KeyCommand Keycode
 End Sub
 
 Private Sub grdmunkalap_LostFocus()
- KeyPreview = True
-
+    KeyPreview = True
 End Sub
 
 Private Sub tmrVILLOG_Timer()
- If cmdFRISSIT.Caption = "F5" Then
-  cmdFRISSIT.Caption = "Frissítés"
- Else
-  cmdFRISSIT.Caption = "F5"
- End If
+    If cmdFRISSIT.Caption = "F5" Then
+        cmdFRISSIT.Caption = "Frissítés"
+    Else
+        cmdFRISSIT.Caption = "F5"
+    End If
 End Sub
 
 Private Sub cmdFRISSIT_Click()
- Screen.MousePointer = vbHourglass
- util.gridderx grdMUNKALAP, "MUNKALAP", Me
- Dim z As Long
-  Dim i As Long
-  Dim t As String
+    Screen.MousePointer = vbHourglass
+    util.gridderx grdMUNKALAP, "MUNKALAP", Me
+    Dim z As Long
+    Dim i As Long
+    Dim t As String
     z = 0
     For i = 1 To grdMUNKALAP.Rows - 1
-     t = grdMUNKALAP.TextMatrix(i, 13)
-     If t <> "" Then z = z + CLng(t)
+        t = grdMUNKALAP.TextMatrix(i, 13)
+        If t <> "" Then z = z + CLng(t)
     Next i
-  Me.txtMUNOSZ = z
- tmrVILLOG.Enabled = False
- cmdFRISSIT.Caption = "Frissítés"
- 'txtTALALAT = grdMUNKALAP.Rows - 1
- Screen.MousePointer = vbDefault
- csoportosnyomtatas
+    txtMUNOSZ = z
+    tmrVILLOG.Enabled = False
+    cmdFRISSIT.Caption = "Frissítés"
+    Screen.MousePointer = vbDefault
+    csoportosnyomtatas
 End Sub
 
 Private Sub cmdMODOSIT_Click()
- Form001a.mode = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
- Form001a.Show 1
- frissit
-End Sub
-
-Private Sub cmdTOROL_Click()
- 'If MsgBox("Biztosan törölni szeretné?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
- ' Screen.MousePointer = vbHourglass
- ' util.rekorddel "UGYFEL", grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
- ' iRefresh = 1
- ' frissit
- ' Screen.MousePointer = vbDefault
- 'End If
+    Form001a.mode = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+    Form001a.Show 1
+    frissit
 End Sub
 
 Private Sub cmdUJ_Click()
- Form001a.mode = 0
- Form001a.Show 1
- frissit
+    Form001a.mode = 0
+    Form001a.Show 1
+    frissit
 End Sub
 
 Private Sub Form_Activate()
- Form001.Caption = "Munkalap nyilvántartás  " & AktivForm()
- KeyPreview = True
+    Form001.Caption = "Munkalap nyilvántartás  " & AktivForm()
+    KeyPreview = True
 End Sub
 
 Private Sub Form_Load()
- Screen.MousePointer = vbHourglass
- iRefresh = 0
- 'util.gridderx grdMUNKALAP, "MUNKALAP", Me
- util.setcombo Me
- Me.txtDATUMIG = Date
- Me.txtDATUMTOL = DateAdd("m", -1, Date)
- util.setcomboVal cmbMLAPTIP, "1"
- datMUNDATTOL.Value = Date
- datMUNDATIG.Value = Date
- datMUNDATTOL.Value = ""
- datMUNDATIG.Value = ""
- util.setcomboVal cmbALLAPOT, "5"
- 'util.munkalaplekerdepulfeltolt cmbEPULID
- 'util.setcombo3 cmbTULAJNEV
-' util.setcombo3 cmbCEG
-' util.setcombo3 cmbKAPCSOLAT
- 'txtTALALAT = grdMUNKALAP.Rows - 1
- Screen.MousePointer = vbDefault
+    Screen.MousePointer = vbHourglass
+    iRefresh = 0
+    util.setcombo Me
+    datDATUMIG.Value = Date
+    datDATUMTOL.Value = DateAdd("m", -1, Date)
+    datMUNDATTOL.Value = Date
+    datMUNDATIG.Value = Date
+    datMUNDATTOL.Value = ""
+    datMUNDATIG.Value = ""
+    util.setcomboVal cmbMLAPTIP, "1"
+    util.setcomboVal cmbALLAPOT, "5"
+    Screen.MousePointer = vbDefault
 End Sub
 
 Private Sub grdmunkalap_DblClick()
- cmdVISSZAI_Click
+    cmdVISSZAI_Click
 End Sub
 
 Private Sub KeyCommand(Keycode As Integer)
- Static CtrlKey As Boolean
+    Static CtrlKey As Boolean
  
- Select Case Keycode
-  Case vbKeyF1:
-  Case vbKeyX:
-             If CtrlKey Then
-              Unload Me
-             End If
-  Case vbKeyEscape: cmdEXIT_Click
-  Case vbKeyInsert: cmdUJ_Click
-  'Case vbKeyDelete: cmdTOROL_Click
-  Case vbKeyF2: cmdMODOSIT_Click
-  Case vbKeyF3: cmdVISSZAI_Click
-  Case vbKeyHome: grdMUNKALAP.SetFocus
-  Case vbKeyF5: cmdFRISSIT_Click
- End Select
- If Keycode = vbKeyControl Then
-  CtrlKey = True
- Else
-  CtrlKey = False
- End If
+    Select Case Keycode
+        Case vbKeyF1:
+        Case vbKeyX:
+            If CtrlKey Then
+                Unload Me
+            End If
+        Case vbKeyEscape: cmdEXIT_Click
+        Case vbKeyInsert: cmdUJ_Click
+        Case vbKeyF2: cmdMODOSIT_Click
+        Case vbKeyF3: cmdVISSZAI_Click
+        Case vbKeyHome: grdMUNKALAP.SetFocus
+        Case vbKeyF5: cmdFRISSIT_Click
+    End Select
+ 
+    If Keycode = vbKeyControl Then
+        CtrlKey = True
+    Else
+        CtrlKey = False
+    End If
 End Sub
+
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-   Dim Msg   ' Declare variable.
-   ' Set the message text.
+   Dim Msg
    Msg = "Valóban ki szeretne lépni a rendszerbõl?"
-   ' If user clicks the No button, stop QueryUnload.
    If MsgBox(Msg, vbQuestion + vbYesNo, "Tisztelt felhasználó!") = vbNo Then Cancel = True
-   'If MsgBox("Biztosan ki szeretne lépni a rendszerbõl?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
 End Sub
 
 Sub csoportosnyomtatas()
-  Set frmCurrentForm = Screen.ActiveForm
-  If frmCurrentForm![cmbMLAPTIP].ListIndex <> -1 And util.getcomboertek(frmCurrentForm![cmbALLAPOT]) = "1" Then
-  frmCurrentForm![cmdCSOPLIST].Enabled = True
-  frmCurrentForm![cmdLIST].Enabled = True
-  Else
-   frmCurrentForm![cmdCSOPLIST].Enabled = False
-   frmCurrentForm![cmdLIST].Enabled = False
-  End If
+    Set frmCurrentForm = Screen.ActiveForm
+    If frmCurrentForm![cmbMLAPTIP].ListIndex <> -1 And util.getcomboertek(frmCurrentForm![cmbALLAPOT]) = "1" Then
+        frmCurrentForm![cmdCSOPLIST].Enabled = True
+        frmCurrentForm![cmdLIST].Enabled = True
+    Else
+        frmCurrentForm![cmdCSOPLIST].Enabled = False
+        frmCurrentForm![cmdLIST].Enabled = False
+    End If
 End Sub
 

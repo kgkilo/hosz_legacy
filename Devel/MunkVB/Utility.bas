@@ -28,10 +28,12 @@ Sub Subtorol()
 End Sub
 
 Sub Nyomtat(reportname As String, iDestination As Integer)
-    Form001.rep.Destination = iDestination ' 0 - privjú ablak, 1 - közvetlenül nyomtat
-    Form001.rep.WindowBorderStyle = 3
-    Form001.rep.WindowState = 2
-    Form001.rep.Connect = sConnectString
-    Form001.rep.ReportFileName = sReportDir & reportname
-    Form001.rep.Action = 1
+    With Form001.rep
+        .Destination = iDestination ' 0 - privjú ablak, 1 - közvetlenül nyomtat
+        .WindowBorderStyle = 3
+        .WindowState = 2
+        .Connect = sConnectString
+        .ReportFileName = sReportDir & reportname
+        .Action = 1
+    End With
 End Sub

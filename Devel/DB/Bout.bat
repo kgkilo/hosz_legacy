@@ -1,3 +1,5 @@
+del *.txt
+
 bcp szetav..aramkor out aramkor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..arvalt out arvalt.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..biztonsagi_szelep out biztonsagi_szelep.txt /S127.0.0.1 /Usa /P /n

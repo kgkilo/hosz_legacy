@@ -4,9 +4,7 @@ Public sConnectString As String
 Public sReportDir As String
 
 Sub Main()
-    'sReportDir = "I:\KTORZS\"
-    'sReportDir = "I:\HOSZOLG\"
-    'sConnectString = "DRIVER={SQL Server};Server=NTSERVER;uid=sa;pwd=;database=SZETAV"
+    sReportDir = "I:\HOSZOLG\"
     Set util = CreateObject("munkVB.Global")
     util.init sReportDir
     Form001.Show 1

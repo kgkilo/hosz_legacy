@@ -17,8 +17,8 @@ KEP     Aktív   Megnev
 
 695     +       Kontírozó törzs karbantartás
 697     +       Dolgozó törzs karbantartás
-699     +       Üzemeltetési munkalap
-700     +       Üzemfenntartási munkalap
+699     -       Üzemeltetési munkalap
+700     -       Üzemfenntartási munkalap
 701     -       Munkalap lekérdezés, listázás
 702     +       Munkaóra összesítõ listák
 
