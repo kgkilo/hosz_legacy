@@ -65,29 +65,30 @@ End Sub 'Class_Terminate
 '
 Public Sub Load(sSql As String, sParams As Variant, sSectionName As String, sLongName As String, CSize As Byte)
     Dim oKodSection As New CKodSection  'Ebbe töltjük be az új szekciót
-    oKodSection.Name = sSectionName 'Kitöltjük a kódszekció tulajdonságait
-    oKodSection.SQL = sSql
-    oKodSection.Size = CSize
-    oKodSection.LongName = sLongName
-    Dim i As Integer    'segéd
+    With oKodSection
+        .Name = sSectionName 'Kitöltjük a kódszekció tulajdonságait
+        .SQL = sSql
+        .Size = CSize
+        .LongName = sLongName
     
-    If TypeName(sParams) = "Nothing" Then
-        Set oKodSection.Params = Nothing
-    Else    'A paraméter collectionbe kerül a paraméter értéke, az index a paraméter neve
-        Dim lstParams As New Collection
-        For i = 0 To UBound(sParams, 1) - 1 Step 2
-            lstParams.Add sParams(i + 1), sParams(i)
-        Next i
-        Set oKodSection.Params = lstParams
-    End If
+        Dim i As Integer    'segéd
+        If TypeName(sParams) = "Nothing" Then
+            Set .Params = Nothing
+        Else    'A paraméter collectionbe kerül a paraméter értéke, az index a paraméter neve
+            Dim lstParams As New Collection
+            For i = 0 To UBound(sParams, 1) - 1 Step 2
+                lstParams.Add sParams(i + 1), sParams(i)
+            Next i
+            Set .Params = lstParams
+        End If
     
-    Dim oSection As New Collection  'Segéd
+        Dim oSection As New Collection  'Segéd
     
-    oAdmin.FillSection sSql, oKodSection.Params, oSection
-    Set oKodSection.KodList = oSection  'A szekció kódlistájába betesszük a segédben lévõ értékeket
+        oAdmin.FillSection sSql, .Params, oSection
+        Set .KodList = oSection  'A szekció kódlistájába betesszük a segédben lévõ értékeket
+        Set oSection = Nothing  'A segéd collection tovább nem kell
+    End With
     
-    Set oSection = Nothing  'A segéd collection tovább nem kell
-
     m_collSections.Add oKodSection, sSectionName    'Betesszük a (feltöltött) szekciót a többi szekció közé
 End Sub 'Load
 

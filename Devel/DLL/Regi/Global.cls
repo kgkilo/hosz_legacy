@@ -184,15 +184,23 @@ End Function    'ObjTipFeltolt
 '
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
 '
-Public Function MegnevFeltolt(ByRef cmbMegnev As Object, ByRef cmbOBJTIP As Object, Optional ByVal zzz As String) As Boolean
+Public Function MegnevFeltolt(ByRef cmbMegnev As Object, ByRef cmbOBJTIP As Object, _
+                                Optional ByVal sSection As String, Optional ByVal bOsszeset As Boolean) As Boolean
     On Error GoTo errMegnevFeltolt
     MegnevFeltolt = False
     
     Dim sSectName As String
-    If TypeName(zzz) = "Nothing" Then
+    If TypeName(sSection) = "Nothing" Then
         sSectName = "MEGNEV"
     Else
-        sSectName = zzz
+        sSectName = sSection
+    End If
+    
+    Dim iAktiv As Integer
+    If TypeName(bOsszeset) = "Nothing" Then
+        iAktiv = 0
+    Else
+        iAktiv = -1 * CInt(bOsszeset)
     End If
     
     g_oKodszotar.Remove sSectName    'Töröljük az ál-kódszótári MEGNEV szekciót
@@ -204,7 +212,7 @@ Public Function MegnevFeltolt(ByRef cmbMegnev As Object, ByRef cmbOBJTIP As Obje
         sOBJTIP = ComboBoxGet(Nothing, cmbOBJTIP)   'Lekérdezzük az objektumtípust
     End If
     
-    g_oKodszotar.Load "sp_FillObjMegnev", Array("pObjTip", sOBJTIP), sSectName, "Objektum megnevezése", 100
+    g_oKodszotar.Load "sp_FillObjMegnev", Array("pObjTip", sOBJTIP, "pAKTIV", iAktiv), sSectName, "Objektum megnevezése", 100
     MegnevFeltolt = ComboBoxSet(cmbMegnev, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
     cmbMegnev.ListWidth = 350
     Exit Function

@@ -40,11 +40,6 @@ Public Function Login(ByVal sConnect As String) As Integer
     Login = vbOK
     
     If sConnect = "" Then
-        'sConnectString = "DRIVER=" & g_oIni.IniGet("Connect", "DRIVER", "{SQL Server}")
-        'sConnectString = sConnectString & ";Server=" & g_oIni.IniGet("Connect", "SQLSERVER_NAME", G_SQLSERVERNAME)
-        'sConnectString = sConnectString & ";uid=" & g_sUID 'g_oLogin.Name
-        'sConnectString = sConnectString & ";pwd=" & g_sPWD 'g_oLogin.Pwd
-        'sConnectString = sConnectString & ";database=" & g_sDefaultDBName
         sConnectString = "DRIVER={SQL Server};Server=NTSERVER;uid=sa;pwd=;database=SZETAV"
     Else
         sConnectString = sConnect
@@ -123,21 +118,25 @@ Public Function MakeCommand(ByVal sQry As String, ByVal lstParameters As Collect
     Dim varParamValue As Variant
     Dim lstCommandParams As New Collection  'átmeneti paraméter-tároló
     
-    Set cmdParamQuery.ActiveConnection = m_cnn  'Rálógunk a már élõ connection-re
+    With cmdParamQuery
+        Set .ActiveConnection = m_cnn  'Rálógunk a már élõ connection-re
     
-    If j = -1 Then  'Ha nincs külön megadva adatbázisnév,
-        cmdParamQuery.CommandText = "sp_QueryParams"    'akkor egyszerûen lehet hívni a QueryParams eljárást.
-    Else    'Ha viszont van adatbázisnév, akkor azt is elé kell tenni a QueryParamsnak.
-        cmdParamQuery.CommandText = Left(sQry, j) & "sp_QueryParams"
-    End If  'j = -1
+        If j = -1 Then  'Ha nincs külön megadva adatbázisnév,
+            .CommandText = "sp_QueryParams"    'akkor egyszerûen lehet hívni a QueryParams eljárást.
+        Else    'Ha viszont van adatbázisnév, akkor azt is elé kell tenni a QueryParamsnak.
+            .CommandText = Left(sQry, j) & "sp_QueryParams"
+        End If  'j = -1
     
-    cmdParamQuery.CommandTimeout = 60
-    cmdParamQuery.CommandType = ADODB.adCmdStoredProc
+        .CommandTimeout = 60
+        .CommandType = ADODB.adCmdStoredProc
+    End With
     
-    prmQRY.Direction = ADODB.adParamInput   'A QueryParams egy paramétert vár, ami
-    prmQRY.Value = sQry                     'a tárolt eljárás neve
-    prmQRY.Type = ADODB.adBSTR
-    prmQRY.Size = 92
+    With prmQRY
+        .Direction = ADODB.adParamInput   'A QueryParams egy paramétert vár, ami
+        .Value = sQry                     'a tárolt eljárás neve
+        .Type = ADODB.adBSTR
+        .Size = 92
+    End With
     
     cmdParamQuery.Parameters.Append prmQRY  'Betesszük a paraméterek közé...
     
@@ -145,45 +144,47 @@ Public Function MakeCommand(ByVal sQry As String, ByVal lstParameters As Collect
     
     Do While Not rstParameter.EOF   'Elmegyünk a visszaadott recordset végéig
         Set prmParam = New ADODB.Parameter  'Létrehozunk egy új paramétert,
-        prmParam.Direction = ADODB.adParamInput 'ami input param, tehát nem lehet benne visszaadni értéket.
+        With prmParam
+            .Direction = ADODB.adParamInput 'ami input param, tehát nem lehet benne visszaadni értéket.
                 
-        Select Case rstParameter.Fields(1).Value    'A paraméter típusától függõen
-        Case "varchar", "text", "char", "datetime"  'más*más típust állítunk be
-            prmParam.Type = ADODB.adBSTR
-        Case "real"
-            prmParam.Type = ADODB.adDouble
-        Case Else
-            prmParam.Type = ADODB.adInteger
-        End Select
+            Select Case rstParameter.Fields(1).Value    'A paraméter típusától függõen
+            Case "varchar", "text", "char", "datetime"  'más*más típust állítunk be
+                .Type = ADODB.adBSTR
+            Case "real"
+                .Type = ADODB.adDouble
+            Case Else
+                .Type = ADODB.adInteger
+            End Select
         
-        On Error Resume Next
-        ' a varParamValue-ba kerül a majd átadandó paraméter értéke
-        varParamValue = Null
-        varParamValue = lstParameters(Mid(rstParameter.Fields(0).Value, 2, 14))
-        If varParamValue = Null Or varParamValue = "" Then  'Ha üres vagy Null,
-            prmParam.Value = Null   'akkor Nullnak állítjuk be.
-        Else    'Egyébként arra, ami kell.
-            'If prmParam.Type = adDouble Then
-            '    Dim s As String
-            '    Dim o As Integer
-            '    For o = 1 To Len(varParamValue)
-            '        If Mid(varParamValue, o, 1) <> "," Then
-            '            s = s & Mid(varParamValue, o, 1)
-            '        Else
-            '            s = s & "."
-            '        End If
-            '    Next
-            'End If
+            On Error Resume Next
+            ' a varParamValue-ba kerül a majd átadandó paraméter értéke
+            varParamValue = Null
+            varParamValue = lstParameters(Mid(rstParameter.Fields(0).Value, 2, 14))
+            If varParamValue = Null Or varParamValue = "" Then  'Ha üres vagy Null,
+                .Value = Null   'akkor Nullnak állítjuk be.
+            Else    'Egyébként arra, ami kell.
+                'If prmParam.Type = adDouble Then
+                '    Dim s As String
+                '    Dim o As Integer
+                '    For o = 1 To Len(varParamValue)
+                '        If Mid(varParamValue, o, 1) <> "," Then
+                '            s = s & Mid(varParamValue, o, 1)
+                '        Else
+                '            s = s & "."
+                '        End If
+                '    Next
+                'End If
             
-            If rstParameter.Fields(1).Value = "datetime" Then   'datetime típusnál a paraméter hossza fixen 20 karakter,
-                prmParam.Size = 20
-            Else    'míg egyéb esetekben annyi, amit az SQL visszaadott.
-                prmParam.Size = IIf(rstParameter.Fields(2).Value < Len(varParamValue), rstParameter.Fields(2).Value, Len(varParamValue))
+                If rstParameter.Fields(1).Value = "datetime" Then   'datetime típusnál a paraméter hossza fixen 20 karakter,
+                    .Size = 20
+                Else    'míg egyéb esetekben annyi, amit az SQL visszaadott.
+                    .Size = IIf(rstParameter.Fields(2).Value < Len(varParamValue), rstParameter.Fields(2).Value, Len(varParamValue))
+                End If
+            
+                .Value = varParamValue
             End If
-            
-            prmParam.Value = varParamValue
-        End If
-        On Error GoTo errMakeCommand
+            On Error GoTo errMakeCommand
+        End With
         
         lstCommandParams.Add prmParam   'Hozzáfûzzük a paraméterekhez
         Set prmParam = Nothing
@@ -195,15 +196,17 @@ Public Function MakeCommand(ByVal sQry As String, ByVal lstParameters As Collect
         
     Set m_cmdCommand = Nothing
     Set m_cmdCommand = New ADODB.Command
-    Set m_cmdCommand.ActiveConnection = m_cnn 'Ezt az objektumot fogjuk majd visszaadni
+    With m_cmdCommand
+        Set .ActiveConnection = m_cnn 'Ezt az objektumot fogjuk majd visszaadni
     
-    m_cmdCommand.CommandText = sQry   'Beállítjuk mindenféle jellemzõit
-    m_cmdCommand.CommandTimeout = 60
-    m_cmdCommand.CommandType = ADODB.adCmdStoredProc
+        .CommandText = sQry   'Beállítjuk mindenféle jellemzõit
+        .CommandTimeout = 60
+        .CommandType = ADODB.adCmdStoredProc
     
-    For Each prmParam In lstCommandParams   'és beletesszük a paraméterek sokaságát...
-        m_cmdCommand.Parameters.Append prmParam
-    Next prmParam
+        For Each prmParam In lstCommandParams   'és beletesszük a paraméterek sokaságát...
+            .Parameters.Append prmParam
+        Next prmParam
+    End With
     
     MakeCommand = True
     Exit Function
@@ -221,17 +224,19 @@ Public Function FillSection(ByVal sQry As String, ByVal lstParams As Collection,
     Dim rstRecordset As ADODB.Recordset
     Set rstRecordset = m_cmdCommand.Execute 'Végrehajtjuk
     
-    If rstRecordset.Fields.Count <= 2 Then  'Ha kettõnél több oszlopa van, akkor gáz van.
-        Do While Not rstRecordset.EOF   'Végigmegyünk az eredményhalmazon
-            Dim oKOD As New CKod    'Csinálunk egy új kódszótári elemet.
-            oKOD.Ertek = rstRecordset.Fields(0).Value  'Feltöltjük
-            oKOD.Nev = IIf(IsNull(rstRecordset.Fields(1).Value), "", rstRecordset.Fields(1).Value)
-            oSection.Add oKOD, oKOD.Ertek   'és betesszük a segéd collection-be
-            Set oKOD = Nothing  'Ha betettük, nem kell tovább
-            rstRecordset.MoveNext   'Megyünk a következõ rekordra.
-        Loop
-        FillSection = True
-    End If
+    With rstRecordset
+        If .Fields.Count <= 2 Then  'Ha kettõnél több oszlopa van, akkor gáz van.
+            Do While Not .EOF   'Végigmegyünk az eredményhalmazon
+                Dim oKOD As New CKod    'Csinálunk egy új kódszótári elemet.
+                oKOD.Ertek = .Fields(0).Value  'Feltöltjük
+                oKOD.Nev = IIf(IsNull(.Fields(1).Value), "", .Fields(1).Value)
+                oSection.Add oKOD, oKOD.Ertek   'és betesszük a segéd collection-be
+                Set oKOD = Nothing  'Ha betettük, nem kell tovább
+                .MoveNext   'Megyünk a következõ rekordra.
+            Loop
+            FillSection = True
+        End If
+    End With
     
     Exit Function
 
@@ -280,12 +285,13 @@ Public Function BeginTrans(Name As String) As Boolean
     On Error GoTo errBeginTrans
     BeginTrans = False
     
-    Set m_cmdCommand.ActiveConnection = m_cnn
-    
-    m_cmdCommand.CommandText = "BEGIN TRAN " & Name
-    m_cmdCommand.CommandTimeout = 60
-    m_cmdCommand.CommandType = ADODB.adCmdText
-    m_cmdCommand.Execute
+    With m_cmdCommand
+        Set .ActiveConnection = m_cnn
+        .CommandText = "BEGIN TRAN " & Name
+        .CommandTimeout = 60
+        .CommandType = ADODB.adCmdText
+        .Execute
+    End With
     
     BeginTrans = True
     Exit Function
@@ -297,12 +303,13 @@ Public Function CommitTrans(Name As String) As Boolean
     On Error GoTo errCommitTrans
     CommitTrans = False
     
-    Set m_cmdCommand.ActiveConnection = m_cnn
-    
-    m_cmdCommand.CommandText = "COMMIT TRAN " & Name
-    m_cmdCommand.CommandTimeout = 60
-    m_cmdCommand.CommandType = ADODB.adCmdText
-    m_cmdCommand.Execute
+    With m_cmdCommand
+        Set .ActiveConnection = m_cnn
+        .CommandText = "COMMIT TRAN " & Name
+        .CommandTimeout = 60
+        .CommandType = ADODB.adCmdText
+        .Execute
+    End With
     
     CommitTrans = True
     Exit Function
@@ -315,12 +322,13 @@ Public Function RollbackTrans(Name As String) As Boolean
     RollbackTrans = False
     
     Dim m_cmdCommand As New ADODB.Command
-    Set m_cmdCommand.ActiveConnection = m_cnn
-    
-    m_cmdCommand.CommandText = "ROLLBACK TRAN " & Name
-    m_cmdCommand.CommandTimeout = 60
-    m_cmdCommand.CommandType = ADODB.adCmdText
-    m_cmdCommand.Execute
+    With m_cmdCommand
+        Set .ActiveConnection = m_cnn
+        .CommandText = "ROLLBACK TRAN " & Name
+        .CommandTimeout = 60
+        .CommandType = ADODB.adCmdText
+        .Execute
+    End With
     
     RollbackTrans = True
     Exit Function
