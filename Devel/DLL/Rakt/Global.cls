@@ -170,12 +170,24 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     lstParams.Add sParam, "pEPULET_ID"
     sParam = GetComboErtek(frm.Controls("cmbFUTOMU"))
     lstParams.Add sParam, "pFUTOMU_ID"
+    sParam = IIf(IsNull(frm.Controls("datHITIDO").Value), "", frm.Controls("datHITIDO").Value)
+    lstParams.Add sParam, "pHITIDO"
     sParam = GetComboErtek(frm.Controls("cmbDOLG_ID"))
     lstParams.Add sParam, "pDOLG_ID"
     sParam = frm.Controls("txtSZLEVEL_SZAM").Text
     lstParams.Add sParam, "pSZLEVEL_SZAM"
     sParam = IIf(IsNull(frm.Controls("datSZLEVEL_DAT").Value), "", frm.Controls("datSZLEVEL_DAT").Value)
     lstParams.Add sParam, "pSZLEVEL_DAT"
+    sParam = frm.Controls("txtTIPUS").Text
+    lstParams.Add sParam, "pTIPUS"
+    sParam = frm.Controls("txtATMERO").Text
+    lstParams.Add sParam, "pATMERO"
+    sParam = frm.Controls("txtBENYHOSSZ").Text
+    lstParams.Add sParam, "pBENYHOSSZ"
+    sParam = frm.Controls("txtVEZHOSSZ").Text
+    lstParams.Add sParam, "pVEZHOSSZ"
+    sParam = frm.Controls("txtSZUKSHOSSZ").Text
+    lstParams.Add sParam, "pSZUKSHOSSZ"
     
     iMerge = 5
     If sOBJTIP = "00" Then
@@ -183,7 +195,7 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     Else
         sFormatstring = "<||"
     End If
-    sFormatstring = sFormatstring + "Gy.sz.|Tip.|Dátum|Állapot|Épület|Fûtõmû|Dolgozó|Sz.levél száma|Sz.levél dátuma|"
+    sFormatstring = sFormatstring + "Gy.sz.|Tip.|Dátum|Állapot|Épület|Fûtõmû|Hit.idõ|Dolgozó|Sz.levél száma|Sz.levél dátuma|"
     'If sALLAPOT <> "" Then sFormatstring = sFormatstring + "Állapot|"
     'If lstParams("pEPULET_ID") <> "" Then sFormatstring = sFormatstring + "Épület|"
     'If lstParams("pFUTOMU_ID") <> "" Then sFormatstring = sFormatstring + "Fûtõmû|"
