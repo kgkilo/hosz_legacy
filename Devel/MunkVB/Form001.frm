@@ -19,8 +19,6 @@ Begin VB.Form Form001
    EndProperty
    Icon            =   "Form001.frx":0000
    LinkTopic       =   "Form1"
-   MaxButton       =   0   'False
-   MinButton       =   0   'False
    ScaleHeight     =   8595
    ScaleMode       =   0  'User
    ScaleWidth      =   12718.25
@@ -309,7 +307,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23658497
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -341,7 +339,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23658497
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMTOL 
@@ -373,7 +371,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23658497
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -405,7 +403,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23658497
       CurrentDate     =   37013
    End
    Begin MSForms.ComboBox cmbTELEPHSZ 

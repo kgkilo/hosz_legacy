@@ -984,7 +984,7 @@ End Sub
 Private Sub cmbSzolgjell_Change()
 Dim ggg As String
 If mode = 0 Then
- ggg = util.getcomboertek(cmbSzolgjell)
+ ggg = util.getcomboertek(cmbSZOLGJELL)
  If ggg = "LE" Or ggg = "LF" Or ggg = "LA" Then
   util.setcomboVal cmbMUVEL, "BHJ"
   util.setcomboVal cmbFSZAM, "736"
@@ -1123,7 +1123,7 @@ Private Sub Form_Load()
    Me.txtKIALLDAT.Locked = True
    Me.cmbSZEREGYS.Locked = True
    Me.cmbMFDOLG.Locked = True
-   Me.cmbSzolgjell.Locked = True
+   Me.cmbSZOLGJELL.Locked = True
    'Me.txtBEJNEV.Locked = True
    Me.cmbFSZAM.Locked = True
    Me.cmbTIPUSH.Locked = True
