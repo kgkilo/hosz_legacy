@@ -24,6 +24,13 @@ Begin VB.Form Form002Szall
    ScaleWidth      =   4380
    StartUpPosition =   1  'CenterOwner
    Tag             =   "027"
+   Begin VB.TextBox txtMEGJ 
+      Height          =   540
+      Left            =   315
+      TabIndex        =   2
+      Top             =   1155
+      Width           =   3900
+   End
    Begin VB.TextBox txtSZLEVEL_SZAM 
       Height          =   330
       Left            =   1995
@@ -44,7 +51,7 @@ Begin VB.Form Form002Szall
       EndProperty
       Height          =   375
       Left            =   3150
-      TabIndex        =   3
+      TabIndex        =   4
       ToolTipText     =   "E S C"
       Top             =   1755
       Width           =   1135
@@ -62,7 +69,7 @@ Begin VB.Form Form002Szall
       EndProperty
       Height          =   375
       Left            =   90
-      TabIndex        =   2
+      TabIndex        =   3
       ToolTipText     =   "F 5"
       Top             =   1785
       Width           =   1135
@@ -111,7 +118,7 @@ Begin VB.Form Form002Szall
       EndProperty
       Height          =   270
       Left            =   210
-      TabIndex        =   5
+      TabIndex        =   6
       Tag             =   "007"
       Top             =   645
       Width           =   1635
@@ -130,7 +137,7 @@ Begin VB.Form Form002Szall
       EndProperty
       Height          =   270
       Left            =   225
-      TabIndex        =   4
+      TabIndex        =   5
       Tag             =   "007"
       Top             =   225
       Width           =   1635
@@ -142,6 +149,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub cmdCLOSE_Click()
+    Form002.iReturn = vbCancel
     Unload Me
 End Sub
 
@@ -149,6 +157,8 @@ Private Sub cmdOK_Click()
     If txtSZLEVEL_SZAM <> "" And datSZLEVEL_DAT.Value <> "" Then
         Form002.strSZLEVEL_SZAM = txtSZLEVEL_SZAM.Text
         Form002.strSZLEVEL_DATUM = datSZLEVEL_DAT.Value
+        Form002.strMEGJ = txtMEGJ
+        Form002.iReturn = vbOK
         Unload Me
     End If
 End Sub
@@ -169,7 +179,7 @@ Private Sub KeyCommand(Keycode As Integer)
         Case vbKeyF1:
         Case vbKeyX:
             If CtrlKey Then
-                Unload Me
+                cmdCLOSE_Click
             End If
         Case vbKeyEscape: cmdCLOSE_Click
         Case vbKeyF5: cmdOK_Click

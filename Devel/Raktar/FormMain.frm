@@ -13,7 +13,7 @@ Begin VB.Form FormMain
    Begin VB.CommandButton cmdExit 
       Caption         =   "Kilépés"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   238
          Weight          =   400
@@ -30,7 +30,7 @@ Begin VB.Form FormMain
    Begin VB.CommandButton cmdReport 
       Caption         =   "Jelentések"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   238
          Weight          =   400
@@ -47,7 +47,7 @@ Begin VB.Form FormMain
    Begin VB.CommandButton cmdRaktar 
       Caption         =   "Raktár kezelés"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   238
          Weight          =   400

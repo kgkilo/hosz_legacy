@@ -24,6 +24,13 @@ Begin VB.Form Form002Dolg
    ScaleWidth      =   4380
    StartUpPosition =   1  'CenterOwner
    Tag             =   "027"
+   Begin VB.TextBox txtMEGJ 
+      Height          =   540
+      Left            =   315
+      TabIndex        =   4
+      Top             =   1155
+      Width           =   3900
+   End
    Begin VB.CommandButton cmdCLOSE 
       Caption         =   "Mégsem"
       BeginProperty Font 
@@ -102,15 +109,16 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Public lDOLG_ID As Long
-
 Private Sub cmdCLOSE_Click()
+    Form002.iReturn = vbCancel
     Unload Me
 End Sub
 
 Private Sub cmdOK_Click()
     If cmbDOLG_ID.ListIndex <> -1 Then
         Form002.lDOLG_ID = util.getComboErtek(cmbDOLG_ID)
+        Form002.strMEGJ = txtMEGJ
+        Form002.iReturn = vbOK
         Unload Me
     End If
 End Sub
@@ -131,7 +139,7 @@ Private Sub KeyCommand(Keycode As Integer)
         Case vbKeyF1:
         Case vbKeyX:
             If CtrlKey Then
-                Unload Me
+                cmdCLOSE_Click
             End If
         Case vbKeyEscape: cmdCLOSE_Click
         Case vbKeyF5: cmdOK_Click

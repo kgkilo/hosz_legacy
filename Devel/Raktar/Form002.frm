@@ -5,14 +5,123 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Begin VB.Form Form002 
    Caption         =   "Raktár nyilvántartás"
-   ClientHeight    =   8955
+   ClientHeight    =   8595
    ClientLeft      =   60
    ClientTop       =   345
    ClientWidth     =   11880
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8955
+   LockControls    =   -1  'True
+   ScaleHeight     =   8595
    ScaleWidth      =   11880
    WindowState     =   2  'Maximized
+   Begin VB.Frame frmERZEKELO 
+      Caption         =   "Érzékelõ"
+      Height          =   2115
+      Left            =   8505
+      TabIndex        =   23
+      Top             =   6300
+      Width           =   3270
+      Begin VB.TextBox txtE_PLOMBA 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   35
+         Top             =   1260
+         Width           =   1170
+      End
+      Begin VB.TextBox txtE_HITIDO 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   34
+         Top             =   945
+         Width           =   1170
+      End
+      Begin VB.TextBox txtE_TIPUS 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   33
+         Top             =   630
+         Width           =   1170
+      End
+      Begin VB.TextBox txtE_GYSZAM 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   32
+         Top             =   315
+         Width           =   1170
+      End
+   End
+   Begin VB.Frame frmVIZMERO 
+      Caption         =   "Vízmérõ"
+      Height          =   2115
+      Left            =   5040
+      TabIndex        =   22
+      Top             =   6300
+      Width           =   3270
+      Begin VB.TextBox txtV_PLOMBA 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   31
+         Top             =   1260
+         Width           =   1170
+      End
+      Begin VB.TextBox txtV_HITIDO 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   30
+         Top             =   945
+         Width           =   1170
+      End
+      Begin VB.TextBox txtV_TIPUS 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   29
+         Top             =   630
+         Width           =   1170
+      End
+      Begin VB.TextBox txtV_GYSZAM 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   28
+         Top             =   315
+         Width           =   1170
+      End
+   End
+   Begin VB.Frame frmHOOSSZEGZO 
+      Caption         =   "Hõösszegzõ"
+      Height          =   2115
+      Left            =   1575
+      TabIndex        =   21
+      Top             =   6300
+      Width           =   3270
+      Begin VB.TextBox txtH_PLOMBA 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   27
+         Top             =   1260
+         Width           =   1170
+      End
+      Begin VB.TextBox txtH_HITIDO 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   26
+         Top             =   945
+         Width           =   1170
+      End
+      Begin VB.TextBox txtH_TIPUS 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   25
+         Top             =   630
+         Width           =   1170
+      End
+      Begin VB.TextBox txtH_GYSZAM 
+         Height          =   285
+         Left            =   945
+         TabIndex        =   24
+         Top             =   315
+         Width           =   1170
+      End
+   End
    Begin VB.TextBox txtSZLEVEL_SZAM 
       Height          =   330
       Left            =   8715
@@ -188,7 +297,7 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23003137
+      Format          =   23134209
       CurrentDate     =   38353
    End
    Begin VB.Label lblSZLEVEL_SZAM 
@@ -343,9 +452,11 @@ Attribute VB_Exposed = False
 Public iRefresh As Integer
 Public sOBJTIP As String
 
+Public iReturn As Integer
 Public lDOLG_ID As Long
 Public strSZLEVEL_SZAM As String
 Public strSZLEVEL_DATUM As String
+Public strMEGJ As String
 Public strKovetkezoAllapot As String
     
 Private Sub cmdExit_Click()
@@ -365,10 +476,18 @@ Private Sub cmdMove_Click()
             Form002Dolg.Show vbModal
         Case "E", "J":
             Form002Szall.Show vbModal
+        Case Else:
+            Form002Egyeb.Show vbModal
     End Select
     
-    util.setAllapot grdGrid.TextMatrix(grdGrid.Row, 1), strKovetkezoAllapot, _
-        lDOLG_ID, strSZLEVEL_SZAM, strSZLEVEL_DATUM
+    If iReturn = vbOK Then
+        util.setAllapot grdGrid.TextMatrix(grdGrid.Row, 1), strKovetkezoAllapot, _
+            lDOLG_ID, strSZLEVEL_SZAM, strSZLEVEL_DATUM, strMEGJ
+    End If
+End Sub
+
+Private Sub grdGrid_SelChange()
+    util.LoadInfo Me, grdGrid.TextMatrix(grdGrid.Row, 1)
 End Sub
 
 Private Sub optOBJTIP_Click(Index As Integer)

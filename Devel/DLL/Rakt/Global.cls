@@ -77,40 +77,6 @@ Public Function Init(ByRef sReportDir As String) As Boolean
 errInit:
 End Function    'Init
 
-'   LoadInfo
-'
-'   Feltölti a kiválasztott objektum adataival a képernyõt.
-'   Paraméterek:    frm as Object   -   a feltöltendõ képernyõ
-'                   sID as String   -   a raktár/felszerelt/szállító rekord id-je
-'                   sOBJTIP as String   -   az aktív objektumtípus
-'                   sHonnan as String   -   melyik gridbõl érkezett a kérés
-'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
-Public Function LoadInfo(ByRef frm As Object, ByVal sID As Long, _
-        ByRef sOBJTIP As String, ByRef sHonnan As String) As Boolean
-    On Error GoTo errLoadInfo
-    LoadInfo = False
-    
-    Dim sQuery As String
-    Dim lstParams As New Collection 'Betesszük az azonosítót a lekérdezés paraméterei közé
-    
-    sQuery = "sp_LoadRaktarInfo"
-    
-    lstParams.Add sID, "pID"
-    lstParams.Add sOBJTIP, "pOBJTIP"
-    lstParams.Add UCase(Left(sHonnan, 1)), "pFROM"
-    
-    Dim rs As New ADODB.Recordset   'Betöltjük az azonosító alapján a rekordot
-    If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
-        If ControlsSet(rs, frm) Then    'Ha sikerült, feltöltjük a képernyõ kontrolljait adatokkal.
-            LoadInfo = True
-        End If
-    End If
-    Exit Function
-    
-errLoadInfo:
-    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "LoadInfo"
-End Function    'RekordFeltolt
-
 '   SetCombo
 '
 '   Feltölti a képernyõn található combobox-okat a kódszótár alapján.
@@ -231,7 +197,8 @@ End Function
 
 ' Egy rekord állapotát változtatja (Aktív, selejt, nem felszerelhetõ) a RAKTAR táblában
 Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String, Optional ByRef lDOLG_ID As Long, _
-                        Optional ByRef sSZLEVEL_SZAM As String, Optional ByRef sSZLEVEL_DAT As String) As Boolean
+                        Optional ByRef sSZLEVEL_SZAM As String, Optional ByRef sSZLEVEL_DAT As String, _
+                        Optional ByRef sMEGJ As String) As Boolean
     On Error GoTo errsetAllapot
     setAllapot = False
     
@@ -242,10 +209,40 @@ Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String, Option
     lstParams.Add lDOLG_ID, "pDOLG_ID"
     lstParams.Add sSZLEVEL_SZAM, "pSZLEVEL_SZAM"
     lstParams.Add sSZLEVEL_DAT, "pSZLEVEL_DATUM"
+    lstParams.Add sMEGJ, "pMEGJ"
     setAllapot = oAdmin.Exec("sp_UpdRaktarAllapot", lstParams)
     Exit Function
     
 errsetAllapot:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "setAllapot"
 End Function    'setAllapot
+
+'   LoadInfo
+'
+'   Feltölti a kiválasztott objektum adataival a képernyõt.
+'   Paraméterek:    frm as Object   -   a feltöltendõ képernyõ
+'                   sID as String   -   a raktár rekord id-je
+'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
+Public Function LoadInfo(ByRef frm As Object, ByVal sID As Long) As Boolean
+    On Error GoTo errLoadInfo
+    LoadInfo = False
+    
+    Dim sQuery As String
+    Dim lstParams As New Collection 'Betesszük az azonosítót a lekérdezés paraméterei közé
+    
+    sQuery = "sp_LoadRaktarInfo"
+    
+    lstParams.Add sID, "pID"
+    
+    Dim rs As New ADODB.Recordset   'Betöltjük az azonosító alapján a rekordot
+    If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
+        If ControlsSet(rs, frm) Then    'Ha sikerült, feltöltjük a képernyõ kontrolljait adatokkal.
+            LoadInfo = True
+        End If
+    End If
+    Exit Function
+    
+errLoadInfo:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "LoadInfo"
+End Function    'LoadInfo
 
