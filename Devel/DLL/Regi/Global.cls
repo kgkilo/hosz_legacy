@@ -13,6 +13,10 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 Option Explicit
 
+Const PERM_NULL = 0
+Const PERM_RO = 1
+Const PERM_RW = 2
+
 Private m_sConnect As String
 
 Private Sub Class_Initialize()
@@ -499,9 +503,16 @@ Public Function SetComboVal(ByRef cmbCombo As Object, ByRef sID As String) As Bo
     SetComboVal = ComboBoxSetBase(cmbCombo, sID)
 End Function    'SetComboVal
 
-Public Function SetPermis(ByRef cmbOBJTIP As Object, ByRef lstControls As Access.Controls) As Boolean
+Public Function SetPermis(ByRef cmbOBJTIP As Object, ByRef lstControls As Access.Controls, Optional ByVal enable As Integer) As Boolean
     On Error GoTo errSetPermis
     SetPermis = False
+    
+    Dim iEnable As Integer
+    If TypeName(enable) = "Nothing" Then
+        iEnable = 0
+    Else
+        iEnable = enable
+    End If
     
     Dim sOBJTIP As String
     sOBJTIP = ComboBoxGet(Nothing, cmbOBJTIP)   'Lekérdezzük a választott objektum típusát
@@ -521,23 +532,38 @@ Public Function SetPermis(ByRef cmbOBJTIP As Object, ByRef lstControls As Access
         sFieldName = Mid(oControl.Name, 4)  'A kontroll neve tartalmazza a hozzá kapcsolt mezõ nevét
         If sPrefix = "txt" Or sPrefix = "cmb" Or sPrefix = "chk" Then ' Or sPrefix = "lbl" Then
             Select Case rs(sFieldName).Value
-                Case 0
-                    'oControl.Locked = True  'nem javíthat bele
+                Case 0  'nem látható, nem javítható
+                    ''oControl.Locked = True  'nem javíthat bele
                     oControl.Enabled = False    'letiltjuk a kontrollt,
+                    oControl.Visible = False
                 
-                Case 1, 2
+                Case 1  'látható, nem javítható
+                    oControl.Visible = True
+                    oControl.Enabled = iEnable 'False
+                    
+                Case 2 'látható, javítható
                     'oControl.Locked = False 'belejavíthat
                     oControl.Enabled = True 'engedélyezzük a kontrollt,
+                    oControl.Visible = True
                     
                 Case Else   'Csak fejlesztésre!!!
                     oControl.Visible = False
             End Select
         ElseIf sPrefix = "lbl" Then
+            If Right(sFieldName, 2) = "_X" Then
+                sFieldName = Mid(sFieldName, 1, Len(sFieldName) - 2)
+            End If
             Select Case rs(sFieldName).Value
                 Case 0
-                    oControl.ForeColor = 9868950    'szürke
+                    oControl.Visible = False
+                    oControl.ForeColor = -2147483633
                     
-                Case 1, 2
+                Case 1
+                    oControl.Visible = True
+                    oControl.ForeColor = 9868950 * iEnable  'szürke
+                    
+                Case 2
+                    oControl.Visible = True
                     oControl.ForeColor = 0  'Black is beautiful
             End Select
         End If
@@ -3126,3 +3152,35 @@ Dim S As String, s1 As String, S2 As String
     
     ForintBetuvelKiir = s1
 End Function
+
+
+'   CheckPermis
+'
+'   Ellenõrzi, hogy az adott usernek milyen jogai vannak
+'   az adott formra nézve
+'
+'   Paraméterek:    strForm As String   -   a form neve
+'                   strLogin As String  -   a user loginja
+'
+'   Visszatérés:    Integer
+'                   PERM_NULL, PERM_RO, PERM_RW
+'
+Public Function CheckPermis(ByRef strForm As String, ByRef strLogin As String)
+    On Error GoTo errCheckPermis
+    CheckPermis = PERM_NULL
+    
+    Dim lstParams As New Collection
+    lstParams.Add strForm, "sForm"
+    lstParams.Add strLogin, "sLogin"
+    
+    Dim sQuery As String
+    sQuery = "sp_CheckPermis"
+    Dim rs As New ADODB.Recordset
+    If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
+        CheckPermis = rs(0).Value
+    End If
+    Exit Function
+
+errCheckPermis:
+End Function
+

@@ -21,6 +21,7 @@ bcp szetav..hocserelo in hocserelo.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..hokozpont in hokozpont.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..hoosszegzo in hoosszegzo.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..jegyz in jegyz.txt /S127.0.0.1 /Usa /P /n
+bcp szetav..jogos in jogos.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..kapcsolat in kapcsolat.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..karban in karban.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..karbterv in karbterv.txt /S127.0.0.1 /Usa /P /n

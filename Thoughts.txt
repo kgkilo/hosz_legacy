@@ -1,0 +1,71 @@
+Ilyen csoportok lehetnek pl:
+1-Üzemeltetés, csak olvas, lekérdez
+1-Üzemeltetés, módosíthat
+2-Üzemfenntartás, csak olvas, lekérdez
+2-Üzemfenntartás, módosíthat
+3-
+3-
+4-
+4-
+
+UER	1
+UEW	3
+UFR	4
+UFW	12
+
+8 biten ábrázoljuk a csoport jogosultságokat.
+csoport 4 4 3 3 2 2 1 1
+jog		W R W R W R W R
+bit		7 6 5 4 3 2 1 0
+
+érték	1 6 3 1 8 4 2 1
+		2 4 2 6
+		8
+		
+		   
+Minden egyes képernyõ (a subformok NEM)
+a megjelenítésekor lecsekkolja a JOGOS táblában, hogy az aktuális csoport
+megjelenítheti-e a formot. Ha igen, akkor mely gombok engedélyezettek (így letilthatjuk a módosítást).
+A program indulásakor a user infot felhasználva megállapítjuk, hogy melyik csoportba tartozik a login. Egyszerre tartozhat több csoportba is!
+
+Kell tehát egy tábla, amiben a sorok a képernyõk, az oszlopok pedig jogok
+
+SQL szerveren fel kell venni a felhasználókat, csoportokat.
+SA login-t jelszóval le kell védeni.
+Ez hogy megy egybe az MDW-vel?
+Mindenkit egy csoportba kell ott sorolni, az Access nem játszik szerepet.
+
+
+2004.06.29.
+DOLGOZO tábla
+-------------
+bõvült UFR,UFW,UER,UEW varchar(1) not null default=0 mezõvel
+sorban: üzemfenntartási adatokat olvashat, üzemfenntartási adatokat írhat,
+üzemeltetési adatokat olvashat, üzemeltetési adatokat írhat
+Próba értékek:
+geza	UFR UFW
+kerekes	UER UEW
+eszter	UFR
+KEP697 - Dolgozó karbantartás módosítva
+bõvülés: LOGIN mezõ - a login nevet tárolja
+módosítás: a NEV mezõ NOT NULL lett
+
+2004.07.13.
+PERM tábla
+----------
+teljesen új
+A jogosultság lekérdezése így zajlik:
+in: formNév, userLogin
+DOLGOZO táblából kiolvasni, melyik bit érvényes a loginre
+majd a PERM táblából, hogy az adott formra az adott kapcsoló engedélyezve van-e
+
+
+KEPXXX
+sub Form_Open -> CheckPermiss
+-------------
+utilba belehív, az a képernyõ neve és a login név alapján alábbiakat adja vissza:
+0 - nincs jog
+1 - olvasási jog van
+2 - írási jog van
+
+Ennek megfelelõen kell a továbbiakban viselkednie a formnak.
