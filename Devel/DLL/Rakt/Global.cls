@@ -77,6 +77,33 @@ Public Function Init(ByRef sReportDir As String) As Boolean
 errInit:
 End Function    'Init
 
+'   MegnevFeltolt
+'
+'   Feltölti az objektum neveket tartalmazó combobox-ot a választott objektumtípusnak megfelelõen.
+'
+'   Paraméterek:    cmbMegnev As Object -   a feltöltendõ combobox
+'                   cmbOBJTIP As Object -   az objektumtípusok combobox-a
+'
+'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
+'
+Public Function MegnevFeltolt(ByRef cmbMegnev As Object, ByRef sOBJTIP As String) As Boolean
+    On Error GoTo errMegnevFeltolt
+    MegnevFeltolt = False
+    
+    Dim sSectName As String
+    sSectName = "MEGNEV" + sOBJTIP
+    
+    g_oKodszotar.Remove sSectName    'Töröljük az ál-kódszótári MEGNEV szekciót
+    
+    g_oKodszotar.Load "sp_FillObjMegnev", Array("pObjTip", sOBJTIP), sSectName, "Objektum megnevezése", 100
+    MegnevFeltolt = ComboBoxSet(cmbMegnev, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
+    cmbMegnev.ListWidth = 350
+    Exit Function
+    
+errMegnevFeltolt:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "MegnevFeltolt"
+End Function    'MegnevFeltolt
+
 '   SetCombo
 '
 '   Feltölti a képernyõn található combobox-okat a kódszótár alapján.
@@ -146,10 +173,22 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     sParam = IIf(IsNull(frm.Controls("datSZLEVEL_DAT").Value), "", frm.Controls("datSZLEVEL_DAT").Value)
     lstParams.Add sParam, "pSZLEVEL_DAT"
     
-    iMerge = 2
-    sFormatstring = "<||Gy.sz.|Tip.|Dátum|Állapot|Épület|Áramkör|Dolgozó|Sz.levél száma|Sz.levél dátuma|"
-    sQuery = "sp_LekerdRaktar"
+    iMerge = 5
+    If sOBJTIP = "00" Then
+        sFormatstring = "<||Berendezés|"
+    Else
+        sFormatstring = "<||"
+    End If
+    sFormatstring = sFormatstring + "Gy.sz.|Tip.|Dátum|Állapot|Épület|Fûtõmû|Dolgozó|Sz.levél száma|Sz.levél dátuma|"
+    'If sALLAPOT <> "" Then sFormatstring = sFormatstring + "Állapot|"
+    'If lstParams("pEPULET_ID") <> "" Then sFormatstring = sFormatstring + "Épület|"
+    'If lstParams("pFUTOMU_ID") <> "" Then sFormatstring = sFormatstring + "Fûtõmû|"
+    'If lstParams("pDOLG_ID") <> "" Then sFormatstring = sFormatstring + "Dolgozó|"
+    ''If lstParams("pSZLEVEL_SZAM") <> "" Then sFormatstring = sFormatstring + "Sz.levél száma|"
+    'sFormatstring = sFormatstring + "Sz.levél száma|"
+    'If lstParams("pSZLEVEL_DAT") <> "" Then sFormatstring = sFormatstring + "Sz.levél dátuma|"
     
+    sQuery = "sp_LekerdRaktar"
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
 End Function    'Gridder
 

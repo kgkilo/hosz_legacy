@@ -83,6 +83,7 @@ Private Sub Form_Initialize()
     HOOSSZEGZO = "18"
     VIZORA = "19"
     ERZEKELO = "20"
+    MIND = "00"
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)

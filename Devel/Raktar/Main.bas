@@ -4,4 +4,4 @@ Global sReportDir As String
 Global HOOSSZEGZO
 Global VIZORA
 Global ERZEKELO
-
+Global MIND

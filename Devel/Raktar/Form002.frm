@@ -11,15 +11,47 @@ Begin VB.Form Form002
    ClientWidth     =   11880
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
-   ScaleHeight     =   8595
-   ScaleWidth      =   11880
+   ScaleHeight     =   11115
+   ScaleWidth      =   15240
    WindowState     =   2  'Maximized
+   Begin VB.TextBox txtTALALAT 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000004&
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Left            =   10815
+      Locked          =   -1  'True
+      TabIndex        =   39
+      TabStop         =   0   'False
+      Top             =   2625
+      Width           =   960
+   End
+   Begin VB.OptionButton optOBJTIP 
+      Caption         =   "Mind"
+      Height          =   195
+      Index           =   3
+      Left            =   385
+      TabIndex        =   36
+      ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
+      Top             =   1455
+      Width           =   1335
+   End
    Begin VB.Frame frmERZEKELO 
       Caption         =   "Érzékelõ"
-      Height          =   2115
+      Height          =   2430
       Left            =   8505
       TabIndex        =   23
-      Top             =   6300
+      Top             =   5985
       Width           =   3270
       Begin VB.TextBox txtE_PLOMBA 
          Height          =   285
@@ -52,10 +84,10 @@ Begin VB.Form Form002
    End
    Begin VB.Frame frmVIZMERO 
       Caption         =   "Vízmérõ"
-      Height          =   2115
+      Height          =   2430
       Left            =   5040
       TabIndex        =   22
-      Top             =   6300
+      Top             =   5985
       Width           =   3270
       Begin VB.TextBox txtV_PLOMBA 
          Height          =   285
@@ -88,10 +120,10 @@ Begin VB.Form Form002
    End
    Begin VB.Frame frmHOOSSZEGZO 
       Caption         =   "Hõösszegzõ"
-      Height          =   2115
+      Height          =   2430
       Left            =   1575
       TabIndex        =   21
-      Top             =   6300
+      Top             =   5985
       Width           =   3270
       Begin VB.TextBox txtH_PLOMBA 
          Height          =   285
@@ -123,18 +155,27 @@ Begin VB.Form Form002
       End
    End
    Begin VB.TextBox txtSZLEVEL_SZAM 
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   330
       Left            =   8715
       TabIndex        =   17
-      Top             =   1680
-      Width           =   2220
+      Top             =   1050
+      Width           =   3000
    End
    Begin VB.ComboBox cmbMove 
       Height          =   315
       Left            =   3516
       TabIndex        =   10
       Tag             =   "367"
-      Top             =   2715
+      Top             =   2505
       Width           =   3000
    End
    Begin VB.CommandButton cmdMove 
@@ -152,15 +193,15 @@ Begin VB.Form Form002
       Left            =   2205
       TabIndex        =   9
       ToolTipText     =   "F 5"
-      Top             =   2715
+      Top             =   2505
       Width           =   1275
    End
    Begin VB.ComboBox cmbALLAPOT 
       Height          =   315
-      Left            =   3516
+      Left            =   3465
       TabIndex        =   8
       Tag             =   "367"
-      Top             =   855
+      Top             =   630
       Width           =   3000
    End
    Begin VB.CheckBox chkFrissit 
@@ -168,7 +209,7 @@ Begin VB.Form Form002
       Left            =   770
       TabIndex        =   6
       TabStop         =   0   'False
-      Top             =   2205
+      Top             =   2100
       Width           =   285
    End
    Begin VB.OptionButton optOBJTIP 
@@ -178,7 +219,7 @@ Begin VB.Form Form002
       Left            =   385
       TabIndex        =   5
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
-      Top             =   900
+      Top             =   690
       Value           =   -1  'True
       Width           =   1335
    End
@@ -189,7 +230,7 @@ Begin VB.Form Form002
       Left            =   385
       TabIndex        =   4
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
-      Top             =   1470
+      Top             =   1200
       Width           =   1335
    End
    Begin VB.OptionButton optOBJTIP 
@@ -199,7 +240,7 @@ Begin VB.Form Form002
       Left            =   385
       TabIndex        =   3
       ToolTipText     =   "Lenti 3 listára kerülõ berendezés típusok"
-      Top             =   1155
+      Top             =   945
       Width           =   1335
    End
    Begin VB.CommandButton cmdEXIT 
@@ -235,7 +276,7 @@ Begin VB.Form Form002
       Left            =   128
       TabIndex        =   0
       ToolTipText     =   "F 5"
-      Top             =   3195
+      Top             =   2985
       Width           =   1275
    End
    Begin VB.Timer tmrVILLOG 
@@ -259,7 +300,7 @@ Begin VB.Form Form002
       Height          =   2985
       Left            =   1635
       TabIndex        =   2
-      Top             =   3195
+      Top             =   2985
       Width           =   10095
       _Version        =   196608
       _ExtentX        =   17806
@@ -281,7 +322,7 @@ Begin VB.Form Form002
       Height          =   330
       Left            =   8715
       TabIndex        =   18
-      Top             =   2100
+      Top             =   1470
       Width           =   1455
       _ExtentX        =   2566
       _ExtentY        =   582
@@ -297,16 +338,54 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23003137
       CurrentDate     =   38353
+   End
+   Begin MSForms.Label lblTALALAT 
+      Height          =   240
+      Left            =   10080
+      TabIndex        =   40
+      Top             =   2640
+      Width           =   825
+      Caption         =   "Találatok:"
+      Size            =   "1455;423"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmbFUTOMU 
+      Height          =   315
+      Left            =   3465
+      TabIndex        =   38
+      Tag             =   "MEGNEV03"
+      Top             =   1470
+      Width           =   3000
+      VariousPropertyBits=   746604571
+      DisplayStyle    =   3
+      Size            =   "5292;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin VB.Label lblFUTOMU 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Fûtõmû:"
+      Height          =   255
+      Left            =   1890
+      TabIndex        =   37
+      Top             =   1515
+      Width           =   1515
    End
    Begin VB.Label lblSZLEVEL_SZAM 
       Alignment       =   1  'Right Justify
       Caption         =   "Szállítólevél száma:"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -316,16 +395,16 @@ Begin VB.Form Form002
       Left            =   7140
       TabIndex        =   20
       Tag             =   "007"
-      Top             =   1695
+      Top             =   1110
       Width           =   1515
    End
    Begin VB.Label lvlSZLEVEL_DAT 
       Alignment       =   1  'Right Justify
       Caption         =   "Szállítólevél dátuma:"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -335,7 +414,7 @@ Begin VB.Form Form002
       Left            =   7140
       TabIndex        =   19
       Tag             =   "007"
-      Top             =   2115
+      Top             =   1515
       Width           =   1515
    End
    Begin MSForms.ComboBox cmbDOLG_ID 
@@ -343,11 +422,11 @@ Begin VB.Form Form002
       Left            =   8730
       TabIndex        =   16
       Tag             =   "334"
-      Top             =   1260
-      Width           =   3255
+      Top             =   630
+      Width           =   3000
       VariousPropertyBits=   746604571
       DisplayStyle    =   3
-      Size            =   "5741;556"
+      Size            =   "5292;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
@@ -361,7 +440,7 @@ Begin VB.Form Form002
       Height          =   255
       Left            =   7140
       TabIndex        =   15
-      Top             =   1305
+      Top             =   690
       Width           =   1515
    End
    Begin VB.Label lblUGYFELFORM 
@@ -370,7 +449,7 @@ Begin VB.Form Form002
       Caption         =   "RAKTÁR"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   16.5
+         Size            =   18
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -388,41 +467,41 @@ Begin VB.Form Form002
    Begin VB.Shape Shape1 
       BorderColor     =   &H8000000A&
       DrawMode        =   1  'Blackness
-      Height          =   2085
+      Height          =   1875
       Left            =   105
       Shape           =   4  'Rounded Rectangle
-      Top             =   540
-      Width           =   12345
+      Top             =   525
+      Width           =   11745
    End
    Begin VB.Label lblALLAPOT 
       Alignment       =   1  'Right Justify
       Caption         =   "Állapot:"
       Height          =   240
       Index           =   0
-      Left            =   1782
+      Left            =   1890
       TabIndex        =   13
-      Top             =   900
-      Width           =   1654
+      Top             =   690
+      Width           =   1515
    End
    Begin VB.Label lblEPUL 
       Alignment       =   1  'Right Justify
       Caption         =   "Épület:"
       Height          =   255
-      Left            =   7130
+      Left            =   1890
       TabIndex        =   12
-      Top             =   900
-      Width           =   1509
+      Top             =   1950
+      Width           =   1515
    End
    Begin MSForms.ComboBox cmbEPUL 
       Height          =   315
-      Left            =   8720
+      Left            =   3465
       TabIndex        =   11
-      Tag             =   "EPUL"
-      Top             =   855
-      Width           =   3255
+      Tag             =   "MEGNEV01"
+      Top             =   1890
+      Width           =   3000
       VariousPropertyBits=   746604571
       DisplayStyle    =   3
-      Size            =   "5741;556"
+      Size            =   "5292;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
@@ -438,10 +517,10 @@ Begin VB.Form Form002
       Width           =   1500
       Caption         =   "Azonnali frissítés"
       Size            =   "2646;423"
-      FontName        =   "Arial"
-      FontHeight      =   195
+      FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
 End
 Attribute VB_Name = "Form002"
@@ -483,6 +562,7 @@ Private Sub cmdMove_Click()
     If iReturn = vbOK Then
         util.setAllapot grdGrid.TextMatrix(grdGrid.Row, 1), strKovetkezoAllapot, _
             lDOLG_ID, strSZLEVEL_SZAM, strSZLEVEL_DATUM, strMEGJ
+        cmbMove.ListIndex = -1
     End If
 End Sub
 
@@ -497,6 +577,8 @@ Private Sub optOBJTIP_Click(Index As Integer)
         sOBJTIP = VIZORA
     ElseIf optOBJTIP(2) Then
         sOBJTIP = ERZEKELO
+    ElseIf optOBJTIP(3) Then
+        sOBJTIP = MIND
     End If
     iRefresh = 1
     frissit
@@ -519,6 +601,8 @@ Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     
     util.setcombo Me
+    util.megnevFeltolt cmbFUTOMU, "03" 'Fûtõmûvekkel kell feltölteni
+    util.megnevFeltolt cmbEPUL, "01"   'Épületekkel kell feltölteni
     iRefresh = 1
     sOBJTIP = HOOSSZEGZO
     frissit
@@ -537,6 +621,7 @@ Private Sub GridFeltolt()
     
     grdGrid.Redraw = True
     grdGrid.ExtendLastCol = True
+    txtTALALAT = grdGrid.Rows
     
     Screen.MousePointer = vbDefault
 End Sub
