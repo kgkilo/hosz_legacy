@@ -193,7 +193,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Berendez&#xe9;sek &#xe1;llapota">
+<node COLOR="#338800" TEXT="Berendez&#xe9;sek &#xe1;llapota" FOLDED="true">
 <node COLOR="#338800" TEXT="Sz&#xe1;ll&#xed;t&#xf3;n&#xe1;l SZALLITONAL" FOLDED="true">
 <node TEXT="OBJTIP"/>
 <node TEXT="OBJID"/>
@@ -246,7 +246,7 @@
 </node>
 </node>
 <node COLOR="#990000" TEXT="Minden berendez&#xe9;s &#xe1;llapotv&#xe1;ltoz&#xe1;sait t&#xf6;rt&#xe9;netileg nyilv&#xe1;n kell tartani"/>
-<node COLOR="#338800" TEXT="&#xc1;llapotv&#xe1;ltoz&#xe1;sok">
+<node COLOR="#338800" TEXT="&#xc1;llapotv&#xe1;ltoz&#xe1;sok" FOLDED="true">
 <node COLOR="#338800" TEXT="Rakt&#xe1;r -&gt; Sz&#xe1;ll&#xed;t&#xf3;" FOLDED="true">
 <node COLOR="#338800" TEXT="sp_Raktar2Szallito"/>
 <node COLOR="#338800" TEXT="btnRaktar2Szallito"/>
@@ -336,7 +336,7 @@
 </node>
 </node>
 </node>
-<node COLOR="#990000" TEXT="Rakt&#xe1;r lista objektum t&#xed;pusonk&#xe9;nt" FOLDED="true">
+<node COLOR="#338800" TEXT="Rakt&#xe1;r lista objektum t&#xed;pusonk&#xe9;nt" FOLDED="true">
 <node TEXT="TAB_R01" FOLDED="true">
 <node TEXT="ADAT">
 <node TEXT="Gy&#xe1;ri sz&#xe1;m">

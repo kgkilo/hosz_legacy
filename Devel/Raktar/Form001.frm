@@ -6,23 +6,24 @@ Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "Vsflex3.ocx"
 Begin VB.Form Form001 
    Caption         =   "Raktár"
    ClientHeight    =   8100
-   ClientLeft      =   165
-   ClientTop       =   450
+   ClientLeft      =   60
+   ClientTop       =   345
    ClientWidth     =   8880
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
-   ScaleHeight     =   1.91748e5
+   ScaleHeight     =   3.61061e5
    ScaleMode       =   0  'User
-   ScaleWidth      =   2.10739e6
+   ScaleWidth      =   6.20711e6
+   ShowInTaskbar   =   0   'False
    WindowState     =   2  'Maximized
    Begin VB.CommandButton cmdRaktarLista 
       Caption         =   "Raktár lista"
       Height          =   480
-      Left            =   5437
+      Left            =   5430
       TabIndex        =   93
       TabStop         =   0   'False
       ToolTipText     =   "Listát készít a raktáron lévõ berendezésekrõl"
-      Top             =   135
+      Top             =   30
       Width           =   1035
    End
    Begin VB.CommandButton cmdKarbantartandoLista 
@@ -33,17 +34,17 @@ Begin VB.Form Form001
       TabIndex        =   92
       TabStop         =   0   'False
       ToolTipText     =   "Listát készít az ebben az évben még hátralévõ karbantartásokról"
-      Top             =   135
+      Top             =   30
       Width           =   1035
    End
    Begin VB.CommandButton cmdSZALLITO 
       Caption         =   "Szállítólevél"
       Height          =   480
-      Left            =   4215
+      Left            =   4200
       TabIndex        =   91
       TabStop         =   0   'False
       ToolTipText     =   "Szállítólevelet nyomtat a kijelölt típusú berendezésekrõl, amelyekrõl eddig még nem készült ilyen."
-      Top             =   135
+      Top             =   30
       Width           =   1035
    End
    Begin VB.CommandButton cmdNEM_FELSZERELHETO 
@@ -1012,10 +1013,6 @@ Attribute VB_Exposed = False
 Public iRefresh As Integer
 Public sOBJTIP As String
 
-Const HOOSSZEGZO = "18"
-Const VIZORA = "19"
-Const ERZEKELO = "20"
-
 Private Sub cmdE_SAVE_Click()
     util.Save Me, ERZEKELO
 End Sub
@@ -1039,6 +1036,11 @@ Private Sub cmdKarbantartandoLista_Click()
     Nyomtat "TAB_R02.rpt", 0
 End Sub
 
+Private Sub cmdNEM_FELSZERELHETO_Click()
+    util.setallapot grdRaktaron.TextMatrix(grdRaktaron.Row, 1), "N"
+    frissit
+End Sub
+
 Private Sub cmdRaktar2Felszerelt_Click()
     util.athelyez "Raktar", "Felszerelt", grdRaktaron.TextMatrix(grdRaktaron.Row, 1)
     frissit
@@ -1052,6 +1054,11 @@ End Sub
 Private Sub cmdRaktarLista_Click()
     util.prepareTAB "R01"
     Nyomtat "TAB_R01.rpt", 0
+End Sub
+
+Private Sub cmdSELEJT_Click()
+    util.setallapot grdRaktaron.TextMatrix(grdRaktaron.Row, 1), "S"
+    frissit
 End Sub
 
 Private Sub cmdSZALLITO_Click()
@@ -1071,12 +1078,6 @@ End Sub
 
 Private Sub cmdV_SAVE_Click()
     util.Save Me, VIZORA
-End Sub
-
-Private Sub Form_Initialize()
-    sReportDir = "J:\GABOR\WORK\HOSZOLG"
-    Set util = CreateObject("Rakt.Global")
-    util.Init sReportDir
 End Sub
 
 Private Sub grdFelszerelt_SelChange()
@@ -1145,12 +1146,6 @@ Private Sub Form_Load()
     grdRaktaron.Rows = 1
     grdSzallitonal.Rows = 1
     Screen.MousePointer = vbDefault
-End Sub
-
-Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-   If MsgBox("Valóban ki szeretne lépni a rendszerbõl?", _
-        vbQuestion + vbYesNo, "Tisztelt felhasználó!") = vbNo _
-        Then Cancel = True
 End Sub
 
 Private Sub frissit()

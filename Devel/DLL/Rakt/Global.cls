@@ -161,7 +161,7 @@ Public Function GetComboErtek(ByRef cmbCombo As Object) As String
 End Function    'GetComboErtek
 
 Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
-        ByRef sOBJTIP As String, Optional ByRef sAllapot As String) As Boolean
+        ByRef sOBJTIP As String, Optional ByRef sALLAPOT As String) As Boolean
     Dim sFormatstring As String
     Dim sQuery As String
     Dim iMerge As Integer
@@ -170,7 +170,7 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
     
     lstParams.Add sOBJTIP, "pOBJTIP"
     If sKateg = "RAKTAR" Then
-        lstParams.Add sAllapot, "pALLAPOT"
+        lstParams.Add sALLAPOT, "pALLAPOT"
     End If
     iMerge = 2
     sFormatstring = "<||Gy.sz.|Tip.|Dátum"
@@ -239,3 +239,22 @@ Public Function PrepareTAB(ByRef sTAB As String, Optional ByRef sOBJTIP As Strin
 errPrepareTab:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "PrepareTAB"
 End Function
+
+' Egy rekord állapotát változtatja (Aktív, selejt, nem felszerelhetõ) a RAKTAR táblában
+Public Function setAllapot(ByRef sID As String, ByRef sALLAPOT As String) As Boolean
+    On Error GoTo errsetAllapot
+    setAllapot = False
+    
+    Dim lstParams As New Collection
+    
+    lstParams.Add sID, "pID"
+    lstParams.Add sALLAPOT, "pALLAPOT"
+    setAllapot = oAdmin.Exec("sp_UpdRaktarAllapot", lstParams)
+    Exit Function
+    
+errsetAllapot:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "setAllapot"
+End Function    'setAllapot
+
+
+
