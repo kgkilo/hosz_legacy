@@ -509,7 +509,7 @@ Public Function SetPermis(ByRef cmbOBJTIP As Object, ByRef lstControls As Access
     
     Dim iEnable As Integer
     If TypeName(enable) = "Nothing" Then
-        iEnable = 0
+        iEnable = 1
     Else
         iEnable = enable
     End If
