@@ -6,11 +6,6 @@ Global Const PERM_NULL = 0
 Global Const PERM_RO = 1
 Global Const PERM_RW = 2
 
-Global Const MB_YESNO = 4
-Global Const MB_ICONSTOP = 32
-Global Const MB_DEFBUTTON2 = 256
-Global Const DgDef = MB_YESNO + MB_ICONSTOP + MB_DEFBUTTON2
-
 Sub onObjtipEnter(Optional hasSubinf As Boolean)
     With Screen.ActiveForm
         modosVizsg
@@ -30,7 +25,8 @@ Sub onObjtipUpdated()
     DoCmd.Hourglass True
     With Screen.ActiveForm
         If .cmbOBJTIP.ListIndex <> -1 Then
-            fillCmbMegnev
+            enableCmbMegnev
+            util.megnevfeltolt .cmbMEGNEV, .cmbOBJTIP, "MEGNEV"
             disableCmbMegnev
             enableInsQryGrd
             .cmd1 = 6   'Beszúr/Lekérdez/Nézet csoport állapotát állítjuk
@@ -250,20 +246,9 @@ Public Function checkPermis(frm As Form)
     End Select
 End Function
 
-Public Function fillCmbMegnev()
-    DoCmd.Hourglass True
-    With Screen.ActiveForm
-        If .cmbOBJTIP.ListIndex <> -1 Then
-            enableCmbMegnev
-            util.megnevfeltolt .cmbMEGNEV, .cmbOBJTIP, "MEGNEV"
-        End If
-    End With
-    DoCmd.Hourglass False
-End Function
-
 Sub kilep()
     DoCmd.Beep
-    If MsgBox("Biztosan ki szeretne lépni?", DgDef, "Tisztelt " & CurrentUser() & " felhasználó!") = vbYes Then
+    If Megerosit("Biztosan ki szeretne lépni?") = vbYes Then
         DoCmd.Quit
     End If
 End Sub
@@ -336,3 +321,8 @@ Sub subinfTorol()
     End With
     DoCmd.Hourglass False
 End Sub
+
+Public Function Megerosit(msg As String) As Integer
+    Megerosit = MsgBox(msg, vbDefaultButton2 + vbYesNo + vbApplicationModal + vbQuestion, "Tisztelt " & CurrentUser() & " felhasználó!")
+End Function
+

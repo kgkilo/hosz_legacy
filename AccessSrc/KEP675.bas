@@ -3,13 +3,11 @@ Option Explicit
 
 Private Sub cmbOBJTIP_Change()
     If cmbOBJTIP.ListIndex <> -1 Then
-        DoCmd.Hourglass True
         Karbtervlekerd
         If glbPERMIS = PERM_RW Then
             cmdODA.Enabled = True
             cmdVISSZA.Enabled = True
         End If
-        DoCmd.Hourglass False
     End If
 End Sub
 
@@ -41,12 +39,8 @@ Private Sub cmdEXIT_Click()
 End Sub
 
 Private Sub cmdODA_Click()
-    Dim title  As Variant, Msg As Variant, Response As Variant
-    title = "Tisztelt " & CurrentUser() & " felhasználó!"
-    Msg = "Biztosan kapcsolni szeretné?"
     DoCmd.Beep
-    Response = MsgBox(Msg, DgDef, title)
-    If Response = vbYes Then
+    If Megerosit("Biztosan kapcsolni szeretné?") = vbYes Then
         DoCmd.Hourglass True
         util.karbtervkapcsol Controls
         Karbtervlekerd
@@ -55,12 +49,8 @@ Private Sub cmdODA_Click()
 End Sub
 
 Private Sub cmdVISSZA_Click()
-    Dim title  As Variant, Msg As Variant, Response As Variant
-    title = "Tisztelt " & CurrentUser() & " felhasználó!"
-    Msg = "Biztosan le szeretné kapcsolni?"
     DoCmd.Beep
-    Response = MsgBox(Msg, DgDef, title)
-    If Response = vbYes Then
+    If Megerosit("Biztosan le szeretné kapcsolni?") = vbYes Then
         DoCmd.Hourglass True
         util.karbtervszetkapcsol grdKAPCSOLT
         Karbtervlekerd

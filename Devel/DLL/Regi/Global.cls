@@ -38,18 +38,35 @@ End Sub
 '
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
 '
-Public Function Init(ByVal sConnect As String) As Boolean
+Public Function Init(ByRef sIniFile As String, ByRef sUserName As String, ByRef sReportDir As String) As Boolean
     On Error GoTo errInit
     Init = False
 
-    'If CDate(Now()) > "1999/12/31" Then
-    '    MsgBox "A program nem mûködõképes mindaddig, amíg a Mininform Kft (06-62-489-167) ki nem fizeti a programozóknak az õket megilletõ vállalkozási díjat."
-    '    Init = False
-    '    Exit Function
-    'End If
+    'A formel.ini file-ból a szükséges adatok betöltése
+    Dim FileNum, iCount As Integer
+    Dim sInputLine, sDriver, sServer, sDatabase As String
     
-    oAdmin.Login sConnect   'Bejelentkezik az SQL szerverre
-    m_sConnect = sConnect
+    FileNum = FreeFile              'egy üres file sorszám kérése
+    
+    Open sIniFile For Input As FileNum     'File nyitás olvasásra
+    While Not EOF(FileNum)
+        Line Input #FileNum, sInputLine
+        iCount = InStr(1, sInputLine, "=", 0)
+        Select Case Left(sInputLine, IIf(iCount = 0, 0, iCount - 1))
+            Case "driver"
+                sDriver = sInputLine
+            Case "server"
+                sServer = sInputLine
+            Case "database"
+                sDatabase = sInputLine
+            Case "sReportDir"
+                sReportDir = Right(Trim(sInputLine), Len(sInputLine) - iCount)
+        End Select
+    Wend
+    Close #FileNum                              'File zárás
+
+    m_sConnect = sDriver & "; " & sServer & ";uid=" & sUserName & ";pwd=" & sUserName & ";" & sDatabase
+    oAdmin.Login m_sConnect   'Bejelentkezik az SQL szerverre
     
     g_oKodszotar.Load "sp_Q271", Nothing, "271", "Szervezeti egység", 2  'Betöltjük a kódszótári elemeket
     g_oKodszotar.Load "sp_Q272", Nothing, "272", "Hõlépcsõ", 3

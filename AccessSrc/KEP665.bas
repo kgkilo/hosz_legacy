@@ -10,9 +10,9 @@ End Sub
 Private Sub cmbOBJTIP_Change()
     If cmbOBJTIP.ListIndex <> -1 Then
         enableCmbMegnev
-        Dim S As String
-        S = util.getcomboertek(cmbOBJTIP)
-        Select Case S
+        Dim sObjtip As String
+        sObjtip = util.getcomboertek(cmbOBJTIP)
+        Select Case sObjtip
             Case "01"   'Épület
                 [Param].SourceObject = "Kep665 subepul"
             Case "03"   'Fûtõmû
