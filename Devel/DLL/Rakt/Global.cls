@@ -122,6 +122,7 @@ Public Function SetCombo(ByRef frm As Object) As Boolean
     Exit Function
     
 errSetCombo:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "SetCombo"
 End Function    'SetCombo
 
 Public Function SetComboVal(ByRef cmbCombo As Object, ByRef sID As String) As Boolean
@@ -192,14 +193,22 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sOBJTIP As String, _
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
 End Function    'Gridder
 
-Public Function Save(ByRef frm As Object) As Boolean
+Public Function Save(ByRef frm As Object, ByRef sKategoria As String) As Boolean
     On Error GoTo errSave
     Save = False
+    
+    Dim sQuery As String
+    Select Case sKategoria
+        Case "BER":
+            sQuery = "sp_UpdRaktarObj"
+        Case "KEP"
+            sQuery = "sp_InsRaktarKepv"
+    End Select
     
     Dim lstParams As New Collection
     ControlsGet lstParams, frm  'Lekérdezzük az összes látható kontroll értékét
     
-    If oAdmin.Exec("sp_UpdRaktarObj", lstParams) = True Then 'Végrehajtjuk a frissítést
+    If oAdmin.Exec(sQuery, lstParams) = True Then 'Végrehajtjuk a frissítést
         Save = True
     End If
     Exit Function
@@ -288,3 +297,32 @@ errLoad:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Load"
 End Function    'Load
 
+Public Function RefreshCombo(ByRef cmbCombo As Object) As Boolean
+    On Error GoTo errRefreshCombo
+    RefreshCombo = False
+    
+    Dim sTag As String
+    sTag = cmbCombo.Tag
+    
+    Dim sSQL As String
+    Dim sName As String
+    Dim sLongName As String
+    Dim iSize As Byte
+    
+    With g_oKodszotar
+        With .Section(sTag)
+            sSQL = .SQL
+            sName = .Name
+            sLongName = .LongName
+            iSize = .Size
+        End With
+        
+        .Remove sTag
+        .Load sSQL, Nothing, sName, sLongName, iSize
+    End With
+    RefreshCombo = True
+    Exit Function
+    
+errRefreshCombo:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "RefreshCombo"
+End Function    'RefreshCombo

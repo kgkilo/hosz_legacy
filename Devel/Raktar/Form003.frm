@@ -24,7 +24,26 @@ Begin VB.Form Form003
    ScaleHeight     =   7290
    ScaleWidth      =   11910
    StartUpPosition =   1  'CenterOwner
+   Begin VB.CommandButton cmdKEPV 
+      Caption         =   "Új/Módosít"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   5880
+      TabIndex        =   90
+      ToolTipText     =   "F 5"
+      Top             =   6795
+      Width           =   1135
+   End
    Begin VB.TextBox txtMEGB_MUN_TEL 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   9975
       TabIndex        =   80
@@ -32,6 +51,7 @@ Begin VB.Form Form003
       Width           =   1065
    End
    Begin VB.TextBox txtMEGB_MOB_TEL 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   8820
       TabIndex        =   79
@@ -39,6 +59,7 @@ Begin VB.Form Form003
       Width           =   1065
    End
    Begin VB.TextBox txtMEGB_LAK_TEL 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   7655
       TabIndex        =   78
@@ -46,6 +67,7 @@ Begin VB.Form Form003
       Width           =   1065
    End
    Begin VB.TextBox txtMEGB_NEV 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   7655
       TabIndex        =   77
@@ -53,6 +75,7 @@ Begin VB.Form Form003
       Width           =   3375
    End
    Begin VB.TextBox txtMUN_TEL 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   4410
       TabIndex        =   76
@@ -60,6 +83,7 @@ Begin VB.Form Form003
       Width           =   1065
    End
    Begin VB.TextBox txtMOB_TEL 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   3255
       TabIndex        =   75
@@ -67,6 +91,7 @@ Begin VB.Form Form003
       Width           =   1065
    End
    Begin VB.TextBox txtLAK_TEL 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   2140
       TabIndex        =   74
@@ -74,6 +99,7 @@ Begin VB.Form Form003
       Width           =   1065
    End
    Begin VB.TextBox txtCIM 
+      Enabled         =   0   'False
       Height          =   330
       Left            =   2140
       TabIndex        =   71
@@ -152,41 +178,23 @@ Begin VB.Form Form003
       TabPicture(1)   =   "Form003.frx":001C
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "lblV_TIPUS"
-      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "lblV_HITIDO"
-      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "lblV_ELHELYEZ"
-      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "lblV_IMPULZUS"
-      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "lblV_TOMEGARAM"
-      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "lblV_PLOMBA"
-      Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "lblV_MEGJ"
-      Tab(1).Control(6).Enabled=   0   'False
       Tab(1).Control(7)=   "lblV_GYSZAM"
-      Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "lblV_ATMERO"
-      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).Control(9)=   "txtV_MEGJ"
-      Tab(1).Control(9).Enabled=   0   'False
       Tab(1).Control(10)=   "txtV_PLOMBA"
-      Tab(1).Control(10).Enabled=   0   'False
       Tab(1).Control(11)=   "txtV_IMPULZUS"
-      Tab(1).Control(11).Enabled=   0   'False
       Tab(1).Control(12)=   "txtV_ELHELYEZ"
-      Tab(1).Control(12).Enabled=   0   'False
       Tab(1).Control(13)=   "txtV_HITIDO"
-      Tab(1).Control(13).Enabled=   0   'False
       Tab(1).Control(14)=   "txtV_TIPUS"
-      Tab(1).Control(14).Enabled=   0   'False
       Tab(1).Control(15)=   "txtV_GYSZAM"
-      Tab(1).Control(15).Enabled=   0   'False
       Tab(1).Control(16)=   "txtV_TOMEGARAM"
-      Tab(1).Control(16).Enabled=   0   'False
       Tab(1).Control(17)=   "txtV_ATMERO"
-      Tab(1).Control(17).Enabled=   0   'False
       Tab(1).Control(18)=   "txtV_ID"
       Tab(1).Control(18).Enabled=   0   'False
       Tab(1).ControlCount=   19
@@ -194,47 +202,27 @@ Begin VB.Form Form003
       TabPicture(2)   =   "Form003.frx":0038
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "lblE_TIPUS"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "lblE_HITIDO"
-      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).Control(2)=   "lblE_ELHELYEZ"
-      Tab(2).Control(2).Enabled=   0   'False
       Tab(2).Control(3)=   "lblE_BENYHOSSZ"
-      Tab(2).Control(3).Enabled=   0   'False
       Tab(2).Control(4)=   "lblE_SZUKSHOSSZ"
-      Tab(2).Control(4).Enabled=   0   'False
       Tab(2).Control(5)=   "lblE_PLOMBA2"
-      Tab(2).Control(5).Enabled=   0   'False
       Tab(2).Control(6)=   "lblE_MEGJ"
-      Tab(2).Control(6).Enabled=   0   'False
       Tab(2).Control(7)=   "lblE_GYSZAM"
-      Tab(2).Control(7).Enabled=   0   'False
       Tab(2).Control(8)=   "lblE_VEZHOSSZ"
-      Tab(2).Control(8).Enabled=   0   'False
       Tab(2).Control(9)=   "lblE_PLOMBA"
-      Tab(2).Control(9).Enabled=   0   'False
       Tab(2).Control(10)=   "txtE_MEGJ"
-      Tab(2).Control(10).Enabled=   0   'False
       Tab(2).Control(11)=   "txtE_PLOMBA2"
-      Tab(2).Control(11).Enabled=   0   'False
       Tab(2).Control(12)=   "txtE_BENYHOSSZ"
-      Tab(2).Control(12).Enabled=   0   'False
       Tab(2).Control(13)=   "txtE_ELHELYEZ"
-      Tab(2).Control(13).Enabled=   0   'False
       Tab(2).Control(14)=   "txtE_HITIDO"
-      Tab(2).Control(14).Enabled=   0   'False
       Tab(2).Control(15)=   "txtE_TIPUS"
-      Tab(2).Control(15).Enabled=   0   'False
       Tab(2).Control(16)=   "txtE_GYSZAM"
-      Tab(2).Control(16).Enabled=   0   'False
       Tab(2).Control(17)=   "txtE_SZUKSHOSSZ"
-      Tab(2).Control(17).Enabled=   0   'False
       Tab(2).Control(18)=   "txtE_VEZHOSSZ"
-      Tab(2).Control(18).Enabled=   0   'False
       Tab(2).Control(19)=   "txtE_ID"
       Tab(2).Control(19).Enabled=   0   'False
       Tab(2).Control(20)=   "txtE_PLOMBA"
-      Tab(2).Control(20).Enabled=   0   'False
       Tab(2).ControlCount=   21
       Begin VB.TextBox Text3 
          Height          =   330
@@ -939,9 +927,10 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Public lOBJID As Integer
+Public iRet As Integer
 
 Private Sub cmbKEPVIS_Change()
-    If cmbKEPVIS.ListIndex > -1 Then
+    If cmbKEPVIS.ListIndex <> -1 Then
         util.Load Me, util.getComboErtek(cmbKEPVIS), "KEP"
     End If
 End Sub
@@ -950,16 +939,41 @@ Private Sub cmdCLOSE_Click()
     Unload Me
 End Sub
 
+Private Sub cmdKEPV_Click()
+    If cmbKEPVIS.ListIndex <> -1 Then
+        Form004.lKEPVID = util.getComboErtek(cmbKEPVIS)
+    Else
+        Form004.lKEPVID = 0
+    End If
+    
+    Form004.Show vbModal
+    
+    If iRet = vbOK Then
+        Screen.MousePointer = vbHourglass
+        util.RefreshCombo Form003.cmbKEPVIS
+        util.setCombo Form003
+        txtCIM = ""
+        txtLAK_TEL = ""
+        txtMOB_TEL = ""
+        txtMUN_TEL = ""
+        txtMEGB_NEV = ""
+        txtMEGB_LAK_TEL = ""
+        txtMEGB_MOB_TEL = ""
+        txtMEGB_MUN_TEL = ""
+        Screen.MousePointer = vbDefault
+    End If
+End Sub
+
 Private Sub cmdOK_Click()
     Screen.MousePointer = vbHourglass
-    util.Save Me
+    util.Save Me, "BER"
     Screen.MousePointer = vbDefault
     Unload Me
 End Sub
 
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
-    util.setcombo Me
+    util.setCombo Me
     If lOBJID > 0 Then
         util.Load Me, lOBJID, "BER"
     End If
