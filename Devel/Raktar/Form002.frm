@@ -250,11 +250,13 @@ Begin VB.Form Form002
       Width           =   1275
    End
    Begin VB.CheckBox chkFrissit 
+      Enabled         =   0   'False
       Height          =   285
       Left            =   770
       TabIndex        =   5
       TabStop         =   0   'False
       Top             =   2100
+      Visible         =   0   'False
       Width           =   285
    End
    Begin VB.OptionButton optOBJTIP 
@@ -384,7 +386,7 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   38353
    End
    Begin MSComCtl2.DTPicker datHITIDO 
@@ -416,7 +418,7 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   38414.0047569444
    End
    Begin VB.Label lblSZUKSHOSSZ 
@@ -647,6 +649,7 @@ Begin VB.Form Form002
       Left            =   150
       TabIndex        =   24
       Top             =   1875
+      Visible         =   0   'False
       Width           =   1500
       Caption         =   "Azonnali frissítés"
       Size            =   "2646;423"
@@ -705,6 +708,7 @@ End Sub
 
 Private Sub cmbFUTOMU_Change()
     iRefresh = 1
+    util.EpuletFeltolt cmbEPUL, cmbFUTOMU    'Épületekkel kell feltölteni
     frissit
 End Sub
 
@@ -822,8 +826,8 @@ Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     
     util.setCombo Me
-    util.megnevFeltolt cmbFUTOMU, "03" 'Fûtõmûvekkel kell feltölteni
-    util.megnevFeltolt cmbEPUL, "01"   'Épületekkel kell feltölteni
+    util.MegnevFeltolt cmbFUTOMU, "03" 'Fûtõmûvekkel kell feltölteni
+    util.EpuletFeltolt cmbEPUL  'Épületekkel kell feltölteni
     iRefresh = 1
     sOBJTIP = HOOSSZEGZO
     frissit
@@ -847,6 +851,10 @@ End Sub
 
 
 Private Sub frissit()
+    tmrVILLOG.Enabled = True
+    Exit Sub
+    'TODO Azonnali frissites mindig bekapcsolódott, ha a gridre kattintott.
+    'TODO Ideiglenesen kiiktatva
     If iRefresh = 1 Then
         If chkFrissit = 1 Then
             GridFeltolt

@@ -105,6 +105,40 @@ errMegnevFeltolt:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "MegnevFeltolt"
 End Function    'MegnevFeltolt
 
+'   EpuletFeltolt
+'
+'   Feltölti az épület neveket tartalmazó combobox-ot a választott fûtõmûnek megfelelõen.
+'
+'   Paraméterek:    cmbMegnev As Object -   a feltöltendõ combobox
+'                   cmbFutomu As Object -   a fûtõmûvek combobox-a
+'
+'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
+'
+Public Function EpuletFeltolt(ByRef cmbEpul As Object, Optional ByRef cmbFutomu As Object) As Boolean
+    On Error GoTo errEpuletFeltolt
+    EpuletFeltolt = False
+    
+    Dim sSectName As String
+    sSectName = "MEGNEV01"
+    
+    g_oKodszotar.Remove sSectName    'Töröljük az ál-kódszótári MEGNEV szekciót
+    
+    Dim sFutomu As String
+    If TypeName(cmbFutomu) = "Nothing" Then
+        sFutomu = "NULL"
+    Else
+        sFutomu = ComboBoxGet(Nothing, cmbFutomu)
+    End If
+    
+    g_oKodszotar.Load "sp_FillEpuletByFutomu", Array("pFUTOMU_ID", sFutomu), sSectName, "Objektum megnevezése", 100
+    EpuletFeltolt = ComboBoxSet(cmbEpul, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
+    cmbEpul.ListWidth = 350
+    Exit Function
+    
+errEpuletFeltolt:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "EpuletFeltolt"
+End Function    'MegnevFeltolt
+
 '   SetCombo
 '
 '   Feltölti a képernyõn található combobox-okat a kódszótár alapján.
