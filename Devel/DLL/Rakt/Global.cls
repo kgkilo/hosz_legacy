@@ -66,6 +66,9 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     oAdmin.Login m_sConnect   'Bejelentkezik az SQL szerverre
     
     g_oKodszotar.Load "sp_Q316", Nothing, "316", "Leolvasási mód", 2
+    g_oKodszotar.Load "sp_Q365", Nothing, "365", "Hõösszegzõ helyzet", 2
+    g_oKodszotar.Load "sp_Q366", Nothing, "366", "Elektronika", 2
+    g_oKodszotar.Load "sp_Q367", Nothing, "367", "Raktár állapot", 2
     
     Init = True
     Exit Function
@@ -78,17 +81,23 @@ End Function    'Init
 '   Feltölti a kiválasztott objektum adataival a képernyõt.
 '   Paraméterek:    frm as Object   -   a feltöltendõ képernyõ
 '                   sID as String   -   a raktár/felszerelt/szállító rekord id-je
+'                   sOBJTIP as String   -   az aktív objektumtípus
+'                   sHonnan as String   -   melyik gridbõl érkezett a kérés
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
-Public Function LoadInfo(ByRef frm As Object, ByVal sID As Long, ByRef sHonnan As String) As Boolean
+Public Function LoadInfo(ByRef frm As Object, ByVal sID As Long, _
+        ByRef sOBJTIP As String, ByRef sHonnan As String) As Boolean
     On Error GoTo errLoadInfo
     LoadInfo = False
     
     Dim sQuery As String
     Dim lstParams As New Collection 'Betesszük az azonosítót a lekérdezés paraméterei közé
     
+    sQuery = "sp_LoadRaktarInfo"
+    
     lstParams.Add sID, "pID"
-    sQuery = "sp_Load" + sHonnan + "Info"
-       
+    lstParams.Add sOBJTIP, "pOBJTIP"
+    lstParams.Add UCase(Left(sHonnan, 1)), "pFROM"
+    
     Dim rs As New ADODB.Recordset   'Betöltjük az azonosító alapján a rekordot
     If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
         If ControlsSet(rs, frm) Then    'Ha sikerült, feltöltjük a képernyõ kontrolljait adatokkal.
@@ -152,7 +161,7 @@ Public Function GetComboErtek(ByRef cmbCombo As Object) As String
 End Function    'GetComboErtek
 
 Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
-        ByRef sOBJTIP As String, ByRef frm As Object) As Boolean
+        ByRef sOBJTIP As String, Optional ByRef sAllapot As String) As Boolean
     Dim sFormatstring As String
     Dim sQuery As String
     Dim iMerge As Integer
@@ -160,6 +169,9 @@ Public Function Gridder(ByRef oGrid As Object, ByRef sKateg As String, _
     Dim lstParams As New Collection
     
     lstParams.Add sOBJTIP, "pOBJTIP"
+    If sKateg = "RAKTAR" Then
+        lstParams.Add sAllapot, "pALLAPOT"
+    End If
     iMerge = 2
     sFormatstring = "<||Gy.sz.|Tip.|Dátum"
     sQuery = "sp_Fill" + sKateg
@@ -186,3 +198,44 @@ errAthelyez:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Athelyez"
 End Function    'Athelyez
 
+Public Function Save(ByRef frm As Object, ByVal sKategoria As String) As Boolean
+    On Error GoTo errSave
+    Save = False
+    
+    Dim lstParams As New Collection 'és átadjuk majd paraméterként
+    
+    ControlsGet lstParams, frm  'Lekérdezzük az összes látható kontroll értékét
+    lstParams.Add sKategoria, "pOBJTIP"
+    
+    If oAdmin.Exec("sp_UpdRaktarObj", lstParams) = True Then 'Végrehajtjuk a frissítést
+        Save = True
+    End If
+    Exit Function
+    
+errSave:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Save"
+End Function    'Save
+
+Public Function PrepareTAB(ByRef sTAB As String, Optional ByRef sOBJTIP As String) As Boolean
+    On Error GoTo errPrepareTab
+    PrepareTAB = False
+    
+    Dim sQuery As String
+    Dim lstParams As New Collection
+    
+    sQuery = "sp_MakeTAB_" & sTAB
+    Select Case sTAB
+        Case "R01"  'Raktár lista objektum típusonként csoportosítva
+
+        Case "R02"
+        
+        Case "R03"  'Szállítólevél objektum típusra szûrve
+            lstParams.Add sOBJTIP, "pOBJTIP"
+    End Select
+    
+    PrepareTAB = oAdmin.Exec(sQuery, lstParams)
+    Exit Function
+    
+errPrepareTab:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "PrepareTAB"
+End Function
