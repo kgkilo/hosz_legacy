@@ -9,6 +9,11 @@ Public Const P_UPDATE = 2
 Public Const P_INSERT = 4
 Public Const P_DELETE = 8
 
+Public Const NORMAL = 0
+Public Const DISZPECSER = 1
+Public Const LABOR = 2
+Public Const MUNKALAP = 3
+
 '   ControlsSet
 '
 '   Kitölti az adott form kontrolljait az adott mezõk
@@ -362,7 +367,7 @@ Public Function FillGrid(ByVal sQry As String, ByVal lstParams As Collection, _
         .BackColorAlternate = &H8000000F
         .AutoSize 2, .Cols - 2
         .ColWidth(1) = 0
-        
+        .WordWrap = 1
         .MergeCells = 3
         Dim i As Integer
         For i = 1 To iMerge

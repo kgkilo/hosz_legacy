@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "Vsflex3.ocx"
+Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
@@ -9,7 +9,7 @@ Begin VB.Form Form001
    ClientTop       =   345
    ClientWidth     =   11880
    BeginProperty Font 
-      Name            =   "MS Sans Serif"
+      Name            =   "Arial"
       Size            =   8.25
       Charset         =   238
       Weight          =   700
@@ -19,6 +19,7 @@ Begin VB.Form Form001
    EndProperty
    Icon            =   "Form001.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    ScaleHeight     =   8595
    ScaleMode       =   0  'User
    ScaleWidth      =   12718.25
@@ -26,6 +27,7 @@ Begin VB.Form Form001
    WindowState     =   2  'Maximized
    Begin VB.CommandButton cmdMASOL 
       Caption         =   "Másolat"
+      Enabled         =   0   'False
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   9.75
@@ -256,7 +258,7 @@ Begin VB.Form Form001
       _ExtentY        =   8599
       _StockProps     =   228
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -265,7 +267,7 @@ Begin VB.Form Form001
          Strikethrough   =   0   'False
       EndProperty
       Appearance      =   1
-      ConvInfo        =   1413783674
+      ConvInfo        =   1418783674
    End
    Begin Crystal.CrystalReport rep 
       Left            =   0
@@ -307,7 +309,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -339,7 +341,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMTOL 
@@ -371,7 +373,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -403,8 +405,59 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23527425
+      Format          =   23068673
       CurrentDate     =   37013
+   End
+   Begin MSComCtl2.DTPicker datMUNELV 
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy. MM. dd."
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
+      Height          =   330
+      Left            =   5085
+      TabIndex        =   42
+      Top             =   2925
+      Width           =   1455
+      _ExtentX        =   2566
+      _ExtentY        =   582
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CheckBox        =   -1  'True
+      DateIsNull      =   -1  'True
+      Format          =   23068673
+      CurrentDate     =   37013
+   End
+   Begin VB.Label lblMUNELV 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Végezh.:"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Index           =   1
+      Left            =   3465
+      TabIndex        =   43
+      Top             =   2970
+      Width           =   1650
    End
    Begin MSForms.ComboBox cmbTELEPHSZ 
       Height          =   315
@@ -435,7 +488,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -454,7 +507,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -486,7 +539,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -511,7 +564,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -530,7 +583,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -566,7 +619,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -585,7 +638,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -604,7 +657,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -674,7 +727,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -710,7 +763,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -819,8 +872,8 @@ Begin VB.Form Form001
       Caption         =   "Munkalapok"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   17.25
-         Charset         =   238
+         Size            =   16.5
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -840,7 +893,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -859,7 +912,7 @@ Begin VB.Form Form001
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
-         Charset         =   238
+         Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
@@ -912,7 +965,7 @@ Private Sub cmdCSOPLIST_Click()
     If MsgBox("Biztosan nyomtatni szeretné a választott munkalapokat?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
         Dim i As Integer
         With grdMUNKALAP
-            If util.getcomboertek(cmbMLAPTIP) = 1 Then
+            If util.getComboErtek(cmbMLAPTIP) = 1 Then
                 For i = 1 To grdMUNKALAP.Rows - 1
                     util.printmunkalap "1", .TextMatrix(i, 1)
                     Nyomtat "munuf.rpt", 1
@@ -931,6 +984,7 @@ End Sub
 
 Private Sub cmdEXIT_Click()
     Unload Form001
+    Unload FormStart
 End Sub
 
 Private Sub cmdLIST_Click()
@@ -990,7 +1044,7 @@ Private Sub cmdFRISSIT_Click()
     iOra = 0
     With grdMUNKALAP
         For i = 1 To .Rows - 1
-            t = .TextMatrix(i, 13)
+            t = .TextMatrix(i, 14)
             If t <> "" Then iOra = iOra + CLng(t)
         Next i
     End With
@@ -1016,21 +1070,36 @@ End Sub
 
 Private Sub Form_Activate()
     Form001.Caption = "Munkalap nyilvántartás  " & AktivForm()
+    
     KeyPreview = True
 End Sub
 
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     iRefresh = 0
-    util.setcombo Me
-    datDATUMIG.Value = Date
-    datDATUMTOL.Value = DateAdd("m", -1, Date)
-    datMUNDATTOL.Value = Date
-    datMUNDATIG.Value = Date
+    
+    If iWorkMode = DISZPECSER Then
+        cmdCSOPLIST.Enabled = False
+        cmdMASOL.Enabled = False
+    Else
+        cmdMASOL.Enabled = True
+    End If
+    
+    util.SetCombo Me
+    datDATUMIG.Value = DateValue(Now())
+    If iWorkMode = DISZPECSER Then
+        datDATUMTOL.Value = DateValue(Now())
+    Else
+        datDATUMTOL.Value = DateValue(DateAdd("m", -1, Now()))
+    End If
+    datMUNDATTOL.Value = DateValue(Now())
+    datMUNDATIG.Value = DateValue(Now())
+    datMUNELV.Value = DateValue(Now())
     datMUNDATTOL.Value = ""
     datMUNDATIG.Value = ""
-    util.setcomboVal cmbMLAPTIP, "1"
-    util.setcomboVal cmbALLAPOT, "5"
+    datMUNELV.Value = ""
+    util.setComboVal cmbMLAPTIP, "1"
+    util.setComboVal cmbALLAPOT, "5"
     Screen.MousePointer = vbDefault
 End Sub
 
@@ -1045,7 +1114,8 @@ Private Sub KeyCommand(Keycode As Integer)
         Case vbKeyF1:
         Case vbKeyX:
             If CtrlKey Then
-                Unload Me
+                Unload Form001
+                Unload FormStart
             End If
         Case vbKeyEscape: cmdEXIT_Click
         Case vbKeyInsert: cmdUJ_Click
@@ -1069,8 +1139,8 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 End Sub
 
 Sub enableCsoportosNyomtatas()
-    If cmbMLAPTIP.ListIndex <> -1 And util.getcomboertek(cmbALLAPOT) = "1" Then
-        cmdCSOPLIST.Enabled = True
+    If cmbMLAPTIP.ListIndex <> -1 And util.getComboErtek(cmbALLAPOT) = "1" Then
+        If iWorkMode <> DISZPECSER Then cmdCSOPLIST.Enabled = True
         cmdLIST.Enabled = True
     Else
         cmdCSOPLIST.Enabled = False

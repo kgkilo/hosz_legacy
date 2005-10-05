@@ -13,7 +13,7 @@ Public Function WordAppNewDoc(S_DOCPATH As String, Template As String, DocName A
     Dim WrdDoc As Object        ' Word alkalmazás dokumentumai
         
     ' Ellenõrizzük, hogy létezik-e már a dokumentum
-    'MsgBox sSavePath & DocName, , "Dokumentum neve"
+    'MsgBox sSavePath & DocName & Tipus, , "Dokumentum neve"
     If Dir(sSavePath & DocName & Tipus, vbNormal) = Empty Then
         g_DocAct = True
         If Not IsNull(Template) And Template <> "Normal" Then
@@ -113,7 +113,7 @@ Public Function InsTextToWord(WrdDoc As Object, ByRef lstReplace As Collection) 
     For Each z In lstReplace
         'Tartomány az egész dokumentumra pozicionálása
         Set WDocRange = WrdDoc.Range(Start:=0, _
-            End:=WrdDoc.Paragraphs(WrdDoc.Paragraphs.Count).Range.End)
+            end:=WrdDoc.Paragraphs(WrdDoc.Paragraphs.Count).Range.end)
         With WDocRange
             .Find.Text = "<" + CStr(z.Name) + ">"
             .Find.Forward = True

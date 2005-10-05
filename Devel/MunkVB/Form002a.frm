@@ -89,7 +89,7 @@ Begin VB.Form Form002a
    Begin VB.Label Label2 
       Caption         =   "óra"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -108,7 +108,7 @@ Begin VB.Form Form002a
       Alignment       =   1  'Right Justify
       Caption         =   "Elvégzett munka ideje"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -127,7 +127,7 @@ Begin VB.Form Form002a
       Alignment       =   1  'Right Justify
       Caption         =   "Elvégzett munka dátuma"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -163,7 +163,7 @@ Begin VB.Form Form002a
       Alignment       =   1  'Right Justify
       Caption         =   "Munkát végzõ dolgozó"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -186,65 +186,61 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Public mode As Long
 
-
 Private Sub cmdClose_Click()
- Back Me
+    Back Me
 End Sub
 
-
 Private Sub cmdOK_Click()
- If Me.txtMUNORA <> "" And Me.txtMUNDAT <> "" And cmbDOLG_ID.ListIndex <> -1 Then
-  util.rekordinsert Me, "Telj"
-  util.munkalapallapot txtOBJID, 4
-  Form002.Munora = Me.txtMUNORA
-  Form002.Mundat = Me.txtMUNDAT
-  Back Me
- Else
-  MsgBox "A teljesítményadatok helytelenül vannak megadva!", vbExclamation, "Tisztelt felhasználó!"
- End If
+    If txtMUNORA <> "" And txtMUNDAT <> "" And cmbDOLG_ID.ListIndex <> -1 Then
+        util.rekordinsert Me, "Telj"
+        util.munkalapallapot txtOBJID, 4
+        Form002.Munora = txtMUNORA
+        Form002.Mundat = txtMUNDAT
+        Back Me
+    Else
+        MsgBox "A teljesítményadatok megadása hibás!", vbExclamation, "Tisztelt felhasználó!"
+    End If
 End Sub
 
 Private Sub Form_Activate()
- Form002a.Caption = "Munkavégzés  " & AktivForm()
- txtMUNDAT = Form002.Mundat
- txtMUNORA = Form002.Munora
+    Form002a.Caption = "Munkavégzés  " & AktivForm()
+    txtMUNDAT = Form002.Mundat
+    txtMUNORA = Form002.Munora
 End Sub
 
 Private Sub Form_Load()
- KeyPreview = True
- util.setcombo Me
- 'Me.txtMUNDAT = Date
- 'txtSZERZ_ID = Form002.spcID
- If mode <> 0 Then
-  'util.rekordfeltolt Me, "SZERZTET", mode
- End If
+    KeyPreview = True
+    util.setcombo Me
+    'txtMUNDAT = Date
+    'txtSZERZ_ID = Form002.spcID
+    
+    If mode <> 0 Then
+        'util.rekordfeltolt Me, "SZERZTET", mode
+    End If
 End Sub
 
 Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
- 'Keycode = 0
+    KeyCommand Keycode
+    'Keycode = 0
 End Sub
 
 Private Sub KeyCommand(Keycode As Integer)
- Static CtrlKey As Boolean
+    Static CtrlKey As Boolean
  
- Select Case Keycode
-  Case vbKeyF1:
-  Case vbKeyX:
-             If CtrlKey Then
-              Unload Me
-             End If
-  Case vbKeyEscape: cmdClose_Click
-  Case vbKeyF5: cmdOK_Click
- End Select
- If Keycode = vbKeyControl Then
-  CtrlKey = True
- Else
-  CtrlKey = False
- End If
+    Select Case Keycode
+        Case vbKeyF1:
+        Case vbKeyX:
+            If CtrlKey Then
+                Unload Me
+            End If
+        Case vbKeyEscape: cmdClose_Click
+        Case vbKeyF5: cmdOK_Click
+    End Select
+    
+    If Keycode = vbKeyControl Then
+        CtrlKey = True
+    Else
+        CtrlKey = False
+    End If
 End Sub
 
-
-Private Sub lblIRSZ_Click()
-
-End Sub

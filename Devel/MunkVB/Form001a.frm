@@ -23,6 +23,17 @@ Begin VB.Form Form001a
    ScaleHeight     =   5730
    ScaleWidth      =   11910
    StartUpPosition =   1  'CenterOwner
+   Begin VB.TextBox spcOBJTIP 
+      Alignment       =   2  'Center
+      Enabled         =   0   'False
+      Height          =   315
+      Left            =   3990
+      TabIndex        =   64
+      TabStop         =   0   'False
+      Top             =   5250
+      Visible         =   0   'False
+      Width           =   150
+   End
    Begin VB.TextBox txtUJ 
       Alignment       =   2  'Center
       Height          =   315
@@ -206,6 +217,15 @@ Begin VB.Form Form001a
    End
    Begin VB.TextBox txtMUNELV 
       Alignment       =   2  'Center
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy.MM.dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
       Height          =   315
       Left            =   5670
       TabIndex        =   10
@@ -224,6 +244,15 @@ Begin VB.Form Form001a
    End
    Begin VB.TextBox txtKIALLDAT 
       Alignment       =   2  'Center
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy.MM.dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
       Height          =   315
       Left            =   3195
       TabIndex        =   3
@@ -232,6 +261,15 @@ Begin VB.Form Form001a
    End
    Begin VB.TextBox txtBEJDAT 
       Alignment       =   2  'Center
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy.MM.dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
       Height          =   315
       Left            =   2205
       TabIndex        =   2
@@ -349,7 +387,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Felújított"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -368,7 +406,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Új"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -405,7 +443,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Plombázás módja"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -424,7 +462,7 @@ Begin VB.Form Form001a
       Alignment       =   2  'Center
       Caption         =   "Sorszám"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -441,7 +479,7 @@ Begin VB.Form Form001a
    Begin VB.Label lblHIBLEIR 
       Caption         =   "Hiba leírása"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -459,7 +497,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Végzõ szerv."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -494,7 +532,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Karbantartás típ."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -529,7 +567,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Munkavégzés típ."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -564,7 +602,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Szolgáltatás típ."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -616,7 +654,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Mûvelet típ."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -634,7 +672,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Munkát felvevõ szerv."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -675,7 +713,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Munkalapot kapja"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -710,7 +748,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Munka idõtartama"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -728,7 +766,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Munka végezhetõ"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -766,7 +804,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Típus hiba"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -801,7 +839,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Szolgáltatás jellege"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -836,7 +874,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Munkát felvevõ dolgozó"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -875,7 +913,7 @@ Begin VB.Form Form001a
       Alignment       =   1  'Right Justify
       Caption         =   "Fõkönyvi szám"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -893,7 +931,7 @@ Begin VB.Form Form001a
       Alignment       =   2  'Center
       Caption         =   "Kiállítva"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -902,16 +940,16 @@ Begin VB.Form Form001a
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   3330
+      Left            =   3195
       TabIndex        =   35
       Top             =   90
-      Width           =   735
+      Width           =   1005
    End
    Begin VB.Label Label5 
       Alignment       =   2  'Center
       Caption         =   "Bejelentve"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -920,16 +958,16 @@ Begin VB.Form Form001a
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   2340
+      Left            =   2205
       TabIndex        =   34
       Top             =   90
-      Width           =   735
+      Width           =   1005
    End
    Begin VB.Label Label4 
       Alignment       =   2  'Center
       Caption         =   "Napló sz."
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -938,16 +976,16 @@ Begin VB.Form Form001a
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   1350
+      Left            =   1215
       TabIndex        =   33
       Top             =   90
-      Width           =   735
+      Width           =   1005
    End
    Begin VB.Label Label2 
       Alignment       =   1  'Right Justify
       Caption         =   "Bejelentõ neve"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -971,204 +1009,231 @@ Public mode As Long
 Public TipushFriss As Integer
 
 Private Sub cmbFSZAM_Change()
-If cmbFSZAM.ListIndex <> -1 Then
-    'util.munkalapfszamvalaszt cmbFSZAM, cmbOBJTIP, cmbOBJID
-    txtFNEV = util.getcombonev(cmbFSZAM)
-    'spcVALASZT.Enabled = False
- Else
-    'spcVALASZT.Enabled = True
- End If
+    If cmbFSZAM.ListIndex <> -1 Then
+        'util.munkalapfszamvalaszt cmbFSZAM, cmbOBJTIP, cmbOBJID
+        txtFNEV = util.getcombonev(cmbFSZAM)
+        'spcVALASZT.Enabled = False
+    Else
+        'spcVALASZT.Enabled = True
+    End If
 End Sub
 
-
 Private Sub cmbSzolgjell_Change()
-Dim ggg As String
-If mode = 0 Then
- ggg = util.getcomboertek(cmbSZOLGJELL)
- If ggg = "LE" Or ggg = "LF" Or ggg = "LA" Then
-  util.setcomboVal cmbMUVEL, "BHJ"
-  util.setcomboVal cmbFSZAM, "736"
- Else
-  'util.setcombo2 cmbMUVEL
-  util.setcomboVal cmbFSZAM, "62317"
- End If
-End If
+    Dim szolgJell As String
+    If mode = 0 Then
+        szolgJell = util.getComboErtek(cmbSzolgjell)
+        Select Case szolgJell
+            Case "LE", "LA":
+                util.setComboVal cmbMUVEL, "BHJ"
+                util.setComboVal cmbFSZAM, "736"
+                
+            Case "LF":
+                util.setComboVal cmbMUVEL, "BHJ"
+                util.setComboVal cmbFSZAM, "737"
+                
+            Case "HK":
+                util.setComboVal cmbMUVEL, "BHJ"
+                If iWorkMode = DISZPECSER Then
+                    If spcOBJTIP = "03" Then
+                        util.setComboVal cmbFSZAM, "62317"
+                    ElseIf spcOBJTIP = "17" Then
+                        util.setComboVal cmbFSZAM, "62325"
+                    End If
+                End If
+                
+            Case Else:
+                'util.setcombo2 cmbMUVEL
+                util.setComboVal cmbFSZAM, "62317"
+        End Select
+    End If
 End Sub
 
 Private Sub cmbTIPUSH_change()
-Dim www As String
-www = util.getcomboertek(cmbTIPUSH)
- If mode = 0 Then
-  Me.TipushFriss = 1
- End If
-If mode = 0 Then
- If cmbTIPUSH.ListIndex <> -1 And Me.TipushFriss = 1 Then
-  txtHIBLEIR = cmbTIPUSH
- End If
- Me.TipushFriss = 1
- 
- 
- If www = "229" Then
-  util.setcomboVal cmbMUVEL, "SZV"
-  util.setcomboVal cmbKARBTIP, "1"
- End If
- If www = "007" Or www = "008" Or www = "009" Then
-  util.setcomboVal cmbMUVEL, "HIT"
-  util.setcomboVal cmbKARBTIP, "1"
- End If
- If www = "246" Or www = "247" Or www = "027" Then
-  util.setcomboVal cmbMUVEL, "SAV"
-  util.setcomboVal cmbKARBTIP, "1"
- End If
-End If
- If www = "272" Then
-  Me.lblPLOMBAZAS.Visible = True
-  Me.cmbPLOMBAZAS.Visible = True
- Else
-  Me.lblPLOMBAZAS.Visible = False
-  Me.cmbPLOMBAZAS.Visible = False
- End If
+    Dim tipusHiba As String
+    tipusHiba = util.getComboErtek(cmbTIPUSH)
 
- If www = "028" Or www = "029" Or www = "015" Or www = "016" Then
-  Me.lblFELUJITOTT.Visible = True
-  Me.lblUJ.Visible = True
-  Me.txtFELUJITOTT.Visible = True
-  Me.txtUJ.Visible = True
- Else
-  Me.lblFELUJITOTT.Visible = False
-  Me.lblUJ.Visible = False
-  Me.txtFELUJITOTT.Visible = False
-  Me.txtUJ.Visible = False
- End If
+    If mode = 0 Then
+        TipushFriss = 1
+    
+        If cmbTIPUSH.ListIndex <> -1 Then
+            txtHIBLEIR = cmbTIPUSH
+        End If
+ 
+        Select Case tipusHiba
+            Case "229":
+                util.setComboVal cmbMUVEL, "SZV"
+                util.setComboVal cmbKARBTIP, "1"
+    
+            Case "007", "008", "009":
+                util.setComboVal cmbMUVEL, "HIT"
+                util.setComboVal cmbKARBTIP, "1"
+            
+            Case "246", "247", "027":
+                util.setComboVal cmbMUVEL, "SAV"
+                util.setComboVal cmbKARBTIP, "1"
+        End Select
+    End If
 
+    Select Case tipusHiba
+        Case "272":
+            lblPLOMBAZAS.Visible = True
+            cmbPLOMBAZAS.Visible = True
+        
+        Case "028", "029", "015", "016":
+            lblFELUJITOTT.Visible = True
+            lblUJ.Visible = True
+            txtFELUJITOTT.Visible = True
+            txtUJ.Visible = True
+        
+        Case Else:
+            lblPLOMBAZAS.Visible = False
+            cmbPLOMBAZAS.Visible = False
+            lblFELUJITOTT.Visible = False
+            lblUJ.Visible = False
+            txtFELUJITOTT.Visible = False
+            txtUJ.Visible = False
+    End Select
 End Sub
 
 Private Sub cmdClose_Click()
- Back Me
+    Back Me
 End Sub
 
 Private Sub cmdHELY_Click()
- Form001b.mode = 0
- Form001b.Show 1
+    Form001b.mode = 0
+    Form001b.Show 1
+    If iWorkMode = DISZPECSER Then
+        cmbSzolgjell_Change
+    End If
 End Sub
 
 Private Sub cmdOK_Click()
-Screen.MousePointer = vbHourglass
-If Option1(1) = True Then
-    txtAllapot = "1"
-ElseIf Option1(2) = True Then
-    txtAllapot = "2"
-ElseIf Option1(3) = True Then
-    txtAllapot = "3"
-ElseIf Option1(4) = True Then
-    txtAllapot = "4"
-End If
-If mode = 0 Then
- Dim i As String
- i = util.rekordinsert(Me, "MUNKALAP")
- If MsgBox("Kívánja nyomtatni a munkalapot?", vbQuestion + vbYesNo, "Nyomtatás") = vbYes Then
-   util.munkalapallapot i, 2
-   util.printmunkalap "1", i
-   Nyomtat "munuf.rpt", 1
- End If
-Else
-  util.rekordupdate Me, "MUNKALAP", mode
-End If
-Form001.iRefresh = 1
-Screen.MousePointer = vbDefault
-Back Me
+    Screen.MousePointer = vbHourglass
+    
+    If Option1(1) = True Then
+        txtAllapot = "1"
+    ElseIf Option1(2) = True Then
+        txtAllapot = "2"
+    ElseIf Option1(3) = True Then
+        txtAllapot = "3"
+    ElseIf Option1(4) = True Then
+        txtAllapot = "4"
+    End If
+    
+    If mode = 0 Then
+        Dim i As String
+        i = util.rekordinsert(Me, "MUNKALAP")
+        If MsgBox("Kívánja nyomtatni a munkalapot?", vbQuestion + vbYesNo, "Nyomtatás") = vbYes Then
+            util.munkalapallapot i, 2
+            util.printmunkalap "1", i
+            Nyomtat "munuf.rpt", 1
+        End If
+    Else
+        util.rekordupdate Me, "MUNKALAP", mode
+    End If
+    
+    Form001.iRefresh = 1
+    Screen.MousePointer = vbDefault
+    Back Me
 End Sub
 
-Private Sub cmdOSSZESITO_Click()
-Dim ZZZ As String
-Screen.MousePointer = vbHourglass
-ZZZ = util.getcomboertek(cmbTIPUSH)
 
-If MsgBox("Biztosan nyomtatni szeretné az összesítõt?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
- If ZZZ = 272 Then
-   util.printmunkalapsok txtREF, 1
-   Nyomtat "plombossz.rpt", 0
- Else
-  util.printmunkalapsok txtREF, 2
-  Nyomtat "vizoraossz.rpt", 0
- End If
-End If
-Screen.MousePointer = vbDefault
+Private Sub cmdOSSZESITO_Click()
+    Screen.MousePointer = vbHourglass
+
+    Dim tipusHiba As String
+    tipusHiba = util.getComboErtek(cmbTIPUSH)
+
+    If MsgBox("Biztosan nyomtatni szeretné az összesítõt?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
+        If tipusHiba = 272 Then
+            util.printmunkalapsok txtREF, 1
+            Nyomtat "plombossz.rpt", 0
+        Else
+            util.printmunkalapsok txtREF, 2
+            Nyomtat "vizoraossz.rpt", 0
+        End If
+    End If
+    
+    Screen.MousePointer = vbDefault
 End Sub
 
 Private Sub Form_Activate()
- Form001a.Caption = "Munkalap " & AktivForm()
- If txtOBJID <> "" Then
-  util.munkalapobjkiir Me
- End If
- If Me.txtREF <> "" Then
-  MsgBox txtREF & ". munkalopról készített másolat! Bizonyos adatai nem módosíthatóak!", vbExclamation, "Tisztelt felhasználó!"
- End If
+    Form001a.Caption = "Munkalap " & AktivForm()
+    If txtOBJID <> "" Then
+        util.munkalapobjkiir Me
+    End If
+    
+    If txtREF <> "" Then
+        MsgBox txtREF & ". munkalapról készített másolat! Bizonyos adatai nem módosíthatóak!", vbExclamation, "Tisztelt felhasználó!"
+    End If
 End Sub
 
 Private Sub Form_Load()
- 
- KeyPreview = True
- util.setcombo Me
- If mode <> 0 Then
-  Me.TipushFriss = 0
-  util.rekordfeltolt Me, "MUNKALAP", mode
-  Option1.Item(txtAllapot) = True
-  If txtAllapot = 3 Then
-   spcALLAPOT.Enabled = False
-  End If
- If Me.txtREF <> "" Then
-   Me.txtNAPSZAM.Locked = True
-   Me.txtBEJDAT.Locked = True
-   Me.txtKIALLDAT.Locked = True
-   Me.cmbSZEREGYS.Locked = True
-   Me.cmbMFDOLG.Locked = True
-   Me.cmbSZOLGJELL.Locked = True
-   'Me.txtBEJNEV.Locked = True
-   Me.cmbFSZAM.Locked = True
-   Me.cmbTIPUSH.Locked = True
-   Me.txtMUNELV.Locked = True
-   'Me.txtIDOTOL.Locked = True
-   'Me.txtIDOIG.Locked = True
-   Me.cmbMKAP.Locked = True
-   Me.cmbMUVEL.Locked = True
-   Me.cmbMUNVEGZ.Locked = True
-   Me.cmbSZOLTIP.Locked = True
-   Me.cmbMUNSZ.Locked = True
-   Me.cmbKARBTIP.Locked = True
-   Me.txtHIBLEIR.Locked = True
- End If
+    KeyPreview = True
+    util.setcombo Me
+    
+    If mode <> 0 Then
+        TipushFriss = 0
+        util.rekordfeltolt Me, "MUNKALAP", mode
+        Option1.Item(txtAllapot) = True
+        
+        If txtAllapot = 3 Then
+            spcALLAPOT.Enabled = False
+        End If
+        
+        If txtREF <> "" Then
+            txtNAPSZAM.Locked = True
+            txtBEJDAT.Locked = True
+            txtKIALLDAT.Locked = True
+            cmbSZEREGYS.Locked = True
+            cmbMFDOLG.Locked = True
+            cmbSzolgjell.Locked = True
+            'txtBEJNEV.Locked = True
+            cmbFSZAM.Locked = True
+            cmbTIPUSH.Locked = True
+            txtMUNELV.Locked = True
+            'Me.txtIDOTOL.Locked = True
+            'Me.txtIDOIG.Locked = True
+            cmbMKAP.Locked = True
+            cmbMUVEL.Locked = True
+            cmbMUNVEGZ.Locked = True
+            cmbSZOLTIP.Locked = True
+            cmbMUNSZ.Locked = True
+            cmbKARBTIP.Locked = True
+            txtHIBLEIR.Locked = True
+        End If
   
-  Dim plomb As Integer
-  If cmbTIPUSH.ListIndex <> -1 Then
-   plomb = util.getcomboertek(cmbTIPUSH)
-  Else
-   plomb = 0
-  End If
- 'If plomb = 272 Then
- ' Me.cmbPLOMBAZAS.Visible = True
-  'Me.lblPLOMBAZAS.Visible = True
- 'Else
- ' Me.cmbPLOMBAZAS.Visible = False
- ' Me.lblPLOMBAZAS.Visible = False
- 'End If
+        Dim plomb As Integer
+        If cmbTIPUSH.ListIndex <> -1 Then
+            plomb = util.getComboErtek(cmbTIPUSH)
+        Else
+            plomb = 0
+        End If
+    
+        'If plomb = 272 Then
+            ' Me.cmbPLOMBAZAS.Visible = True
+            'Me.lblPLOMBAZAS.Visible = True
+        'Else
+            ' Me.cmbPLOMBAZAS.Visible = False
+            ' Me.lblPLOMBAZAS.Visible = False
+        'End If
  
- 'If plomb = "028" Or plomb = "029" Or plomb = "015" Or plomb = "016" Then
- ' MsgBox "Vízóra"
- 'Else
- 'End If
+        'If plomb = "028" Or plomb = "029" Or plomb = "015" Or plomb = "016" Then
+            ' MsgBox "Vízóra"
+        'End If
  
- 
- If plomb = 272 Or plomb = "028" Or plomb = "029" Or plomb = "015" Or plomb = "016" And Me.txtREF <> "" Then
-  Me.cmdOSSZESITO.Enabled = True
- Else
-  Me.cmdOSSZESITO.Enabled = False
- End If
- Else
-  Me.txtBEJDAT = Date
-  Me.txtKIALLDAT = Date
-  Me.txtMUNELV = Date
- End If
+        If plomb = 272 Or plomb = "028" Or plomb = "029" Or plomb = "015" Or plomb = "016" And Me.txtREF <> "" Then
+            cmdOSSZESITO.Enabled = True
+        Else
+            cmdOSSZESITO.Enabled = False
+        End If
+    
+    Else
+        txtBEJDAT = DateValue(Now())
+        txtKIALLDAT = DateValue(Now())
+        txtMUNELV = DateValue(Now())
+        util.setComboVal cmbSZEREGYS, "01"
+    End If
 End Sub
 
 Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)

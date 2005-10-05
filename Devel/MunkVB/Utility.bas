@@ -17,16 +17,6 @@ Sub Back(ByRef frm As Form)
     Unload frm
 End Sub
 
-Sub Subtorol()
-    Set frmCurrentForm = Screen.ActiveForm
-    Dim oControl As Control
-    For Each oControl In frmCurrentForm.Controls
-        If Left(oControl.Name, 3) = "txt" Or Left(oControl.Name, 3) = "cmb" Or Left(oControl.Name, 3) = "chk" Then
-            oControl = ""
-        End If
-    Next
-End Sub
-
 Sub Nyomtat(reportname As String, iDestination As Integer)
     With Form001.rep
         .Destination = iDestination ' 0 - privjú ablak, 1 - közvetlenül nyomtat

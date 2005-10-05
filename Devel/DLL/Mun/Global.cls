@@ -34,7 +34,8 @@ End Sub
 '
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
 '
-Public Function Init(ByRef sReportDir As String) As Boolean
+Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRef iWorkMode As Integer) As Boolean
+'Public Function Init(ByRef sReportDir As String) As Boolean
     On Error GoTo errInit
     Init = False
 
@@ -42,9 +43,11 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     Dim FileNum, iCount As Integer
     Dim sInputLine, sDriver, sServer, sDatabase As String
     
+    iWorkMode = NORMAL
+    
     FileNum = FreeFile              'egy üres file sorszám kérése
     
-    Open "formel.ini" For Input As FileNum     'File nyitás olvasásra
+    Open "C:\formel.ini" For Input As FileNum     'File nyitás olvasásra
     While Not EOF(FileNum)
         Line Input #FileNum, sInputLine
         iCount = InStr(1, sInputLine, "=", 0)
@@ -57,6 +60,10 @@ Public Function Init(ByRef sReportDir As String) As Boolean
                 sDatabase = sInputLine
             Case "sReportDir"
                 sReportDir = Right(Trim(sInputLine), Len(sInputLine) - iCount)
+            Case "sANTSZDir"
+                sANTSZDir = Right(Trim(sInputLine), Len(sInputLine) - iCount)
+            Case "mode"
+                iWorkMode = CInt(Right(Trim(sInputLine), Len(sInputLine) - iCount))
         End Select
     Wend
     Close #FileNum                              'File zárás
@@ -79,9 +86,6 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q285", Nothing, "285", "Közeg", 3
     g_oKodszotar.Load "sp_Q288", Nothing, "288", "Fûtõvíz elosztása", 3
     g_oKodszotar.Load "sp_Q289", Nothing, "289", "Város", 1
-    g_oKodszotar.Load "sp_Q291", Nothing, "291", "Szolgáltatás jellege", 2
-    g_oKodszotar.Load "sp_Q293", Nothing, "293", "Típus hiba", 3
-    g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
     g_oKodszotar.Load "sp_Q297", Nothing, "297", "Üzemállapot", 1
     g_oKodszotar.Load "sp_Q298", Nothing, "298", "Mûvelet típusa", 3
     g_oKodszotar.Load "sp_Q299", Nothing, "299", "Idõegység", 2
@@ -94,7 +98,6 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q308", Nothing, "308", "Észlelt jelenség típusa", 2
     g_oKodszotar.Load "sp_Q309", Nothing, "309", "Szolgálat típusa", 2
     g_oKodszotar.Load "sp_Q310", Nothing, "310", "Fõkönyvi szám", 12
-    g_oKodszotar.Load "sp_Q310A", Nothing, "310A", "Aktív fõkönyvi szám", 12
     g_oKodszotar.Load "sp_Q311", Nothing, "311", "Munkalap szervezeti egység", 1
     g_oKodszotar.Load "sp_Q312", Nothing, "312", "Gyártó cég", 3
     g_oKodszotar.Load "sp_Q313", Nothing, "313", "Veszélyességi osztály", 1
@@ -133,6 +136,25 @@ Public Function Init(ByRef sReportDir As String) As Boolean
     g_oKodszotar.Load "sp_Q346", Nothing, "346", "Lekérdezés érzékelõpárra", 11
     g_oKodszotar.Load "sp_Q347", Nothing, "347", "Lekérdezés hõösszegzõre", 11
     g_oKodszotar.Load "sp_Q348", Nothing, "348", "Plombázás", 1
+    
+    Select Case iWorkMode
+        Case DISZPECSER
+            g_oKodszotar.Load "sp_Q291D", Nothing, "291", "Szolgáltatás jellege", 2
+            'g_oKodszotar.Load "sp_Q369", Nothing, "369", "Diszp.típushiba", 3
+            g_oKodszotar.Load "sp_Q369", Nothing, "293", "Diszp.típushiba", 3
+            g_oKodszotar.Load "sp_Q296_Diszp", Nothing, "296", "Objektum típus", 2
+            g_oKodszotar.Load "sp_Q310D", Nothing, "310A", "Aktív fõkönyvi szám", 12
+        Case NORMAL, MUNKALAP
+            g_oKodszotar.Load "sp_Q291", Nothing, "291", "Szolgáltatás jellege", 2
+            g_oKodszotar.Load "sp_Q293", Nothing, "293", "Típus hiba", 3
+            g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
+            g_oKodszotar.Load "sp_Q310A", Nothing, "310A", "Aktív fõkönyvi szám", 12
+            g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
+            
+        Case LABOR
+            g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
+            g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
+    End Select
     
     Init = True
     Exit Function
@@ -251,6 +273,31 @@ Public Function TelephszFeltolt(ByRef cmbTelephsz As Object, ByRef cmbOBJTIP As 
 errTelephszFeltolt:
 End Function    'TelephszFeltolt
 
+'   MunkalapszamFeltolt
+'
+'   Feltölti a munkalapszámokat tartalmazó combobox-ot.
+'
+'   Paraméterek:    cmbMunkalap As Object   -   a feltöltendõ combobox
+'
+'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
+'
+Public Function MunkalapszamFeltolt(ByRef cmbMunkalap As Object) As Boolean
+    On Error GoTo errMunkalapszamFeltolt
+    MunkalapszamFeltolt = False
+    
+    Dim sSectName As String
+    sSectName = "MUNKALAP"
+    
+    g_oKodszotar.Remove sSectName    'Töröljük az ál-kódszótári MUNKALAP szekciót
+    
+    g_oKodszotar.Load "sp_FillMunkalapJegyz", Nothing, sSectName, "Munkalap száma", 100
+    MunkalapszamFeltolt = ComboBoxSet(cmbMunkalap, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
+    cmbMunkalap.ListWidth = 350
+    Exit Function
+    
+errMunkalapszamFeltolt:
+End Function    'MunkalapszamFeltolt
+
 '   RekordFeltolt
 '
 '   Feltölti a kiválasztott objektum adatival a képernyõt.
@@ -271,6 +318,8 @@ Public Function RekordFeltolt(ByRef frm As Object, ByVal sKategoria As String, B
     Select Case sKategoria
         Case "MUNKALAP"
             sQuery = "sp_LoadMunkalap"
+        Case "LABOR"
+            sQuery = "sp_LoadLabor"
         Case Else
             sQuery = "sp_LoadObjEgyedi"
     End Select
@@ -312,6 +361,8 @@ Public Function RekordInsert(ByRef frm As Object, ByVal sKategoria As String) As
             sQuery = "sp_InsTeljm"
             sMLAPID = frm.Controls("txtOBJID").Text
             lstParams.Add sMLAPID, "MUNKALAP_ID"
+        Case "LABOR"
+            sQuery = "sp_InsLabor"
         Case Else
             'sOBJTIP = ComboBoxGet(Nothing, cmbOBJTIP)
             'lstParams.Add sOBJTIP, "pOBJTIP"
@@ -500,6 +551,8 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "MUNKALAPID"
             sParam = GetComboNev(frm.Controls("cmbTELEPHSZ"))
             lstParams.Add sParam, "TELEPHSZ"
+            sParam = IIf(IsNull(frm.Controls("datMUNELV").Value), "", frm.Controls("datMUNELV").Value)
+            lstParams.Add sParam, "MUNELV"
 
 ' Lekérdezem a munkalap darabszámot
             Dim rs As New ADODB.Recordset   'A visszatérési rekordszett
@@ -511,9 +564,9 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
                 'Hiba
             End If
 ' Elkészítem a grid-et
-            sFormatstring = "<||Munkalap|Bejelentõ|Kiáll. dátum|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra"
+            sFormatstring = "<||Munkalap|Bejelentõ|Kiáll. dátum|Végezhetõ|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra"
             sQuery = "sp_LekerdMlap"
-            iMerge = 2
+            iMerge = 5
         
         Case "TELJ"
             sFormatstring = "<||Dolgozó|Munkavégzés dátuma|Munkaóra"
@@ -522,6 +575,25 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             sParam = frm.Controls("txtID").Text
             lstParams.Add sParam, "pMUNKALAP_ID"
         
+        Case "JEGYZ"
+            sParam = GetComboErtek(frm.Controls("cmbMUVEL"))
+            lstParams.Add sParam, "pMUVEL"
+            sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
+            lstParams.Add sParam, "pOBJTIP"
+            sParam = GetComboErtek(frm.Controls("cmbOBJID"))
+            lstParams.Add sParam, "pOBJID"
+            sParam = GetComboErtek(frm.Controls("cmbJTIP"))
+            lstParams.Add sParam, "pJTIP"
+        
+            sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
+            sQuery = "sp_LekerdJegyz"
+            iMerge = 9
+        
+        Case "LABOR"
+            sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
+            sQuery = "sp_LekerdLabor"
+            iMerge = 9
+            
         Case Else
             
     End Select
@@ -615,9 +687,11 @@ Public Function MunkalapObjKiir(ByRef frm As Object) As Boolean
     
     If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
     'If oAdmin.LoadFirstRecord("sp_GetTulajInfo", lstParams, rs) = True Then    'és ha sikerült
+        On Error Resume Next
         frm.Controls("txt1") = IIf(IsNull(rs("OBJTIP").Value), "", rs("OBJTIP").Value)
         frm.Controls("txt2") = IIf(IsNull(rs("MEGNEV").Value), "", rs("MEGNEV").Value)
         frm.Controls("txt3") = IIf(IsNull(rs("INFO").Value), "", rs("INFO").Value)
+        On Error GoTo errMunkalapObjKiir
         MunkalapObjKiir = True
     End If
     Exit Function
@@ -681,3 +755,68 @@ Public Function PrintMunkalapSok(ByRef strMUNKALAP_REF As String, ByVal iKateg A
     
 errPrintMunkalapSok:
 End Function
+
+Public Function Jegyzokonyv(ByRef sJTIP As String, ByVal iJEGYZSZ As Integer, ByRef sDocPath As String) As Boolean
+    On Error GoTo errJegyzokonyv
+    Jegyzokonyv = False
+    
+    Dim objWord As Object
+    Dim sDocSavePath As String
+    
+    'Dim sJTIP As String 'Lekérdezzük a választott jegyzõkönyv típusát
+    'sJTIP = ComboBoxGet(Nothing, cmbJTIP)
+    
+    Dim lstParams As New Collection
+    lstParams.Add iJEGYZSZ, "pID"
+    lstParams.Add sJTIP, "pJTIP"
+    Dim rstJEGYZ As New ADODB.Recordset
+    oAdmin.ExecVal "sp_Jegyzokonyv", lstParams, rstJEGYZ
+    
+    Dim lstReplace As New Collection
+    Dim a As ADODB.Field
+    For Each a In rstJEGYZ.Fields
+        lstReplace.Add a, a.Name
+    Next
+    
+    Dim sDat As String
+    On Error Resume Next
+    sDat = ""
+    sDat = CStr(rstJEGYZ("JDAT").Value)
+    sDat = Replace(sDat, "/", ".")
+    On Error GoTo errJegyzokonyv
+    
+    Dim sDotName As String
+    Select Case sJTIP
+        Case "1"
+            sDotName = "homell"
+            sDocSavePath = sDocPath + "Gepesz\Hom_ell\" + sDat + "_"
+        Case "2"
+            sDotName = "bizbe"
+            sDocSavePath = sDocPath + "Gepesz\Bizt_sze\" + sDat + "_" + CStr(rstJEGYZ("CIM").Value) + "_"
+        Case "3"
+            sDotName = "himel"
+            sDocSavePath = sDocPath + "Elektro\" + sDat + "_" + CStr(rstJEGYZ("TELEPHSZ").Value) + "_"
+        Case "4"
+            sDotName = "haziviz"
+            sDocSavePath = sDocPath + "Gepesz\Hazi_viz\" + sDat + "_" + CStr(rstJEGYZ("CIM").Value) + "_"
+        Case "8"
+            sDotName = "labor"
+            sDocSavePath = sDocPath + lstReplace("FUTOMU")
+            If Right(sDocSavePath, 1) = "." Then
+                sDocSavePath = Left(sDocSavePath, Len(sDocSavePath) - 1)
+            End If
+            sDocSavePath = Replace(sDocSavePath + "\", "/", ".")
+        End Select
+    
+    Set objWord = WordAppNewDoc(sDocPath, sDotName, CStr(iJEGYZSZ), ".doc", sDocSavePath)  'Word indítása
+
+    InsTextToWord objWord, lstReplace   'Word dokumentumon belül cseréket végrehajtjuk
+    Set lstReplace = Nothing
+    Jegyzokonyv = True
+    Exit Function
+    
+errJegyzokonyv:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Jegyzokonyv"
+End Function    'Jegyzokonyv
+
+

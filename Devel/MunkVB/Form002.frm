@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "Vsflex3.ocx"
+Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form Form002 
    BorderStyle     =   1  'Fixed Single
@@ -18,6 +18,7 @@ Begin VB.Form Form002
    EndProperty
    Icon            =   "Form002.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   5550
@@ -94,7 +95,7 @@ Begin VB.Form Form002
       _ExtentY        =   3757
       _StockProps     =   228
       Appearance      =   1
-      ConvInfo        =   1413783674
+      ConvInfo        =   1418783674
    End
    Begin VB.CommandButton cmdCLOSE 
       Caption         =   "Mégsem"
@@ -145,7 +146,7 @@ Begin VB.Form Form002
       Alignment       =   1  'Right Justify
       Caption         =   "Munkaóra összesen"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -163,7 +164,7 @@ Begin VB.Form Form002
    Begin VB.Label Label2 
       Caption         =   "óra"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -181,7 +182,7 @@ Begin VB.Form Form002
    Begin VB.Label lblTELJ 
       Caption         =   "Teljesítmény adatok"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   700
@@ -212,7 +213,7 @@ Begin VB.Form Form002
       Alignment       =   1  'Right Justify
       Caption         =   "Elvégzett munka"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -248,7 +249,7 @@ Begin VB.Form Form002
       Alignment       =   1  'Right Justify
       Caption         =   "Munka leírása"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -295,10 +296,13 @@ Private Sub cmdMODOSIT_Click()
 End Sub
 
 Private Sub cmdOK_Click()
- util.rekordupdate Me, "VISSZAIR", mode
- Form001.iRefresh = 1
- util.karbanfelvitel txtID
- Back Me
+    If iWorkMode <> DISZPECSER Then
+        util.rekordupdate Me, "VISSZAIR", mode
+        Form001.iRefresh = 1
+        util.karbanfelvitel txtID
+    End If
+    
+    Back Me
 End Sub
 
 Private Sub cmdTOROL_Click()
@@ -318,9 +322,18 @@ Private Sub cmdUJ_Click()
 End Sub
 
 Private Sub Form_Activate()
- Form002.Caption = "Munkavégzés  " & AktivForm()
- util.gridderx grdTELJ, "TELJ", Me
- util.teljlistfeltolt txtID, Me
+    Form002.Caption = "Munkavégzés  " & AktivForm()
+    
+    If iWorkMode = DISZPECSER Then
+        cmdUJ.Enabled = False
+        cmdTOROL.Enabled = False
+        cmdCLOSE.Enabled = False
+        cmdCLOSE.Visible = False
+        cmdOK.Caption = "OK"
+    End If
+    
+    util.gridderx grdTELJ, "TELJ", Me
+    util.teljlistfeltolt txtID, Me
 End Sub
 
 Private Sub Form_Load()
@@ -329,7 +342,7 @@ KeyPreview = True
  If mode <> 0 Then
   util.rekordfeltolt Me, "MUNKALAP", mode
  End If
- Me.Mundat = Date
+ Me.Mundat = DateValue(Now())
  Me.Munora = ""
 End Sub
  
@@ -360,7 +373,7 @@ End Sub
   Case vbKeyInsert: cmdUJ_Click
   'Case vbKeyDelete: cmdTOROL_Click
   Case vbKeyF2: cmdMODOSIT_Click
-  Case vbKeyHome: grdSZERZTET.SetFocus
+  'Case vbKeyHome: grdSZERZTET.SetFocus
   Case vbKeyF5: cmdOK_Click
  End Select
  If Keycode = vbKeyControl Then

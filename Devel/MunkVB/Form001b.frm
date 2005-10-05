@@ -17,6 +17,7 @@ Begin VB.Form Form001b
    EndProperty
    Icon            =   "Form001b.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   2580
@@ -97,7 +98,7 @@ Begin VB.Form Form001b
       Alignment       =   1  'Right Justify
       Caption         =   "Lakás"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -150,7 +151,7 @@ Begin VB.Form Form001b
       Alignment       =   1  'Right Justify
       Caption         =   "Berendezés típus"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -169,7 +170,7 @@ Begin VB.Form Form001b
       Alignment       =   1  'Right Justify
       Caption         =   "Berendezés"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   238
          Weight          =   400
@@ -205,19 +206,18 @@ End Sub
 
 
 Private Sub cmdOK_Click()
-If cmbOBJTIP.ListIndex <> -1 And cmbOBJID.ListIndex <> -1 Then
-  Form001a.txtOBJID = util.getcomboertek(cmbOBJID)
-  Form001a.txtLAKAS = Me.txtLAKAS
-  Back Me
-Else
- MsgBox "A helyadatok helytelenül vannak megadva!", vbExclamation, "Tisztelt felhasználó!"
-End If
+    If cmbOBJTIP.ListIndex <> -1 And cmbOBJID.ListIndex <> -1 Then
+        Form001a.spcOBJTIP = util.getComboErtek(cmbOBJTIP)
+        Form001a.txtOBJID = util.getComboErtek(cmbOBJID)
+        Form001a.txtLAKAS = Me.txtLAKAS
+        Back Me
+    Else
+        MsgBox "A helyadatok megadása hibás!", vbExclamation, "Tisztelt felhasználó!"
+    End If
 End Sub
 
-
-
 Private Sub Form_Activate()
- Form001b.Caption = "Hiba helye  " & AktivForm()
+    Form001b.Caption = "Hiba helye  " & AktivForm()
 End Sub
 
 Private Sub Form_Load()
