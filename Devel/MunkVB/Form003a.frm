@@ -1002,7 +1002,11 @@ Private Sub Form_Load()
         datMINTA_ATAD_DAT.Hour = 7
         datMINTA_ATAD_TIM.Hour = 7
         datVIZSG_KEZD_DAT = DateValue(Now())
+        datVIZSG_KEZD_DAT.Hour = 8
+        datVIZSG_KEZD_TIM.Hour = 8
         datVIZSG_VEGE_DAT = DateValue(Now())
+        datVIZSG_VEGE_DAT.Hour = 8
+        datVIZSG_VEGE_TIM.Hour = 8
 '        txtKIALLDAT = DateValue(Now())
 '        txtMUNELV = DateValue(Now())
     End If
