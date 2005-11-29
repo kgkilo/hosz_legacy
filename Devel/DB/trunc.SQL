@@ -33,6 +33,7 @@ truncate table kodszot
 truncate table koltsegmegoszto
 truncate table kompresszor
 truncate table kontir
+truncate table labor
 truncate table lakas
 truncate table langor
 truncate table lepcsohaz

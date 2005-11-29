@@ -35,6 +35,7 @@ bcp szetav..kodszot out kodszot.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..koltsegmegoszto out koltsegmegoszto.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..kompresszor out kompresszor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..kontir out kontir.txt /S127.0.0.1 /Usa /P /n
+bcp szetav..labor out labor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..lakas out lakas.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..langor out langor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..lepcsohaz out lepcsohaz.txt /S127.0.0.1 /Usa /P /n

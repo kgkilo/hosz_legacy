@@ -33,6 +33,7 @@ bcp szetav..kodszot in kodszot.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..koltsegmegoszto in koltsegmegoszto.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..kompresszor in kompresszor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..kontir in kontir.txt /S127.0.0.1 /Usa /P /n /E
+bcp szetav..labor in labor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..lakas in lakas.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..langor in langor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..lepcsohaz in lepcsohaz.txt /S127.0.0.1 /Usa /P /n
