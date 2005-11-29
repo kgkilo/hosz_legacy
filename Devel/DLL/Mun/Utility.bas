@@ -14,6 +14,13 @@ Public Const DISZPECSER = 1
 Public Const LABOR = 2
 Public Const MUNKALAP = 3
 
+'itt kell megadni, hogy melyik fûtõmûnek mi az objid-je
+'olyan sorrendben kell megadni, ahogy a Form003b-n a comboboxok száma mutatja (Name-ben)
+'select id, megnev from objektum where objtip='03' order by megnev
+Public gIdTable() As Variant
+
+
+
 '   ControlsSet
 '
 '   Kitölti az adott form kontrolljait az adott mezõk

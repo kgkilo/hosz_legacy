@@ -36,7 +36,7 @@ End Sub
 '
 Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRef iWorkMode As Integer) As Boolean
 'Public Function Init(ByRef sReportDir As String) As Boolean
-    On Error GoTo errInit
+    'On Error GoTo errInit
     Init = False
 
     'A formel.ini file-ból a szükséges adatok betöltése
@@ -156,6 +156,32 @@ Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRe
             g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
     End Select
     
+    'ReDim gIdTable(24)
+    'gIdTable = Array( _
+    '27, _
+    '28, _
+    '29, _
+    '30, _
+    '31, _
+    '32, _
+    '9, _
+    '26, _
+    '34, _
+    '38, _
+    '20, _
+    '39, _
+    '24, _
+    '43, _
+    '41, _
+    '45, _
+    '40, _
+    '46, _
+    '915, _
+    '47, _
+    '674, _
+    '44, _
+    '1722)
+
     Init = True
     Exit Function
     
@@ -819,4 +845,93 @@ errJegyzokonyv:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Jegyzokonyv"
 End Function    'Jegyzokonyv
 
+
+Public Function OsszesitoFeltolt(ByRef frm As Object) As Boolean
+    On Error GoTo errOsszesitoFeltolt
+    OsszesitoFeltolt = False
+    
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 27), "labor1", "labor1", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 28), "labor2", "labor2", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 29), "labor3", "labor3", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 30), "labor4", "labor4", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 31), "labor5", "labor5", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 32), "labor6", "labor6", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 9), "labor7", "labor7", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 26), "labor8", "labor8", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 34), "labor9", "labor9", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 38), "labor10", "labor10", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 20), "labor11", "labor11", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39), "labor12", "labor12", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 24), "labor13", "labor13", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 43), "labor14", "labor14", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 41), "labor15", "labor15", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 45), "labor16", "labor16", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 40), "labor17", "labor17", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46), "labor18", "labor18", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 915), "labor19", "labor19", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 47), "labor20", "labor20", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 674), "labor21", "labor21", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 44), "labor22", "labor22", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 1722), "labor23", "labor23", 10
+    
+    OsszesitoFeltolt = True
+    Exit Function
+    
+    'hat ez lenne a tisztesseges megoldas... ha a tomb mukodne
+    Dim ctrlNum As Integer
+    Dim futomuId As Long
+    Dim sSectName As String
+    Dim ctrl As Object
+    MsgBox "1"
+    
+    For Each ctrl In frm.Controls
+        If Left(ctrl.Name, 3) = "cmb" Then
+            ctrlNum = CInt(Mid(ctrl.Name, 4))   'a combobox száma
+            MsgBox ctrlNum, , ctrl.Name
+            futomuId = gIdTable(ctrlNum) 'fûtõmû objid (a tömbbõl kiolvasva)
+            MsgBox futomuId
+            sSectName = "labor" + CStr(ctrlNum)
+            g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFutomu_Id", futomuId), sSectName, sSectName, 10
+        End If
+    Next
+    MsgBox "2"
+    
+    OsszesitoFeltolt = True
+    Exit Function
+
+errOsszesitoFeltolt:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "OsszesitoFeltolt"
+End Function    'OsszesitoFeltolt
+
+Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
+    On Error GoTo errLaborOsszesito
+    LaborOsszesito = False
+    
+    Dim objWord As Object
+    Dim sDocSavePath As String
+    
+    Dim rstLabor As New ADODB.Recordset
+    oAdmin.ExecVal "sp_LaborOsszesito", Nothing, rstLabor
+    
+    Dim lstReplace As New Collection
+    Dim a As ADODB.Field
+    For Each a In rstLabor.Fields
+        lstReplace.Add a, a.Name
+    Next
+    
+    Dim sDotName As String
+    sDotName = "labor_o"
+    sDocSavePath = sDocPath
+    
+    Set objWord = WordAppNewDoc(sDocPath, sDotName, CStr(Now()), ".doc", sDocSavePath)  'Word indítása
+
+    InsTextToWord objWord, lstReplace   'Word dokumentumon belül cseréket végrehajtjuk
+    Set lstReplace = Nothing
+    LaborOsszesito = True
+    Exit Function
+    
+errLaborOsszesito:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "LaborOsszesito"
+
+End Function    'LaborOsszesito
 

@@ -23,6 +23,24 @@ Begin VB.Form Form003
    ScaleWidth      =   12718.25
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdOSSZESITO 
+      Caption         =   "Összesítõ"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   120
+      TabIndex        =   4
+      ToolTipText     =   "F 2"
+      Top             =   4176
+      Width           =   1275
+   End
    Begin VB.CommandButton cmdUJ 
       Caption         =   "Új"
       BeginProperty Font 
@@ -38,7 +56,7 @@ Begin VB.Form Form003
       Left            =   120
       TabIndex        =   2
       ToolTipText     =   "I n s e r t"
-      Top             =   2955
+      Top             =   2962
       Width           =   1275
    End
    Begin VB.CommandButton cmdMODOSIT 
@@ -56,7 +74,7 @@ Begin VB.Form Form003
       Left            =   120
       TabIndex        =   3
       ToolTipText     =   "F 2"
-      Top             =   3570
+      Top             =   3569
       Width           =   1275
    End
    Begin VB.CommandButton cmdLIST 
@@ -73,7 +91,7 @@ Begin VB.Form Form003
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   4
+      TabIndex        =   5
       ToolTipText     =   "Egyedi munkalap nyomtatása"
       Top             =   4785
       Width           =   1275
@@ -109,7 +127,7 @@ Begin VB.Form Form003
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   9
+      TabIndex        =   10
       ToolTipText     =   "E s c "
       Top             =   8040
       Width           =   1275
@@ -131,7 +149,7 @@ Begin VB.Form Form003
       Height          =   285
       Left            =   360
       Locked          =   -1  'True
-      TabIndex        =   12
+      TabIndex        =   13
       TabStop         =   0   'False
       Top             =   900
       Width           =   960
@@ -145,7 +163,7 @@ Begin VB.Form Form003
    Begin VB.CheckBox chkFrissit 
       Height          =   285
       Left            =   720
-      TabIndex        =   8
+      TabIndex        =   9
       TabStop         =   0   'False
       Top             =   1620
       Width           =   285
@@ -198,14 +216,14 @@ Begin VB.Form Form003
       Height          =   240
       Index           =   0
       Left            =   1800
-      TabIndex        =   18
+      TabIndex        =   19
       Top             =   1275
       Width           =   1410
    End
    Begin MSForms.ComboBox cmbMUVEL 
       Height          =   315
       Left            =   3285
-      TabIndex        =   17
+      TabIndex        =   18
       Tag             =   "298"
       Top             =   1260
       Width           =   3255
@@ -234,7 +252,7 @@ Begin VB.Form Form003
       Height          =   240
       Index           =   3
       Left            =   6660
-      TabIndex        =   16
+      TabIndex        =   17
       Top             =   1275
       Width           =   1410
    End
@@ -253,14 +271,14 @@ Begin VB.Form Form003
       Height          =   240
       Index           =   1
       Left            =   6660
-      TabIndex        =   15
+      TabIndex        =   16
       Top             =   870
       Width           =   1410
    End
    Begin MSForms.ComboBox cmbOBJTIP 
       Height          =   315
       Left            =   8145
-      TabIndex        =   6
+      TabIndex        =   7
       Tag             =   "296"
       Top             =   855
       Width           =   3255
@@ -277,7 +295,7 @@ Begin VB.Form Form003
    Begin MSForms.ComboBox cmbOBJID 
       Height          =   315
       Left            =   8145
-      TabIndex        =   7
+      TabIndex        =   8
       Tag             =   "MEGNEV"
       Top             =   1260
       Width           =   3255
@@ -294,7 +312,7 @@ Begin VB.Form Form003
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   135
-      TabIndex        =   14
+      TabIndex        =   15
       Top             =   1350
       Width           =   1500
       Caption         =   "Azonnali frissítés"
@@ -307,7 +325,7 @@ Begin VB.Form Form003
    Begin MSForms.Label lblTALALAT 
       Height          =   240
       Left            =   450
-      TabIndex        =   13
+      TabIndex        =   14
       Top             =   630
       Width           =   825
       Caption         =   "Találatok"
@@ -320,7 +338,7 @@ Begin VB.Form Form003
    Begin MSForms.ComboBox cmbJTIP 
       Height          =   315
       Left            =   3285
-      TabIndex        =   5
+      TabIndex        =   6
       Tag             =   "302"
       Top             =   855
       Width           =   3255
@@ -359,7 +377,7 @@ Begin VB.Form Form003
       Height          =   420
       Index           =   0
       Left            =   5235
-      TabIndex        =   11
+      TabIndex        =   12
       Top             =   45
       Width           =   2490
    End
@@ -378,7 +396,7 @@ Begin VB.Form Form003
       Height          =   240
       Index           =   0
       Left            =   1665
-      TabIndex        =   10
+      TabIndex        =   11
       Top             =   870
       Width           =   1545
    End
@@ -430,16 +448,20 @@ Private Sub cmdLIST_Click()
     util.Jegyzokonyv "8", 7, sReportDir
 End Sub
 
-Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
-    KeyCommand Keycode
+Private Sub cmdOSSZESITO_Click()
+    Form003b.Show 1
+End Sub
+
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+    KeyCommand KeyCode
 End Sub
 
 Private Sub grdJEGYZ_GotFocus()
     KeyPreview = False
 End Sub
 
-Private Sub grdJEGYZ_KeyDown(Keycode As Integer, Shift As Integer)
-    KeyCommand Keycode
+Private Sub grdJEGYZ_KeyDown(KeyCode As Integer, Shift As Integer)
+    KeyCommand KeyCode
 End Sub
 
 Private Sub grdJEGYZ_LostFocus()
@@ -492,10 +514,10 @@ Private Sub grdJEGYZ_DblClick()
 '    cmdVISSZAI_Click
 End Sub
 
-Private Sub KeyCommand(Keycode As Integer)
+Private Sub KeyCommand(KeyCode As Integer)
     Static CtrlKey As Boolean
  
-    Select Case Keycode
+    Select Case KeyCode
         Case vbKeyF1:
         Case vbKeyX:
             If CtrlKey Then
@@ -509,7 +531,7 @@ Private Sub KeyCommand(Keycode As Integer)
         Case vbKeyF5: cmdFRISSIT_Click
     End Select
  
-    If Keycode = vbKeyControl Then
+    If KeyCode = vbKeyControl Then
         CtrlKey = True
     Else
         CtrlKey = False
