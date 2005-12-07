@@ -908,7 +908,6 @@ Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
     LaborOsszesito = False
     
     Dim objWord As Object
-    Dim sDocSavePath As String
     
     Dim rstLabor As New ADODB.Recordset
     oAdmin.ExecVal "sp_LaborOsszesito", Nothing, rstLabor
@@ -920,10 +919,13 @@ Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
     Next
     
     Dim sDotName As String
+    Dim sDocSaveName As String
+    Dim sDocSavePath As String
     sDotName = "labor_o"
     sDocSavePath = sDocPath
+    sDocSaveName = "Vízvizsg.havi.össz." + CStr(Year(Now())) + Right("0" + CStr(Month(Now())), 2)
     
-    Set objWord = WordAppNewDoc(sDocPath, sDotName, CStr(Now()), ".doc", sDocSavePath)  'Word indítása
+    Set objWord = WordAppNewDoc(sDocPath, sDotName, sDocSaveName, ".doc", sDocSavePath)   'Word indítása
 
     InsTextToWord objWord, lstReplace   'Word dokumentumon belül cseréket végrehajtjuk
     Set lstReplace = Nothing

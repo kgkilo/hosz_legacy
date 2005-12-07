@@ -404,7 +404,7 @@
 </node>
 <node COLOR="#990000" TEXT="Egyedi jav&#xed;t&#xe1;sok" POSITION="right">
 <node TEXT="R&#xe9;gi">
-<node COLOR="#990000" TEXT="&#xda;j m&#x171;velet/t&#xed;pushiba k&#xf3;dok">
+<node COLOR="#990000" TEXT="&#xda;j m&#x171;velet/t&#xed;pushiba k&#xf3;dok" FOLDED="true">
 <node COLOR="#338800" TEXT="M&#x171;velet: Q298">
 <icon BUILTIN="button_ok"/>
 </node>
@@ -456,12 +456,25 @@
 <node TEXT="Bejelentve 2004.12.03."/>
 <node TEXT="Hoszolg/aaa.sql a t&#xe1;bl&#xe1;t l&#xe9;trehozza (TAB409)"/>
 </node>
-<node TEXT="Jegyz&#x151;k&#xf6;ny b&#x151;v&#xed;t&#xe9;s">
+<node COLOR="#338800" TEXT="Karb.terv lek&#xe9;rdez&#xe9;sben az inakt&#xed;vak ne jelenjenek meg" FOLDED="true">
+<icon BUILTIN="help"/>
+<node TEXT="Bejelentve 2005.11.29."/>
+</node>
+<node COLOR="#338800" TEXT="Karbantart&#xe1;s lek&#xe9;rdez&#xe9;sben az inakt&#xed;vak ne jelenjenek meg" FOLDED="true">
+<icon BUILTIN="help"/>
+<node TEXT="Bejelentve 2005.11.29."/>
+</node>
+<node COLOR="#338800" TEXT="&#xc1;ltal&#xe1;nos lek&#xe9;rdez&#xe9;s 13-as hib&#xe1;val elsz&#xe1;ll" FOLDED="true">
+<icon BUILTIN="pencil"/>
+<icon BUILTIN="help"/>
+<node TEXT="Bejelentve 2005.11.21."/>
+</node>
+<node TEXT="Jegyz&#x151;k&#xf6;ny b&#x151;v&#xed;t&#xe9;s" FOLDED="true">
 <node TEXT="5. Folyamat szab&#xe1;lyz&#xe1;s"/>
 <node TEXT="12. K&#xe9;tpont szab. I, II (k&#xfc;l&#xf6;n venni)"/>
 </node>
 </node>
-<node TEXT="MunkVB" FOLDED="true">
+<node TEXT="MunkVB">
 <node COLOR="#338800" TEXT="Minden d&#xe1;tum mez&#x151; DTPicker legyen">
 <icon BUILTIN="button_ok"/>
 </node>
@@ -473,19 +486,100 @@
 <node TEXT="Bejelentve 2004.10.08."/>
 <node TEXT="OK 2004.10.10. Rev 34"/>
 </node>
+<node COLOR="#338800" TEXT="Munka v&#xe9;gezhet&#x151; mez&#x151;re sz&#x171;r&#xe9;s a f&#x151; k&#xe9;perny&#x151;n" FOLDED="true">
+<icon BUILTIN="button_ok"/>
+<node TEXT="Bejelentve 2005.07.20."/>
 </node>
-<node TEXT="K&#xf6;z&#xf6;s"/>
+<node COLOR="#338800" TEXT="Munka v&#xe9;gezhet&#x151; id&#x151;pontot kiirni a gridbe" FOLDED="true">
+<icon BUILTIN="button_ok"/>
+<node COLOR="#000000" TEXT="Bejelentve 2005.07.20."/>
+<node TEXT="OK 2005.08.10."/>
+</node>
+<node COLOR="#338800" TEXT="BEr.t&#xed;pust v&#xe1;laszt csak, akkor az &#xf6;sszes ilyen berendez&#xe9;sre kapcsolt munkalapot list&#xe1;zza ki">
+<icon BUILTIN="pencil"/>
+</node>
+</node>
+<node TEXT="K&#xf6;z&#xf6;s">
+<node COLOR="#338800" TEXT="Obj update nem frissiti az AKOD, ADATUM mez&#x151;ket" FOLDED="true">
+<icon BUILTIN="button_ok"/>
+<icon BUILTIN="help"/>
+<node TEXT="OK 2005.11.29."/>
+</node>
+</node>
 </node>
 <node TEXT="Diszp&#xe9;cser" FOLDED="true" POSITION="left">
 <icon BUILTIN="pencil"/>
+<node TEXT="R&#xe9;gi" FOLDED="true">
 <node TEXT="felveszik a be&#xe9;rkez&#x151; hibabejelent&#xe9;seket">
-<node ID="_Freemind_Link_1135830864" TEXT="kb el is d&#xf6;nti, kire tartozik a munka"/>
+<node ID="_Freemind_Link_978496440" TEXT="kb el is d&#xf6;nti, kire tartozik a munka"/>
 </node>
 <node TEXT="munkalapot kell hozz&#xe1; gy&#xe1;rtani">
 <node TEXT="de ez nem a diszp&#xe9;cser dolga"/>
 </node>
 <node TEXT="van olyan munka (s&#xfc;rg&#x151;s), ami nem ker&#xfc;l be a napl&#xf3;ba"/>
 <node TEXT="napl&#xf3; form&#xe1;tumban ki kell nyomtatni?"/>
+</node>
+<node TEXT="V&#xe1;g utca">
+<node COLOR="#338800" TEXT="Csak &#xe9;p&#xfc;let, l&#xe9;pcs&#x151;h&#xe1;z, h&#x151;k&#xf6;zpont, f&#x171;t&#x151;m&#x171; legyen" FOLDED="true">
+<icon BUILTIN="button_ok"/>
+<node COLOR="#338800" TEXT="Csak &#xe9;p&#xfc;let &#xe9;s l&#xe9;pcs&#x151;h&#xe1;z legyen 2005.04.04.">
+<icon BUILTIN="button_ok"/>
+</node>
+<node COLOR="#338800" TEXT="Mind a 4 legyen ink&#xe1;bb 2005.04.06.">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node COLOR="#338800" TEXT="T&#xed;pushib&#xe1;kb&#xf3;l kisz&#x171;rnek p&#xe1;rat, csak azok legyenek">
+<icon BUILTIN="button_ok"/>
+<node TEXT="Q369"/>
+</node>
+<node TEXT="Form001">
+<node COLOR="#338800" TEXT="T&#xed;pus hiba az &#xf6;sszes legyen vagy csak a sz&#x171;k&#xed;tett?"/>
+<node COLOR="#338800" TEXT="Berendez&#xe9;s t&#xed;pus az &#xf6;sszes legyen vagy csak a sz&#x171;k&#xed;tett?"/>
+<node COLOR="#338800" TEXT="Dupla klikkre ne j&#xf6;jj&#xf6;n f&#xf6;l a vissza&#xed;r&#xe1;s">
+<icon BUILTIN="button_ok"/>
+</node>
+<node COLOR="#338800" TEXT="M&#xf3;dos&#xed;t&#xe1;s - mindet vagy csak az &#xf6;v&#xe9;it?"/>
+<node COLOR="#338800" TEXT="Csop.nyomtat&#xe1;s ne menjen">
+<icon BUILTIN="button_ok"/>
+</node>
+<node COLOR="#338800" TEXT="D&#xe1;tumt&#xf3;l az aktu&#xe1;lis nap legyen 2005.04.04.">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node TEXT="Form001a">
+<node COLOR="#338800" TEXT="F&#x151;k&#xf6;nyvi sz&#xe1;m csak 736,737" FOLDED="true">
+<icon BUILTIN="button_ok"/>
+<node COLOR="#999999" TEXT="Q310A-&gt;Q310D">
+<font NAME="Default" SIZE="10"/>
+</node>
+<node COLOR="#338800" TEXT="62325 &#xe9;s 62317 is kell 2005.04.07."/>
+</node>
+<node COLOR="#338800" TEXT="Szolg&#xe1;ltat&#xe1;s t&#xed;pus csak LA,LF" FOLDED="true">
+<icon BUILTIN="button_ok"/>
+<node COLOR="#999999" TEXT="Q291-&gt;Q291D">
+<font NAME="Default" SIZE="10"/>
+</node>
+<node COLOR="#338800" TEXT="LF-et v&#xe1;laszt -&gt; 737 legyen a FSZAM"/>
+<node COLOR="#338800" TEXT="LA-t v&#xe1;laszt -&gt; 736 legyen a FSZAM"/>
+<node COLOR="#338800" TEXT="&#xda;j szolgtip: H&#x151;k&#xf6;zpont kezel&#x151;, HK 2005.04.06."/>
+<node COLOR="#338800" TEXT="Belv&#xe1;rosi g&#xe9;p&#xe9;sz (GB) nem kell t&#xf6;bb&#xe9; 2005.04.06."/>
+<node COLOR="#338800" TEXT="H&#x151;k&#xf6;zpontot v&#xe1;laszt -&gt; 62325 legyen a FSZAM 2005.04.07."/>
+<node COLOR="#338800" TEXT="F&#x171;t&#x151;m&#x171;vet v&#xe1;laszt -&gt; 62317 legyen a FSZAM 2005.04.07."/>
+</node>
+<node COLOR="#338800" TEXT="Munk&#xe1;t felvev&#x151; default: &#xdc;zemfenntart&#xf3;">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node TEXT="Form001b" FOLDED="true">
+<node COLOR="#338800" TEXT="Nyomtat&#xe1;sban ha &#xe9;p&#xfc;let, a lak&#xe1;s adat nem ker&#xfc;l ki a munkalapra">
+<icon BUILTIN="button_ok"/>
+</node>
+</node>
+<node TEXT="Form002" FOLDED="true">
+<node COLOR="#338800" TEXT="Csak olvashat&#xf3; legyen a form"/>
+</node>
+</node>
 </node>
 <node TEXT="V&#xed;z&#xf3;ra" POSITION="left">
 <icon BUILTIN="pencil"/>
