@@ -465,8 +465,7 @@
 <node TEXT="Bejelentve 2005.11.29."/>
 </node>
 <node COLOR="#338800" TEXT="&#xc1;ltal&#xe1;nos lek&#xe9;rdez&#xe9;s 13-as hib&#xe1;val elsz&#xe1;ll" FOLDED="true">
-<icon BUILTIN="pencil"/>
-<icon BUILTIN="help"/>
+<icon BUILTIN="button_ok"/>
 <node TEXT="Bejelentve 2005.11.21."/>
 </node>
 <node TEXT="Jegyz&#x151;k&#xf6;ny b&#x151;v&#xed;t&#xe9;s" FOLDED="true">
