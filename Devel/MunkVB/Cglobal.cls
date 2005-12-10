@@ -6,12 +6,12 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "Global"
+Attribute VB_Name = "CGlobal"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = True
-Option Explicit
+Attribute VB_Exposed = False
+'Option Explicit
 
 Private m_sConnect As String
 
@@ -144,7 +144,7 @@ Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRe
             g_oKodszotar.Load "sp_Q369", Nothing, "293", "Diszp.típushiba", 3
             g_oKodszotar.Load "sp_Q296_Diszp", Nothing, "296", "Objektum típus", 2
             g_oKodszotar.Load "sp_Q310D", Nothing, "310A", "Aktív fõkönyvi szám", 12
-        Case NORMAL, MUNKALAP
+        Case NORMAL, MLAP
             g_oKodszotar.Load "sp_Q291", Nothing, "291", "Szolgáltatás jellege", 2
             g_oKodszotar.Load "sp_Q293", Nothing, "293", "Típus hiba", 3
             g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
@@ -271,7 +271,7 @@ End Function    'MegnevFelt
 '
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
 '
-Public Function TelephszFeltolt(ByRef cmbTelephsz As Object, ByRef cmbOBJTIP As Object, Optional ByVal zzz As String) As Boolean
+Public Function TelephszFeltolt(ByRef cmbTELEPHSZ As Object, ByRef cmbOBJTIP As Object, Optional ByVal zzz As String) As Boolean
     On Error GoTo errTelephszFeltolt
     TelephszFeltolt = False
     
@@ -292,8 +292,8 @@ Public Function TelephszFeltolt(ByRef cmbTelephsz As Object, ByRef cmbOBJTIP As 
     End If
     
     g_oKodszotar.Load "sp_FillObjTelephsz", Array("pObjTip", sOBJTIP), sSectName, "Objektum telepítési helyszáma", 100
-    TelephszFeltolt = ComboBoxSet(cmbTelephsz, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
-    cmbTelephsz.ListWidth = 350
+    TelephszFeltolt = ComboBoxSet(cmbTELEPHSZ, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
+    cmbTELEPHSZ.ListWidth = 350
     Exit Function
     
 errTelephszFeltolt:
