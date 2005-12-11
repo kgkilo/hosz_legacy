@@ -398,3 +398,63 @@ errFillGrid:
 End Function
 
 
+'   SetCombo
+'
+'   Feltölti a képernyõn található combobox-okat a kódszótár alapján.
+'
+'   Paraméterek:    lstControls As Access.Controls  -   a képernyõn található kontrollok
+'
+'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
+'
+Public Function SetCombo(ByRef frm As Object) As Boolean
+    On Error GoTo errSetCombo
+    SetCombo = False
+    
+    Dim oControl As Control
+    For Each oControl In frm.Controls     'Végigmegyünk az összes kontrolon,
+        If Left(oControl.Name, 3) = "cmb" Then  'és ha combobox, akkor
+            SetCombo = ComboBoxSet(oControl, Nothing)   'feltöltjük.
+        End If
+    Next
+    Exit Function
+    
+errSetCombo:
+End Function    'SetCombo
+
+Public Function SetComboVal(ByRef cmbCombo As Object, ByRef sID As String) As Boolean
+    SetComboVal = ComboBoxSetBase(cmbCombo, sID)
+End Function    'SetComboVal
+
+'   GetComboNev
+'
+'   Visszaadja az átadott combobox kiválasztott sorának szövegét (ami látszik...)
+'
+'   Paraméterek:    cmbCombo as Object  -   a lekérdezendõ combobox
+'
+'   Visszatérés:    String, a szöveg. Hiba esetén üres string.
+'
+Public Function GetComboNev(ByRef cmbCombo As Object) As String
+    On Error GoTo errGetComboNev
+    GetComboNev = ""
+    
+    If cmbCombo.ListIndex <> -1 Then
+        GetComboNev = g_oKodszotar.Section(cmbCombo.Tag).KodList.Item(cmbCombo.ListIndex + 1).Nev
+    End If
+    Exit Function
+    
+errGetComboNev:
+End Function    'GetComboNev
+
+'   GetComboErtek
+'
+'   Visszaadja az átadott combobox kiválasztott sorának értékét (ami nem látszik...)
+'
+'   Paraméterek:    cmbCombo as Object  -   a lekérdezendõ combobox
+'
+'   Visszatérés:    String, az érték. Hiba esetén üres string.
+'
+Public Function GetComboErtek(ByRef cmbCombo As Object) As String
+    GetComboErtek = ComboBoxGet(Nothing, cmbCombo)
+End Function    'GetComboErtek
+
+

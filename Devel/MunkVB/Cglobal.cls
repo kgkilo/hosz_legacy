@@ -481,65 +481,6 @@ errRekordDel:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "RekordDel"
 End Function    'RekordDel
 
-'   SetCombo
-'
-'   Feltölti a képernyõn található combobox-okat a kódszótár alapján.
-'
-'   Paraméterek:    lstControls As Access.Controls  -   a képernyõn található kontrollok
-'
-'   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
-'
-Public Function SetCombo(ByRef frm As Object) As Boolean
-    On Error GoTo errSetCombo
-    SetCombo = False
-    
-    Dim oControl As Control
-    For Each oControl In frm.Controls     'Végigmegyünk az összes kontrolon,
-        If Left(oControl.Name, 3) = "cmb" Then  'és ha combobox, akkor
-            SetCombo = ComboBoxSet(oControl, Nothing)   'feltöltjük.
-        End If
-    Next
-    Exit Function
-    
-errSetCombo:
-End Function    'SetCombo
-
-Public Function SetComboVal(ByRef cmbCombo As Object, ByRef sID As String) As Boolean
-    SetComboVal = ComboBoxSetBase(cmbCombo, sID)
-End Function    'SetComboVal
-
-'   GetComboNev
-'
-'   Visszaadja az átadott combobox kiválasztott sorának szövegét (ami látszik...)
-'
-'   Paraméterek:    cmbCombo as Object  -   a lekérdezendõ combobox
-'
-'   Visszatérés:    String, a szöveg. Hiba esetén üres string.
-'
-Public Function GetComboNev(ByRef cmbCombo As Object) As String
-    On Error GoTo errGetComboNev
-    GetComboNev = ""
-    
-    If cmbCombo.ListIndex <> -1 Then
-        GetComboNev = g_oKodszotar.Section(cmbCombo.Tag).KodList.Item(cmbCombo.ListIndex + 1).Nev
-    End If
-    Exit Function
-    
-errGetComboNev:
-End Function    'GetComboNev
-
-'   GetComboErtek
-'
-'   Visszaadja az átadott combobox kiválasztott sorának értékét (ami nem látszik...)
-'
-'   Paraméterek:    cmbCombo as Object  -   a lekérdezendõ combobox
-'
-'   Visszatérés:    String, az érték. Hiba esetén üres string.
-'
-Public Function GetComboErtek(ByRef cmbCombo As Object) As String
-    GetComboErtek = ComboBoxGet(Nothing, cmbCombo)
-End Function    'GetComboErtek
-
 Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef frm As Object) As Boolean
     Dim sFormatstring As String
     Dim sQuery As String
@@ -882,19 +823,15 @@ Public Function OsszesitoFeltolt(ByRef frm As Object) As Boolean
     Dim futomuId As Long
     Dim sSectName As String
     Dim ctrl As Object
-    MsgBox "1"
     
     For Each ctrl In frm.Controls
         If Left(ctrl.Name, 3) = "cmb" Then
             ctrlNum = CInt(Mid(ctrl.Name, 4))   'a combobox száma
-            MsgBox ctrlNum, , ctrl.Name
             futomuId = gIdTable(ctrlNum) 'fûtõmû objid (a tömbbõl kiolvasva)
-            MsgBox futomuId
             sSectName = "labor" + CStr(ctrlNum)
             g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFutomu_Id", futomuId), sSectName, sSectName, 10
         End If
     Next
-    MsgBox "2"
     
     OsszesitoFeltolt = True
     Exit Function
@@ -903,21 +840,29 @@ errOsszesitoFeltolt:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "OsszesitoFeltolt"
 End Function    'OsszesitoFeltolt
 
+'   LaborOsszesito
+'
+'   Összeállítja a labor összesítõ jegyzõkönyvet a labor_o.dot Word sablon alapján
+'
+'   Paraméterek:    sDocPath    -   a sablon file-t tartalmazó könyvtár elérési útja
+'
+'   Visszatérés:    Boolean. True, ha minden OK, egyébként False
+'
 Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
     On Error GoTo errLaborOsszesito
     LaborOsszesito = False
     
-    Dim objWord As Object
-    
     Dim rstLabor As New ADODB.Recordset
     oAdmin.ExecVal "sp_LaborOsszesito", Nothing, rstLabor
     
+    'Melyik mezõket kell cserélni és mire
     Dim lstReplace As New Collection
     Dim a As ADODB.Field
     For Each a In rstLabor.Fields
         lstReplace.Add a, a.Name
     Next
     
+    'Sablon alapján létrehozzuk a Word doksit
     Dim sDotName As String
     Dim sDocSaveName As String
     Dim sDocSavePath As String
@@ -925,15 +870,17 @@ Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
     sDocSavePath = sDocPath
     sDocSaveName = "Vízvizsg.havi.össz." + CStr(Year(Now())) + Right("0" + CStr(Month(Now())), 2)
     
-    Set objWord = WordAppNewDoc(sDocPath, sDotName, sDocSaveName, ".doc", sDocSavePath)   'Word indítása
-
-    InsTextToWord objWord, lstReplace   'Word dokumentumon belül cseréket végrehajtjuk
+    Dim objWord As Object
+    Set objWord = WordAppNewDoc(sDocPath, sDotName, sDocSaveName, ".doc", sDocSavePath)
+    
+    'Word dokumentumon belül cseréket végrehajtjuk
+    InsTextToWord objWord, lstReplace
+    
     Set lstReplace = Nothing
     LaborOsszesito = True
     Exit Function
     
 errLaborOsszesito:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "LaborOsszesito"
-
 End Function    'LaborOsszesito
 
