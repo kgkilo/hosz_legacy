@@ -196,7 +196,7 @@ Public nevrend As String
 
 Private Sub cmbOBJTIP_Change()
  If cmbOBJTIP.ListIndex <> -1 Then
-   util.megnevfelt cmbOBJID, cmbOBJTIP, nevrend, "MEGNEV"
+   util.MegnevFelt cmbOBJID, cmbOBJTIP, nevrend, "MEGNEV"
  End If
 End Sub
 
@@ -207,8 +207,8 @@ End Sub
 
 Private Sub cmdOK_Click()
     If cmbOBJTIP.ListIndex <> -1 And cmbOBJID.ListIndex <> -1 Then
-        Form001a.spcOBJTIP = util.getComboErtek(cmbOBJTIP)
-        Form001a.txtOBJID = util.getComboErtek(cmbOBJID)
+        Form001a.spcOBJTIP = GetComboErtek(cmbOBJTIP)
+        Form001a.txtOBJID = GetComboErtek(cmbOBJID)
         Form001a.txtLAKAS = Me.txtLAKAS
         Back Me
     Else
@@ -222,19 +222,19 @@ End Sub
 
 Private Sub Form_Load()
  KeyPreview = True
- util.setcombo Me
+ SetCombo Me
  Option1(1) = True
 End Sub
 
-Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+ KeyCommand KeyCode
  'Keycode = 0
 End Sub
 
-Private Sub KeyCommand(Keycode As Integer)
+Private Sub KeyCommand(KeyCode As Integer)
  Static CtrlKey As Boolean
  
- Select Case Keycode
+ Select Case KeyCode
   Case vbKeyF1:
   Case vbKeyX:
              If CtrlKey Then
@@ -243,7 +243,7 @@ Private Sub KeyCommand(Keycode As Integer)
   Case vbKeyEscape: cmdClose_Click
   Case vbKeyF5: cmdOK_Click
  End Select
- If Keycode = vbKeyControl Then
+ If KeyCode = vbKeyControl Then
   CtrlKey = True
  Else
   CtrlKey = False
@@ -257,6 +257,6 @@ Private Sub Option1_Click(Index As Integer)
  ElseIf Option1(2) = True Then
   nevrend = "T"
  End If
- util.megnevfelt cmbOBJID, cmbOBJTIP, nevrend, "MEGNEV"
+ util.MegnevFelt cmbOBJID, cmbOBJTIP, nevrend, "MEGNEV"
 End Sub
 

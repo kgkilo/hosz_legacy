@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
+Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Begin VB.Form Form001 
    ClientHeight    =   8595
    ClientLeft      =   60
@@ -309,7 +309,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -341,7 +341,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMTOL 
@@ -373,7 +373,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -405,7 +405,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNELV 
@@ -437,7 +437,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin VB.Label lblMUNELV 
@@ -937,7 +937,7 @@ Private Sub frissit()
     If iRefresh = 1 Then
         If chkFrissit = 1 Then
             grdMUNKALAP.Redraw = False
-            util.gridderx grdMUNKALAP, "MUNKALAP", Me
+            util.GridderX grdMUNKALAP, "MUNKALAP", Me
             grdMUNKALAP.Redraw = True
         Else
             tmrVILLOG.Enabled = True
@@ -949,8 +949,8 @@ End Sub
 Private Sub cmbOBJTIP_Change()
     If cmbOBJTIP.ListIndex <> -1 Then
         Screen.MousePointer = vbHourglass
-        util.megnevfeltolt cmbOBJID, cmbOBJTIP, "MEGNEV"
-        util.telephszfeltolt cmbTELEPHSZ, cmbOBJTIP, "TELEPHSZ"
+        util.MegnevFeltolt cmbOBJID, cmbOBJTIP, "MEGNEV"
+        util.TelephszFeltolt cmbTELEPHSZ, cmbOBJTIP, "TELEPHSZ"
         Screen.MousePointer = vbDefault
     End If
 End Sub
@@ -965,17 +965,17 @@ Private Sub cmdCSOPLIST_Click()
     If MsgBox("Biztosan nyomtatni szeretné a választott munkalapokat?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
         Dim i As Integer
         With grdMUNKALAP
-            If util.getComboErtek(cmbMLAPTIP) = 1 Then
+            If GetComboErtek(cmbMLAPTIP) = 1 Then
                 For i = 1 To grdMUNKALAP.Rows - 1
-                    util.printmunkalap "1", .TextMatrix(i, 1)
+                    util.PrintMunkalap "1", .TextMatrix(i, 1)
                     Nyomtat "munuf.rpt", 1
-                    util.munkalapallapot .TextMatrix(i, 1), 2
+                    util.MunkalapAllapot .TextMatrix(i, 1), 2
                 Next i
             Else
                 For i = 1 To .Rows - 1
-                    util.printmunkalap "2", .TextMatrix(i, 1)
+                    util.PrintMunkalap "2", .TextMatrix(i, 1)
                     Nyomtat "munue.rpt", 1
-                    util.munkalapallapot .TextMatrix(i, 1), 2
+                    util.MunkalapAllapot .TextMatrix(i, 1), 2
                 Next i
             End If
         End With
@@ -989,15 +989,15 @@ End Sub
 
 Private Sub cmdLIST_Click()
     If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
-        util.munkalapallapot grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1), 2
-        util.printmunkalap "1", grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+        util.MunkalapAllapot grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1), 2
+        util.PrintMunkalap "1", grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
         Nyomtat "munuf.rpt", 1
     End If
 End Sub
 
 Private Sub cmdMASOL_Click()
     Screen.MousePointer = vbHourglass
-    util.duplikalmunk grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
+    util.DuplikalMunk grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
     cmdFRISSIT_Click
     Screen.MousePointer = vbDefault
 End Sub
@@ -1009,16 +1009,16 @@ Private Sub cmdVISSZAI_Click()
     frissit
 End Sub
 
-Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
-    KeyCommand Keycode
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+    KeyCommand KeyCode
 End Sub
 
 Private Sub grdmunkalap_GotFocus()
     KeyPreview = False
 End Sub
 
-Private Sub grdmunkalap_KeyDown(Keycode As Integer, Shift As Integer)
-    KeyCommand Keycode
+Private Sub grdmunkalap_KeyDown(KeyCode As Integer, Shift As Integer)
+    KeyCommand KeyCode
 End Sub
 
 Private Sub grdmunkalap_LostFocus()
@@ -1036,7 +1036,7 @@ End Sub
 Private Sub cmdFRISSIT_Click()
     Screen.MousePointer = vbHourglass
     
-    util.gridderx grdMUNKALAP, "MUNKALAP", Me
+    util.GridderX grdMUNKALAP, "MUNKALAP", Me
     
     Dim iOra As Long
     Dim i As Long
@@ -1085,7 +1085,7 @@ Private Sub Form_Load()
         cmdMASOL.Enabled = True
     End If
     
-    util.SetCombo Me
+    SetCombo Me
     datDATUMIG.Value = DateValue(Now())
     If iWorkMode = DISZPECSER Then
         datDATUMTOL.Value = DateValue(Now())
@@ -1098,8 +1098,8 @@ Private Sub Form_Load()
     datMUNDATTOL.Value = ""
     datMUNDATIG.Value = ""
     datMUNELV.Value = ""
-    util.setComboVal cmbMLAPTIP, "1"
-    util.setComboVal cmbALLAPOT, "5"
+    SetComboVal cmbMLAPTIP, "1"
+    SetComboVal cmbALLAPOT, "5"
     Screen.MousePointer = vbDefault
 End Sub
 
@@ -1107,10 +1107,10 @@ Private Sub grdmunkalap_DblClick()
     cmdVISSZAI_Click
 End Sub
 
-Private Sub KeyCommand(Keycode As Integer)
+Private Sub KeyCommand(KeyCode As Integer)
     Static CtrlKey As Boolean
  
-    Select Case Keycode
+    Select Case KeyCode
         Case vbKeyF1:
         Case vbKeyX:
             If CtrlKey Then
@@ -1125,7 +1125,7 @@ Private Sub KeyCommand(Keycode As Integer)
         Case vbKeyF5: cmdFRISSIT_Click
     End Select
  
-    If Keycode = vbKeyControl Then
+    If KeyCode = vbKeyControl Then
         CtrlKey = True
     Else
         CtrlKey = False
@@ -1139,7 +1139,7 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 End Sub
 
 Sub enableCsoportosNyomtatas()
-    If cmbMLAPTIP.ListIndex <> -1 And util.getComboErtek(cmbALLAPOT) = "1" Then
+    If cmbMLAPTIP.ListIndex <> -1 And GetComboErtek(cmbALLAPOT) = "1" Then
         If iWorkMode <> DISZPECSER Then cmdCSOPLIST.Enabled = True
         cmdLIST.Enabled = True
     Else

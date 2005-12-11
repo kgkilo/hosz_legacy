@@ -494,8 +494,8 @@
 <node COLOR="#000000" TEXT="Bejelentve 2005.07.20."/>
 <node TEXT="OK 2005.08.10."/>
 </node>
-<node COLOR="#338800" TEXT="BEr.t&#xed;pust v&#xe1;laszt csak, akkor az &#xf6;sszes ilyen berendez&#xe9;sre kapcsolt munkalapot list&#xe1;zza ki">
-<icon BUILTIN="pencil"/>
+<node COLOR="#338800" TEXT="Ber.t&#xed;pust v&#xe1;laszt csak, akkor az &#xf6;sszes ilyen berendez&#xe9;sre kapcsolt munkalapot list&#xe1;zza ki">
+<icon BUILTIN="button_ok"/>
 </node>
 </node>
 <node TEXT="K&#xf6;z&#xf6;s">

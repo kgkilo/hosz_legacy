@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
+Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Begin VB.Form Form003 
    ClientHeight    =   8595
    ClientLeft      =   60
@@ -412,7 +412,7 @@ Private Sub frissit()
     If iRefresh = 1 Then
         If chkFrissit = 1 Then
             grdJEGYZ.Redraw = False
-            util.gridderx grdJEGYZ, "JEGYZ", Me
+            util.GridderX grdJEGYZ, "JEGYZ", Me
             grdJEGYZ.Redraw = True
         Else
             tmrVILLOG.Enabled = True
@@ -424,7 +424,7 @@ End Sub
 Private Sub cmbOBJTIP_Change()
     If cmbOBJTIP.ListIndex <> -1 Then
         Screen.MousePointer = vbHourglass
-        util.megnevfeltolt cmbOBJID, cmbOBJTIP, "MEGNEV"
+        util.MegnevFeltolt cmbOBJID, cmbOBJTIP, "MEGNEV"
         Screen.MousePointer = vbDefault
     End If
 End Sub
@@ -479,7 +479,7 @@ End Sub
 Private Sub cmdFRISSIT_Click()
     Screen.MousePointer = vbHourglass
     
-    util.gridderx grdJEGYZ, "JEGYZ", Me
+    util.GridderX grdJEGYZ, "JEGYZ", Me
     
     tmrVILLOG.Enabled = False
     cmdFRISSIT.Caption = "Frissítés"
@@ -506,7 +506,7 @@ End Sub
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     iRefresh = 0
-    util.SetCombo Me
+    SetCombo Me
     Screen.MousePointer = vbDefault
 End Sub
 

@@ -786,10 +786,24 @@ errJegyzokonyv:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "Jegyzokonyv"
 End Function    'Jegyzokonyv
 
-
+'   OsszesitoFeltolt
+'
+'   Feltölti az összesítõ jegyzõkönyv elpválasztó képernyõ combobox-ait.
+'
+'   Paraméterek:    frm -   a kitöltendõ form
+'
+'   Visszatérés:    Boolean. True, ha minden OK, egyébként False
+'
 Public Function OsszesitoFeltolt(ByRef frm As Object) As Boolean
-    On Error GoTo errOsszesitoFeltolt
     OsszesitoFeltolt = False
+    
+    On Error Resume Next
+    Dim i As Integer
+    For i = 1 To 23
+        g_oKodszotar.Remove "labor" + CStr(i)
+    Next i
+    
+    On Error GoTo errOsszesitoFeltolt
     
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 27), "labor1", "labor1", 10
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 28), "labor2", "labor2", 10
@@ -815,7 +829,7 @@ Public Function OsszesitoFeltolt(ByRef frm As Object) As Boolean
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 44), "labor22", "labor22", 10
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 1722), "labor23", "labor23", 10
     
-    OsszesitoFeltolt = True
+    OsszesitoFeltolt = SetCombo(frm)
     Exit Function
     
     'hat ez lenne a tisztesseges megoldas... ha a tomb mukodne
@@ -884,3 +898,50 @@ errLaborOsszesito:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "LaborOsszesito"
 End Function    'LaborOsszesito
 
+
+'   OsszesitoKivalaszt
+'
+'   Automatikusan kitölti az összesítõ jegyzõkönyv jegyzõkönyv sorszámait
+'       a megadott dátum alapján
+'
+'   Paraméterek:    sDate   -   jegyzõkönyvek készítési dátuma (csak év/hónap számít)
+'
+'   Visszatérés:    Boolean. True, ha minden OK, egyébként False
+'
+Public Function OsszesitoKivalaszt(ByRef sDate As String, ByRef frm As Object) As Boolean
+    On Error GoTo errOsszesitoKivalaszt
+    OsszesitoKivalaszt = False
+    
+    'Feltölti a comboboxokat az összes, rájuk vonatkozó jegyzõkönyvszámokkal
+    OsszesitoFeltolt frm
+    
+    'Feltölti az átmeneti SQL táblát, amibõl kiolvassuk a jegyzõkönyvek adatait
+    Dim lstParams As New Collection
+    lstParams.Add sDate, "pDATUM"
+    oAdmin.Exec "sp_FillOsszesitoSorsz", lstParams
+    lstParams.Remove "pDATUM"
+    
+    'Lekérdezzük, hogy melyik helyhez melyik az aktuális jegyzõkönyv,
+    ' és ráállítjuk a comboboxokat.
+    Dim rstResult As New ADODB.Recordset
+    Dim sCmbSorsz As Integer
+    Dim cmb As Object
+    lstParams.Add "", "pSORSZ"
+    For Each cmb In frm.Controls
+        If Left(cmb.Name, 3) = "cmb" Then   'végigmegyünk az összes comboboxon
+            sCmbSorsz = Right(cmb.Tag, Len(cmb.Tag) - 5)    'a nevébõl kiolvasható, melyik sorban van az adata
+            lstParams.Remove "pSORSZ"
+            lstParams.Add sCmbSorsz, "pSORSZ"
+            If oAdmin.ExecVal("sp_GetOsszesitoSorsz", lstParams, rstResult) = True Then
+                SetComboVal cmb, rstResult("SORSZ").Value
+                cmb.Enabled = True
+            End If
+        End If
+    Next
+    
+    OsszesitoKivalaszt = True
+    Exit Function
+    
+errOsszesitoKivalaszt:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "OsszesitoKivalaszt"
+End Function    'OsszesitoKivalaszt

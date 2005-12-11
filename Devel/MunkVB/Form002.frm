@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
+Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Begin VB.Form Form002 
    BorderStyle     =   1  'Fixed Single
    ClientHeight    =   5550
@@ -297,9 +297,9 @@ End Sub
 
 Private Sub cmdOK_Click()
     If iWorkMode <> DISZPECSER Then
-        util.rekordupdate Me, "VISSZAIR", mode
+        util.RekordUpdate Me, "VISSZAIR", mode
         Form001.iRefresh = 1
-        util.karbanfelvitel txtID
+        util.KarbanFelvitel txtID
     End If
     
     Back Me
@@ -308,9 +308,9 @@ End Sub
 Private Sub cmdTOROL_Click()
  If MsgBox("Biztosan törölni szeretné?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
   Screen.MousePointer = vbHourglass
-   util.rekorddel "TELJ", grdTELJ.TextMatrix(grdTELJ.Row, 1)
-   util.gridderx grdTELJ, "TELJ", Me
-   util.teljlistfeltolt txtID, Me
+   util.RekordDel "TELJ", grdTELJ.TextMatrix(grdTELJ.Row, 1)
+   util.GridderX grdTELJ, "TELJ", Me
+   util.TeljListFeltolt txtID, Me
   Screen.MousePointer = vbDefault
  End If
 End Sub
@@ -332,22 +332,22 @@ Private Sub Form_Activate()
         cmdOK.Caption = "OK"
     End If
     
-    util.gridderx grdTELJ, "TELJ", Me
-    util.teljlistfeltolt txtID, Me
+    util.GridderX grdTELJ, "TELJ", Me
+    util.TeljListFeltolt txtID, Me
 End Sub
 
 Private Sub Form_Load()
-KeyPreview = True
- util.setcombo Me
- If mode <> 0 Then
-  util.rekordfeltolt Me, "MUNKALAP", mode
- End If
- Me.Mundat = DateValue(Now())
- Me.Munora = ""
+    KeyPreview = True
+    SetCombo Me
+    If mode <> 0 Then
+        util.RekordFeltolt Me, "MUNKALAP", mode
+    End If
+    Mundat = DateValue(Now())
+    Munora = ""
 End Sub
  
-Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+ KeyCommand KeyCode
  'Keycode = 0
 End Sub
 Private Sub grdSZERZTET_DblClick()
@@ -360,10 +360,10 @@ Private Sub grdSZERZTET_GotFocus()
  KeyPreview = False
 End Sub
 
- Private Sub KeyCommand(Keycode As Integer)
+ Private Sub KeyCommand(KeyCode As Integer)
  Static CtrlKey As Boolean
  
- Select Case Keycode
+ Select Case KeyCode
   Case vbKeyF1:
   Case vbKeyX:
              If CtrlKey Then
@@ -376,14 +376,14 @@ End Sub
   'Case vbKeyHome: grdSZERZTET.SetFocus
   Case vbKeyF5: cmdOK_Click
  End Select
- If Keycode = vbKeyControl Then
+ If KeyCode = vbKeyControl Then
   CtrlKey = True
  Else
   CtrlKey = False
  End If
 End Sub
-Private Sub grdSZERZTET_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
+Private Sub grdSZERZTET_KeyDown(KeyCode As Integer, Shift As Integer)
+ KeyCommand KeyCode
 End Sub
 
 Private Sub lblUGYIRAT_ID_Click(Index As Integer)

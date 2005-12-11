@@ -923,9 +923,9 @@ Public TipushFriss As Integer
 
 Private Sub cmbMUN_SORSZ_Change()
     Dim iMunkalap As Long
-    iMunkalap = util.getComboErtek(cmbMUN_SORSZ)
-    util.rekordfeltolt Me, "MUNKALAP", iMunkalap
-    util.munkalapobjkiir Me
+    iMunkalap = GetComboErtek(cmbMUN_SORSZ)
+    util.RekordFeltolt Me, "MUNKALAP", iMunkalap
+    util.MunkalapObjKiir Me
 End Sub
 
 Private Sub cmdClose_Click()
@@ -937,7 +937,7 @@ Private Sub cmdOK_Click()
     
     If mode = 0 Then
         Dim i As String
-        i = util.rekordinsert(Me, "LABOR")
+        i = util.RekordInsert(Me, "LABOR")
         MsgBox "Az új jegyzõkönyv száma: " & CStr(i)
         If MsgBox("Kívánja nyomtatni a jegyzõkönyvet?", vbQuestion + vbYesNo, "Nyomtatás") = vbYes Then
             util.Jegyzokonyv "8", i, sANTSZDir
@@ -989,11 +989,11 @@ End Sub
 
 Private Sub Form_Load()
     KeyPreview = True
-    util.SetCombo Me
+    SetCombo Me
     util.MunkalapszamFeltolt cmbMUN_SORSZ
     
     If mode <> 0 Then
-        util.rekordfeltolt Me, "LABOR", mode
+        util.RekordFeltolt Me, "LABOR", mode
     Else
         datMINTA_DAT = DateValue(Now())
         datMINTA_DAT.Hour = 6

@@ -1011,7 +1011,7 @@ Public TipushFriss As Integer
 Private Sub cmbFSZAM_Change()
     If cmbFSZAM.ListIndex <> -1 Then
         'util.munkalapfszamvalaszt cmbFSZAM, cmbOBJTIP, cmbOBJID
-        txtFNEV = util.getcombonev(cmbFSZAM)
+        txtFNEV = GetComboNev(cmbFSZAM)
         'spcVALASZT.Enabled = False
     Else
         'spcVALASZT.Enabled = True
@@ -1021,36 +1021,36 @@ End Sub
 Private Sub cmbSzolgjell_Change()
     Dim szolgJell As String
     If mode = 0 Then
-        szolgJell = util.getComboErtek(cmbSzolgjell)
+        szolgJell = GetComboErtek(cmbSzolgjell)
         Select Case szolgJell
             Case "LE", "LA":
-                util.setComboVal cmbMUVEL, "BHJ"
-                util.setComboVal cmbFSZAM, "736"
+                SetComboVal cmbMUVEL, "BHJ"
+                SetComboVal cmbFSZAM, "736"
                 
             Case "LF":
-                util.setComboVal cmbMUVEL, "BHJ"
-                util.setComboVal cmbFSZAM, "737"
+                SetComboVal cmbMUVEL, "BHJ"
+                SetComboVal cmbFSZAM, "737"
                 
             Case "HK":
-                util.setComboVal cmbMUVEL, "BHJ"
+                SetComboVal cmbMUVEL, "BHJ"
                 If iWorkMode = DISZPECSER Then
                     If spcOBJTIP = "03" Then
-                        util.setComboVal cmbFSZAM, "62317"
+                        SetComboVal cmbFSZAM, "62317"
                     ElseIf spcOBJTIP = "17" Then
-                        util.setComboVal cmbFSZAM, "62325"
+                        SetComboVal cmbFSZAM, "62325"
                     End If
                 End If
                 
             Case Else:
-                'util.setcombo2 cmbMUVEL
-                util.setComboVal cmbFSZAM, "62317"
+                'setcombo2 cmbMUVEL
+                SetComboVal cmbFSZAM, "62317"
         End Select
     End If
 End Sub
 
 Private Sub cmbTIPUSH_change()
     Dim tipusHiba As String
-    tipusHiba = util.getComboErtek(cmbTIPUSH)
+    tipusHiba = GetComboErtek(cmbTIPUSH)
 
     If mode = 0 Then
         TipushFriss = 1
@@ -1061,16 +1061,16 @@ Private Sub cmbTIPUSH_change()
  
         Select Case tipusHiba
             Case "229":
-                util.setComboVal cmbMUVEL, "SZV"
-                util.setComboVal cmbKARBTIP, "1"
+                SetComboVal cmbMUVEL, "SZV"
+                SetComboVal cmbKARBTIP, "1"
     
             Case "007", "008", "009":
-                util.setComboVal cmbMUVEL, "HIT"
-                util.setComboVal cmbKARBTIP, "1"
+                SetComboVal cmbMUVEL, "HIT"
+                SetComboVal cmbKARBTIP, "1"
             
             Case "246", "247", "027":
-                util.setComboVal cmbMUVEL, "SAV"
-                util.setComboVal cmbKARBTIP, "1"
+                SetComboVal cmbMUVEL, "SAV"
+                SetComboVal cmbKARBTIP, "1"
         End Select
     End If
 
@@ -1122,14 +1122,14 @@ Private Sub cmdOK_Click()
     
     If mode = 0 Then
         Dim i As String
-        i = util.rekordinsert(Me, "MUNKALAP")
+        i = util.RekordInsert(Me, "MUNKALAP")
         If MsgBox("Kívánja nyomtatni a munkalapot?", vbQuestion + vbYesNo, "Nyomtatás") = vbYes Then
-            util.munkalapallapot i, 2
-            util.printmunkalap "1", i
+            util.MunkalapAllapot i, 2
+            util.PrintMunkalap "1", i
             Nyomtat "munuf.rpt", 1
         End If
     Else
-        util.rekordupdate Me, "MUNKALAP", mode
+        util.RekordUpdate Me, "MUNKALAP", mode
     End If
     
     Form001.iRefresh = 1
@@ -1142,14 +1142,14 @@ Private Sub cmdOSSZESITO_Click()
     Screen.MousePointer = vbHourglass
 
     Dim tipusHiba As String
-    tipusHiba = util.getComboErtek(cmbTIPUSH)
+    tipusHiba = GetComboErtek(cmbTIPUSH)
 
     If MsgBox("Biztosan nyomtatni szeretné az összesítõt?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
         If tipusHiba = 272 Then
-            util.printmunkalapsok txtREF, 1
+            util.PrintMunkalapSok txtREF, 1
             Nyomtat "plombossz.rpt", 0
         Else
-            util.printmunkalapsok txtREF, 2
+            util.PrintMunkalapSok txtREF, 2
             Nyomtat "vizoraossz.rpt", 0
         End If
     End If
@@ -1160,7 +1160,7 @@ End Sub
 Private Sub Form_Activate()
     Form001a.Caption = "Munkalap " & AktivForm()
     If txtOBJID <> "" Then
-        util.munkalapobjkiir Me
+        util.MunkalapObjKiir Me
     End If
     
     If txtREF <> "" Then
@@ -1170,11 +1170,11 @@ End Sub
 
 Private Sub Form_Load()
     KeyPreview = True
-    util.setcombo Me
+    SetCombo Me
     
     If mode <> 0 Then
         TipushFriss = 0
-        util.rekordfeltolt Me, "MUNKALAP", mode
+        util.RekordFeltolt Me, "MUNKALAP", mode
         Option1.Item(txtAllapot) = True
         
         If txtAllapot = 3 Then
@@ -1205,7 +1205,7 @@ Private Sub Form_Load()
   
         Dim plomb As Integer
         If cmbTIPUSH.ListIndex <> -1 Then
-            plomb = util.getComboErtek(cmbTIPUSH)
+            plomb = GetComboErtek(cmbTIPUSH)
         Else
             plomb = 0
         End If
@@ -1232,18 +1232,18 @@ Private Sub Form_Load()
         txtBEJDAT = DateValue(Now())
         txtKIALLDAT = DateValue(Now())
         txtMUNELV = DateValue(Now())
-        util.setComboVal cmbSZEREGYS, "01"
+        SetComboVal cmbSZEREGYS, "01"
     End If
 End Sub
 
-Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
- KeyCommand Keycode
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+ KeyCommand KeyCode
  'Keycode = 0
 End Sub
 
-Private Sub KeyCommand(Keycode As Integer)
+Private Sub KeyCommand(KeyCode As Integer)
  Static CtrlKey As Boolean
- Select Case Keycode
+ Select Case KeyCode
   Case vbKeyF1:
   Case vbKeyX:
              If CtrlKey Then
@@ -1252,7 +1252,7 @@ Private Sub KeyCommand(Keycode As Integer)
   Case vbKeyEscape: cmdClose_Click
   Case vbKeyF5: cmdOK_Click
  End Select
- If Keycode = vbKeyControl Then
+ If KeyCode = vbKeyControl Then
   CtrlKey = True
  Else
   CtrlKey = False

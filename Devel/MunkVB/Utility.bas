@@ -419,6 +419,7 @@ Public Function SetCombo(ByRef frm As Object) As Boolean
     Exit Function
     
 errSetCombo:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "SetCombo"
 End Function    'SetCombo
 
 Public Function SetComboVal(ByRef cmbCombo As Object, ByRef sID As String) As Boolean
@@ -443,6 +444,7 @@ Public Function GetComboNev(ByRef cmbCombo As Object) As String
     Exit Function
     
 errGetComboNev:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "GetComboNev"
 End Function    'GetComboNev
 
 '   GetComboErtek

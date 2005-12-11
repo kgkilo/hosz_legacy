@@ -192,8 +192,8 @@ End Sub
 
 Private Sub cmdOK_Click()
     If txtMUNORA <> "" And txtMUNDAT <> "" And cmbDOLG_ID.ListIndex <> -1 Then
-        util.rekordinsert Me, "Telj"
-        util.munkalapallapot txtOBJID, 4
+        util.RekordInsert Me, "Telj"
+        util.MunkalapAllapot txtOBJID, 4
         Form002.Munora = txtMUNORA
         Form002.Mundat = txtMUNDAT
         Back Me
@@ -210,7 +210,7 @@ End Sub
 
 Private Sub Form_Load()
     KeyPreview = True
-    util.setcombo Me
+    SetCombo Me
     'txtMUNDAT = Date
     'txtSZERZ_ID = Form002.spcID
     
@@ -219,15 +219,15 @@ Private Sub Form_Load()
     End If
 End Sub
 
-Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)
-    KeyCommand Keycode
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+    KeyCommand KeyCode
     'Keycode = 0
 End Sub
 
-Private Sub KeyCommand(Keycode As Integer)
+Private Sub KeyCommand(KeyCode As Integer)
     Static CtrlKey As Boolean
  
-    Select Case Keycode
+    Select Case KeyCode
         Case vbKeyF1:
         Case vbKeyX:
             If CtrlKey Then
@@ -237,7 +237,7 @@ Private Sub KeyCommand(Keycode As Integer)
         Case vbKeyF5: cmdOK_Click
     End Select
     
-    If Keycode = vbKeyControl Then
+    If KeyCode = vbKeyControl Then
         CtrlKey = True
     Else
         CtrlKey = False

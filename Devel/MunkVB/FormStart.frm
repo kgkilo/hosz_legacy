@@ -5,6 +5,7 @@ Begin VB.Form FormStart
    ClientTop       =   345
    ClientWidth     =   8085
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    Moveable        =   0   'False
    ScaleHeight     =   4875
    ScaleWidth      =   8085
