@@ -14,6 +14,7 @@ Public Const NORMAL = 0
 Public Const DISZPECSER = 1
 Public Const LABOR = 2
 Public Const MLAP = 3
+Public Const VISSZAIR = 4
 
 Public Const P_READ = 1 'Adatbázisobjektum hozzáférési jogok
 Public Const P_UPDATE = 2
@@ -40,6 +41,8 @@ Sub Main()
         Case LABOR
             Form003.Show 1
         Case MLAP
+            Form001.Show 1
+        Case VISSZAIR
             Form001.Show 1
     End Select
     

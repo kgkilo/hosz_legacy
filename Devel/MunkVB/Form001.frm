@@ -309,7 +309,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -341,7 +341,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMTOL 
@@ -373,7 +373,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -405,7 +405,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNELV 
@@ -437,7 +437,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin VB.Label lblMUNELV 
@@ -1078,12 +1078,19 @@ Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     iRefresh = 0
     
-    If iWorkMode = DISZPECSER Then
-        cmdCSOPLIST.Enabled = False
-        cmdMASOL.Enabled = False
-    Else
-        cmdMASOL.Enabled = True
-    End If
+    Select Case iWorkMode
+        Case DISZPECSER
+            cmdCSOPLIST.Enabled = False
+            cmdMASOL.Enabled = False
+        Case VISSZAIR
+            cmdUJ.Enabled = False
+            cmdMODOSIT.Enabled = False
+            cmdLIST.Enabled = False
+            cmdCSOPLIST.Enabled = False
+            cmdMASOL.Enabled = False
+        Case Else
+            cmdMASOL.Enabled = True
+    End Select
     
     SetCombo Me
     datDATUMIG.Value = DateValue(Now())
@@ -1117,12 +1124,18 @@ Private Sub KeyCommand(KeyCode As Integer)
                 Unload Form001
                 Unload FormStart
             End If
-        Case vbKeyEscape: cmdEXIT_Click
-        Case vbKeyInsert: cmdUJ_Click
-        Case vbKeyF2: cmdMODOSIT_Click
-        Case vbKeyF3: cmdVISSZAI_Click
-        Case vbKeyHome: grdMUNKALAP.SetFocus
-        Case vbKeyF5: cmdFRISSIT_Click
+        Case vbKeyEscape:
+            cmdEXIT_Click
+        Case vbKeyInsert:
+            If iWorkMode <> VISSZAIR Then cmdUJ_Click
+        Case vbKeyF2:
+            If iWorkMode <> VISSZAIR Then cmdMODOSIT_Click
+        Case vbKeyF3:
+            cmdVISSZAI_Click
+        Case vbKeyHome:
+            grdMUNKALAP.SetFocus
+        Case vbKeyF5:
+            cmdFRISSIT_Click
     End Select
  
     If KeyCode = vbKeyControl Then
