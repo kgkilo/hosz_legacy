@@ -75,17 +75,6 @@ Private Sub cmdRaktar_Click()
     Form002.Show vbModal
 End Sub
 
-Private Sub Form_Initialize()
-    sReportDir = "aaa"
-    Set util = CreateObject("Rakt.Global")
-    sConnectString = util.Init(sReportDir)
-    
-    HOOSSZEGZO = "18"
-    VIZORA = "19"
-    ERZEKELO = "20"
-    MIND = "00"
-End Sub
-
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
    If MsgBox("Valóban ki szeretne lépni a rendszerbõl?", _
         vbQuestion + vbYesNo, "Tisztelt felhasználó!") = vbNo _

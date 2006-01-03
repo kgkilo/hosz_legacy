@@ -5,5 +5,4 @@ Begin DataProject = "Hoszolg"
       Connection = "SZETAV (MUILE)"
       Colorizer = 0
    End
-   Node = "mod"
 End
