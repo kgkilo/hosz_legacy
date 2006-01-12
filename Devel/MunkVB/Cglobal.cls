@@ -11,7 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-'Option Explicit
+Option Explicit
 
 Private m_sConnect As String
 
@@ -772,7 +772,10 @@ Public Function Jegyzokonyv(ByRef sJTIP As String, ByVal iJEGYZSZ As Integer, By
             If Right(sDocSavePath, 1) = "." Then
                 sDocSavePath = Left(sDocSavePath, Len(sDocSavePath) - 1)
             End If
-            sDocSavePath = Replace(sDocSavePath + "\", "/", ".")
+            sDat = Date
+            sDocSavePath = sDocSavePath + "\" + sDat + " - "
+            sDocSavePath = Replace(sDocSavePath, "/", ".")
+            lstReplace.Add sDat, "DATUM"
         End Select
     
     Set objWord = WordAppNewDoc(sDocPath, sDotName, CStr(iJEGYZSZ), ".doc", sDocSavePath)  'Word indítása
