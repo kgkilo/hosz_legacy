@@ -773,9 +773,8 @@ Public Function Jegyzokonyv(ByRef sJTIP As String, ByVal iJEGYZSZ As Integer, By
                 sDocSavePath = Left(sDocSavePath, Len(sDocSavePath) - 1)
             End If
             sDat = Date
-            sDocSavePath = sDocSavePath + "\" + sDat + " - "
+            sDocSavePath = sDocSavePath + "\" + sDat + ". - "
             sDocSavePath = Replace(sDocSavePath, "/", ".")
-            lstReplace.Add sDat, "DATUM"
         End Select
     
     Set objWord = WordAppNewDoc(sDocPath, sDotName, CStr(iJEGYZSZ), ".doc", sDocSavePath)  'Word indítása

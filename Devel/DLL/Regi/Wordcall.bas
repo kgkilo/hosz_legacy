@@ -104,6 +104,8 @@ Public Function InsTextToWord(WrdDoc As Object, ByRef lstReplace As Collection) 
 ' -kg- 2000.05.10
 '   lstReplace - Collection, mit mire kell cserélni
 
+    On Error Resume Next
+    
     Const wdAllowOnlyFormFields = 2
     InsTextToWord = True
 
@@ -113,7 +115,7 @@ Public Function InsTextToWord(WrdDoc As Object, ByRef lstReplace As Collection) 
     For Each z In lstReplace
         'Tartomány az egész dokumentumra pozicionálása
         Set WDocRange = WrdDoc.Range(Start:=0, _
-            end:=WrdDoc.Paragraphs(WrdDoc.Paragraphs.Count).Range.end)
+            End:=WrdDoc.Paragraphs(WrdDoc.Paragraphs.Count).Range.End)
         With WDocRange
             .Find.Text = "<" + CStr(z.Name) + ">"
             .Find.Forward = True
@@ -126,7 +128,7 @@ Public Function InsTextToWord(WrdDoc As Object, ByRef lstReplace As Collection) 
                 InsTextToWord = False
             End If
         End With
-
+        
     'Tartomány objektum törlése a memóriából
     Set WDocRange = Nothing
     Next
