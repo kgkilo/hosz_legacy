@@ -70,6 +70,7 @@ Begin VB.Form Form003b
    End
    Begin VB.CommandButton cmdOK 
       Caption         =   "Nyomtatás"
+      Enabled         =   0   'False
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   9.75
@@ -114,7 +115,7 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   77791233
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSForms.ComboBox cmb23 
@@ -124,12 +125,13 @@ Begin VB.Form Form003b
       Tag             =   "labor23"
       Top             =   4725
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -141,12 +143,13 @@ Begin VB.Form Form003b
       Tag             =   "labor22"
       Top             =   4320
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -158,12 +161,13 @@ Begin VB.Form Form003b
       Tag             =   "labor19"
       Top             =   3105
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -175,12 +179,13 @@ Begin VB.Form Form003b
       Tag             =   "labor17"
       Top             =   2295
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -192,12 +197,13 @@ Begin VB.Form Form003b
       Tag             =   "labor16"
       Top             =   1890
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -209,12 +215,13 @@ Begin VB.Form Form003b
       Tag             =   "labor14"
       Top             =   1080
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -226,12 +233,13 @@ Begin VB.Form Form003b
       Tag             =   "labor15"
       Top             =   1485
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -243,12 +251,13 @@ Begin VB.Form Form003b
       Tag             =   "labor18"
       Top             =   2700
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -260,12 +269,13 @@ Begin VB.Form Form003b
       Tag             =   "labor20"
       Top             =   3510
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -277,12 +287,13 @@ Begin VB.Form Form003b
       Tag             =   "labor21"
       Top             =   3915
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -294,12 +305,13 @@ Begin VB.Form Form003b
       Tag             =   "labor13"
       Top             =   675
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -311,12 +323,13 @@ Begin VB.Form Form003b
       Tag             =   "labor12"
       Top             =   5145
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -328,12 +341,13 @@ Begin VB.Form Form003b
       Tag             =   "labor11"
       Top             =   4725
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -345,12 +359,13 @@ Begin VB.Form Form003b
       Tag             =   "labor10"
       Top             =   4320
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -362,12 +377,13 @@ Begin VB.Form Form003b
       Tag             =   "labor7"
       Top             =   3105
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -379,12 +395,13 @@ Begin VB.Form Form003b
       Tag             =   "labor5"
       Top             =   2295
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -396,12 +413,13 @@ Begin VB.Form Form003b
       Tag             =   "labor4"
       Top             =   1890
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -413,12 +431,13 @@ Begin VB.Form Form003b
       Tag             =   "labor2"
       Top             =   1080
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -484,12 +503,13 @@ Begin VB.Form Form003b
       Tag             =   "labor9"
       Top             =   3915
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -501,12 +521,13 @@ Begin VB.Form Form003b
       Tag             =   "labor8"
       Top             =   3510
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -518,12 +539,13 @@ Begin VB.Form Form003b
       Tag             =   "labor6"
       Top             =   2700
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -715,12 +737,13 @@ Begin VB.Form Form003b
       Tag             =   "labor1"
       Top             =   675
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -876,12 +899,13 @@ Begin VB.Form Form003b
       Tag             =   "labor3"
       Top             =   1485
       Width           =   2355
-      VariousPropertyBits=   746604571
+      VariousPropertyBits=   746604569
       DisplayStyle    =   3
       Size            =   "4154;556"
       MatchEntry      =   1
       ShowDropButtonWhen=   2
       FontName        =   "Arial"
+      FontEffects     =   1073750016
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
@@ -934,6 +958,7 @@ End Sub
 
 Private Sub cmdFeltolt_Click()
     util.OsszesitoKivalaszt datOSSZESITO.Value, Me
+    cmdOK.Enabled = True
 End Sub
 
 Private Sub cmdOK_Click()
@@ -953,11 +978,7 @@ End Sub
 
 Private Sub Form_Load()
     KeyPreview = True
-    
     datOSSZESITO = DateValue(Now())
-    
-    'util.OsszesitoFeltolt datOSSZESITO.Value, Me
-    'SetCombo Me
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)

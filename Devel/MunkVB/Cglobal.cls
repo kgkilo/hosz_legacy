@@ -928,16 +928,17 @@ Public Function OsszesitoKivalaszt(ByRef sDate As String, ByRef frm As Object) A
     Dim rstResult As New ADODB.Recordset
     Dim sCmbSorsz As Integer
     Dim cmb As Object
-    lstParams.Add "", "pSORSZ"
     For Each cmb In frm.Controls
         If Left(cmb.Name, 3) = "cmb" Then   'végigmegyünk az összes comboboxon
             sCmbSorsz = Right(cmb.Tag, Len(cmb.Tag) - 5)    'a nevébõl kiolvasható, melyik sorban van az adata
-            lstParams.Remove "pSORSZ"
             lstParams.Add sCmbSorsz, "pSORSZ"
+            On Error Resume Next
             If oAdmin.ExecVal("sp_GetOsszesitoSorsz", lstParams, rstResult) = True Then
                 SetComboVal cmb, rstResult("SORSZ").Value
                 cmb.Enabled = True
             End If
+            On Error GoTo errOsszesitoKivalaszt
+            lstParams.Remove "pSORSZ"
         End If
     Next
     
