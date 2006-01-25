@@ -6,6 +6,7 @@ Begin VB.Form Form001
    ClientLeft      =   60
    ClientTop       =   345
    ClientWidth     =   8880
+   Icon            =   "FormMain.frx":0000
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    ScaleHeight     =   2.63121e5
