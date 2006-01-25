@@ -16,11 +16,6 @@ Public Const LABOR = 2
 Public Const MLAP = 3
 Public Const VISSZAIR = 4
 
-Public Const P_READ = 1 'Adatbázisobjektum hozzáférési jogok
-Public Const P_UPDATE = 2
-Public Const P_INSERT = 4
-Public Const P_DELETE = 8
-
 'itt kell megadni, hogy melyik fûtõmûnek mi az objid-je
 'olyan sorrendben kell megadni, ahogy a Form003b-n a comboboxok száma mutatja (Name-ben)
 'select id, megnev from objektum where objtip='03' order by megnev

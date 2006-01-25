@@ -18,20 +18,8 @@ Sub Main()
     
     Set util = New CGlobal
     
-    sConnectString = util.Init(sReportDir)
+    util.Init sReportDir
     
-    FormMain.Show vbModal
-    
-End Sub
-
-Sub Nyomtat(reportname As String, iDestination As Integer)
-    With Form002.rep
-        .Destination = iDestination ' 0 - privjú ablak, 1 - közvetlenül nyomtat
-        .WindowBorderStyle = 3
-        .WindowState = 2
-        .Connect = sConnectString
-        .ReportFileName = sReportDir & reportname
-        .Action = 1
-    End With
+    Form001.Show vbModal
 End Sub
 

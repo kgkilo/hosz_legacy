@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
@@ -26,7 +25,7 @@ Begin VB.Form Form002
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   105
+      Left            =   128
       TabIndex        =   22
       ToolTipText     =   "F 5"
       Top             =   5040
@@ -332,17 +331,6 @@ Begin VB.Form Form002
       Left            =   450
       Top             =   0
    End
-   Begin Crystal.CrystalReport rep 
-      Left            =   0
-      Top             =   0
-      _ExtentX        =   741
-      _ExtentY        =   741
-      _Version        =   348160
-      WindowControlBox=   -1  'True
-      WindowMaxButton =   -1  'True
-      WindowMinButton =   -1  'True
-      PrintFileLinesPerPage=   60
-   End
    Begin vsFlexLib.vsFlexArray grdGrid 
       Height          =   2985
       Left            =   1635
@@ -386,7 +374,7 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   38353
    End
    Begin MSComCtl2.DTPicker datHITIDO 
@@ -418,7 +406,7 @@ Begin VB.Form Form002
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23134209
       CurrentDate     =   38414.0047569444
    End
    Begin VB.Label lblSZUKSHOSSZ 
@@ -676,7 +664,7 @@ Public strMEGJ As String
 Private Sub cmbALLAPOT_Change()
     iRefresh = 1
     Dim strAllapot As String
-    strAllapot = util.getComboErtek(cmbALLAPOT)
+    strAllapot = GetComboErtek(cmbALLAPOT)
     Select Case strAllapot
         Case "D":
             cmbDOLG_ID.Enabled = True
@@ -738,7 +726,7 @@ End Sub
 
 Private Sub cmdMove_Click()
     Dim strKovetkezoAllapot As String
-    strKovetkezoAllapot = util.getComboErtek(cmbMove)
+    strKovetkezoAllapot = GetComboErtek(cmbMove)
     Select Case strKovetkezoAllapot
         Case "D":
             Form002Dolg.Show vbModal
@@ -825,7 +813,7 @@ End Sub
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     
-    util.setCombo Me
+    SetCombo Me
     util.MegnevFeltolt cmbFUTOMU, "03" 'Fûtõmûvekkel kell feltölteni
     util.EpuletFeltolt cmbEPUL  'Épületekkel kell feltölteni
     iRefresh = 1
@@ -841,7 +829,7 @@ Private Sub GridFeltolt()
     Screen.MousePointer = vbHourglass
     grdGrid.Redraw = False
     
-    util.Gridder grdGrid, sOBJTIP, util.getComboErtek(cmbALLAPOT), Me
+    util.Gridder grdGrid, sOBJTIP, GetComboErtek(cmbALLAPOT), Me
     
     grdGrid.Redraw = True
     grdGrid.ExtendLastCol = True

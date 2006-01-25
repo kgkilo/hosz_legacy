@@ -187,133 +187,133 @@ Begin VB.Form Form003
       TabCaption(1)   =   "Vízmérõ"
       TabPicture(1)   =   "Form003.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblV_TIPUS"
+      Tab(1).Control(0)=   "txtV_KULCS"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "lblV_HITIDO"
+      Tab(1).Control(1)=   "txtV_KULCS_LAKTEL"
       Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "lblV_ELHELYEZ"
+      Tab(1).Control(2)=   "txtV_KULCS_MOBTEL"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "lblV_IMPULZUS"
+      Tab(1).Control(3)=   "txtV_KULCS_MUNTEL"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "lblV_TOMEGARAM"
+      Tab(1).Control(4)=   "cmbV_TULAJDON"
       Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "lblV_PLOMBA"
+      Tab(1).Control(5)=   "txtV_ID"
       Tab(1).Control(5).Enabled=   0   'False
-      Tab(1).Control(6)=   "lblV_MEGJ"
+      Tab(1).Control(6)=   "txtV_ATMERO"
       Tab(1).Control(6).Enabled=   0   'False
-      Tab(1).Control(7)=   "lblV_GYSZAM"
+      Tab(1).Control(7)=   "txtV_TOMEGARAM"
       Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).Control(8)=   "lblV_ATMERO"
+      Tab(1).Control(8)=   "txtV_GYSZAM"
       Tab(1).Control(8).Enabled=   0   'False
-      Tab(1).Control(9)=   "lblV_TULAJDON"
+      Tab(1).Control(9)=   "txtV_TIPUS"
       Tab(1).Control(9).Enabled=   0   'False
-      Tab(1).Control(10)=   "Label7"
+      Tab(1).Control(10)=   "txtV_HITIDO"
       Tab(1).Control(10).Enabled=   0   'False
-      Tab(1).Control(11)=   "lblV_KULCS"
+      Tab(1).Control(11)=   "txtV_ELHELYEZ"
       Tab(1).Control(11).Enabled=   0   'False
-      Tab(1).Control(12)=   "Label9"
+      Tab(1).Control(12)=   "txtV_IMPULZUS"
       Tab(1).Control(12).Enabled=   0   'False
-      Tab(1).Control(13)=   "Label10"
+      Tab(1).Control(13)=   "txtV_PLOMBA"
       Tab(1).Control(13).Enabled=   0   'False
-      Tab(1).Control(14)=   "Label11"
+      Tab(1).Control(14)=   "txtV_MEGJ"
       Tab(1).Control(14).Enabled=   0   'False
-      Tab(1).Control(15)=   "txtV_MEGJ"
+      Tab(1).Control(15)=   "Label11"
       Tab(1).Control(15).Enabled=   0   'False
-      Tab(1).Control(16)=   "txtV_PLOMBA"
+      Tab(1).Control(16)=   "Label10"
       Tab(1).Control(16).Enabled=   0   'False
-      Tab(1).Control(17)=   "txtV_IMPULZUS"
+      Tab(1).Control(17)=   "Label9"
       Tab(1).Control(17).Enabled=   0   'False
-      Tab(1).Control(18)=   "txtV_ELHELYEZ"
+      Tab(1).Control(18)=   "lblV_KULCS"
       Tab(1).Control(18).Enabled=   0   'False
-      Tab(1).Control(19)=   "txtV_HITIDO"
+      Tab(1).Control(19)=   "Label7"
       Tab(1).Control(19).Enabled=   0   'False
-      Tab(1).Control(20)=   "txtV_TIPUS"
+      Tab(1).Control(20)=   "lblV_TULAJDON"
       Tab(1).Control(20).Enabled=   0   'False
-      Tab(1).Control(21)=   "txtV_GYSZAM"
+      Tab(1).Control(21)=   "lblV_ATMERO"
       Tab(1).Control(21).Enabled=   0   'False
-      Tab(1).Control(22)=   "txtV_TOMEGARAM"
+      Tab(1).Control(22)=   "lblV_GYSZAM"
       Tab(1).Control(22).Enabled=   0   'False
-      Tab(1).Control(23)=   "txtV_ATMERO"
+      Tab(1).Control(23)=   "lblV_MEGJ"
       Tab(1).Control(23).Enabled=   0   'False
-      Tab(1).Control(24)=   "txtV_ID"
+      Tab(1).Control(24)=   "lblV_PLOMBA"
       Tab(1).Control(24).Enabled=   0   'False
-      Tab(1).Control(25)=   "cmbV_TULAJDON"
+      Tab(1).Control(25)=   "lblV_TOMEGARAM"
       Tab(1).Control(25).Enabled=   0   'False
-      Tab(1).Control(26)=   "txtV_KULCS_MUNTEL"
+      Tab(1).Control(26)=   "lblV_IMPULZUS"
       Tab(1).Control(26).Enabled=   0   'False
-      Tab(1).Control(27)=   "txtV_KULCS_MOBTEL"
+      Tab(1).Control(27)=   "lblV_ELHELYEZ"
       Tab(1).Control(27).Enabled=   0   'False
-      Tab(1).Control(28)=   "txtV_KULCS_LAKTEL"
+      Tab(1).Control(28)=   "lblV_HITIDO"
       Tab(1).Control(28).Enabled=   0   'False
-      Tab(1).Control(29)=   "txtV_KULCS"
+      Tab(1).Control(29)=   "lblV_TIPUS"
       Tab(1).Control(29).Enabled=   0   'False
       Tab(1).ControlCount=   30
       TabCaption(2)   =   "Érzékelõ"
       TabPicture(2)   =   "Form003.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lblE_TIPUS"
+      Tab(2).Control(0)=   "txtE_KULCS"
       Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "lblE_HITIDO"
+      Tab(2).Control(1)=   "txtE_KULCS_LAKTEL"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "lblE_ELHELYEZ"
+      Tab(2).Control(2)=   "txtE_KULCS_MOBTEL"
       Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "lblE_BENYHOSSZ"
+      Tab(2).Control(3)=   "txtE_KULCS_MUNTEL"
       Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "lblE_SZUKSHOSSZ"
+      Tab(2).Control(4)=   "cmbE_TULAJDON"
       Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "lblE_PLOMBA2"
+      Tab(2).Control(5)=   "txtE_PLOMBA"
       Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "lblE_MEGJ"
+      Tab(2).Control(6)=   "txtE_ID"
       Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "lblE_GYSZAM"
+      Tab(2).Control(7)=   "txtE_VEZHOSSZ"
       Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "lblE_VEZHOSSZ"
+      Tab(2).Control(8)=   "txtE_SZUKSHOSSZ"
       Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "lblE_PLOMBA"
+      Tab(2).Control(9)=   "txtE_GYSZAM"
       Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "lblE_TULAJDON"
+      Tab(2).Control(10)=   "txtE_TIPUS"
       Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "Label12"
+      Tab(2).Control(11)=   "txtE_HITIDO"
       Tab(2).Control(11).Enabled=   0   'False
-      Tab(2).Control(12)=   "lblE_KULCS"
+      Tab(2).Control(12)=   "txtE_ELHELYEZ"
       Tab(2).Control(12).Enabled=   0   'False
-      Tab(2).Control(13)=   "Label14"
+      Tab(2).Control(13)=   "txtE_BENYHOSSZ"
       Tab(2).Control(13).Enabled=   0   'False
-      Tab(2).Control(14)=   "Label15"
+      Tab(2).Control(14)=   "txtE_PLOMBA2"
       Tab(2).Control(14).Enabled=   0   'False
-      Tab(2).Control(15)=   "Label16"
+      Tab(2).Control(15)=   "txtE_MEGJ"
       Tab(2).Control(15).Enabled=   0   'False
-      Tab(2).Control(16)=   "txtE_MEGJ"
+      Tab(2).Control(16)=   "Label16"
       Tab(2).Control(16).Enabled=   0   'False
-      Tab(2).Control(17)=   "txtE_PLOMBA2"
+      Tab(2).Control(17)=   "Label15"
       Tab(2).Control(17).Enabled=   0   'False
-      Tab(2).Control(18)=   "txtE_BENYHOSSZ"
+      Tab(2).Control(18)=   "Label14"
       Tab(2).Control(18).Enabled=   0   'False
-      Tab(2).Control(19)=   "txtE_ELHELYEZ"
+      Tab(2).Control(19)=   "lblE_KULCS"
       Tab(2).Control(19).Enabled=   0   'False
-      Tab(2).Control(20)=   "txtE_HITIDO"
+      Tab(2).Control(20)=   "Label12"
       Tab(2).Control(20).Enabled=   0   'False
-      Tab(2).Control(21)=   "txtE_TIPUS"
+      Tab(2).Control(21)=   "lblE_TULAJDON"
       Tab(2).Control(21).Enabled=   0   'False
-      Tab(2).Control(22)=   "txtE_GYSZAM"
+      Tab(2).Control(22)=   "lblE_PLOMBA"
       Tab(2).Control(22).Enabled=   0   'False
-      Tab(2).Control(23)=   "txtE_SZUKSHOSSZ"
+      Tab(2).Control(23)=   "lblE_VEZHOSSZ"
       Tab(2).Control(23).Enabled=   0   'False
-      Tab(2).Control(24)=   "txtE_VEZHOSSZ"
+      Tab(2).Control(24)=   "lblE_GYSZAM"
       Tab(2).Control(24).Enabled=   0   'False
-      Tab(2).Control(25)=   "txtE_ID"
+      Tab(2).Control(25)=   "lblE_MEGJ"
       Tab(2).Control(25).Enabled=   0   'False
-      Tab(2).Control(26)=   "txtE_PLOMBA"
+      Tab(2).Control(26)=   "lblE_PLOMBA2"
       Tab(2).Control(26).Enabled=   0   'False
-      Tab(2).Control(27)=   "cmbE_TULAJDON"
+      Tab(2).Control(27)=   "lblE_SZUKSHOSSZ"
       Tab(2).Control(27).Enabled=   0   'False
-      Tab(2).Control(28)=   "txtE_KULCS_MUNTEL"
+      Tab(2).Control(28)=   "lblE_BENYHOSSZ"
       Tab(2).Control(28).Enabled=   0   'False
-      Tab(2).Control(29)=   "txtE_KULCS_MOBTEL"
+      Tab(2).Control(29)=   "lblE_ELHELYEZ"
       Tab(2).Control(29).Enabled=   0   'False
-      Tab(2).Control(30)=   "txtE_KULCS_LAKTEL"
+      Tab(2).Control(30)=   "lblE_HITIDO"
       Tab(2).Control(30).Enabled=   0   'False
-      Tab(2).Control(31)=   "txtE_KULCS"
+      Tab(2).Control(31)=   "lblE_TIPUS"
       Tab(2).Control(31).Enabled=   0   'False
       Tab(2).ControlCount=   32
       Begin VB.TextBox txtE_KULCS 
@@ -1247,7 +1247,7 @@ Public iRet As Integer
 
 Private Sub cmbKEPVIS_Change()
     If cmbKEPVIS.ListIndex <> -1 Then
-        util.Load Me, util.getComboErtek(cmbKEPVIS), "KEP"
+        util.Load Me, GetComboErtek(cmbKEPVIS), "KEP"
     End If
 End Sub
 
@@ -1257,7 +1257,7 @@ End Sub
 
 Private Sub cmdKEPV_Click()
     If cmbKEPVIS.ListIndex <> -1 Then
-        Form004.lKEPVID = util.getComboErtek(cmbKEPVIS)
+        Form004.lKEPVID = GetComboErtek(cmbKEPVIS)
     Else
         Form004.lKEPVID = 0
     End If
@@ -1267,7 +1267,7 @@ Private Sub cmdKEPV_Click()
     If iRet = vbOK Then
         Screen.MousePointer = vbHourglass
         util.RefreshCombo Form003.cmbKEPVIS
-        util.setCombo Form003
+        SetCombo Form003
         txtCIM = ""
         txtLAK_TEL = ""
         txtMOB_TEL = ""
@@ -1289,7 +1289,7 @@ End Sub
 
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
-    util.setCombo Me
+    SetCombo Me
     If lOBJID > 0 Then
         util.Load Me, lOBJID, "BER"
     End If

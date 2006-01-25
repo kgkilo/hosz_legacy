@@ -1,11 +1,13 @@
 VERSION 5.00
-Begin VB.Form FormMain 
+Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
+Begin VB.Form Form001 
    Caption         =   "Raktár"
    ClientHeight    =   8100
    ClientLeft      =   60
    ClientTop       =   345
    ClientWidth     =   8880
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    ScaleHeight     =   2.63121e5
    ScaleMode       =   0  'User
    ScaleWidth      =   6.86253e6
@@ -56,13 +58,24 @@ Begin VB.Form FormMain
          Strikethrough   =   0   'False
       EndProperty
       Height          =   690
-      Left            =   2715
+      Left            =   2730
       TabIndex        =   0
       Top             =   1320
       Width           =   3450
    End
+   Begin Crystal.CrystalReport rep 
+      Left            =   0
+      Top             =   0
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   348160
+      WindowControlBox=   -1  'True
+      WindowMaxButton =   -1  'True
+      WindowMinButton =   -1  'True
+      PrintFileLinesPerPage=   60
+   End
 End
-Attribute VB_Name = "FormMain"
+Attribute VB_Name = "Form001"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True

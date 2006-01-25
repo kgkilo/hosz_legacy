@@ -13,10 +13,6 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
-Const HOOSSZEGZO = "18"
-Const VIZORA = "19"
-Const ERZEKELO = "20"
-
 Private m_sConnect As String
 
 Private Sub Class_Initialize()
@@ -45,7 +41,7 @@ Public Function Init(ByRef sReportDir As String) As String
     
     FileNum = FreeFile              'egy üres file sorszám kérése
     
-    Open "formel.ini" For Input As FileNum     'File nyitás olvasásra
+    Open "c:\formel.ini" For Input As FileNum     'File nyitás olvasásra
     While Not EOF(FileNum)
         Line Input #FileNum, sInputLine
         iCount = InStr(1, sInputLine, "=", 0)
@@ -114,7 +110,7 @@ End Function    'MegnevFeltolt
 '
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
 '
-Public Function EpuletFeltolt(ByRef cmbEpul As Object, Optional ByRef cmbFutomu As Object) As Boolean
+Public Function EpuletFeltolt(ByRef cmbEPUL As Object, Optional ByRef cmbFUTOMU As Object) As Boolean
     On Error GoTo errEpuletFeltolt
     EpuletFeltolt = False
     
@@ -124,15 +120,15 @@ Public Function EpuletFeltolt(ByRef cmbEpul As Object, Optional ByRef cmbFutomu 
     g_oKodszotar.Remove sSectName    'Töröljük az ál-kódszótári MEGNEV szekciót
     
     Dim sFutomu As String
-    If TypeName(cmbFutomu) = "Nothing" Then
+    If TypeName(cmbFUTOMU) = "Nothing" Then
         sFutomu = "NULL"
     Else
-        sFutomu = ComboBoxGet(Nothing, cmbFutomu)
+        sFutomu = ComboBoxGet(Nothing, cmbFUTOMU)
     End If
     
     g_oKodszotar.Load "sp_FillEpuletByFutomu", Array("pFUTOMU_ID", sFutomu), sSectName, "Objektum megnevezése", 100
-    EpuletFeltolt = ComboBoxSet(cmbEpul, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
-    cmbEpul.ListWidth = 350
+    EpuletFeltolt = ComboBoxSet(cmbEPUL, Nothing) 'Betöltjük a kódszótárba a megnevezéseket, majd feltöltjük a combobox-ot
+    cmbEPUL.ListWidth = 350
     Exit Function
     
 errEpuletFeltolt:

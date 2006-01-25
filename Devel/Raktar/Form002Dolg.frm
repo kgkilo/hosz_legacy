@@ -116,7 +116,7 @@ End Sub
 
 Private Sub cmdOK_Click()
     If cmbDOLG_ID.ListIndex <> -1 Then
-        Form002.lDOLG_ID = util.getComboErtek(cmbDOLG_ID)
+        Form002.lDOLG_ID = GetComboErtek(cmbDOLG_ID)
         Form002.strMEGJ = txtMEGJ
         Form002.iReturn = vbOK
         Unload Me
@@ -125,7 +125,7 @@ End Sub
 
 Private Sub Form_Load()
     KeyPreview = True
-    util.setcombo Me
+    SetCombo Me
 End Sub
 
 Private Sub Form_KeyDown(Keycode As Integer, Shift As Integer)

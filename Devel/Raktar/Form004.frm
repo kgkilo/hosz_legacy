@@ -271,7 +271,7 @@ End Sub
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     If lKEPVID > 0 Then
-        util.setCombo Me
+        SetCombo Me
         util.Load Me, lKEPVID, "KEP"
     Else
         cmbID.Enabled = False

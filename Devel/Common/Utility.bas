@@ -1,4 +1,9 @@
 Attribute VB_Name = "utility"
+Public Const P_READ = 1 'Adatbázisobjektum hozzáférési jogok
+Public Const P_UPDATE = 2
+Public Const P_INSERT = 4
+Public Const P_DELETE = 8
+
 Function AktivForm()
     Dim MyReport As Form
     Set MyReport = Screen.ActiveForm
@@ -27,6 +32,7 @@ Sub Nyomtat(reportname As String, iDestination As Integer)
         .Action = 1
     End With
 End Sub
+
 
 '   ControlsSet
 '
