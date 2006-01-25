@@ -864,12 +864,14 @@ End Function    'OsszesitoFeltolt
 '
 '   Visszatérés:    Boolean. True, ha minden OK, egyébként False
 '
-Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
+Public Function LaborOsszesito(ByRef sDocPath As String, sDate As String) As Boolean
     On Error GoTo errLaborOsszesito
     LaborOsszesito = False
     
     Dim rstLabor As New ADODB.Recordset
-    oAdmin.ExecVal "sp_LaborOsszesito", Nothing, rstLabor
+    Dim lstParams As New Collection
+    lstParams.Add sDate, "pDATUM"
+    oAdmin.ExecVal "sp_LaborOsszesito", lstParams, rstLabor
     
     'Melyik mezõket kell cserélni és mire
     Dim lstReplace As New Collection
@@ -878,13 +880,17 @@ Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
         lstReplace.Add a, a.Name
     Next
     
+'    a.Value = sDate
+'    a.Name = "DATUM"
+'    lstReplace.Add a, a.Name
+    
     'Sablon alapján létrehozzuk a Word doksit
     Dim sDotName As String
     Dim sDocSaveName As String
     Dim sDocSavePath As String
     sDotName = "labor_o"
     sDocSavePath = sDocPath
-    sDocSaveName = "Vízvizsg.havi.össz." + CStr(Year(Now())) + Right("0" + CStr(Month(Now())), 2)
+    sDocSaveName = "Vízvizsg.havi.össz." + sDate
     
     Dim objWord As Object
     Set objWord = WordAppNewDoc(sDocPath, sDotName, sDocSaveName, ".doc", sDocSavePath)

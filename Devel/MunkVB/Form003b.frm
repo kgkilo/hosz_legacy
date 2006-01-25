@@ -115,7 +115,7 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSForms.ComboBox cmb23 
@@ -965,7 +965,7 @@ Private Sub cmdOK_Click()
     Screen.MousePointer = vbHourglass
     
     If MsgBox("Kívánja nyomtatni az összesítõ jegyzõkönyvet?", vbQuestion + vbYesNo, "Nyomtatás") = vbYes Then
-        util.LaborOsszesito sANTSZDir
+        util.LaborOsszesito sANTSZDir, datOSSZESITO.Value
     End If
     
     Screen.MousePointer = vbDefault

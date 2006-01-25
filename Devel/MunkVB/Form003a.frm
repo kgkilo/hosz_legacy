@@ -220,7 +220,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953089
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcMINTA_TIM 
@@ -251,7 +251,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953090
+      Format          =   23134210
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcMINTA_ATAD_DAT 
@@ -282,7 +282,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953089
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcMINTA_ATAD_TIM 
@@ -313,7 +313,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953090
+      Format          =   23134210
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_KEZD_DAT 
@@ -344,7 +344,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953089
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_KEZD_TIM 
@@ -375,7 +375,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953090
+      Format          =   23134210
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_VEGE_DAT 
@@ -406,7 +406,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953089
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_VEGE_TIM 
@@ -437,7 +437,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   52953090
+      Format          =   23134210
       CurrentDate     =   37013
    End
    Begin VB.Label lblERTEKELES 
@@ -947,32 +947,32 @@ Private Sub cmdOK_Click()
     Back Me
 End Sub
 
-Private Sub datMINTA_ATAD_DAT_LostFocus()
-    datMINTA_ATAD_TIM.Value = datMINTA_ATAD_DAT.Value
+Private Sub spcMINTA_ATAD_DAT_LostFocus()
+    spcMINTA_ATAD_TIM.Value = spcMINTA_ATAD_DAT.Value
 End Sub
 
-Private Sub datMINTA_ATAD_TIM_LostFocus()
-'    txtMINTA_ATAD_IDO.Text = datMINTA_ATAD_TIM.Value
+Private Sub spcMINTA_ATAD_TIM_LostFocus()
+'    txtMINTA_ATAD_IDO.Text = spcMINTA_ATAD_TIM.Value
 End Sub
 
 Private Sub spcMINTA_DAT_LostFocus()
     spcMINTA_TIM.Value = spcMINTA_DAT.Value
 End Sub
 
-Private Sub datVIZSG_KEZD_DAT_LostFocus()
-    datVIZSG_KEZD_TIM.Value = datVIZSG_KEZD_DAT.Value
+Private Sub spcVIZSG_KEZD_DAT_LostFocus()
+    spcVIZSG_KEZD_TIM.Value = spcVIZSG_KEZD_DAT.Value
 End Sub
 
-Private Sub datVIZSG_KEZD_TIM_LostFocus()
-'    txtVIZSG_KEZD.Text = datVIZSG_KEZD_TIM.Value
+Private Sub spcVIZSG_KEZD_TIM_LostFocus()
+'    txtVIZSG_KEZD.Text = spcVIZSG_KEZD_TIM.Value
 End Sub
 
-Private Sub datVIZSG_VEGE_DAT_LostFocus()
-    datVIZSG_VEGE_TIM.Value = datVIZSG_VEGE_DAT.Value
+Private Sub spcVIZSG_VEGE_DAT_LostFocus()
+    spcVIZSG_VEGE_TIM.Value = spcVIZSG_VEGE_DAT.Value
 End Sub
 
-Private Sub datVIZSG_VEGE_TIM_LostFocus()
-'    txtVIZSG_VEGE.Text = datVIZSG_VEGE_TIM.Value
+Private Sub spcVIZSG_VEGE_TIM_LostFocus()
+'    txtVIZSG_VEGE.Text = spcVIZSG_VEGE_TIM.Value
 End Sub
 
 Private Sub Form_Activate()
