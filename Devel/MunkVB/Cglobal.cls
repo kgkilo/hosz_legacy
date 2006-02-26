@@ -487,6 +487,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
     Dim iMerge As Integer
     Dim sParam As String
     Dim lstParams As New Collection
+    Dim rs As New ADODB.Recordset   'A darabszam lekerdezeshez
     
     Select Case sKateg
         Case "MUNKALAP"
@@ -522,13 +523,12 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "MUNELV"
 
 ' Lekérdezem a munkalap darabszámot
-            Dim rs As New ADODB.Recordset   'A visszatérési rekordszett
             sQuery = "sp_LoadMlapDb"
             If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
                 frm.Controls("txtTALALAT").Text = CInt(rs.Fields("MLAPDB").Value)
             Else
-                'Hiba
+                frm.Controls("txtTALALAT").Text = ""
             End If
 ' Elkészítem a grid-et
             sFormatstring = "<||Munkalap|Bejelentõ|Kiáll. dátum|Végezhetõ|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra"
@@ -556,6 +556,16 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
             lstParams.Add sParam, "pDATUMIG"
         
+' Lekérdezem a munkalap darabszámot
+            sQuery = "sp_LoadJegyzDb"
+            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+                rs.MoveFirst                 'A recordset elejére állunk
+                frm.Controls("txtTALALAT").Text = CInt(rs.Fields("JEGYZDB").Value)
+            Else
+                frm.Controls("txtTALALAT").Text = ""
+            End If
+' Elkészítem a grid-et
+
             Select Case lstParams("pJTIP")
                 Case "1", "2", "3", "4", "5", "6", "7"
                     sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
