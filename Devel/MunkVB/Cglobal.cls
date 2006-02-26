@@ -551,18 +551,24 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "pOBJID"
             sParam = GetComboErtek(frm.Controls("cmbJTIP"))
             lstParams.Add sParam, "pJTIP"
+            sParam = IIf(IsNull(frm.Controls("datDATUMTOL").Value), "", frm.Controls("datDATUMTOL").Value)
+            lstParams.Add sParam, "pDATUMTOL"
+            sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
+            lstParams.Add sParam, "pDATUMIG"
         
-            sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
+            Select Case lstParams("pJTIP")
+                Case "1", "2", "3", "4", "5", "6", "7"
+                    sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
+                    iMerge = 9
+                Case "8"
+                    sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Jegyz. típusa|Fûtõmû|Munkalap"
+                    iMerge = 2
+                Case Else
+                    sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Jegyz. típusa|Berendezés|Ber.típus|Gy.szám"
+                    iMerge = 3
+            End Select
             sQuery = "sp_LekerdJegyz"
-            iMerge = 9
         
-        Case "LABOR"
-            sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
-            sQuery = "sp_LekerdLabor"
-            iMerge = 9
-            
-        Case Else
-            
     End Select
     
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge
