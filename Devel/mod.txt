@@ -1,0 +1,29 @@
+2006.02.12.
+X Labor jegyzokönyv készülhet az 'Odessza I. Termál' nevu helyrol is.
+X Összesítoben is jelenjen meg.
+
+	sp_FillOsszesitoSorsz	helyi munka kell!!! Odessza I. T. objid - 40214
+	sp_LaborOsszesito
+	QLABOR24
+
+X Jegyzokönyv lekérdezés dátum szurés menjen
+	sp_LekerdJegyz
+
+X Jegyzokönyv lekérdezés teljes köru
+	sp_LekerdJegyz
+
+- Jegyzokönyv megtekintés
+
+X Labor jegyzokönyv készülhet a 'Berzsenyi kis hkp' nevu helyrol is.
+X Összesítoben is jelenjen meg.
+	QLABOR25
+	sp_LaborOsszesito
+	sp_FillOsszesitoSorsz	helyi munka kell!!! Berzsenyi kis hkp objid - 46476
+
+X Jegyzokönyv lekérdezés Találatok száma megy
+	sp_LoadJegyzDb
+
+Telepítve: 2006.02.28.
+Minden OK, összesíto eloválasztó formon a 2 új futomu nem szerepel...
+
+-----------------------------------------------------------------------------------

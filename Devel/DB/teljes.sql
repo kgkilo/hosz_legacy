@@ -1,3 +1,7 @@
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_DelKarbterv]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_CheckPermis]
 GO
@@ -12,10 +16,6 @@ GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelEgyediSzlatet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelEgyediSzlatet]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_DelKarbterv]
 GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -8024,6 +8024,39 @@ SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON
 GO
 
 
+
+
+CREATE PROCEDURE sp_DelKarbterv
+@pID INTEGER
+AS
+UPDATE
+	KARBTERV
+SET
+	AKTIV = 0,
+	ADATUM = GetDate(),
+	AKOD = User_Name()
+WHERE
+	ID = @pID
+
+
+
+
+
+
+
+
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_DelKarbterv]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+
 CREATE Procedure sp_CheckPermis
 @sForm VARCHAR(50),
 @sLogin VARCHAR(50)
@@ -8233,39 +8266,6 @@ SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelEgyediSzlatet]  TO [public]
-GO
-
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
-GO
-
-
-
-
-CREATE PROCEDURE sp_DelKarbterv
-@pID INTEGER
-AS
-UPDATE
-	KARBTERV
-SET
-	AKTIV = 0,
-	ADATUM = GetDate(),
-	AKOD = User_Name()
-WHERE
-	ID = @pID
-
-
-
-
-
-
-
-
-
-GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
-GO
-
-GRANT  EXECUTE  ON [dbo].[sp_DelKarbterv]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
@@ -10405,7 +10405,9 @@ SELECT
 		WHEN 674 THEN 21
 		WHEN 44 THEN 22
 		WHEN 1722 THEN 23
-		ELSE 24
+		WHEN 40214 THEN 24
+		WHEN 46476 THEN 25
+		ELSE 0
 	END,
 	LABOR.MINTA_IDO,
 	MUN_SORSZ,
