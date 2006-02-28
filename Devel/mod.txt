@@ -27,3 +27,8 @@ Telepítve: 2006.02.28.
 Minden OK, összesíto eloválasztó formon a 2 új futomu nem szerepel...
 
 -----------------------------------------------------------------------------------
+2006.02.28.
+X Összesíto formon a 2 új futomu is szerepeljen
+	EXE
+- Jegyzokönyv megtekintés
+- Jegyzokönyv nyomtatás
