@@ -1005,6 +1005,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Public mode As Long
 Public TipushFriss As Integer
 
@@ -1021,7 +1023,7 @@ End Sub
 Private Sub cmbSzolgjell_Change()
     Dim szolgJell As String
     If mode = 0 Then
-        szolgJell = GetComboErtek(cmbSzolgjell)
+        szolgJell = GetComboErtek(cmbSZOLGJELL)
         Select Case szolgJell
             Case "LE", "LA":
                 SetComboVal cmbMUVEL, "BHJ"
@@ -1187,7 +1189,7 @@ Private Sub Form_Load()
             txtKIALLDAT.Locked = True
             cmbSZEREGYS.Locked = True
             cmbMFDOLG.Locked = True
-            cmbSzolgjell.Locked = True
+            cmbSZOLGJELL.Locked = True
             'txtBEJNEV.Locked = True
             cmbFSZAM.Locked = True
             cmbTIPUSH.Locked = True

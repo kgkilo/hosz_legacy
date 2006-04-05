@@ -220,7 +220,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcMINTA_TIM 
@@ -251,7 +251,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134210
+      Format          =   23068674
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcMINTA_ATAD_DAT 
@@ -282,7 +282,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcMINTA_ATAD_TIM 
@@ -313,7 +313,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134210
+      Format          =   23068674
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_KEZD_DAT 
@@ -344,7 +344,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_KEZD_TIM 
@@ -375,7 +375,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134210
+      Format          =   23068674
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_VEGE_DAT 
@@ -406,7 +406,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23068673
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker spcVIZSG_VEGE_TIM 
@@ -437,7 +437,7 @@ Begin VB.Form Form003a
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134210
+      Format          =   23068674
       CurrentDate     =   37013
    End
    Begin VB.Label lblERTEKELES 
@@ -909,6 +909,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Public mode As Long
 Public TipushFriss As Integer
 
@@ -938,8 +940,6 @@ Private Sub cmdOK_Click()
         If MsgBox("Kívánja nyomtatni a jegyzõkönyvet?", vbQuestion + vbYesNo, "Nyomtatás") = vbYes Then
             util.Jegyzokonyv "8", i, sANTSZDir
         End If
-    Else
-        'util.rekordupdate Me, "LABOR", mode
     End If
     
     Form003.iRefresh = 1
@@ -951,10 +951,6 @@ Private Sub spcMINTA_ATAD_DAT_LostFocus()
     spcMINTA_ATAD_TIM.Value = spcMINTA_ATAD_DAT.Value
 End Sub
 
-Private Sub spcMINTA_ATAD_TIM_LostFocus()
-'    txtMINTA_ATAD_IDO.Text = spcMINTA_ATAD_TIM.Value
-End Sub
-
 Private Sub spcMINTA_DAT_LostFocus()
     spcMINTA_TIM.Value = spcMINTA_DAT.Value
 End Sub
@@ -963,16 +959,8 @@ Private Sub spcVIZSG_KEZD_DAT_LostFocus()
     spcVIZSG_KEZD_TIM.Value = spcVIZSG_KEZD_DAT.Value
 End Sub
 
-Private Sub spcVIZSG_KEZD_TIM_LostFocus()
-'    txtVIZSG_KEZD.Text = spcVIZSG_KEZD_TIM.Value
-End Sub
-
 Private Sub spcVIZSG_VEGE_DAT_LostFocus()
     spcVIZSG_VEGE_TIM.Value = spcVIZSG_VEGE_DAT.Value
-End Sub
-
-Private Sub spcVIZSG_VEGE_TIM_LostFocus()
-'    txtVIZSG_VEGE.Text = spcVIZSG_VEGE_TIM.Value
 End Sub
 
 Private Sub Form_Activate()
@@ -986,6 +974,10 @@ Private Sub Form_Load()
     
     If mode <> 0 Then
         util.RekordFeltolt Me, "LABOR", mode
+        For Each Control In Me.Controls
+            Control.Enabled = False
+        Next
+        cmdCLOSE.Enabled = True
     Else
         dNow = DateValue(Now())
         spcMINTA_DAT = dNow

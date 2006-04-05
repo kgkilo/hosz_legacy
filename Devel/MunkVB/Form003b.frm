@@ -115,7 +115,7 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   23003137
       CurrentDate     =   37013
    End
    Begin VB.Label lbl25 
@@ -1024,6 +1024,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Private Sub cmdClose_Click()
     Back Me
 End Sub

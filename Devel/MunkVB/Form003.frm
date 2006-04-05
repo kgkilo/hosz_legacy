@@ -231,7 +231,7 @@ Begin VB.Form Form003
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   51249153
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -263,7 +263,7 @@ Begin VB.Form Form003
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   51249153
       CurrentDate     =   37013
    End
    Begin VB.Label lblTITLE 
@@ -492,6 +492,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Public iRefresh As Integer
 
 Private Sub frissit()
@@ -593,9 +595,11 @@ Private Sub cmdFRISSIT_Click()
 End Sub
 
 Private Sub cmdMODOSIT_Click()
-'    Form003a.mode = grdJEGYZ.TextMatrix(grdJEGYZ.Row, 1)
-'    Form003a.Show 1
+    On Error GoTo errModosit
+    Form003a.mode = grdJEGYZ.TextMatrix(grdJEGYZ.Row, 1)
+    Form003a.Show 1
     frissit
+errModosit:
 End Sub
 
 Private Sub cmdUJ_Click()
@@ -619,7 +623,7 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub grdJEGYZ_DblClick()
-'    cmdVISSZAI_Click
+    cmdMODOSIT_Click
 End Sub
 
 Private Sub KeyCommand(KeyCode As Integer)

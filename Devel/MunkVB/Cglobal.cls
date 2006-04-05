@@ -346,6 +346,8 @@ Public Function RekordFeltolt(ByRef frm As Object, ByVal sKategoria As String, B
             sQuery = "sp_LoadMunkalap"
         Case "LABOR"
             sQuery = "sp_LoadLabor"
+        Case "JEGYZ"
+            sQuery = "sp_LoadJegyz"
         Case Else
             sQuery = "sp_LoadObjEgyedi"
     End Select
@@ -354,6 +356,20 @@ Public Function RekordFeltolt(ByRef frm As Object, ByVal sKategoria As String, B
     If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
         If ControlsSet(rs, frm) Then    'Ha sikerült, feltöltjük a képernyõ kontrolljait adatokkal.
             RekordFeltolt = True
+        End If
+        
+        If sKategoria = "LABOR" Then
+            Dim oControl As Control
+            On Error Resume Next
+            For Each oControl In frm.Controls
+                If Left(oControl.Name, 3) = "spc" Then
+                    oControl = rs(Mid(oControl.Name, 4)).Value
+                ElseIf oControl.Name = "cmbMUN_SORSZ" Then
+                    MsgBox rs("MUN_SORSZ").Value
+                    SetComboVal oControl, rs("MUN_SORSZ").Value
+                End If
+            Next
+            On Error GoTo errRekordFeltolt
         End If
     End If
     
@@ -578,6 +594,13 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
                     iMerge = 3
             End Select
             sQuery = "sp_LekerdJegyz"
+        
+        Case "RAKTAR"
+            sFormatstring = "<||objtip|objid|bekeruldat"
+            sQuery = "sp_LekerdBerraktar"
+            iMerge = 1
+            sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
+            lstParams.Add sParam, "pOBJTIP"
         
     End Select
     

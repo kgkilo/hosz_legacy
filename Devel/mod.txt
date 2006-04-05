@@ -1,3 +1,9 @@
+###########################################################
+#
+# $Id$
+#
+###########################################################
+
 2006.02.12.
 X Labor jegyzokönyv készülhet az 'Odessza I. Termál' nevu helyrol is.
 X Összesítoben is jelenjen meg.
@@ -11,8 +17,6 @@ X Jegyzokönyv lekérdezés dátum szurés menjen
 
 X Jegyzokönyv lekérdezés teljes köru
 	sp_LekerdJegyz
-
-- Jegyzokönyv megtekintés
 
 X Labor jegyzokönyv készülhet a 'Berzsenyi kis hkp' nevu helyrol is.
 X Összesítoben is jelenjen meg.
@@ -30,5 +34,5 @@ Minden OK, összesíto eloválasztó formon a 2 új futomu nem szerepel...
 2006.02.28.
 X Összesíto formon a 2 új futomu is szerepeljen
 	EXE
-- Jegyzokönyv megtekintés
-- Jegyzokönyv nyomtatás
+
+Telepítve:

@@ -44,6 +44,9 @@ bcp szetav..motor out motor.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..munkalap out munkalap.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..objektum out objektum.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..permis out permis.txt /S127.0.0.1 /Usa /P /n
+bcp szetav..raktar out raktar.txt /S127.0.0.1 /Usa /P /n
+bcp szetav..rakthistory out rakthistory.txt /S127.0.0.1 /Usa /P /n
+bcp szetav..raktkepvis out raktkepvis.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..szabalyozo_automatika out szabalyozo_automatika.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..szabalyozo_szelep out szabalyozo_szelep.txt /S127.0.0.1 /Usa /P /n
 bcp szetav..szerelveny out szerelveny.txt /S127.0.0.1 /Usa /P /n
