@@ -1,4 +1,7 @@
 Attribute VB_Name = "Word"
+' $Id$
+
+
 Public Function WordAppNewDoc(S_DOCPATH As String, Template As String, DocName As String, Tipus As String, sSavePath As String) As Object
 ' A Word alkalmazás általános hívására használható függvény
 ' új dokumentum létrehozásához. (Szojka Csaba 1998 április)

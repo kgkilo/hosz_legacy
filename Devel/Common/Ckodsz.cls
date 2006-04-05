@@ -11,6 +11,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+' $Id$
+
 Option Explicit
 
 Private m_collSections As Collection    'Ebben tároljuk a kód szekciókat

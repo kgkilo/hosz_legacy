@@ -1005,7 +1005,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-' $Id
+' $Id$
 
 Public mode As Long
 Public TipushFriss As Integer

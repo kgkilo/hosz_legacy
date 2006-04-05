@@ -1,4 +1,6 @@
 Attribute VB_Name = "utility"
+' $Id$
+
 Public Const P_READ = 1 'Adatbázisobjektum hozzáférési jogok
 Public Const P_UPDATE = 2
 Public Const P_INSERT = 4

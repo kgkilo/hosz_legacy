@@ -231,7 +231,7 @@ Begin VB.Form Form003
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   51249153
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -263,7 +263,7 @@ Begin VB.Form Form003
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   51249153
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin VB.Label lblTITLE 
@@ -492,7 +492,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-' $Id
+' $Id$
 
 Public iRefresh As Integer
 

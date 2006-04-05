@@ -40,6 +40,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id$
+
 Private Sub cmdJEGYZ_Click()
     Form003.Show 1
 End Sub
