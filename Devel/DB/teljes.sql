@@ -1,7 +1,3 @@
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_DelKarbterv]
-GO
-
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_CheckPermis]
 GO
@@ -16,6 +12,10 @@ GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelEgyediSzlatet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelEgyediSzlatet]
+GO
+
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_DelKarbterv]
 GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -302,6 +302,10 @@ if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdAlt]'
 drop procedure [dbo].[sp_LekerdAlt]
 GO
 
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LekerdBerRaktar]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdDolgozo]
 GO
@@ -362,6 +366,10 @@ if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadEpul]')
 drop procedure [dbo].[sp_LoadEpul]
 GO
 
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadJegyz]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadJegyzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadJegyzDb]
 GO
@@ -372,6 +380,10 @@ GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadKontir]
+GO
+
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadLabor]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadLabor]
 GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadMlapDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -1398,6 +1410,10 @@ if exists (select * from sysobjects where id = object_id(N'[dbo].[ARVALT]') and 
 drop table [dbo].[ARVALT]
 GO
 
+if exists (select * from sysobjects where id = object_id(N'[dbo].[BERRAKTAR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[BERRAKTAR]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[BIZTONSAGI_SZELEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[BIZTONSAGI_SZELEP]
 GO
@@ -1834,6 +1850,23 @@ CREATE TABLE [dbo].[ARVALT] (
 	[ERVDAT] [datetime] NOT NULL ,
 	[BEFDAT] [datetime] NULL ,
 	[FELAR] [real] NULL ,
+	[ADATUM] [datetime] NOT NULL ,
+	[AKOD] [varchar] (12) NOT NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[BERRAKTAR] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[OBJID] [int] NOT NULL ,
+	[OBJTIP] [varchar] (2) NOT NULL ,
+	[BEKERUL_DAT] [datetime] NOT NULL ,
+	[BEKERUL_MERO] [int] NULL ,
+	[BEKERUL_DOLG] [int] NULL ,
+	[BEKERUL_MEGJ] [varchar] (1024) NULL ,
+	[KIKERUL_DAT] [datetime] NULL ,
+	[KIKERUL_MERO] [int] NULL ,
+	[KIKERUL_DOLG] [int] NULL ,
+	[KIKERUL_MEGJ] [varchar] (1024) NULL ,
 	[ADATUM] [datetime] NOT NULL ,
 	[AKOD] [varchar] (12) NOT NULL 
 ) ON [PRIMARY]
@@ -3258,6 +3291,12 @@ ALTER TABLE [dbo].[ARVALT] WITH NOCHECK ADD
 	CONSTRAINT [DF_ARVALT_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
+ALTER TABLE [dbo].[BERRAKTAR] WITH NOCHECK ADD 
+	CONSTRAINT [DF_BERRAKTAR_BEKERUL_DAT] DEFAULT (getdate()) FOR [BEKERUL_DAT],
+	CONSTRAINT [DF_BERRAKTAR_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
+	CONSTRAINT [DF_BERRAKTAR_AKOD] DEFAULT (user_name()) FOR [AKOD]
+GO
+
 ALTER TABLE [dbo].[BOYLER] WITH NOCHECK ADD 
 	CONSTRAINT [PK_BOYLER] PRIMARY KEY  NONCLUSTERED 
 	(
@@ -3710,6 +3749,9 @@ GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[ARAMKOR]  TO [public]
 GO
 
 GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[ARVALT]  TO [public]
+GO
+
+GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[BERRAKTAR]  TO [public]
 GO
 
 GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[BIZTONSAGI_SZELEP]  TO [public]
@@ -8024,39 +8066,6 @@ SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON
 GO
 
 
-
-
-CREATE PROCEDURE sp_DelKarbterv
-@pID INTEGER
-AS
-UPDATE
-	KARBTERV
-SET
-	AKTIV = 0,
-	ADATUM = GetDate(),
-	AKOD = User_Name()
-WHERE
-	ID = @pID
-
-
-
-
-
-
-
-
-
-GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
-GO
-
-GRANT  EXECUTE  ON [dbo].[sp_DelKarbterv]  TO [public]
-GO
-
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
-GO
-
-
 CREATE Procedure sp_CheckPermis
 @sForm VARCHAR(50),
 @sLogin VARCHAR(50)
@@ -8266,6 +8275,39 @@ SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelEgyediSzlatet]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+
+
+
+CREATE PROCEDURE sp_DelKarbterv
+@pID INTEGER
+AS
+UPDATE
+	KARBTERV
+SET
+	AKTIV = 0,
+	ADATUM = GetDate(),
+	AKOD = User_Name()
+WHERE
+	ID = @pID
+
+
+
+
+
+
+
+
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_DelKarbterv]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
@@ -14462,6 +14504,29 @@ GO
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
 GO
 
+CREATE PROCEDURE sp_LekerdBerRaktar
+@pOBJTIP VARCHAR(2)=NULL
+AS
+SELECT
+	ID,
+	OBJTIP,
+	OBJID,
+	BEKERUL_DAT
+FROM
+	BERRAKTAR
+WHERE
+	OBJTIP = coalesce(@pOBJTIP, OBJTIP)
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LekerdBerRaktar]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
 
 
 
@@ -15979,6 +16044,26 @@ GO
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
 GO
 
+CREATE PROCEDURE sp_LoadJegyz
+@pID INTEGER
+AS
+SELECT
+	*
+FROM
+	JEGYZ
+WHERE
+	JEGYZSZ = @pID
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadJegyz]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
 CREATE PROCEDURE sp_LoadJegyzDb
 @pJTIP VARCHAR(2)=NULL,
 @pMUVEL VARCHAR(3)=NULL,
@@ -16117,6 +16202,37 @@ SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadKontir]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+CREATE PROCEDURE sp_LoadLabor
+@pID INTEGER
+AS
+SELECT
+	*,
+	CONVERT(varchar(10),MINTA_IDO,102) AS MINTA_DAT,
+	CONVERT(varchar(10),MINTA_IDO,108) AS MINTA_TIM,
+	CONVERT(varchar(10),MINTA_ATAD_IDO,102) AS MINTA_ATAD_DAT,
+	CONVERT(varchar(10),MINTA_ATAD_IDO,108) AS MINTA_ATAD_TIM,
+	CONVERT(varchar(10),VIZSG_KEZD,102) AS VIZSG_KEZD_DAT,
+	CONVERT(varchar(10),VIZSG_KEZD,108) AS VIZSG_KEZD_TIM,
+	CONVERT(varchar(10),VIZSG_VEGE,102) AS VIZSG_VEGE_DAT,
+	CONVERT(varchar(10),VIZSG_VEGE,108) AS VIZSG_VEGE_TIM/*,
+	CONVERT(VARCHAR(10),MUN_SORSZ) + ';' +
+		COALESCE(CONVERT(VARCHAR(30),KIALLDAT,111),'-') + ';'
+		AS MUN_SORSZ*/
+FROM
+	LABOR --INNER JOIN MUNKALAP ON MUNKALAP.ID = LABOR.MUN_SORSZ
+WHERE
+	LABOR.ID = @pID
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadLabor]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 

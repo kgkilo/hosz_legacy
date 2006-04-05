@@ -1,0 +1,37 @@
+###########################################################
+#
+# $Id$
+#
+###########################################################
+
+BERENDEZÉS RAKTÁR
+
+Kialakításra kerül egy raktár (Odessza?), ahol különféle berendezéseket,
+	tipikusan szivattyúkat fognak tárolni.
+Rögzíteni kell a raktárba bekerülo egyedi berendezéseket, az aktuális
+	raktárkészletet, valamint azt, hogy mikor kihez kerül kiadásra
+	egy berendezés.
+A berendezéseket, dolgozók a meglévo közös törzsekböl kerülnek
+	felhasználásra.
+
+Táblák
+BERRAKTAR
+  OBJ_ID
+  OBJTIP
+  BEKERUL_DAT (raktárba kerülés dátuma)
+  BEKERUL_MEGJ  (raktárba kerüléshez megjegyzés)
+  BEKERUL_DOLG  (raktárba került ettol a dolgozótól)
+  BEKERUL_MERO  (raktárba került errol a mérohelyrol)
+
+Mivel történetet is kell róla tárolni, raktárból kikerülés után
+	kiegészítjük az alábbi adatokkal:
+  KIKERUL_DAT
+  KIKERUL_MEGJ
+  KIKERUL_DOLG
+  KIKERUL_MERO
+
+Szurések/lekérdezések:
+  berendezés típus  (raktárban mik vannak)
+  konkrét berendezés (egy berendezés története)
+  dolgozó (kihez mi került)
+  dátum tól/ig  (szukítés)
