@@ -18,17 +18,190 @@ Begin VB.Form Form004
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    ScaleHeight     =   8595
    ScaleMode       =   0  'User
    ScaleWidth      =   12718.25
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
+   Begin VB.TextBox txtR_TELEPHSZ 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   9660
+      TabIndex        =   35
+      Top             =   7650
+      Width           =   1170
+   End
+   Begin VB.TextBox txtR_GYSZAM 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   9660
+      TabIndex        =   33
+      Top             =   7245
+      Width           =   1170
+   End
+   Begin VB.TextBox txtR_TIPUS 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   7500
+      TabIndex        =   31
+      Top             =   7650
+      Width           =   1170
+   End
+   Begin VB.TextBox txtR_MEGNEV 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   7500
+      TabIndex        =   29
+      Top             =   7245
+      Width           =   1170
+   End
+   Begin VB.TextBox txtSZ_TELEPHSZ 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   4470
+      TabIndex        =   27
+      Top             =   7650
+      Width           =   1170
+   End
+   Begin VB.TextBox txtSZ_GYSZAM 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   4470
+      TabIndex        =   25
+      Top             =   7245
+      Width           =   1170
+   End
+   Begin VB.TextBox txtSZ_TIPUS 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   2310
+      TabIndex        =   23
+      Top             =   7650
+      Width           =   1170
+   End
+   Begin VB.TextBox txtSZ_MEGNEV 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   2310
+      TabIndex        =   21
+      Top             =   7245
+      Width           =   1170
+   End
+   Begin VB.TextBox txtR_TALALAT 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000004&
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Left            =   7560
+      Locked          =   -1  'True
+      TabIndex        =   20
+      TabStop         =   0   'False
+      Top             =   6825
+      Width           =   960
+   End
+   Begin VB.TextBox txtSZ_TALALAT 
+      Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000004&
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Left            =   2415
+      Locked          =   -1  'True
+      TabIndex        =   18
+      TabStop         =   0   'False
+      Top             =   6825
+      Width           =   960
+   End
    Begin VB.CheckBox chkFrissit 
       Height          =   285
       Left            =   720
-      TabIndex        =   17
+      TabIndex        =   15
       TabStop         =   0   'False
-      Top             =   1620
+      Top             =   1095
       Width           =   285
    End
    Begin VB.CommandButton cmdLIST 
@@ -87,28 +260,6 @@ Begin VB.Form Form004
       Top             =   8040
       Width           =   1275
    End
-   Begin VB.TextBox txtTALALAT 
-      Alignment       =   2  'Center
-      Appearance      =   0  'Flat
-      BackColor       =   &H80000004&
-      BorderStyle     =   0  'None
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   285
-      Left            =   360
-      Locked          =   -1  'True
-      TabIndex        =   9
-      TabStop         =   0   'False
-      Top             =   900
-      Width           =   960
-   End
    Begin VB.Timer tmrVILLOG 
       Enabled         =   0   'False
       Interval        =   500
@@ -116,14 +267,14 @@ Begin VB.Form Form004
       Top             =   90
    End
    Begin vsFlexLib.vsFlexArray grdSZABAD 
-      Height          =   6030
+      Height          =   4455
       Left            =   1530
       TabIndex        =   0
       Top             =   2355
       Width           =   4110
       _Version        =   196608
       _ExtentX        =   7250
-      _ExtentY        =   10636
+      _ExtentY        =   7858
       _StockProps     =   228
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -177,7 +328,7 @@ Begin VB.Form Form004
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   51773441
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -209,18 +360,18 @@ Begin VB.Form Form004
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   51773441
       CurrentDate     =   37013
    End
    Begin vsFlexLib.vsFlexArray grdRAKTAR 
-      Height          =   6030
+      Height          =   4455
       Left            =   6720
-      TabIndex        =   16
+      TabIndex        =   14
       Top             =   2355
       Width           =   4110
       _Version        =   196608
       _ExtentX        =   7250
-      _ExtentY        =   10636
+      _ExtentY        =   7858
       _StockProps     =   228
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -234,11 +385,175 @@ Begin VB.Form Form004
       Appearance      =   1
       ConvInfo        =   1418783674
    End
+   Begin VB.Label lblR_TELEPHSZ 
+      Caption         =   "Telep.hsz:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   8880
+      TabIndex        =   36
+      Top             =   7710
+      Width           =   750
+   End
+   Begin VB.Label lblR_GYSZAM 
+      Caption         =   "Gy.szám:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   8880
+      TabIndex        =   34
+      Top             =   7305
+      Width           =   750
+   End
+   Begin VB.Label lblR_TIPUS 
+      Caption         =   "Típus:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   6720
+      TabIndex        =   32
+      Top             =   7710
+      Width           =   750
+   End
+   Begin VB.Label lblR_MEGNEV 
+      Caption         =   "Megnev.:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   6720
+      TabIndex        =   30
+      Top             =   7305
+      Width           =   750
+   End
+   Begin VB.Label lblSZ_TELEPHSZ 
+      Caption         =   "Telep.hsz:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   3690
+      TabIndex        =   28
+      Top             =   7710
+      Width           =   750
+   End
+   Begin VB.Label lblSZ_GYSZAM 
+      Caption         =   "Gy.szám:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   3690
+      TabIndex        =   26
+      Top             =   7305
+      Width           =   750
+   End
+   Begin VB.Label lblSZ_TIPUS 
+      Caption         =   "Típus:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   1530
+      TabIndex        =   24
+      Top             =   7710
+      Width           =   750
+   End
+   Begin VB.Label lblSZ_MEGNEV 
+      Caption         =   "Megnev.:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   225
+      Left            =   1530
+      TabIndex        =   22
+      Top             =   7305
+      Width           =   750
+   End
+   Begin MSForms.Label lblR_TALALAT 
+      Height          =   240
+      Left            =   6720
+      TabIndex        =   19
+      Top             =   6825
+      Width           =   825
+      Caption         =   "Találatok:"
+      Size            =   "1455;423"
+      FontName        =   "Arial"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      ParagraphAlign  =   3
+   End
+   Begin MSForms.Label lblSZ_TALALAT 
+      Height          =   240
+      Left            =   1575
+      TabIndex        =   17
+      Top             =   6825
+      Width           =   825
+      Caption         =   "Találatok:"
+      Size            =   "1455;423"
+      FontName        =   "Arial"
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+      ParagraphAlign  =   3
+   End
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   135
-      TabIndex        =   18
-      Top             =   1350
+      TabIndex        =   16
+      Top             =   840
       Width           =   1500
       Caption         =   "Azonnali frissítés"
       Size            =   "2646;423"
@@ -263,7 +578,7 @@ Begin VB.Form Form004
       ForeColor       =   &H80000001&
       Height          =   435
       Left            =   3605
-      TabIndex        =   15
+      TabIndex        =   13
       Top             =   105
       Width           =   4670
    End
@@ -281,7 +596,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   1725
-      TabIndex        =   14
+      TabIndex        =   12
       Top             =   1275
       Width           =   1515
    End
@@ -299,7 +614,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   1725
-      TabIndex        =   13
+      TabIndex        =   11
       Top             =   840
       Width           =   1515
    End
@@ -317,7 +632,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   6870
-      TabIndex        =   12
+      TabIndex        =   10
       Top             =   1290
       Width           =   1200
    End
@@ -335,7 +650,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   6870
-      TabIndex        =   11
+      TabIndex        =   9
       Top             =   840
       Width           =   1200
    End
@@ -395,20 +710,6 @@ Begin VB.Form Form004
       FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
-   End
-   Begin MSForms.Label lblTALALAT 
-      Height          =   240
-      Left            =   450
-      TabIndex        =   10
-      Top             =   630
-      Width           =   825
-      Caption         =   "Találatok"
-      Size            =   "1455;423"
-      FontName        =   "Arial"
-      FontHeight      =   165
-      FontCharSet     =   0
-      FontPitchAndFamily=   2
-      ParagraphAlign  =   3
    End
    Begin VB.Shape Shape1 
       BorderColor     =   &H8000000A&
@@ -485,6 +786,14 @@ Private Sub grdJEGYZ_LostFocus()
     KeyPreview = True
 End Sub
 
+Private Sub grdRAKTAR_SelChange()
+    util.RekordFeltolt Me, "RAKTAR", grdRAKTAR.TextMatrix(grdRAKTAR.Row, 1)
+End Sub
+
+Private Sub grdSZABAD_SelChange()
+    util.RekordFeltolt Me, "RAKTARSZ", grdSZABAD.TextMatrix(grdSZABAD.Row, 1)
+End Sub
+
 Private Sub tmrVILLOG_Timer()
     If cmdFRISSIT.Caption = "F5" Then
         cmdFRISSIT.Caption = "Frissítés"
@@ -497,6 +806,7 @@ Private Sub cmdFRISSIT_Click()
     Screen.MousePointer = vbHourglass
     
     util.GridderX grdRAKTAR, "RAKTAR", Me
+    util.GridderX grdSZABAD, "RAKTARSZ", Me
     
     tmrVILLOG.Enabled = False
     cmdFRISSIT.Caption = "Frissítés"

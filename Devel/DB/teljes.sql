@@ -306,6 +306,10 @@ if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRa
 drop procedure [dbo].[sp_LekerdBerRaktar]
 GO
 
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LekerdBerRaktarSz]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdDolgozo]
 GO
@@ -402,12 +406,20 @@ if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadObjEgye
 drop procedure [dbo].[sp_LoadObjEgyedi]
 GO
 
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadRaktar]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktarInfo]
 GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktarKepv]
+GO
+
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadRaktarSz]
 GO
 
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -13470,15 +13482,6 @@ GO
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
 GO
 
-
-
-
-
-
-
-
-/****** Object:  Stored Procedure dbo.sp_Kapcsol    Script Date: 2000. 07. 04. 18:56:16 ******/
-
 CREATE PROCEDURE sp_Kapcsol
 @pID1 INTEGER,
 @pID2 INTEGER
@@ -13498,14 +13501,6 @@ SET
 	ELOZOKAPCSDATE = NULL
 WHERE
 	ID = @pID2
-
-
-
-
-
-
-
-
 
 GO
 SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
@@ -14505,23 +14500,76 @@ SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON
 GO
 
 CREATE PROCEDURE sp_LekerdBerRaktar
-@pOBJTIP VARCHAR(2)=NULL
+/*
+Visszaadja az osszes olyan objektumot, ami
+	a berendezes raktarban talahato (BERRAKTAR)
+*/
+@pOBJTIP VARCHAR(2)=NULL,
+@pOBJID INTEGER=NULL,
+@pDATUMTOL DATETIME=NULL,
+@pDATUMIG DATETIME=NULL
 AS
 SELECT
-	ID,
-	OBJTIP,
-	OBJID,
-	BEKERUL_DAT
+	BERRAKTAR.ID,
+	Q296.KODENEV AS OBJTIP,
+	O.MEGNEV,
+	BEKERUL_DAT,
+	O.TIPUS,
+	O.TELEPHSZ,
+	O.GYSZAM
 FROM
-	BERRAKTAR
+	OBJEKTUM O RIGHT JOIN
+		(Q296 RIGHT JOIN BERRAKTAR ON Q296.KODERT = BERRAKTAR.OBJTIP)
+	ON O.ID = BERRAKTAR.OBJID
 WHERE
-	OBJTIP = coalesce(@pOBJTIP, OBJTIP)
+	BERRAKTAR.OBJTIP = coalesce(@pOBJTIP, BERRAKTAR.OBJTIP)
+	AND OBJID = coalesce(@pOBJID, BERRAKTAR.OBJID)
+	AND ((@pDATUMTOL IS NULL AND @pDATUMIG IS NULL)
+		OR (@pDATUMTOL IS NOT NULL AND @pDATUMIG IS NOT NULL AND BEKERUL_DAT BETWEEN @pDATUMTOL AND @pDATUMIG))
+ORDER BY
+	O.MEGNEV
 
 GO
 SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdBerRaktar]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+CREATE PROCEDURE sp_LekerdBerRaktarSz
+/*
+Visszaadja az osszes olyan objektumot, ami
+- nincs bekotve sehova
+- nincs a berendezes raktarban (BERRAKTAR)
+*/
+@pOBJTIP VARCHAR(2)=NULL,
+@pOBJID INTEGER=NULL
+AS
+SELECT
+	O.ID,
+	Q296.KODENEV AS OBJTIP,
+	O.MEGNEV,
+	O.TIPUS,
+	O.TELEPHSZ,
+	O.GYSZAM
+FROM
+	Q296 RIGHT JOIN OBJEKTUM O ON Q296.KODERT = O.OBJTIP
+WHERE
+	O.OBJTIP = coalesce(@pOBJTIP, O.OBJTIP)
+	AND ID = coalesce(@pOBJID, O.ID)
+	AND ((O.KAPCSOLT = 0)
+		AND (NOT EXISTS(SELECT ID FROM BERRAKTAR WHERE OBJID=O.ID)))
+ORDER BY
+	O.MEGNEV
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LekerdBerRaktarSz]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
@@ -16863,6 +16911,29 @@ GO
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
 GO
 
+CREATE PROCEDURE sp_LoadRaktar
+@pID INTEGER
+AS
+SELECT
+	O.MEGNEV AS R_MEGNEV,
+	O.TIPUS AS R_TIPUS,
+	O.GYSZAM AS R_GYSZAM,
+	O.TELEPHSZ AS R_TELEPHSZ
+FROM
+	OBJEKTUM O RIGHT JOIN BERRAKTAR ON O.ID = BERRAKTAR.OBJID
+WHERE
+	BERRAKTAR.ID = @pID
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadRaktar]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
 CREATE PROCEDURE sp_LoadRaktarInfo
 @pID INTEGER
 AS
@@ -17177,6 +17248,29 @@ SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadRaktarKepv]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+CREATE PROCEDURE sp_LoadRaktarSz
+@pID INTEGER
+AS
+SELECT
+	O.MEGNEV AS SZ_MEGNEV,
+	O.TIPUS AS SZ_TIPUS,
+	O.GYSZAM AS SZ_GYSZAM,
+	O.TELEPHSZ AS SZ_TELEPHSZ
+FROM
+	OBJEKTUM O
+WHERE
+	O.ID = @pID
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadRaktarSz]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 

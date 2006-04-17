@@ -350,6 +350,10 @@ Public Function RekordFeltolt(ByRef frm As Object, ByVal sKategoria As String, B
             sQuery = "sp_LoadLabor"
         Case "JEGYZ"
             sQuery = "sp_LoadJegyz"
+        Case "RAKTAR"
+            sQuery = "sp_LoadRaktar"
+        Case "RAKTARSZ"
+            sQuery = "sp_LoadRaktarSz"
         Case Else
             sQuery = "sp_LoadObjEgyedi"
     End Select
@@ -598,11 +602,26 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             sQuery = "sp_LekerdJegyz"
         
         Case "RAKTAR"
-            sFormatstring = "<||objtip|objid|bekeruldat"
+            sFormatstring = "<||Ber.típ.|Megnev|Bekerülés|Típus|Telep.hsz.|Gy.szám"
             sQuery = "sp_LekerdBerraktar"
             iMerge = 1
             sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
             lstParams.Add sParam, "pOBJTIP"
+            sParam = GetComboErtek(frm.Controls("cmbOBJID"))
+            lstParams.Add sParam, "pOBJID"
+            sParam = IIf(IsNull(frm.Controls("datDATUMTOL").Value), "", frm.Controls("datDATUMTOL").Value)
+            lstParams.Add sParam, "pDATUMTOL"
+            sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
+            lstParams.Add sParam, "pDATUMIG"
+        
+        Case "RAKTARSZ"
+            sFormatstring = "<||Ber.típ.|Megnev.|Típus|Telep.hsz.|Gy.szám"
+            sQuery = "sp_LekerdBerraktarSz"
+            iMerge = 1
+            sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
+            lstParams.Add sParam, "pOBJTIP"
+            sParam = GetComboErtek(frm.Controls("cmbOBJID"))
+            lstParams.Add sParam, "pOBJID"
         
     End Select
     
