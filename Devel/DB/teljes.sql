@@ -362,6 +362,14 @@ if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_ListKapcsID
 drop procedure [dbo].[sp_ListKapcsID]
 GO
 
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadBerRaktarDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadBerRaktarDb]
+GO
+
+if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadBerRaktarSzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadBerRaktarSzDb]
+GO
+
 if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadDolgozo]
 GO
@@ -15961,6 +15969,65 @@ SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_ListKapcsID]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+CREATE PROCEDURE sp_LoadBerRaktarDb
+/*
+Visszaadja az osszes olyan objektumot, ami
+	a berendezes raktarban talahato (BERRAKTAR)
+*/
+@pOBJTIP VARCHAR(2)=NULL,
+@pOBJID INTEGER=NULL,
+@pDATUMTOL DATETIME=NULL,
+@pDATUMIG DATETIME=NULL
+AS
+SELECT
+	COUNT(BERRAKTAR.ID) AS TALALAT
+FROM
+	BERRAKTAR
+WHERE
+	BERRAKTAR.OBJTIP = coalesce(@pOBJTIP, BERRAKTAR.OBJTIP)
+	AND OBJID = coalesce(@pOBJID, BERRAKTAR.OBJID)
+	AND ((@pDATUMTOL IS NULL AND @pDATUMIG IS NULL)
+		OR (@pDATUMTOL IS NOT NULL AND @pDATUMIG IS NOT NULL AND BEKERUL_DAT BETWEEN @pDATUMTOL AND @pDATUMIG))
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadBerRaktarDb]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GO
+
+CREATE PROCEDURE sp_LoadBerRaktarSzDb
+/*
+Visszaadja az osszes olyan objektumot, ami
+- nincs bekotve sehova
+- nincs a berendezes raktarban (BERRAKTAR)
+*/
+@pOBJTIP VARCHAR(2)=NULL,
+@pOBJID INTEGER=NULL
+AS
+SELECT
+	COUNT(O.ID) AS TALALAT
+FROM
+	OBJEKTUM O
+WHERE
+	O.OBJTIP = coalesce(@pOBJTIP, O.OBJTIP)
+	AND ID = coalesce(@pOBJID, O.ID)
+	AND ((O.KAPCSOLT = 0)
+		AND (NOT EXISTS(SELECT ID FROM BERRAKTAR WHERE OBJID=O.ID)))
+
+GO
+SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadBerRaktarSzDb]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 

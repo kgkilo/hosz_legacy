@@ -328,7 +328,7 @@ Begin VB.Form Form004
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   51773441
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -360,7 +360,7 @@ Begin VB.Form Form004
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   51773441
+      Format          =   23134209
       CurrentDate     =   37013
    End
    Begin vsFlexLib.vsFlexArray grdRAKTAR 
@@ -772,18 +772,6 @@ End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     KeyCommand KeyCode
-End Sub
-
-Private Sub grdJEGYZ_GotFocus()
-    KeyPreview = False
-End Sub
-
-Private Sub grdJEGYZ_KeyDown(KeyCode As Integer, Shift As Integer)
-    KeyCommand KeyCode
-End Sub
-
-Private Sub grdJEGYZ_LostFocus()
-    KeyPreview = True
 End Sub
 
 Private Sub grdRAKTAR_SelChange()

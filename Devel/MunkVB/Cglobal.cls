@@ -602,9 +602,6 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             sQuery = "sp_LekerdJegyz"
         
         Case "RAKTAR"
-            sFormatstring = "<||Ber.típ.|Megnev|Bekerülés|Típus|Telep.hsz.|Gy.szám"
-            sQuery = "sp_LekerdBerraktar"
-            iMerge = 1
             sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
             lstParams.Add sParam, "pOBJTIP"
             sParam = GetComboErtek(frm.Controls("cmbOBJID"))
@@ -613,15 +610,36 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "pDATUMTOL"
             sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
             lstParams.Add sParam, "pDATUMIG"
+            'Találatszám lekérdezése
+            sQuery = "sp_LoadBerRaktarDb"
+            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+                rs.MoveFirst                 'A recordset elejére állunk
+                frm.Controls("txtR_TALALAT").Text = CLng(rs.Fields("TALALAT").Value)
+            Else
+                frm.Controls("txtR_TALALAT").Text = "0"
+            End If
+            
+            sFormatstring = "<||Ber.típ.|Megnev|Bekerülés|Típus|Telep.hsz.|Gy.szám"
+            sQuery = "sp_LekerdBerraktar"
+            iMerge = 1
         
         Case "RAKTARSZ"
-            sFormatstring = "<||Ber.típ.|Megnev.|Típus|Telep.hsz.|Gy.szám"
-            sQuery = "sp_LekerdBerraktarSz"
-            iMerge = 1
             sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
             lstParams.Add sParam, "pOBJTIP"
             sParam = GetComboErtek(frm.Controls("cmbOBJID"))
             lstParams.Add sParam, "pOBJID"
+            'Találatszám lekérdezése
+            sQuery = "sp_LoadBerRaktarSzDb"
+            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+                rs.MoveFirst                 'A recordset elejére állunk
+                frm.Controls("txtSZ_TALALAT").Text = CLng(rs.Fields("TALALAT").Value)
+            Else
+                frm.Controls("txtSZ_TALALAT").Text = "0"
+            End If
+            
+            sFormatstring = "<||Ber.típ.|Megnev.|Típus|Telep.hsz.|Gy.szám"
+            sQuery = "sp_LekerdBerraktarSz"
+            iMerge = 1
         
     End Select
     
