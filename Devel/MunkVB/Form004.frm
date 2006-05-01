@@ -24,6 +24,24 @@ Begin VB.Form Form004
    ScaleWidth      =   12718.25
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdRAKTARBA 
+      Caption         =   ">>>"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   5752
+      TabIndex        =   5
+      ToolTipText     =   "F 5"
+      Top             =   3150
+      Width           =   855
+   End
    Begin VB.TextBox txtR_TELEPHSZ 
       BeginProperty Font 
          Name            =   "Arial"
@@ -36,7 +54,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   9660
-      TabIndex        =   35
+      TabIndex        =   36
+      TabStop         =   0   'False
       Top             =   7650
       Width           =   1170
    End
@@ -52,7 +71,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   9660
-      TabIndex        =   33
+      TabIndex        =   34
+      TabStop         =   0   'False
       Top             =   7245
       Width           =   1170
    End
@@ -68,7 +88,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   7500
-      TabIndex        =   31
+      TabIndex        =   32
+      TabStop         =   0   'False
       Top             =   7650
       Width           =   1170
    End
@@ -84,7 +105,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   7500
-      TabIndex        =   29
+      TabIndex        =   30
+      TabStop         =   0   'False
       Top             =   7245
       Width           =   1170
    End
@@ -100,7 +122,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   4470
-      TabIndex        =   27
+      TabIndex        =   28
+      TabStop         =   0   'False
       Top             =   7650
       Width           =   1170
    End
@@ -116,7 +139,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   4470
-      TabIndex        =   25
+      TabIndex        =   26
+      TabStop         =   0   'False
       Top             =   7245
       Width           =   1170
    End
@@ -132,7 +156,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   2310
-      TabIndex        =   23
+      TabIndex        =   24
+      TabStop         =   0   'False
       Top             =   7650
       Width           =   1170
    End
@@ -148,7 +173,8 @@ Begin VB.Form Form004
       EndProperty
       Height          =   315
       Left            =   2310
-      TabIndex        =   21
+      TabIndex        =   22
+      TabStop         =   0   'False
       Top             =   7245
       Width           =   1170
    End
@@ -169,7 +195,7 @@ Begin VB.Form Form004
       Height          =   285
       Left            =   7560
       Locked          =   -1  'True
-      TabIndex        =   20
+      TabIndex        =   21
       TabStop         =   0   'False
       Top             =   6825
       Width           =   960
@@ -191,7 +217,7 @@ Begin VB.Form Form004
       Height          =   285
       Left            =   2415
       Locked          =   -1  'True
-      TabIndex        =   18
+      TabIndex        =   19
       TabStop         =   0   'False
       Top             =   6825
       Width           =   960
@@ -199,7 +225,7 @@ Begin VB.Form Form004
    Begin VB.CheckBox chkFrissit 
       Height          =   285
       Left            =   720
-      TabIndex        =   15
+      TabIndex        =   6
       TabStop         =   0   'False
       Top             =   1095
       Width           =   285
@@ -218,7 +244,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   2
+      TabIndex        =   3
       ToolTipText     =   "Egyedi munkalap nyomtatása"
       Top             =   4785
       Visible         =   0   'False
@@ -237,7 +263,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   1
+      TabIndex        =   2
       ToolTipText     =   "F 5"
       Top             =   2355
       Width           =   1275
@@ -255,7 +281,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   8
+      TabIndex        =   4
       ToolTipText     =   "E s c "
       Top             =   8040
       Width           =   1275
@@ -311,7 +337,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   330
       Left            =   8145
-      TabIndex        =   4
+      TabIndex        =   10
       Top             =   1260
       Width           =   1455
       _ExtentX        =   2566
@@ -328,7 +354,7 @@ Begin VB.Form Form004
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   51707905
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -343,7 +369,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   330
       Left            =   9945
-      TabIndex        =   5
+      TabIndex        =   11
       Top             =   1260
       Width           =   1455
       _ExtentX        =   2566
@@ -360,13 +386,13 @@ Begin VB.Form Form004
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   23134209
+      Format          =   51707905
       CurrentDate     =   37013
    End
    Begin vsFlexLib.vsFlexArray grdRAKTAR 
       Height          =   4455
       Left            =   6720
-      TabIndex        =   14
+      TabIndex        =   1
       Top             =   2355
       Width           =   4110
       _Version        =   196608
@@ -398,7 +424,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   8880
-      TabIndex        =   36
+      TabIndex        =   37
       Top             =   7710
       Width           =   750
    End
@@ -415,7 +441,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   8880
-      TabIndex        =   34
+      TabIndex        =   35
       Top             =   7305
       Width           =   750
    End
@@ -432,7 +458,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   6720
-      TabIndex        =   32
+      TabIndex        =   33
       Top             =   7710
       Width           =   750
    End
@@ -449,7 +475,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   6720
-      TabIndex        =   30
+      TabIndex        =   31
       Top             =   7305
       Width           =   750
    End
@@ -466,7 +492,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   3690
-      TabIndex        =   28
+      TabIndex        =   29
       Top             =   7710
       Width           =   750
    End
@@ -483,7 +509,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   3690
-      TabIndex        =   26
+      TabIndex        =   27
       Top             =   7305
       Width           =   750
    End
@@ -500,7 +526,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   1530
-      TabIndex        =   24
+      TabIndex        =   25
       Top             =   7710
       Width           =   750
    End
@@ -517,14 +543,14 @@ Begin VB.Form Form004
       EndProperty
       Height          =   225
       Left            =   1530
-      TabIndex        =   22
+      TabIndex        =   23
       Top             =   7305
       Width           =   750
    End
    Begin MSForms.Label lblR_TALALAT 
       Height          =   240
       Left            =   6720
-      TabIndex        =   19
+      TabIndex        =   20
       Top             =   6825
       Width           =   825
       Caption         =   "Találatok:"
@@ -538,7 +564,7 @@ Begin VB.Form Form004
    Begin MSForms.Label lblSZ_TALALAT 
       Height          =   240
       Left            =   1575
-      TabIndex        =   17
+      TabIndex        =   18
       Top             =   6825
       Width           =   825
       Caption         =   "Találatok:"
@@ -552,7 +578,7 @@ Begin VB.Form Form004
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   135
-      TabIndex        =   16
+      TabIndex        =   17
       Top             =   840
       Width           =   1500
       Caption         =   "Azonnali frissítés"
@@ -578,7 +604,7 @@ Begin VB.Form Form004
       ForeColor       =   &H80000001&
       Height          =   435
       Left            =   3605
-      TabIndex        =   13
+      TabIndex        =   16
       Top             =   105
       Width           =   4670
    End
@@ -596,7 +622,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   1725
-      TabIndex        =   12
+      TabIndex        =   15
       Top             =   1275
       Width           =   1515
    End
@@ -614,7 +640,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   1725
-      TabIndex        =   11
+      TabIndex        =   14
       Top             =   840
       Width           =   1515
    End
@@ -632,7 +658,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   6870
-      TabIndex        =   10
+      TabIndex        =   13
       Top             =   1290
       Width           =   1200
    End
@@ -650,7 +676,7 @@ Begin VB.Form Form004
       EndProperty
       Height          =   240
       Left            =   6870
-      TabIndex        =   9
+      TabIndex        =   12
       Top             =   840
       Width           =   1200
    End
@@ -663,7 +689,7 @@ Begin VB.Form Form004
    Begin MSForms.ComboBox cmbDOLG 
       Height          =   315
       Left            =   8145
-      TabIndex        =   3
+      TabIndex        =   9
       Tag             =   "334"
       Top             =   855
       Width           =   3255
@@ -680,7 +706,7 @@ Begin VB.Form Form004
    Begin MSForms.ComboBox cmbOBJTIP 
       Height          =   315
       Left            =   3285
-      TabIndex        =   6
+      TabIndex        =   7
       Tag             =   "296"
       Top             =   855
       Width           =   3255
@@ -697,7 +723,7 @@ Begin VB.Form Form004
    Begin MSForms.ComboBox cmbOBJID 
       Height          =   315
       Left            =   3285
-      TabIndex        =   7
+      TabIndex        =   8
       Tag             =   "MEGNEV"
       Top             =   1260
       Width           =   3255
@@ -770,16 +796,28 @@ Private Sub cmdLIST_Click()
 '    util.Jegyzokonyv "8", 7, sReportDir
 End Sub
 
+Private Sub cmdRAKTARBA_Click()
+    iOBJID = grdSZABAD.TextMatrix(grdSZABAD.Row, 1)
+    If iOBJID <> "" Then
+        Form004a.iOBJID = iOBJID
+        Form004a.Show 1
+    End If
+End Sub
+
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     KeyCommand KeyCode
 End Sub
 
 Private Sub grdRAKTAR_SelChange()
-    util.RekordFeltolt Me, "RAKTAR", grdRAKTAR.TextMatrix(grdRAKTAR.Row, 1)
+    If grdRAKTAR.TextMatrix(grdRAKTAR.Row, 1) <> "" Then
+        util.RekordFeltolt Me, "RAKTAR", grdRAKTAR.TextMatrix(grdRAKTAR.Row, 1)
+    End If
 End Sub
 
 Private Sub grdSZABAD_SelChange()
-    util.RekordFeltolt Me, "RAKTARSZ", grdSZABAD.TextMatrix(grdSZABAD.Row, 1)
+    If grdSZABAD.TextMatrix(grdSZABAD.Row, 1) <> "" Then
+        util.RekordFeltolt Me, "RAKTARSZ", grdSZABAD.TextMatrix(grdSZABAD.Row, 1)
+    End If
 End Sub
 
 Private Sub tmrVILLOG_Timer()
@@ -799,12 +837,6 @@ Private Sub cmdFRISSIT_Click()
     tmrVILLOG.Enabled = False
     cmdFRISSIT.Caption = "Frissítés"
     Screen.MousePointer = vbDefault
-End Sub
-
-Private Sub cmdUJ_Click()
-    Form004a.mode = 0
-    Form004a.Show 1
-    frissit
 End Sub
 
 Private Sub Form_Activate()
@@ -832,9 +864,9 @@ Private Sub KeyCommand(KeyCode As Integer)
                 Unload FormStart
             End If
         Case vbKeyEscape: cmdEXIT_Click
-        Case vbKeyInsert: cmdUJ_Click
+        'Case vbKeyInsert: cmdUJ_Click
         'Case vbKeyF2: cmdMODOSIT_Click
-        Case vbKeyHome: grdJEGYZ.SetFocus
+        Case vbKeyHome: grdSZABAD.SetFocus
         Case vbKeyF5: cmdFRISSIT_Click
     End Select
  

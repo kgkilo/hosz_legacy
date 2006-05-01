@@ -18,7 +18,7 @@ Táblák
 BERRAKTAR
   OBJ_ID
   OBJTIP
-  BEKERUL_DAT (raktárba kerülés dátuma)
+  BEKERUL_DAT	(raktárba kerülés dátuma)
   BEKERUL_MEGJ  (raktárba kerüléshez megjegyzés)
   BEKERUL_DOLG  (raktárba került ettol a dolgozótól)
   BEKERUL_MERO  (raktárba került errol a mérohelyrol)
@@ -35,3 +35,13 @@ Szurések/lekérdezések:
   konkrét berendezés (egy berendezés története)
   dolgozó (kihez mi került)
   dátum tól/ig  (szukítés)
+
+Telepit:
+BERRAKTAR
+sp_BerRaktMozgat
+sp_LekerdBerRaktar
+sp_LekerdBerRaktarSz
+sp_LoadBerRaktarDb
+sp_LoadBerRaktarSzDb
+sp_LoadRaktarSz
+sp_LoadRaktar

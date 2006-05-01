@@ -411,6 +411,12 @@ Public Function RekordInsert(ByRef frm As Object, ByVal sKategoria As String) As
             lstParams.Add sMLAPID, "MUNKALAP_ID"
         Case "LABOR"
             sQuery = "sp_InsLabor"
+        Case "BERRAKTARBA"
+            sQuery = "sp_BerRaktMozgat"
+            lstParams.Add "RAKTARBA", "pIRANY"
+        Case "BERRAKTARBOL"
+            sQuery = "sp_BerRaktMozgat"
+            lstParams.Add "RAKTARBOL", "pIRANY"
         Case Else
             'sOBJTIP = ComboBoxGet(Nothing, cmbOBJTIP)
             'lstParams.Add sOBJTIP, "pOBJTIP"
