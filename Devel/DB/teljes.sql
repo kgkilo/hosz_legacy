@@ -1,1820 +1,1820 @@
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_CheckPermis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelArvalt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelArvalt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelArvalt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelDolgozo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelEgyediSzlatet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelEgyediSzlatet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelEgyediSzlatet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelKarbterv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelKepvis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelKontir]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelObj]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelObj]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelObj]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelRaktarKepv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelSzerzfej]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelSzerztet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelSzerztet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelSzerztet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelSzlaEgyedi]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DelTeljm]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DelTeljm]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DelTeljm]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Duplikal]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Duplikal]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Duplikal]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DuplikalEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DuplikalEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DuplikalEpul]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_DuplikalMunk]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_DuplikalMunk]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_DuplikalMunk]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillArvalt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillArvalt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillArvalt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillConnected]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillConnected]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillConnected]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillDolgozo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillEgyediSzlaTet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillEgyediSzlaTet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillEgyediSzlaTet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillEpuletByFutomu]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillEpuletByFutomu]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillEpuletByFutomu]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillKarb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillKarb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillKarb]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillKepvis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillLaborJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillLaborJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillLaborJegyz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillLakasByEpulet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillLakasByEpulet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillLakasByEpulet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillMunkalapJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillMunkalapJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillMunkalapJegyz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillMunkalapszam]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillMunkalapszam]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillMunkalapszam]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillNincsKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillNincsKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillNincsKarbterv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillNotConnected]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillNotConnected]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillNotConnected]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillObjMegnev]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillObjMegnev]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillObjMegnev]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillObjTelephsz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillObjTelephsz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillObjTelephsz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillOsszesitoSorsz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillOsszesitoSorsz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillOsszesitoSorsz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillRaktarKepv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillSzertet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillSzertet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillSzertet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillSzerzfej]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillSzlaEgyedi]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillTabPlomb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillTabPlomb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillTabPlomb]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillTabVizora]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillTabVizora]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillTabVizora]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillTeljm]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillTeljm]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillTeljm]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_FillVanKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillVanKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillVanKarbterv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GeneralAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GeneralAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GeneralAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetElozoKapcs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetElozoKapcs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetElozoKapcs]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetFszamInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetFszamInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetFszamInfo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetGridHeader]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetGridHeader]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetGridHeader]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetInfoAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetInfoAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetInfoAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetInfoSpec]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetInfoSpec]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetInfoSpec]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetJegyzKarbInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetJegyzKarbInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetJegyzKarbInfo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetKapcs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetKapcs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetKapcs]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetKarbLekerdInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetKarbLekerdInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetKarbLekerdInfo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetMunkalapObj]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetMunkalapObj]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetMunkalapObj]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetOsszesitoSorsz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetOsszesitoSorsz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetOsszesitoSorsz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetPermis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetRaktKepvisInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetRaktKepvisInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetRaktKepvisInfo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetSzertetOsszeg]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetSzertetOsszeg]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetSzertetOsszeg]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_GetTeljmSum]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_GetTeljmSum]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_GetTeljmSum]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsArvalt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsArvalt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsArvalt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsDolgozo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsEgyediSzlatet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsEgyediSzlatet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsEgyediSzlatet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsEpul]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsJegyz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsKarban]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsKarban]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsKarban]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsKarbterv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsKepvis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsKontir]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsLabor]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsLabor]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsLabor]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsMunkalap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsMunkalap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsMunkalap]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsObjAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsObjAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsObjAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsRaktarKepv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsSzerzfej]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsSzerztet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsSzerztet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsSzerztet]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsSzlaEgyedi]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_InsTeljm]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_InsTeljm]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_InsTeljm]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Jegyzokonyv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Jegyzokonyv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Jegyzokonyv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Kapcsol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Kapcsol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Kapcsol]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LaborOsszesito]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LaborOsszesito]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LaborOsszesito]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdBerRaktar]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdBerRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdBerRaktarSz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdDolgozo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdHierarchia]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdHierarchia]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdHierarchia]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdJegyz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdKarban]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdKarban]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdKarban]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdKarbterv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdKarbterv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdKepvis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdKontir]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdMlap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdMlap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdMlap]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdRaktar]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdSzerz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdSzerz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdSzerz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdSzlaAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdSzlaAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdSzlaAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LekerdSzolg]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LekerdSzolg]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LekerdSzolg]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_ListKapcsID]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_ListKapcsID]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_ListKapcsID]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadBerRaktarDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadBerRaktarDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadBerRaktarDb]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadBerRaktarSzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadBerRaktarSzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadBerRaktarSzDb]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadDolgozo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadEpul]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadJegyz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadJegyzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadJegyzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadJegyzDb]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadKepvis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadKontir]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadLabor]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadLabor]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadLabor]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadMlapDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadMlapDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadMlapDb]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadMunkalap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadMunkalap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadMunkalap]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadObjAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadObjAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadObjAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadObjEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadObjEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadObjEgyedi]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadRaktar]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktar]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktarInfo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktarKepv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktarSz]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadSzerzfej]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_LoadSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadSzlaEgyedi]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeCsekk]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeCsekk]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeCsekk]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_R01]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_MakeTAB_R01]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_R03]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_MakeTAB_R03]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_R04]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_MakeTAB_R04]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB403]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB403]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeTAB403]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB404]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB404]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeTAB404]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB406]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB406]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeTAB406]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB407]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB407]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeTAB407]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB408]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB408]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeTAB408]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MakeTAB413]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB413]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MakeTAB413]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_MlapObjFeltolt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_R01]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_MakeTAB_R01]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_R03]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_MakeTAB_R03]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_R04]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_MakeTAB_R04]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MlapObjFeltolt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MlapObjFeltolt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q271]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q271]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q271]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q272]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q272]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q272]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q274]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q274]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q274]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q275]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q275]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q275]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q276]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q276]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q276]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q277]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q277]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q277]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q278]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q278]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q278]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q279]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q279]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q279]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q281]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q281]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q281]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q282]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q282]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q282]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q283]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q283]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q283]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q284]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q284]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q284]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q285]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q285]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q285]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q288]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q288]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q288]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q289]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q289]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q289]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q291]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q291]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q291]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q291D]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q291D]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q291D]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q293]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q293]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q293]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q296]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q296]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q296]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q296_Diszp]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q296_Diszp]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q296_Diszp]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q297]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q297]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q297]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q298]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q298]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q298]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q299]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q299]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q299]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q300]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q300]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q300]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q302]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q302]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q302]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q304]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q304]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q304]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q305]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q305]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q305]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q306]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q306]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q306]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q307]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q307]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q307]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q308]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q308]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q308]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q309]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q309]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q309]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q310]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q310]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q310]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q310A]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q310A]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q310A]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q310D]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q310D]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q310D]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q311]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q311]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q311]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q312]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q312]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q312]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q313]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q313]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q313]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q314]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q314]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q314]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q315]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q315]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q315]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q316]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q316]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q316]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q317]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q317]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q317]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q318]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q318]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q318]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q319]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q319]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q319]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q320]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q320]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q320]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q321]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q321]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q321]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q322]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q322]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q322]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q323]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q323]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q323]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q324]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q324]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q324]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q325]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q325]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q325]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q326]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q326]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q326]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q327]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q327]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q327]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q328]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q328]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q328]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q329]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q329]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q329]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q330]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q330]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q330]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q331]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q331]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q331]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q332]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q332]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q332]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q333]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q333]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q333]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q334]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q334]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q334]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q335]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q335]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q335]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q336]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q336]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q336]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q337]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q337]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q337]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q338]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q338]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q338]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q339]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q339]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q339]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q340]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q340]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q340]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q341]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q341]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q341]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q342]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q342]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q342]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q343]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q343]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q343]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q344]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q344]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q344]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q345]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q345]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q345]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q346]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q346]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q346]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q347]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q347]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q347]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q348]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q348]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q348]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q349]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q349]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q349]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q350]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q350]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q350]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q351]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q351]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q351]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q352]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q352]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q352]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q353]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q353]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q353]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q354]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q354]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q354]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q355]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q355]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q355]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q356]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q356]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q356]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q357]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q357]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q357]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q358]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q358]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q358]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q359]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q359]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q359]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q360]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q360]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q360]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q361]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q361]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q361]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q362]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q362]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q362]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q363]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q363]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q363]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q364]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q364]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q364]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q365]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q365]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q365]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q366]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q366]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q366]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q367]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q367]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q367]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q368]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q368]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q368]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q369]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q369]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q369]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Q370]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q370]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q370]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_QueryParams]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_QueryParams]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_QueryParams]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Rekurziv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Rekurziv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Rekurziv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_SetMunkalapAllapot]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_SetMunkalapAllapot]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_SetMunkalapAllapot]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Szetkapcsol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Szetkapcsol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Szetkapcsol]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_TruncKapcsTab]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_TruncKapcsTab]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_TruncKapcsTab]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdDolgozo]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdEpul]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdEpul]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdKepvis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdKepvis]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdKontir]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdMunkalap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdMunkalap]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdMunkalap]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdMunkalapVisszair]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdMunkalapVisszair]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdMunkalapVisszair]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdObjAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdObjAlt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdObjAlt]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdObjGep]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdObjGep]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdObjGep]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdObjUzem]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdObjUzem]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdObjUzem]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdObjVill]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdObjVill]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdObjVill]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdRaktarAllapot]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdRaktarAllapot]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdRaktarAllapot]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdRaktarKepv]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdRaktarKepv]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdRaktarObj]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdRaktarObj]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdRaktarObj]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdSzerzfej]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_UpdSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_UpdSzlaEgyedi]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_UpdSzlaEgyedi]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_WriteKapcsTab]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_WriteKapcsTab]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_WriteKapcsTab]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_WriteMlapTab]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_WriteMlapTab]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_WriteMlapTab]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[sp_Zarol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Zarol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Zarol]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q271]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q271]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q271]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q272]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q272]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q272]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q274]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q274]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q274]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q275]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q275]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q275]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q276]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q276]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q276]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q277]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q277]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q277]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q278]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q278]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q278]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q279]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q279]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q279]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q281]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q281]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q281]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q282]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q282]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q282]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q283]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q283]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q283]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q284]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q284]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q284]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q285]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q285]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q285]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q288]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q288]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q288]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q289]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q289]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q289]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q291]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q291]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q291]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q293]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q293]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q293]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q296]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q296]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q296]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q297]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q297]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q297]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q298]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q298]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q298]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q299]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q299]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q299]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q300]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q300]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q300]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q302]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q302]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q302]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q304]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q304]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q304]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q305]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q305]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q305]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q306]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q306]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q306]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q307]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q307]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q307]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q308]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q308]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q308]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q309]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q309]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q309]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q310]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q310]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q310]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q310A]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q310A]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q310A]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q310D]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q310D]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q310D]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q311]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q311]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q311]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q312]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q312]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q312]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q313]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q313]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q313]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q314]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q314]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q314]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q315]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q315]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q315]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q316]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q316]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q316]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q317]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q317]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q317]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q318]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q318]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q318]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q319]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q319]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q319]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q320]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q320]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q320]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q321]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q321]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q321]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q322]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q322]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q322]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q323]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q323]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q323]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q324]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q324]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q324]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q325]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q325]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q325]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q326]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q326]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q326]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q327]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q327]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q327]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q328]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q328]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q328]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q329]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q329]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q329]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q330]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q330]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q330]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q331]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q331]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q331]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q332]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q332]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q332]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q333]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q333]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q333]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q334]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q334]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q334]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q335]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q335]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q335]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q336]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q336]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q336]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q337]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q337]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q337]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q338]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q338]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q338]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q339]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q339]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q339]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q340]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q340]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q340]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q341]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q341]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q341]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q342]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q342]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q342]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q343]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q343]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q343]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q344]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q344]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q344]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q345]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q345]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q345]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q346]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q346]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q346]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q347]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q347]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q347]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q348]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q348]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q348]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q349]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q349]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q349]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q350]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q350]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q350]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q351]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q351]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q351]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q352]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q352]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q352]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q353]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q353]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q353]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q354]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q354]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q354]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q355]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q355]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q355]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q356]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q356]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q356]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q357]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q357]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q357]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q358]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q358]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q358]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q359]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q359]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q359]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q360]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q360]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q360]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q361]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q361]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q361]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q362]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q362]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q362]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q363]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q363]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q363]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q364]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q364]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q364]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q365]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q365]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q365]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q366]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q366]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q366]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q367]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q367]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q367]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q368]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q368]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q368]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q369]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q369]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q369]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[Q370]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q370]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[Q370]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR1]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR1]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR1]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR10]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR10]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR10]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR11]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR11]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR11]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR12]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR12]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR12]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR13]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR13]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR13]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR14]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR14]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR14]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR15]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR15]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR15]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR16]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR16]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR16]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR17]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR17]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR17]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR18]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR18]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR18]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR19]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR19]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR19]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR2]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR2]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR2]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR20]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR20]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR20]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR21]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR21]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR21]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR22]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR22]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR22]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR23]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR23]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR23]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR24]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR24]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR24]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR25]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR25]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR25]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR3]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR3]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR3]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR4]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR4]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR4]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR5]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR5]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR5]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR6]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR6]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR6]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR7]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR7]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR7]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR8]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR8]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR8]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QLABOR9]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR9]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR9]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[QTAB413]') and OBJECTPROPERTY(id, N'IsView') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QTAB413]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QTAB413]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[ARAMKOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ARAMKOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[ARAMKOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[ARVALT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ARVALT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[ARVALT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[BERRAKTAR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[BERRAKTAR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[BERRAKTAR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[BIZTONSAGI_SZELEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[BIZTONSAGI_SZELEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[BIZTONSAGI_SZELEP]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[BOYLER]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[BOYLER]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[BOYLER]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[CSEKK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CSEKK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[CSEKK]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[DEMAG_EMELOGEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[DEMAG_EMELOGEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[DEMAG_EMELOGEP]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[DOLGOZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[DOLGOZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[DOLGOZO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[EPULET]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[EPULET]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[EPULET]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[ERZEKELO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ERZEKELO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[ERZEKELO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[FAZISJAVITO_KONDENZATOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[FAZISJAVITO_KONDENZATOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[FAZISJAVITO_KONDENZATOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[FOGYT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[FOGYT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[FOGYT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[FOKAPCSOLO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[FOKAPCSOLO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[FOKAPCSOLO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[FREKVENCIAVALTO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[FREKVENCIAVALTO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[FREKVENCIAVALTO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[FUTOMU]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[FUTOMU]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[FUTOMU]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[GAZNYOMAS_MERO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[GAZNYOMAS_MERO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[GAZNYOMAS_MERO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[GAZNYOMAS_SZABALYOZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[GAZNYOMAS_SZABALYOZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[GAZNYOMAS_SZABALYOZO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[GAZVESZELY_JELZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[GAZVESZELY_JELZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[GAZVESZELY_JELZO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[GRID_FEJLEC]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[GRID_FEJLEC]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[GRID_FEJLEC]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[HAJTOMU]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HAJTOMU]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[HAJTOMU]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[HAZAK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HAZAK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[HAZAK]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[HOCSERELO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HOCSERELO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[HOCSERELO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[HOKOZPONT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HOKOZPONT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[HOKOZPONT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[HOOSSZEGZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HOOSSZEGZO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[HOOSSZEGZO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[JEGYZ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[JEGYZ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[JEGYZ]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[JOGOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[JOGOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[JOGOS]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KAPCSOLAT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KAPCSOLAT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KAPCSOLAT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KAPCSTAB]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KAPCSTAB]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KAPCSTAB]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KARBAN]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KARBAN]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KARBAN]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KARBTERV]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KARBTERV]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KARBTERV]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KAZAN]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KAZAN]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KAZAN]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KAZANEGO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KAZANEGO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KAZANEGO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KEPV_TET]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[KEPV_TET]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KEPVIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KEPVIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KEPVIS]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KODLEIR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KEPV_TET]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[KEPV_TET]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KODLEIR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KODLEIR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KODSZOT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KODSZOT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KODSZOT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KOLTSEGMEGOSZTO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KOLTSEGMEGOSZTO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KOLTSEGMEGOSZTO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KOMPRESSZOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KOMPRESSZOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KOMPRESSZOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[KONTIR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KONTIR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[KONTIR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[LABOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LABOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[LABOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[LAKAS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LAKAS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[LAKAS]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[LANGOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LANGOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[LANGOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[LEPCSOHAZ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LEPCSOHAZ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[LEPCSOHAZ]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[MELEGVIZ_TAROLO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[MELEGVIZ_TAROLO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[MELEGVIZ_TAROLO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[MLAPTAB]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[MLAPTAB]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[MLAPTAB]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[MOTOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[MOTOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[MOTOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[MUNKALAP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[MUNKALAP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[MUNKALAP]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[OBJEKTUM]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[OBJEKTUM]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[OBJEKTUM]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[PERMIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[PERMIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[PERMIS]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[RAKTAR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[RAKTAR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[RAKTAR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[RAKTHISTORY]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[RAKTHISTORY]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[RAKTHISTORY]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[RAKTKEPVIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[RAKTKEPVIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[RAKTKEPVIS]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZABALYOZO_AUTOMATIKA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZABALYOZO_AUTOMATIKA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZABALYOZO_AUTOMATIKA]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZABALYOZO_SZELEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZABALYOZO_SZELEP]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZABALYOZO_SZELEP]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZERELVENY]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZERELVENY]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZERELVENY]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZERZFEJ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZERZFEJ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZERZFEJ]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZERZTEL]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZERZTEL]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZERZTEL]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZINTKAPCSOLO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZINTKAPCSOLO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZINTKAPCSOLO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZIVATTYU]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZIVATTYU]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZIVATTYU]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZLA_ALT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZLA_ALT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZLA_ALT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZLA_ALT_TET]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZLA_ALT_TET]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZLA_ALT_TET]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[SZUROK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[SZUROK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[SZUROK]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB_LABORO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[TAB_LABORO]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB_PLOMB]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[TAB_PLOMB]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB_R01]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[TAB_R01]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB_R03]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[TAB_R03]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB_R04]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[TAB_R04]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB_VIZORA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[TAB_VIZORA]
-GO
-
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB403]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB403]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB403]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB403_1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB403_1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB403_1]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB404]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB404]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB404]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB406]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB406]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB406]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB407]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB407]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB407]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB408]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB408]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB408]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TAB413]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB413]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB413]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TARCSA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_LABORO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_LABORO]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_PLOMB]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_PLOMB]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_R01]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_R01]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_R03]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_R03]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_R04]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_R04]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_VIZORA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_VIZORA]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TARCSA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TARCSA]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TARTALY]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TARTALY]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TARTALY]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TELJM]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TELJM]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TELJM]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TERMALKUT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TERMALKUT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TERMALKUT]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[TERMELO_CSO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TERMELO_CSO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TERMELO_CSO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[VENTILLATOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VENTILLATOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[VENTILLATOR]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[VIZLAGYITO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VIZLAGYITO]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[VIZLAGYITO]
 GO
 
-if exists (select * from sysobjects where id = object_id(N'[dbo].[VIZORA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VIZORA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[VIZORA]
 GO
 
-if not exists (select * from master..syslogins where name = N'eszter')
+if not exists (select * from master.dbo.syslogins where loginname = N'eszter')
 BEGIN
 	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master..sysdatabases where name = @logindb)
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master..syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
 	exec sp_addlogin N'eszter', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master..syslogins where name = N'gabor')
+if not exists (select * from master.dbo.syslogins where loginname = N'gabor')
 BEGIN
 	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
-	if @logindb is null or not exists (select * from master..sysdatabases where name = @logindb)
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master..syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
 	exec sp_addlogin N'gabor', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master..syslogins where name = N'geza')
+if not exists (select * from master.dbo.syslogins where loginname = N'geza')
 BEGIN
 	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master..sysdatabases where name = @logindb)
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master..syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
 	exec sp_addlogin N'geza', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master..syslogins where name = N'kerekes')
+if not exists (select * from master.dbo.syslogins where loginname = N'kerekes')
 BEGIN
 	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master..sysdatabases where name = @logindb)
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master..syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
 	exec sp_addlogin N'kerekes', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master..syslogins where name = N'mini')
+if not exists (select * from master.dbo.syslogins where loginname = N'mini')
 BEGIN
 	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master..sysdatabases where name = @logindb)
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master..syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
 	exec sp_addlogin N'mini', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master..syslogins where name = N'szityu')
+if not exists (select * from master.dbo.syslogins where loginname = N'szityu')
 BEGIN
 	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
-	if @logindb is null or not exists (select * from master..sysdatabases where name = @logindb)
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master..syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
 	exec sp_addlogin N'szityu', null, @logindb, @loginlang
 END
@@ -1823,36 +1823,36 @@ GO
 exec sp_addsrvrolemember N'mini', sysadmin
 GO
 
-if not exists (select * from sysusers where name = N'eszter' and uid < 16382)
+if not exists (select * from dbo.sysusers where name = N'eszter' and uid < 16382)
 	EXEC sp_grantdbaccess N'eszter', N'eszter'
 GO
 
-if not exists (select * from sysusers where name = N'gabor' and uid < 16382)
+if not exists (select * from dbo.sysusers where name = N'gabor' and uid < 16382)
 	EXEC sp_grantdbaccess N'gabor', N'gabor'
 GO
 
-if not exists (select * from sysusers where name = N'geza' and uid < 16382)
+if not exists (select * from dbo.sysusers where name = N'geza' and uid < 16382)
 	EXEC sp_grantdbaccess N'geza', N'geza'
 GO
 
-if not exists (select * from sysusers where name = N'kerekes' and uid < 16382)
+if not exists (select * from dbo.sysusers where name = N'kerekes' and uid < 16382)
 	EXEC sp_grantdbaccess N'kerekes', N'kerekes'
 GO
 
-if not exists (select * from sysusers where name = N'mini' and uid < 16382)
+if not exists (select * from dbo.sysusers where name = N'mini' and uid < 16382)
 	EXEC sp_grantdbaccess N'mini', N'mini'
 GO
 
-if not exists (select * from sysusers where name = N'szityu' and uid < 16382)
+if not exists (select * from dbo.sysusers where name = N'szityu' and uid < 16382)
 	EXEC sp_grantdbaccess N'szityu', N'szityu'
 GO
 
 CREATE TABLE [dbo].[ARAMKOR] (
 	[ID] [int] NOT NULL ,
-	[HOLEP] [varchar] (3) NULL ,
+	[HOLEP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[TERFOGAT] [real] NULL ,
 	[HOSSZ] [real] NULL ,
-	[SZABALYOZAS] [varchar] (3) NULL ,
+	[SZABALYOZAS] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[FUT_LAKAS] [int] NULL ,
 	[HMV_LAKAS] [int] NULL ,
 	[FUT_KOZULET] [int] NULL ,
@@ -1860,66 +1860,66 @@ CREATE TABLE [dbo].[ARAMKOR] (
 	[HOKOZP_SZAM] [int] NULL ,
 	[NYOMKUL] [real] NULL ,
 	[TOMEGARAM] [real] NULL 
-)
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[ARVALT] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[SZOLG] [varchar] (1) NOT NULL ,
+	[SZOLG] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
 	[NOTERT] [real] NOT NULL ,
 	[ERVDAT] [datetime] NOT NULL ,
 	[BEFDAT] [datetime] NULL ,
 	[FELAR] [real] NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[BERRAKTAR] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[OBJID] [int] NOT NULL ,
-	[OBJTIP] [varchar] (2) NOT NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[BEKERUL_DAT] [datetime] NOT NULL ,
 	[BEKERUL_MERO] [int] NULL ,
 	[BEKERUL_DOLG] [int] NULL ,
-	[BEKERUL_MEGJ] [varchar] (1024) NULL ,
+	[BEKERUL_MEGJ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[KIKERUL_DAT] [datetime] NULL ,
 	[KIKERUL_MERO] [int] NULL ,
 	[KIKERUL_DOLG] [int] NULL ,
-	[KIKERUL_MEGJ] [varchar] (1024) NULL ,
+	[KIKERUL_MEGJ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[BIZTONSAGI_SZELEP] (
 	[ID] [int] NOT NULL ,
-	[SZELTIP] [varchar] (3) NULL ,
-	[MERET] [varchar] (50) NULL ,
-	[MERETME] [varchar] (3) NULL ,
+	[SZELTIP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[MERET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MERETME] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[NYITNYOM] [real] NULL ,
 	[ZARNYOM] [real] NULL 
-)
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[BOYLER] (
 	[ID] [int] NOT NULL ,
-	[VESZO] [varchar] (1) NULL ,
-	[FELEP] [varchar] (1) NULL ,
-	[BOYTIP] [varchar] (2) NULL ,
+	[VESZO] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[FELEP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[BOYTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[FUTOFEL] [real] NULL ,
 	[TERFOGAT] [real] NULL ,
-	[SZABMOD] [varchar] (2) NULL ,
-	[FU_KOZ] [varchar] (3) NULL 
+	[SZABMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FU_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[CSEKK] (
-	[PAZ] [varchar] (8) NULL ,
+	[PAZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
 	[BRUTTO] [real] NULL ,
-	[KOZCIM] [varchar] (100) NULL ,
-	[KOZNEV] [varchar] (100) NULL ,
-	[KOZIRSZ] [varchar] (4) NULL ,
+	[KOZCIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZNEV] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZIRSZ] [varchar] (4) COLLATE Hungarian_CI_AS NULL ,
 	[SZLASZ] [int] NULL 
 ) ON [PRIMARY]
 GO
@@ -1935,15 +1935,15 @@ GO
 
 CREATE TABLE [dbo].[DOLGOZO] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[NEV] [varchar] (20) NOT NULL ,
-	[LOGIN] [varchar] (50) NULL ,
-	[SZEREGYS] [varchar] (2) NULL ,
-	[BEOSZT] [varchar] (2) NULL ,
-	[UFR] [varchar] (1) NOT NULL ,
-	[UFW] [varchar] (1) NOT NULL ,
-	[UER] [varchar] (1) NOT NULL ,
-	[UEW] [varchar] (1) NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL ,
+	[NEV] [varchar] (20) COLLATE Hungarian_CI_AS NOT NULL ,
+	[LOGIN] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZEREGYS] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[BEOSZT] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[UFR] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[UFW] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[UER] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[UEW] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
 	[ADATUM] [datetime] NOT NULL 
 ) ON [PRIMARY]
 GO
@@ -1951,45 +1951,45 @@ GO
 CREATE TABLE [dbo].[EPULET] (
 	[ID] [int] NOT NULL ,
 	[IRSZAM] [int] NULL ,
-	[EPULTIP] [varchar] (3) NULL ,
-	[HELYR] [varchar] (12) NULL ,
-	[EPULSZ] [varchar] (15) NULL ,
-	[FUTESMOD] [varchar] (3) NULL ,
-	[LEGTELTIP] [varchar] (3) NULL ,
-	[LEGTHELY] [varchar] (2) NULL ,
+	[EPULTIP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[HELYR] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[EPULSZ] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[FUTESMOD] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[LEGTELTIP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[LEGTHELY] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[EPULATAD] [datetime] NULL ,
-	[FUTOTIP] [varchar] (3) NULL ,
-	[UZEMELT] [varchar] (2) NULL ,
-	[KARBANTAR] [varchar] (3) NULL ,
+	[FUTOTIP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[UZEMELT] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[KARBANTAR] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[EPULHOSZ] [real] NULL ,
 	[LAKTERF] [real] NULL ,
 	[LEPCSOTERF] [real] NULL ,
 	[KOZOSTERF] [real] NULL ,
 	[KOZULTERF] [real] NULL ,
 	[TERF_ARAM] [real] NULL ,
-	[HOLEPCSO] [varchar] (3) NULL ,
+	[HOLEPCSO] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[EPUL_ARAM] [real] NULL ,
 	[CIRK_ARAM] [real] NULL ,
-	[FUTBESZAB] [varchar] (3) NULL ,
-	[CIRKUL] [varchar] (3) NULL ,
-	[ATKOTES] [varchar] (1) NULL ,
-	[HMVRENDS] [varchar] (3) NULL ,
+	[FUTBESZAB] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[CIRKUL] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[ATKOTES] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[HMVRENDS] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[NYOMKUL] [real] NULL ,
-	[CIRK_MOD] [varchar] (3) NULL ,
-	[FOELZ] [varchar] (2) NULL ,
-	[FELOSZT] [varchar] (3) NULL ,
-	[UTEM] [varchar] (2) NULL 
-)
+	[CIRK_MOD] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[FOELZ] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FELOSZT] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[UTEM] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[ERZEKELO] (
 	[ID] [int] NOT NULL ,
 	[VEZHOSSZ] [real] NULL ,
 	[BENYHOSSZ] [real] NULL ,
-	[KIMENET] [varchar] (2) NULL ,
+	[KIMENET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[CSATLMERET] [real] NULL ,
-	[PLOMBA] [varchar] (12) NULL ,
-	[PLOMBA2] [varchar] (12) NULL ,
+	[PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[PLOMBA2] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
 	[SZUKSHOSSZ] [real] NULL 
 ) ON [PRIMARY]
 GO
@@ -2001,22 +2001,22 @@ CREATE TABLE [dbo].[FAZISJAVITO_KONDENZATOR] (
 GO
 
 CREATE TABLE [dbo].[FOGYT] (
-	[AZON] [nvarchar] (15) NULL ,
-	[LAKO_SOR] [nvarchar] (3) NULL ,
-	[TIPUS] [nvarchar] (1) NULL ,
-	[VAROS] [nvarchar] (15) NULL ,
-	[UTCA] [nvarchar] (20) NULL ,
-	[HSZ] [nvarchar] (3) NULL ,
-	[LEPCS] [nvarchar] (1) NULL ,
-	[EM] [nvarchar] (2) NULL ,
-	[AJTO] [nvarchar] (4) NULL ,
-	[IRSZAM] [nvarchar] (4) NULL ,
-	[LAKO_NEV] [nvarchar] (30) NULL ,
-	[KEPV_AZON] [nvarchar] (5) NULL ,
-	[KEPV_NEV] [nvarchar] (30) NULL ,
-	[KEPV_VAROS] [nvarchar] (30) NULL ,
-	[KEPV_CIM] [nvarchar] (20) NULL ,
-	[KEPV_IRSZ] [nvarchar] (4) NULL 
+	[AZON] [nvarchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[LAKO_SOR] [nvarchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUS] [nvarchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[VAROS] [nvarchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[UTCA] [nvarchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[HSZ] [nvarchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[LEPCS] [nvarchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[EM] [nvarchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[AJTO] [nvarchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[IRSZAM] [nvarchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[LAKO_NEV] [nvarchar] (30) COLLATE Hungarian_CI_AS NULL ,
+	[KEPV_AZON] [nvarchar] (5) COLLATE Hungarian_CI_AS NULL ,
+	[KEPV_NEV] [nvarchar] (30) COLLATE Hungarian_CI_AS NULL ,
+	[KEPV_VAROS] [nvarchar] (30) COLLATE Hungarian_CI_AS NULL ,
+	[KEPV_CIM] [nvarchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[KEPV_IRSZ] [nvarchar] (4) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2034,23 +2034,23 @@ GO
 
 CREATE TABLE [dbo].[FUTOMU] (
 	[ID] [int] NOT NULL ,
-	[KEZOSZT] [varchar] (50) NULL ,
+	[KEZOSZT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[MKHOM] [real] NULL ,
 	[HOTELJ] [real] NULL ,
 	[GAZCSUCS] [real] NULL ,
-	[HOHOR_KO] [varchar] (3) NULL ,
-	[HOLEP] [varchar] (3) NULL ,
+	[HOHOR_KO] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[HOLEP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[VILLCSUCSNY] [real] NULL ,
 	[VILLCSUCST] [real] NULL ,
 	[TERFARAM] [real] NULL ,
 	[CIRKTERFARAM] [real] NULL ,
-	[NYOMTARTTIP] [varchar] (50) NULL ,
+	[NYOMTARTTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[HMVHOMERS] [real] NULL ,
 	[FUT_LAKAS] [int] NULL ,
-	[HMV_LAKAS] [char] (10) NULL ,
+	[HMV_LAKAS] [char] (10) COLLATE Hungarian_CI_AS NULL ,
 	[FUT_KOZULET] [int] NULL ,
 	[HMV_KOZULET] [int] NULL 
-)
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[GAZNYOMAS_MERO] (
@@ -2069,164 +2069,164 @@ CREATE TABLE [dbo].[GAZVESZELY_JELZO] (
 GO
 
 CREATE TABLE [dbo].[GRID_FEJLEC] (
-	[OBJTIP] [varchar] (50) NULL ,
-	[MEGNEV] [varchar] (50) NULL ,
-	[AZON] [varchar] (50) NULL ,
-	[VAROS] [varchar] (50) NULL ,
-	[UTCA] [varchar] (50) NULL ,
-	[HSZ] [varchar] (50) NULL ,
-	[GYARTM] [varchar] (50) NULL ,
-	[GYARTO] [varchar] (50) NULL ,
-	[TIPUS] [varchar] (50) NULL ,
-	[GYSZAM] [varchar] (50) NULL ,
-	[UZEMIDO] [varchar] (50) NULL ,
-	[TELEPHSZ] [varchar] (50) NULL ,
-	[HITIDO] [varchar] (50) NULL ,
-	[ELHELYEZ] [varchar] (50) NULL ,
-	[ALAIR] [varchar] (50) NULL ,
-	[NEVLTELJ] [varchar] (50) NULL ,
-	[NEVLTELJME] [varchar] (50) NULL ,
-	[KATEG] [varchar] (50) NULL ,
-	[VESZO] [varchar] (50) NULL ,
-	[UZALL] [varchar] (50) NULL ,
-	[FSZAM] [varchar] (50) NULL ,
-	[FKOD] [varchar] (50) NULL ,
-	[KEZOSZT] [varchar] (50) NULL ,
-	[MKHOM] [varchar] (50) NULL ,
-	[FAGYVED] [varchar] (50) NULL ,
-	[FELEP] [varchar] (50) NULL ,
-	[BOYTIP] [varchar] (50) NULL ,
-	[SZELTIP] [varchar] (50) NULL ,
-	[LEVNYOM] [varchar] (50) NULL ,
-	[VIZNYOM] [varchar] (50) NULL ,
-	[SZURTIP] [varchar] (50) NULL ,
-	[ELLENALL] [varchar] (50) NULL ,
-	[LEMSZAM] [varchar] (50) NULL ,
-	[UZEMINYOM] [varchar] (50) NULL ,
-	[BEVTELJ] [varchar] (50) NULL ,
-	[FORDSZ] [varchar] (50) NULL ,
-	[EMEL_MAG] [varchar] (50) NULL ,
-	[SZAL_KOZ] [varchar] (50) NULL ,
-	[SZAL_MENNY] [varchar] (50) NULL ,
-	[SZIVFOK] [varchar] (50) NULL ,
-	[MERET] [varchar] (50) NULL ,
-	[MERETME] [varchar] (50) NULL ,
-	[FUTOFEL] [varchar] (50) NULL ,
-	[DB] [varchar] (50) NULL ,
-	[HOTELJ] [varchar] (50) NULL ,
-	[GAZCSUCS] [varchar] (50) NULL ,
-	[HOHOR_KO] [varchar] (50) NULL ,
-	[BEEPCSOVDB] [varchar] (50) NULL ,
-	[PRIM_ARAM] [varchar] (50) NULL ,
-	[NYITNYOM] [varchar] (50) NULL ,
-	[ZARNYOM] [varchar] (50) NULL ,
-	[HOSSZ_NAGY] [varchar] (50) NULL ,
-	[HOSSZ_KICS] [varchar] (50) NULL ,
-	[FELUGY] [varchar] (50) NULL ,
-	[HOLEP] [varchar] (50) NULL ,
-	[TERFOGAT] [varchar] (50) NULL ,
-	[TERFARAM] [varchar] (50) NULL ,
-	[LEGSZAL] [varchar] (50) NULL ,
-	[SZABMOD] [varchar] (50) NULL ,
-	[VEGNYOM] [varchar] (50) NULL ,
-	[ATMERO] [varchar] (50) NULL ,
-	[BEALL_ERTEK] [varchar] (50) NULL ,
-	[IMPULZUS] [varchar] (50) NULL ,
-	[HOSSZ] [varchar] (50) NULL ,
-	[TERHEL] [varchar] (50) NULL ,
-	[VIZSZ] [varchar] (50) NULL ,
-	[FU_KOZ] [varchar] (50) NULL ,
-	[OSZLSZAM] [varchar] (50) NULL ,
-	[BECSOV] [varchar] (50) NULL ,
-	[ARAMFELV] [varchar] (50) NULL ,
-	[FESZULTS] [varchar] (50) NULL ,
-	[VEZHOSSZ] [varchar] (50) NULL ,
-	[BENYHOSSZ] [varchar] (50) NULL ,
-	[NYOMATEK] [varchar] (50) NULL ,
-	[ERZEKENY] [varchar] (50) NULL ,
-	[MUKMOD] [varchar] (50) NULL ,
-	[KVS] [varchar] (50) NULL ,
-	[KIMARAM] [varchar] (50) NULL ,
-	[FOGYMERHELY] [varchar] (50) NULL ,
-	[KIMENET] [varchar] (50) NULL ,
-	[CSATLMERET] [varchar] (50) NULL ,
-	[MEDDTELJ] [varchar] (50) NULL ,
-	[KISMEGSZAK] [varchar] (50) NULL ,
-	[LEKVILLTELJ] [varchar] (50) NULL ,
-	[VILLCSUCSNY] [varchar] (50) NULL ,
-	[VILLCSUCST] [varchar] (50) NULL ,
-	[VILLFORDSZ] [varchar] (50) NULL ,
-	[TELJT] [varchar] (50) NULL ,
-	[FUR_ATM] [varchar] (50) NULL ,
-	[PRIMELL] [varchar] (50) NULL ,
-	[KAPCSOLAS] [varchar] (50) NULL ,
-	[TOLTESMOD] [varchar] (50) NULL ,
-	[FUTOTT] [varchar] (50) NULL ,
-	[SZABALYOZAS] [varchar] (50) NULL ,
-	[KUTFNYOM] [varchar] (50) NULL ,
-	[NYUGVIZSZ] [varchar] (50) NULL ,
-	[UZEMIVIZSZ] [varchar] (50) NULL ,
-	[CIRKTERFARAM] [varchar] (50) NULL ,
-	[HOMERS] [varchar] (50) NULL ,
-	[NYOMTARTTIP] [varchar] (50) NULL ,
-	[HMVHOMERS] [varchar] (50) NULL ,
-	[FUT_LAKAS] [varchar] (50) NULL ,
-	[HMV_LAKAS] [varchar] (50) NULL ,
-	[FUT_KOZULET] [varchar] (50) NULL ,
-	[HMV_KOZULET] [varchar] (50) NULL ,
-	[HOKOZP_SZAM] [varchar] (50) NULL ,
-	[SZEKU_TOM] [varchar] (50) NULL ,
-	[NYOMKUL] [varchar] (50) NULL ,
-	[TOMEGARAM] [varchar] (50) NULL ,
-	[NYOMAS_K] [varchar] (50) NULL ,
-	[HOMER_SZ] [varchar] (50) NULL ,
-	[MEGJ] [varchar] (50) NULL ,
-	[IRSZAM] [varchar] (50) NULL ,
-	[EPULTIP] [varchar] (50) NULL ,
-	[HELYR] [varchar] (50) NULL ,
-	[EPULSZ] [varchar] (50) NULL ,
-	[FUTESMOD] [varchar] (50) NULL ,
-	[LEGTELTIP] [varchar] (50) NULL ,
-	[LEGTHELY] [varchar] (50) NULL ,
-	[EPULATAD] [varchar] (50) NULL ,
-	[FUTOTIP] [varchar] (50) NULL ,
-	[UZEMELT] [varchar] (50) NULL ,
-	[KARBANTAR] [varchar] (50) NULL ,
-	[EPULHOSZ] [varchar] (50) NULL ,
-	[LAKTERF] [varchar] (50) NULL ,
-	[LEPCSOTERF] [varchar] (50) NULL ,
-	[KOZOSTERF] [varchar] (50) NULL ,
-	[KOZULTERF] [varchar] (50) NULL ,
-	[TERF_ARAM] [varchar] (50) NULL ,
-	[HOLEPCSO] [varchar] (50) NULL ,
-	[EPUL_ARAM] [varchar] (50) NULL ,
-	[CIRK_ARAM] [varchar] (50) NULL ,
-	[FUTBESZAB] [varchar] (50) NULL ,
-	[CIRKUL] [varchar] (50) NULL ,
-	[ATKOTES] [varchar] (50) NULL ,
-	[HMVRENDS] [varchar] (50) NULL ,
-	[CIRK_MOD] [varchar] (50) NULL ,
-	[FOELZ] [varchar] (50) NULL ,
-	[FELOSZT] [varchar] (50) NULL ,
-	[UTEM] [varchar] (50) NULL 
+	[OBJTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[AZON] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VAROS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UTCA] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[GYARTM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[GYARTO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[GYSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UZEMIDO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TELEPHSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HITIDO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ELHELYEZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ALAIR] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NEVLTELJ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NEVLTELJME] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KATEG] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VESZO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UZALL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FKOD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KEZOSZT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MKHOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FAGYVED] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FELEP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[BOYTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZELTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEVNYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VIZNYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZURTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ELLENALL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEMSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UZEMINYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[BEVTELJ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FORDSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EMEL_MAG] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZAL_KOZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZAL_MENNY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZIVFOK] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MERET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MERETME] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUTOFEL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[DB] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOTELJ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[GAZCSUCS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOHOR_KO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[BEEPCSOVDB] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[PRIM_ARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NYITNYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ZARNYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOSSZ_NAGY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOSSZ_KICS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FELUGY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOLEP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TERFOGAT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TERFARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEGSZAL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZABMOD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VEGNYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ATMERO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[BEALL_ERTEK] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[IMPULZUS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOSSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TERHEL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VIZSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FU_KOZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[OSZLSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[BECSOV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ARAMFELV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FESZULTS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VEZHOSSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[BENYHOSSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NYOMATEK] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ERZEKENY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MUKMOD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KVS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KIMARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FOGYMERHELY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KIMENET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CSATLMERET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEDDTELJ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KISMEGSZAK] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEKVILLTELJ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VILLCSUCSNY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VILLCSUCST] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[VILLFORDSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TELJT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUR_ATM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[PRIMELL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KAPCSOLAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TOLTESMOD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUTOTT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZABALYOZAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KUTFNYOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NYUGVIZSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UZEMIVIZSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CIRKTERFARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOMERS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NYOMTARTTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HMVHOMERS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUT_LAKAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HMV_LAKAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUT_KOZULET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HMV_KOZULET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOKOZP_SZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZEKU_TOM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NYOMKUL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TOMEGARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NYOMAS_K] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOMER_SZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEGJ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[IRSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EPULTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HELYR] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EPULSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUTESMOD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEGTELTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEGTHELY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EPULATAD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUTOTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UZEMELT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KARBANTAR] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EPULHOSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LAKTERF] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[LEPCSOTERF] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KOZOSTERF] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KOZULTERF] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TERF_ARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HOLEPCSO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EPUL_ARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CIRK_ARAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FUTBESZAB] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CIRKUL] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[ATKOTES] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[HMVRENDS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CIRK_MOD] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FOELZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[FELOSZT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[UTEM] [varchar] (50) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[HAJTOMU] (
 	[ID] [int] NOT NULL ,
 	[ATMERO] [real] NULL ,
-	[BEALL_ERTEK] [varchar] (50) NULL ,
+	[BEALL_ERTEK] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[ARAMFELV] [real] NULL ,
 	[FESZULTS] [real] NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[HAZAK] (
-	[KOD] [nvarchar] (9) NULL ,
-	[UTCA] [nvarchar] (35) NULL ,
-	[HAZSZAM] [nvarchar] (5) NULL ,
-	[LEPCSO] [nvarchar] (1) NULL ,
-	[CIME] [nvarchar] (50) NULL 
+	[KOD] [nvarchar] (9) COLLATE Hungarian_CI_AS NULL ,
+	[UTCA] [nvarchar] (35) COLLATE Hungarian_CI_AS NULL ,
+	[HAZSZAM] [nvarchar] (5) COLLATE Hungarian_CI_AS NULL ,
+	[LEPCSO] [nvarchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[CIME] [nvarchar] (50) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2234,23 +2234,23 @@ CREATE TABLE [dbo].[HOCSERELO] (
 	[ID] [int] NOT NULL ,
 	[ELLENALL] [real] NULL ,
 	[LEMSZAM] [int] NULL ,
-	[MERET] [varchar] (50) NULL ,
-	[MERETME] [varchar] (3) NULL ,
+	[MERET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MERETME] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[FUTOFEL] [real] NULL ,
 	[DB] [int] NULL ,
-	[HOHOR_KO] [varchar] (3) NULL ,
+	[HOHOR_KO] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[HOSSZ_NAGY] [real] NULL ,
 	[HOSSZ_KICS] [real] NULL ,
-	[FELUGY] [char] (1) NULL ,
-	[FU_KOZ] [varchar] (3) NULL 
+	[FELUGY] [char] (1) COLLATE Hungarian_CI_AS NULL ,
+	[FU_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[HOKOZPONT] (
 	[ID] [int] NOT NULL ,
 	[PRIM_ARAM] [real] NULL ,
-	[HOLEP] [varchar] (3) NULL ,
-	[FOGYMERHELY] [varchar] (50) NULL ,
+	[HOLEP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[FOGYMERHELY] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[KISMEGSZAK] [real] NULL ,
 	[LEKVILLTELJ] [real] NULL ,
 	[PRIMELL] [real] NULL ,
@@ -2265,32 +2265,32 @@ GO
 
 CREATE TABLE [dbo].[HOOSSZEGZO] (
 	[ID] [int] NOT NULL ,
-	[LEOLVMOD] [varchar] (2) NULL ,
+	[LEOLVMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[FESZULTS] [real] NULL ,
 	[IMPULZUS] [real] NULL ,
-	[PLOMBA] [varchar] (12) NULL ,
-	[HELYZET] [varchar] (2) NULL ,
-	[ELEKTRONIKA] [varchar] (2) NULL 
+	[PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[HELYZET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[ELEKTRONIKA] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[JEGYZ] (
 	[JEGYZSZ] [int] IDENTITY (1, 1) NOT NULL ,
 	[KARB_ID] [int] NOT NULL ,
-	[JTIP] [varchar] (2) NOT NULL ,
+	[JTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[JDAT] [datetime] NOT NULL ,
 	[VONEV] [datetime] NULL ,
 	[NEV] [int] NULL ,
-	[MSZAM] [varchar] (10) NULL ,
+	[MSZAM] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[JOGOS] (
-	[KEP] [varchar] (50) NULL ,
+	[KEP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[JOGOK] [tinyint] NULL ,
-	[AKOD] [varchar] (12) NOT NULL ,
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
 	[ADATUM] [datetime] NOT NULL 
 ) ON [PRIMARY]
 GO
@@ -2299,16 +2299,16 @@ CREATE TABLE [dbo].[KAPCSOLAT] (
 	[ID1] [int] NOT NULL ,
 	[ID2] [int] NOT NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
-)
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KAPCSTAB] (
-	[OBJTIP] [varchar] (50) NULL ,
-	[MEGNEV] [varchar] (50) NULL ,
-	[TIPUS] [varchar] (50) NULL ,
-	[TELEPHSZ] [varchar] (50) NULL ,
-	[GYSZAM] [varchar] (50) NULL ,
+	[OBJTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TELEPHSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[GYSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[HITIDO] [datetime] NULL 
 ) ON [PRIMARY]
 GO
@@ -2316,121 +2316,121 @@ GO
 CREATE TABLE [dbo].[KARBAN] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[OBJID] [int] NULL ,
-	[OBJTIP] [varchar] (2) NULL ,
-	[KARBTIP] [varchar] (2) NULL ,
-	[MUVEL] [varchar] (3) NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[KARBTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[MUVEL] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[KDATUM] [datetime] NULL ,
-	[MUVLEIR] [varchar] (1024) NULL ,
-	[MUN_SORSZ] [varchar] (10) NULL ,
+	[MUVLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MUN_SORSZ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KARBTERV] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[OBJID] [int] NOT NULL ,
-	[OBJTIP] [varchar] (2) NOT NULL ,
-	[KARBTIP] [varchar] (2) NULL ,
-	[MUVEL] [varchar] (3) NOT NULL ,
-	[IDOE] [varchar] (2) NOT NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
+	[KARBTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[MUVEL] [varchar] (3) COLLATE Hungarian_CI_AS NOT NULL ,
+	[IDOE] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[IDO] [int] NOT NULL ,
 	[AKTIV] [int] NOT NULL ,
 	[ROGZITVE] [datetime] NOT NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KAZAN] (
 	[ID] [int] NOT NULL ,
 	[UZEMINYOM] [real] NULL ,
-	[HOHOR_KO] [varchar] (3) NULL ,
+	[HOHOR_KO] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[TERFARAM] [real] NULL ,
-	[SZABMOD] [varchar] (2) NULL 
+	[SZABMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KAZANEGO] (
 	[ID] [int] NOT NULL ,
 	[BEVTELJ] [real] NULL ,
-	[SZABMOD] [varchar] (2) NULL ,
-	[GAZMIN] [varchar] (2) NULL ,
-	[GAZMAX] [varchar] (2) NULL ,
-	[EGMIN] [varchar] (2) NULL ,
-	[POROLAJ_MIN] [varchar] (2) NULL ,
-	[PORLEV_MIN] [varchar] (2) NULL ,
-	[PORGOZ_MIN] [varchar] (2) NULL ,
-	[GOZMAX] [varchar] (2) NULL ,
-	[VIZMAX] [varchar] (2) NULL ,
-	[VESZVIZ_MIN] [varchar] (2) NULL ,
-	[FUSTCSAP_RET] [varchar] (2) NULL ,
-	[EGYEB_RET] [varchar] (2) NULL ,
-	[KETPONTSZAB] [varchar] (2) NULL ,
-	[HAROMPONTSZAB] [varchar] (2) NULL ,
-	[FOLYSZAB] [varchar] (2) NULL ,
-	[EGYEB] [varchar] (2) NULL ,
-	[FUST_TOM] [varchar] (2) NULL 
+	[SZABMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[GAZMIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[GAZMAX] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[EGMIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[POROLAJ_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[PORLEV_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[PORGOZ_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[GOZMAX] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[VIZMAX] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[VESZVIZ_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FUSTCSAP_RET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[EGYEB_RET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[KETPONTSZAB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[HAROMPONTSZAB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FOLYSZAB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[EGYEB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FUST_TOM] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[KEPVIS] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[SZERNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZERCIM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[SZERIRSZ] [varchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[KOZNEV] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZCIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZIRSZ] [varchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[MEGJ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[ADATUM] [datetime] NOT NULL ,
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KEPV_TET] (
 	[SZERZ_ID] [int] NOT NULL ,
 	[KEPVIS_ID] [int] NOT NULL ,
-	[PAZ] [varchar] (8) NULL ,
+	[PAZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
 	[KEZDATUM] [datetime] NULL ,
 	[BEFDATUM] [datetime] NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[KEPVIS] (
-	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[SZERNEV] [varchar] (50) NULL ,
-	[SZERCIM] [varchar] (50) NULL ,
-	[SZERIRSZ] [varchar] (4) NULL ,
-	[KOZNEV] [varchar] (100) NULL ,
-	[KOZCIM] [varchar] (100) NULL ,
-	[KOZIRSZ] [varchar] (4) NULL ,
-	[MEGJ] [varchar] (1024) NULL ,
-	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KODLEIR] (
-	[UGYFAZ] [varchar] (2) NOT NULL ,
-	[KODAZ] [varchar] (3) NOT NULL ,
-	[KODTIP] [varchar] (40) NULL ,
-	[KODOSZT] [varchar] (1) NULL ,
-	[MNEMNEV] [varchar] (16) NULL ,
-	[SZINONIMA] [varchar] (30) NULL ,
-	[TARTALOM] [text] NULL ,
+	[UGYFAZ] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
+	[KODAZ] [varchar] (3) COLLATE Hungarian_CI_AS NOT NULL ,
+	[KODTIP] [varchar] (40) COLLATE Hungarian_CI_AS NULL ,
+	[KODOSZT] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[MNEMNEV] [varchar] (16) COLLATE Hungarian_CI_AS NULL ,
+	[SZINONIMA] [varchar] (30) COLLATE Hungarian_CI_AS NULL ,
+	[TARTALOM] [text] COLLATE Hungarian_CI_AS NULL ,
 	[ERVKOR] [tinyint] NULL ,
 	[FUNKCIO] [tinyint] NULL ,
-	[KODSZLEIR] [varchar] (50) NULL ,
+	[KODSZLEIR] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[KODSZABRA] [image] NULL ,
-	[KODKEPSZAB] [varchar] (65) NULL ,
-	[KODHELY] [varchar] (3) NULL ,
-	[FELHELY] [varchar] (8) NULL ,
-	[FORMTIP] [varchar] (1) NULL ,
-	[TEMA] [varchar] (3) NULL ,
+	[KODKEPSZAB] [varchar] (65) COLLATE Hungarian_CI_AS NULL ,
+	[KODHELY] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[FELHELY] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
+	[FORMTIP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[TEMA] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[KODHOSSZ] [tinyint] NULL ,
-	[REND] [varchar] (1) NULL ,
+	[REND] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
 	[KITOLT] [datetime] NULL ,
-	[KOD] [varchar] (15) NULL 
+	[KOD] [varchar] (15) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KODSZOT] (
-	[UGYFAZ] [varchar] (2) NULL ,
-	[KODTIP] [varchar] (4) NOT NULL ,
-	[KODERT] [varchar] (12) NOT NULL ,
-	[KODENEV] [varchar] (70) NULL ,
+	[UGYFAZ] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[KODTIP] [varchar] (4) COLLATE Hungarian_CI_AS NOT NULL ,
+	[KODERT] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
+	[KODENEV] [varchar] (70) COLLATE Hungarian_CI_AS NULL ,
 	[KITOLT] [datetime] NULL ,
-	[KOD] [varchar] (15) NULL 
-)
+	[KOD] [varchar] (15) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[KOLTSEGMEGOSZTO] (
@@ -2441,7 +2441,7 @@ GO
 CREATE TABLE [dbo].[KOMPRESSZOR] (
 	[ID] [int] NOT NULL ,
 	[FORDSZ] [int] NULL ,
-	[SZAL_KOZ] [varchar] (3) NULL ,
+	[SZAL_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[SZAL_MENNY] [real] NULL ,
 	[VEGNYOM] [real] NULL ,
 	[ARAMFELV] [real] NULL ,
@@ -2450,19 +2450,19 @@ CREATE TABLE [dbo].[KOMPRESSZOR] (
 GO
 
 CREATE TABLE [dbo].[KONTIR] (
-	[FSZAM] [varchar] (12) NOT NULL ,
-	[FSZNEV] [varchar] (50) NULL ,
-	[KIJELOLT] [varchar] (1) NULL ,
-	[AKOD] [varchar] (12) NOT NULL ,
+	[FSZAM] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
+	[FSZNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KIJELOLT] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
 	[ADATUM] [datetime] NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[LABOR] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[TIPUS] [varchar] (1) NOT NULL ,
-	[SORSZ] [varchar] (50) NULL ,
-	[MUN_SORSZ] [varchar] (50) NULL ,
+	[TIPUS] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MUN_SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[MINTA_IDO] [datetime] NULL ,
 	[MINTA_NEV] [int] NULL ,
 	[MINTA_ATAD_IDO] [datetime] NULL ,
@@ -2476,26 +2476,26 @@ CREATE TABLE [dbo].[LABOR] (
 	[VAS] [real] NULL ,
 	[KOI] [real] NULL ,
 	[OK] [real] NULL ,
-	[KULSO] [varchar] (255) NULL ,
+	[KULSO] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
 	[AMMONIA] [real] NULL ,
 	[NITRAT] [real] NULL ,
 	[NITRIT] [real] NULL ,
-	[ERTEKELES] [varchar] (255) NULL ,
+	[ERTEKELES] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[LAKAS] (
 	[ID] [int] NOT NULL ,
-	[FKOD] [varchar] (15) NULL ,
-	[LEPCS] [varchar] (1) NULL ,
-	[EM] [varchar] (2) NULL ,
-	[AJTO] [varchar] (4) NULL ,
-	[AZON] [varchar] (8) NULL ,
-	[LEPCSK] [varchar] (1) NULL ,
-	[LAKASK] [varchar] (6) NULL 
-)
+	[FKOD] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[LEPCS] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[EM] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[AJTO] [varchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[AZON] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
+	[LEPCSK] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[LAKASK] [varchar] (6) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[LANGOR] (
@@ -2511,36 +2511,36 @@ GO
 
 CREATE TABLE [dbo].[LEPCSOHAZ] (
 	[ID] [int] NOT NULL ,
-	[NEV] [varchar] (100) NULL ,
-	[CIM] [varchar] (100) NULL ,
-	[KOD] [varchar] (15) NULL 
+	[NEV] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[CIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOD] [varchar] (15) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[MELEGVIZ_TAROLO] (
 	[ID] [int] NOT NULL ,
-	[FELEP] [varchar] (1) NULL ,
+	[FELEP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
 	[TERFOGAT] [real] NULL ,
-	[KAPCSOLAS] [varchar] (50) NULL ,
-	[TOLTESMOD] [varchar] (2) NULL 
+	[KAPCSOLAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TOLTESMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[MLAPTAB] (
 	[ID] [int] NULL ,
-	[SORSZ] [varchar] (50) NULL ,
+	[SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[KIALLDAT] [datetime] NULL ,
 	[BEJDAT] [datetime] NULL ,
-	[BEJNEV] [varchar] (40) NULL ,
-	[UTCA] [varchar] (256) NULL ,
-	[LAKAS] [varchar] (20) NULL ,
-	[FSZAM] [varchar] (12) NULL ,
-	[TELEPHSZ] [varchar] (20) NULL ,
-	[HIBLEIR] [varchar] (1024) NULL ,
+	[BEJNEV] [varchar] (40) COLLATE Hungarian_CI_AS NULL ,
+	[UTCA] [varchar] (256) COLLATE Hungarian_CI_AS NULL ,
+	[LAKAS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[FSZAM] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[TELEPHSZ] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[HIBLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[MUNELV] [datetime] NULL ,
-	[IDOTOL] [varchar] (10) NULL ,
-	[IDOIG] [varchar] (10) NULL ,
-	[SZOLGJELL] [varchar] (2) NULL 
+	[IDOTOL] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[IDOIG] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[SZOLGJELL] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2555,86 +2555,86 @@ GO
 
 CREATE TABLE [dbo].[MUNKALAP] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[MTIP] [varchar] (1) NOT NULL ,
+	[MTIP] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
 	[BEJDAT] [datetime] NULL ,
-	[BEJNEV] [varchar] (40) NULL ,
-	[TIPUSH] [varchar] (3) NULL ,
-	[HIBLEIR] [varchar] (1024) NULL ,
-	[SZEREGYS] [varchar] (2) NULL ,
+	[BEJNEV] [varchar] (40) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUSH] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[HIBLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[SZEREGYS] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[MFDOLG] [int] NULL ,
 	[MUNELV] [datetime] NULL ,
-	[IDOTOL] [varchar] (10) NULL ,
-	[IDOIG] [varchar] (10) NULL ,
-	[SZOLGTIP] [varchar] (2) NULL ,
-	[MUNVEGZ] [varchar] (2) NULL ,
-	[SZOLGJELL] [varchar] (2) NULL ,
+	[IDOTOL] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[IDOIG] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[SZOLGTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[MUNVEGZ] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[SZOLGJELL] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[OBJID] [int] NULL ,
-	[KARBTIP] [varchar] (1) NULL ,
-	[MUVEL] [varchar] (3) NULL ,
-	[FELTIP] [varchar] (2) NULL ,
-	[FELLEIR] [varchar] (1024) NULL ,
-	[JELENSTIP] [varchar] (2) NULL ,
-	[JELENSLEIR] [varchar] (1024) NULL ,
-	[MUVLEIR] [varchar] (1024) NULL ,
-	[INTEZ] [varchar] (1024) NULL ,
+	[KARBTIP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[MUVEL] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[FELTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FELLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[JELENSTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[JELENSLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MUVLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[INTEZ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[VONEV] [datetime] NULL ,
-	[SORSZ] [varchar] (50) NULL ,
-	[NAPSZAM] [varchar] (50) NULL ,
+	[SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[NAPSZAM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[KIALLDAT] [datetime] NULL ,
-	[FSZAM] [varchar] (12) NULL ,
-	[SZOLTIP] [varchar] (1) NULL ,
-	[MUNSZ] [varchar] (2) NULL ,
+	[FSZAM] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[SZOLTIP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[MUNSZ] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[MKAP] [int] NULL ,
 	[ALLAPOT] [int] NULL ,
 	[MVDOLG] [int] NULL ,
 	[MVDAT] [datetime] NULL ,
-	[LAKAS] [varchar] (50) NULL ,
+	[LAKAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[REF] [int] NULL ,
-	[PLOMBAZAS] [varchar] (1) NULL ,
-	[UJ] [varchar] (10) NULL ,
-	[FELUJITOTT] [varchar] (10) NULL ,
-	[AKOD] [varchar] (12) NOT NULL ,
+	[PLOMBAZAS] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[UJ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[FELUJITOTT] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
 	[ADATUM] [datetime] NOT NULL 
-)
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[OBJEKTUM] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[OBJTIP] [varchar] (2) NOT NULL ,
-	[AZON] [varchar] (15) NULL ,
-	[MEGNEV] [varchar] (50) NULL ,
-	[TIPUS] [varchar] (20) NULL ,
-	[VAROS] [varchar] (1) NULL ,
-	[UTCA] [varchar] (35) NULL ,
-	[HSZ] [varchar] (3) NULL ,
-	[ELHELYEZ] [varchar] (25) NULL ,
-	[GYSZAM] [varchar] (15) NULL ,
-	[GYARTO] [varchar] (3) NULL ,
-	[UZALL] [varchar] (1) NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
+	[AZON] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[VAROS] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[UTCA] [varchar] (35) COLLATE Hungarian_CI_AS NULL ,
+	[HSZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[ELHELYEZ] [varchar] (25) COLLATE Hungarian_CI_AS NULL ,
+	[GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[GYARTO] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[UZALL] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
 	[UZEMIDO] [datetime] NULL ,
 	[HITIDO] [datetime] NULL ,
-	[GYARTM] [varchar] (20) NULL ,
-	[TELEPHSZ] [varchar] (20) NULL ,
-	[VESZO] [varchar] (1) NULL ,
-	[FKOD] [varchar] (3) NULL ,
-	[ALAIR] [varchar] (3) NULL ,
+	[GYARTM] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[TELEPHSZ] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[VESZO] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[FKOD] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[ALAIR] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[NEVLTELJ] [real] NULL ,
-	[NEVLTELJME] [varchar] (3) NULL ,
-	[KATEG] [varchar] (2) NULL ,
-	[FSZAM] [varchar] (12) NULL ,
-	[TULAJDON] [varchar] (1) NULL ,
+	[NEVLTELJME] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
+	[KATEG] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[FSZAM] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[TULAJDON] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
 	[KAPCSOLT] [int] NOT NULL ,
 	[ELOZOKAPCS] [int] NULL ,
 	[ELOZOKAPCSDATE] [datetime] NULL ,
-	[MEGJ] [varchar] (255) NULL ,
-	[AKTIV] [varchar] (1) NOT NULL ,
+	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
+	[AKTIV] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
-)
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[PERMIS] (
-	[OBJTIP] [varchar] (2) NOT NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[AZON] [int] NULL ,
 	[MEGJ] [int] NULL ,
 	[MEGNEV] [int] NULL ,
@@ -2769,55 +2769,55 @@ GO
 
 CREATE TABLE [dbo].[RAKTAR] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[OBJTIP] [varchar] (2) NOT NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[OBJID] [int] NOT NULL ,
 	[DATUMTOL] [datetime] NOT NULL ,
 	[DATUMIG] [datetime] NULL ,
-	[MEGJ] [varchar] (255) NULL ,
-	[ALLAPOT] [varchar] (1) NOT NULL ,
-	[SZLEVEL_SZAM] [varchar] (20) NULL ,
+	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
+	[ALLAPOT] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[SZLEVEL_SZAM] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
 	[SZLEVEL_DATUM] [datetime] NULL ,
 	[DOLG_ID] [int] NULL ,
 	[KEPVIS] [int] NULL ,
-	[KULCS] [varchar] (50) NULL ,
-	[KULCS_LAKTEL] [varchar] (20) NULL ,
-	[KULCS_MOBTEL] [varchar] (20) NULL ,
-	[KULCS_MUNTEL] [varchar] (20) NULL ,
+	[KULCS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KULCS_LAKTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[KULCS_MOBTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[KULCS_MUNTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[RAKTHISTORY] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[OBJTIP] [varchar] (2) NOT NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[OBJID] [int] NOT NULL ,
 	[DATUMTOL] [datetime] NOT NULL ,
 	[DATUMIG] [datetime] NOT NULL ,
-	[MEGJ] [varchar] (255) NULL ,
-	[ALLAPOT] [varchar] (1) NOT NULL ,
-	[SZLEVEL_SZAM] [varchar] (20) NULL ,
+	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
+	[ALLAPOT] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[SZLEVEL_SZAM] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
 	[SZLEVEL_DATUM] [datetime] NULL ,
 	[DOLG_ID] [int] NULL ,
-	[TULAJDON] [varchar] (1) NULL ,
+	[TULAJDON] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[RAKTKEPVIS] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[NEV] [varchar] (50) NOT NULL ,
-	[CIM] [varchar] (100) NULL ,
-	[LAK_TEL] [varchar] (20) NULL ,
-	[MOB_TEL] [varchar] (20) NULL ,
-	[MUN_TEL] [varchar] (20) NULL ,
-	[MEGB_NEV] [varchar] (50) NULL ,
-	[MEGB_LAK_TEL] [varchar] (20) NULL ,
-	[MEGB_MOB_TEL] [varchar] (20) NULL ,
-	[MEGB_MUN_TEL] [varchar] (20) NULL ,
+	[NEV] [varchar] (50) COLLATE Hungarian_CI_AS NOT NULL ,
+	[CIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[LAK_TEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MOB_TEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MUN_TEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_LAK_TEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_MOB_TEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_MUN_TEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2828,10 +2828,10 @@ GO
 
 CREATE TABLE [dbo].[SZABALYOZO_SZELEP] (
 	[ID] [int] NOT NULL ,
-	[MERET] [varchar] (50) NULL ,
-	[MERETME] [varchar] (3) NULL ,
+	[MERET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MERETME] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[ATMERO] [real] NULL ,
-	[MUKMOD] [varchar] (3) NULL ,
+	[MUKMOD] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[KVS] [real] NULL 
 ) ON [PRIMARY]
 GO
@@ -2839,29 +2839,29 @@ GO
 CREATE TABLE [dbo].[SZERELVENY] (
 	[ID] [int] NOT NULL ,
 	[ATMERO] [real] NULL ,
-	[BEALL_ERTEK] [varchar] (50) NULL 
+	[BEALL_ERTEK] [varchar] (50) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[SZERZFEJ] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[PAZ] [varchar] (8) NULL ,
-	[SZETIP] [varchar] (1) NULL ,
-	[SZEJEL] [varchar] (2) NULL ,
+	[PAZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
+	[SZETIP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[SZEJEL] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[SZEKELT] [datetime] NULL ,
 	[ERVDAT] [datetime] NULL ,
-	[FIZMOD] [varchar] (1) NULL ,
-	[SZERTAR] [varchar] (1024) NULL ,
+	[FIZMOD] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[SZERTAR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[SZOLG] [int] NULL ,
 	[BEFDAT] [datetime] NULL ,
-	[SZERSZ] [varchar] (8) NULL ,
+	[SZERSZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
 	[SZLA_CIKL] [int] NULL ,
-	[JEL] [varchar] (1) NULL ,
-	[SZJ] [varchar] (12) NULL ,
-	[UGYFN] [varchar] (100) NULL ,
-	[UGYFC] [varchar] (100) NULL ,
+	[JEL] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[SZJ] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[UGYFN] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[UGYFC] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2870,14 +2870,14 @@ CREATE TABLE [dbo].[SZERZTEL] (
 	[SZER_ID] [int] NOT NULL ,
 	[SZERTET] [int] NOT NULL ,
 	[OBJ_ID] [int] NULL ,
-	[CIKK] [varchar] (2) NULL ,
+	[CIKK] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[CIKK_MENNY] [real] NULL ,
 	[SZ_MENNY] [real] NULL ,
-	[MENNY_ME] [varchar] (3) NULL ,
+	[MENNY_ME] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[OSSZEG] [real] NULL ,
-	[AFA] [varchar] (2) NULL ,
+	[AFA] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2890,40 +2890,40 @@ CREATE TABLE [dbo].[SZIVATTYU] (
 	[ID] [int] NOT NULL ,
 	[FORDSZ] [int] NULL ,
 	[EMEL_MAG] [real] NULL ,
-	[SZAL_KOZ] [varchar] (3) NULL ,
+	[SZAL_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[SZAL_MENNY] [real] NULL ,
-	[SZIVFOK] [varchar] (2) NULL 
+	[SZIVFOK] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[SZLA_ALT] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[SZLASZ] [int] NOT NULL ,
-	[SZERZSZ] [varchar] (8) NULL ,
-	[FIZMOD] [varchar] (1) NOT NULL ,
+	[SZERZSZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
+	[FIZMOD] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
 	[TDAT] [datetime] NOT NULL ,
 	[KDAT] [datetime] NOT NULL ,
 	[FDAT] [datetime] NOT NULL ,
-	[JEL] [varchar] (1) NOT NULL ,
-	[SZJ] [varchar] (12) NULL ,
-	[SZERTAR] [varchar] (1024) NULL ,
-	[UGYFN] [varchar] (100) NULL ,
-	[PAZ] [varchar] (8) NULL ,
+	[JEL] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[SZJ] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[SZERTAR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[UGYFN] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[PAZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
 	[SZOLG] [int] NULL ,
-	[KOZNEV] [varchar] (100) NULL ,
-	[KOZCIM] [varchar] (100) NULL ,
-	[KOZIRSZ] [varchar] (4) NULL ,
-	[SZERNEV] [varchar] (100) NULL ,
+	[KOZNEV] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZCIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZIRSZ] [varchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[SZERNEV] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
 	[CIKLUS] [int] NULL ,
 	[ZAROLT] [int] NOT NULL ,
 	[EGYEDI] [int] NOT NULL ,
-	[UGYFC] [varchar] (100) NULL ,
+	[UGYFC] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
 	[OSSZ_NETTO] [real] NULL ,
 	[OSSZ_AFA] [real] NULL ,
 	[OSSZ_BRUTTO] [real] NULL ,
-	[OSSZ_TEXT] [varchar] (255) NULL ,
+	[OSSZ_TEXT] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2931,24 +2931,104 @@ CREATE TABLE [dbo].[SZLA_ALT_TET] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[SZLA_ID] [int] NOT NULL ,
 	[TET_SORSZ] [int] NOT NULL ,
-	[LEPCSOHAZ] [varchar] (100) NULL ,
-	[CIKK] [varchar] (2) NULL ,
+	[LEPCSOHAZ] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[CIKK] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[CIKK_MENNY] [real] NULL ,
 	[SZ_MENNY] [real] NOT NULL ,
-	[MENNY_ME] [varchar] (3) NOT NULL ,
+	[MENNY_ME] [varchar] (3) COLLATE Hungarian_CI_AS NOT NULL ,
 	[NOTERT] [real] NOT NULL ,
 	[OSSZEG] [real] NULL ,
-	[AFA] [varchar] (2) NULL ,
+	[AFA] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[AFAOSSZ] [real] NULL ,
 	[BRUTTO] [real] NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[SZUROK] (
 	[ID] [int] NOT NULL ,
-	[SZURTIP] [varchar] (2) NULL 
+	[SZURTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB403] (
+	[FUTOMU_ID] [int] NULL ,
+	[NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[C62317] [int] NULL ,
+	[C62318] [int] NULL ,
+	[C62319] [int] NULL ,
+	[C62323] [int] NULL ,
+	[C62325] [int] NULL ,
+	[C722] [int] NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB403_1] (
+	[FSZAM] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[FSZNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MUNORA] [int] NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB404] (
+	[FUTOMU_ID] [int] NULL ,
+	[NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[E] [int] NULL ,
+	[F] [int] NULL ,
+	[G] [int] NULL ,
+	[L] [int] NULL ,
+	[V] [int] NULL ,
+	[SZUM] [int] NULL ,
+	[c736] [int] NULL ,
+	[c737] [int] NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB406] (
+	[DOLGID] [int] NULL ,
+	[NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[EL] [int] NULL ,
+	[FO] [int] NULL ,
+	[GB] [int] NULL ,
+	[GT] [int] NULL ,
+	[LA] [int] NULL ,
+	[LE] [int] NULL ,
+	[LF] [int] NULL ,
+	[VE] [int] NULL ,
+	[SZUM] [int] NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB407] (
+	[FUTOMU_ID] [int] NULL ,
+	[NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CIM] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
+	[ORA] [int] NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB408] (
+	[SZOLGJELL_ID] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[SZOLGJELL] [varchar] (70) COLLATE Hungarian_CI_AS NULL ,
+	[MUNKALAP_ID] [int] NULL ,
+	[DATUM] [datetime] NULL ,
+	[HIBLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MUNORA] [int] NULL ,
+	[DOLG] [varchar] (20) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB413] (
+	[KOZNEV] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KOZCIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[PAZ] [varchar] (8) COLLATE Hungarian_CI_AS NULL ,
+	[SZLASZAM] [int] NULL ,
+	[MENNY] [real] NULL ,
+	[NOTERT] [real] NULL ,
+	[OSSZEG] [real] NULL ,
+	[AFAERT] [real] NULL ,
+	[BRUTTO] [real] NULL 
 ) ON [PRIMARY]
 GO
 
@@ -2966,196 +3046,116 @@ CREATE TABLE [dbo].[TAB_LABORO] (
 	[A] [real] NULL ,
 	[N] [real] NULL ,
 	[I] [real] NULL ,
-	[KU] [varchar] (255) NULL 
+	[KU] [varchar] (255) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[TAB_PLOMB] (
 	[SORSZ] [int] NULL ,
 	[DATUM] [datetime] NULL ,
-	[BEJNEV] [varchar] (40) NULL ,
-	[CIM] [varchar] (100) NULL ,
-	[MEGJ] [varchar] (100) NULL ,
-	[PLOMBAZAS] [varchar] (50) NULL 
+	[BEJNEV] [varchar] (40) COLLATE Hungarian_CI_AS NULL ,
+	[CIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[MEGJ] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[PLOMBAZAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[TAB_R01] (
-	[OBJTIP] [varchar] (50) NULL ,
-	[GYSZAM] [varchar] (15) NULL ,
-	[TIPUS] [varchar] (20) NULL ,
+	[OBJTIP] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
 	[HITIDO] [datetime] NULL ,
-	[ALLAPOT] [varchar] (50) NULL ,
+	[ALLAPOT] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[DATUMTOL] [datetime] NULL ,
-	[MEGJ] [varchar] (255) NULL 
+	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[TAB_R03] (
-	[OBJTIP] [varchar] (2) NOT NULL ,
+	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[OBJID] [int] NOT NULL ,
-	[GYSZAM] [varchar] (15) NULL ,
-	[TIPUS] [varchar] (20) NULL ,
-	[HITIDO] [varchar] (4) NULL ,
-	[TERULET] [varchar] (50) NULL ,
-	[CIM] [varchar] (50) NULL ,
-	[MEGJ] [varchar] (255) NULL ,
+	[GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[HITIDO] [varchar] (4) COLLATE Hungarian_CI_AS NULL ,
+	[TERULET] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[CIM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) NOT NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[TAB_R04] (
-	[FUTOMU] [varchar] (20) NULL ,
-	[EPULET] [varchar] (30) NULL ,
+	[FUTOMU] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[EPULET] [varchar] (30) COLLATE Hungarian_CI_AS NULL ,
 	[KEPVIS] [int] NULL ,
-	[KEPVIS_NEV] [varchar] (50) NULL ,
-	[KEPVIS_CIM] [varchar] (100) NULL ,
-	[KEPVIS_LAKTEL] [varchar] (20) NULL ,
-	[KEPVIS_MOBTEL] [varchar] (20) NULL ,
-	[KEPVIS_MUNTEL] [varchar] (20) NULL ,
-	[MEGB_NEV] [varchar] (50) NULL ,
-	[MEGB_LAKTEL] [varchar] (20) NULL ,
-	[MEGB_MOBTEL] [varchar] (20) NULL ,
-	[MEGB_MUNTEL] [varchar] (20) NULL ,
+	[KEPVIS_NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[KEPVIS_CIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[KEPVIS_LAKTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[KEPVIS_MOBTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[KEPVIS_MUNTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_NEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_LAKTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_MOBTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[MEGB_MUNTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
 	[H_ID] [int] NULL ,
-	[H_GYSZAM] [varchar] (15) NULL ,
+	[H_GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
 	[H_HITIDO] [datetime] NULL ,
-	[H_TIPUS] [varchar] (20) NULL ,
-	[H_ELHELYEZ] [varchar] (25) NULL ,
-	[H_IMPULZUS] [varchar] (10) NULL ,
-	[H_LEOLV] [varchar] (15) NULL ,
-	[H_HELYZET] [varchar] (15) NULL ,
-	[H_ELEKTRONIKA] [varchar] (15) NULL ,
-	[H_PLOMBA] [varchar] (12) NULL ,
-	[H_KULCS] [varchar] (50) NULL ,
-	[H_KULCS_LAKTEL] [varchar] (20) NULL ,
-	[H_KULCS_MOBTEL] [varchar] (20) NULL ,
-	[H_KULCS_MUNTEL] [varchar] (20) NULL ,
-	[H_TULAJDON] [varchar] (15) NULL ,
-	[H_MEGJ] [varchar] (1024) NULL ,
+	[H_TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[H_ELHELYEZ] [varchar] (25) COLLATE Hungarian_CI_AS NULL ,
+	[H_IMPULZUS] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[H_LEOLV] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[H_HELYZET] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[H_ELEKTRONIKA] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[H_PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[H_KULCS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[H_KULCS_LAKTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[H_KULCS_MOBTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[H_KULCS_MUNTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[H_TULAJDON] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[H_MEGJ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[V_ID] [int] NULL ,
-	[V_GYSZAM] [varchar] (15) NULL ,
+	[V_GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
 	[V_HITIDO] [datetime] NULL ,
-	[V_TIPUS] [varchar] (20) NULL ,
-	[V_ELHELYEZ] [varchar] (25) NULL ,
-	[V_IMPULZUS] [varchar] (10) NULL ,
-	[V_ATMERO] [varchar] (10) NULL ,
-	[V_TOMEGARAM] [varchar] (10) NULL ,
-	[V_PLOMBA] [varchar] (12) NULL ,
-	[V_KULCS] [varchar] (50) NULL ,
-	[V_KULCS_LAKTEL] [varchar] (20) NULL ,
-	[V_KULCS_MOBTEL] [varchar] (20) NULL ,
-	[V_KULCS_MUNTEL] [varchar] (20) NULL ,
-	[V_TULAJDON] [varchar] (15) NULL ,
-	[V_MEGJ] [varchar] (1024) NULL ,
+	[V_TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[V_ELHELYEZ] [varchar] (25) COLLATE Hungarian_CI_AS NULL ,
+	[V_IMPULZUS] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[V_ATMERO] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[V_TOMEGARAM] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[V_PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[V_KULCS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[V_KULCS_LAKTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[V_KULCS_MOBTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[V_KULCS_MUNTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[V_TULAJDON] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
+	[V_MEGJ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[E_ID] [int] NULL ,
-	[E_GYSZAM] [varchar] (15) NULL ,
+	[E_GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
 	[E_HITIDO] [datetime] NULL ,
-	[E_TIPUS] [varchar] (20) NULL ,
-	[E_ELHELYEZ] [varchar] (25) NULL ,
-	[E_BENYHOSSZ] [varchar] (10) NULL ,
-	[E_VEZHOSSZ] [varchar] (10) NULL ,
-	[E_PLOMBA] [varchar] (12) NULL ,
-	[E_PLOMBA2] [varchar] (12) NULL ,
-	[E_SZUKSHOSSZ] [varchar] (10) NULL ,
-	[E_KULCS] [varchar] (50) NULL ,
-	[E_KULCS_LAKTEL] [varchar] (20) NULL ,
-	[E_KULCS_MOBTEL] [varchar] (20) NULL ,
-	[E_KULCS_MUNTEL] [varchar] (20) NULL ,
-	[E_TULAJDON] [varchar] (12) NULL ,
-	[E_MEGJ] [varchar] (1024) NULL 
+	[E_TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[E_ELHELYEZ] [varchar] (25) COLLATE Hungarian_CI_AS NULL ,
+	[E_BENYHOSSZ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[E_VEZHOSSZ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[E_PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[E_PLOMBA2] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[E_SZUKSHOSSZ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[E_KULCS] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[E_KULCS_LAKTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[E_KULCS_MOBTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[E_KULCS_MUNTEL] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[E_TULAJDON] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
+	[E_MEGJ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[TAB_VIZORA] (
 	[SORSZ] [int] NULL ,
 	[DATUM] [datetime] NULL ,
-	[BEJNEV] [varchar] (40) NULL ,
-	[CIM] [varchar] (100) NULL ,
-	[MEGJ] [varchar] (100) NULL ,
-	[UJ] [varchar] (10) NULL ,
-	[FELUJITOTT] [varchar] (10) NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB403] (
-	[FUTOMU_ID] [int] NULL ,
-	[NEV] [varchar] (50) NULL ,
-	[C62317] [int] NULL ,
-	[C62318] [int] NULL ,
-	[C62319] [int] NULL ,
-	[C62323] [int] NULL ,
-	[C62325] [int] NULL ,
-	[C722] [int] NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB403_1] (
-	[FSZAM] [varchar] (12) NULL ,
-	[FSZNEV] [varchar] (50) NULL ,
-	[MUNORA] [int] NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB404] (
-	[FUTOMU_ID] [int] NULL ,
-	[NEV] [varchar] (50) NULL ,
-	[E] [int] NULL ,
-	[F] [int] NULL ,
-	[G] [int] NULL ,
-	[L] [int] NULL ,
-	[V] [int] NULL ,
-	[SZUM] [int] NULL ,
-	[c736] [int] NULL ,
-	[c737] [int] NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB406] (
-	[DOLGID] [int] NULL ,
-	[NEV] [varchar] (50) NULL ,
-	[EL] [int] NULL ,
-	[FO] [int] NULL ,
-	[GB] [int] NULL ,
-	[GT] [int] NULL ,
-	[LA] [int] NULL ,
-	[LE] [int] NULL ,
-	[LF] [int] NULL ,
-	[VE] [int] NULL ,
-	[SZUM] [int] NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB407] (
-	[FUTOMU_ID] [int] NULL ,
-	[NEV] [varchar] (50) NULL ,
-	[CIM] [varchar] (255) NULL ,
-	[ORA] [int] NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB408] (
-	[SZOLGJELL_ID] [varchar] (2) NULL ,
-	[SZOLGJELL] [varchar] (70) NULL ,
-	[MUNKALAP_ID] [int] NULL ,
-	[DATUM] [datetime] NULL ,
-	[HIBLEIR] [varchar] (1024) NULL ,
-	[MUNORA] [int] NULL ,
-	[DOLG] [varchar] (20) NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TAB413] (
-	[KOZNEV] [varchar] (100) NULL ,
-	[KOZCIM] [varchar] (100) NULL ,
-	[PAZ] [varchar] (8) NULL ,
-	[SZLASZAM] [int] NULL ,
-	[MENNY] [real] NULL ,
-	[NOTERT] [real] NULL ,
-	[OSSZEG] [real] NULL ,
-	[AFAERT] [real] NULL ,
-	[BRUTTO] [real] NULL 
+	[BEJNEV] [varchar] (40) COLLATE Hungarian_CI_AS NULL ,
+	[CIM] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[MEGJ] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
+	[UJ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
+	[FELUJITOTT] [varchar] (10) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -3168,12 +3168,12 @@ GO
 
 CREATE TABLE [dbo].[TARTALY] (
 	[ID] [int] NOT NULL ,
-	[FELEP] [varchar] (1) NULL ,
+	[FELEP] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
 	[LEVNYOM] [real] NULL ,
 	[VIZNYOM] [real] NULL ,
 	[TERFOGAT] [real] NULL ,
-	[FUTOTT] [char] (1) NULL ,
-	[SZABALYOZAS] [varchar] (50) NULL 
+	[FUTOTT] [char] (1) COLLATE Hungarian_CI_AS NULL ,
+	[SZABALYOZAS] [varchar] (50) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -3183,9 +3183,9 @@ CREATE TABLE [dbo].[TELJM] (
 	[DOLG_ID] [int] NOT NULL ,
 	[MUNORA] [real] NULL ,
 	[MUNDAT] [datetime] NULL ,
-	[AKOD] [varchar] (12) NULL ,
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NULL 
-)
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[TERMALKUT] (
@@ -3210,10 +3210,10 @@ GO
 
 CREATE TABLE [dbo].[VENTILLATOR] (
 	[ID] [int] NOT NULL ,
-	[FAGYVED] [char] (1) NULL ,
+	[FAGYVED] [char] (1) COLLATE Hungarian_CI_AS NULL ,
 	[FORDSZ] [int] NULL ,
 	[LEGSZAL] [real] NULL ,
-	[FU_KOZ] [varchar] (3) NULL ,
+	[FU_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[ARAMFELV] [real] NULL ,
 	[FESZULTS] [real] NULL 
 ) ON [PRIMARY]
@@ -3221,19 +3221,19 @@ GO
 
 CREATE TABLE [dbo].[VIZLAGYITO] (
 	[ID] [int] NOT NULL ,
-	[SZABMOD] [varchar] (2) NULL ,
+	[SZABMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[OSZLSZAM] [int] NULL 
 ) ON [PRIMARY]
 GO
 
 CREATE TABLE [dbo].[VIZORA] (
 	[ID] [int] NOT NULL ,
-	[LEOLVMOD] [varchar] (2) NULL ,
-	[SZAL_KOZ] [varchar] (3) NULL ,
+	[LEOLVMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[SZAL_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
 	[SZAL_MENNY] [real] NULL ,
 	[ATMERO] [real] NULL ,
 	[IMPULZUS] [real] NULL ,
-	[PLOMBA] [varchar] (12) NULL ,
+	[PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
 	[TOMEGARAM] [real] NULL 
 ) ON [PRIMARY]
 GO
@@ -3306,32 +3306,32 @@ GO
  CREATE  CLUSTERED  INDEX [IX_MUNKALAP_FILL] ON [dbo].[MUNKALAP]([ID], [SZOLGJELL], [KIALLDAT]) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[ARVALT] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[ARVALT] ADD 
 	CONSTRAINT [DF_ARVALT_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_ARVALT_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[BERRAKTAR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[BERRAKTAR] ADD 
 	CONSTRAINT [DF_BERRAKTAR_BEKERUL_DAT] DEFAULT (getdate()) FOR [BEKERUL_DAT],
 	CONSTRAINT [DF_BERRAKTAR_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_BERRAKTAR_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[BOYLER] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[BOYLER] ADD 
 	CONSTRAINT [PK_BOYLER] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[DEMAG_EMELOGEP] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[DEMAG_EMELOGEP] ADD 
 	CONSTRAINT [PK_DEMAG_EMELOGEP] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[DOLGOZO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[DOLGOZO] ADD 
 	CONSTRAINT [DF_DOLGOZO_IRASJOG] DEFAULT ('n') FOR [UFR],
 	CONSTRAINT [DF_DOLGOZO_UFW] DEFAULT ('n') FOR [UFW],
 	CONSTRAINT [DF_DOLGOZO_UER] DEFAULT ('n') FOR [UER],
@@ -3344,126 +3344,132 @@ ALTER TABLE [dbo].[DOLGOZO] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[ERZEKELO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[ERZEKELO] ADD 
 	CONSTRAINT [PK_ERZEKELO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[FAZISJAVITO_KONDENZATOR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[FAZISJAVITO_KONDENZATOR] ADD 
 	CONSTRAINT [PK_FAZISJAVITO_KONDENZATOR] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[FOKAPCSOLO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[FOKAPCSOLO] ADD 
 	CONSTRAINT [PK_FOKAPCSOLO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[FREKVENCIAVALTO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[FREKVENCIAVALTO] ADD 
 	CONSTRAINT [PK_FREKVENCIAVALTO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[GAZNYOMAS_MERO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[GAZNYOMAS_MERO] ADD 
 	CONSTRAINT [PK_GAZNYOMAS_MERO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[GAZNYOMAS_SZABALYOZO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[GAZNYOMAS_SZABALYOZO] ADD 
 	CONSTRAINT [PK_GAZNYOMAS_SZABALYOZO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[GAZVESZELY_JELZO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[GAZVESZELY_JELZO] ADD 
 	CONSTRAINT [PK_GAZVESZELY_JELZO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[HAJTOMU] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[HAJTOMU] ADD 
 	CONSTRAINT [PK_HAJTOMU] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[HOCSERELO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[HOCSERELO] ADD 
 	CONSTRAINT [PK_HOCSERELO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[HOKOZPONT] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[HOKOZPONT] ADD 
 	CONSTRAINT [PK_HOKOZPONT] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[HOOSSZEGZO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[HOOSSZEGZO] ADD 
 	CONSTRAINT [PK_HOOSSZEGZO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[JEGYZ] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[JEGYZ] ADD 
 	CONSTRAINT [DF_JEGYZ_ADATUM_1] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_JEGYZ_AKOD_1] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[JOGOS] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[JOGOS] ADD 
 	CONSTRAINT [DF_JOGOS_AKOD] DEFAULT (user_name()) FOR [AKOD],
 	CONSTRAINT [DF_JOGOS_ADATUM] DEFAULT (getdate()) FOR [ADATUM]
 GO
 
-ALTER TABLE [dbo].[KAPCSOLAT] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KAPCSOLAT] ADD 
 	CONSTRAINT [DF_KAPCSOLAT_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_KAPCSOLAT_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[KARBAN] WITH NOCHECK ADD 
+ CREATE  INDEX [IX_KAPCSOLAT_1] ON [dbo].[KAPCSOLAT]([ID1]) ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_KAPCSOLAT_2] ON [dbo].[KAPCSOLAT]([ID2]) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[KARBAN] ADD 
 	CONSTRAINT [DF_KARBAN_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_KARBAN_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[KARBTERV] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KARBTERV] ADD 
 	CONSTRAINT [DF_KARBTERV_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_KARBTERV_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[KAZAN] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KAZAN] ADD 
 	CONSTRAINT [PK_KAZAN] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[KEPV_TET] WITH NOCHECK ADD 
-	CONSTRAINT [DF_KEPV_TET_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
-	CONSTRAINT [DF_KEPV_TET_AKOD] DEFAULT (user_name()) FOR [AKOD]
-GO
-
-ALTER TABLE [dbo].[KEPVIS] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KEPVIS] ADD 
 	CONSTRAINT [DF_KEPVIS_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_KEPVIS_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[KODLEIR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KEPV_TET] ADD 
+	CONSTRAINT [DF_KEPV_TET_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
+	CONSTRAINT [DF_KEPV_TET_AKOD] DEFAULT (user_name()) FOR [AKOD]
+GO
+
+ALTER TABLE [dbo].[KODLEIR] ADD 
 	CONSTRAINT [PK_KODLEIR] PRIMARY KEY  NONCLUSTERED 
 	(
 		[UGYFAZ],
@@ -3471,21 +3477,21 @@ ALTER TABLE [dbo].[KODLEIR] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[KOLTSEGMEGOSZTO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KOLTSEGMEGOSZTO] ADD 
 	CONSTRAINT [PK_KOLTSEGMEGOSZTO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[KOMPRESSZOR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KOMPRESSZOR] ADD 
 	CONSTRAINT [PK_KOMPRESSZOR] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[KONTIR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[KONTIR] ADD 
 	CONSTRAINT [DF_KONTIR_AKOD] DEFAULT (user_name()) FOR [AKOD],
 	CONSTRAINT [DF_KONTIR_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [PK_KONTIR] PRIMARY KEY  NONCLUSTERED 
@@ -3494,40 +3500,40 @@ ALTER TABLE [dbo].[KONTIR] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[LABOR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[LABOR] ADD 
 	CONSTRAINT [DF_LABOR_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_LABOR_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[LANGOR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[LANGOR] ADD 
 	CONSTRAINT [PK_LANGOR] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[LEPCSOHAZ] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[LEPCSOHAZ] ADD 
 	CONSTRAINT [PK_LEPCSOHAZ] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[MELEGVIZ_TAROLO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[MELEGVIZ_TAROLO] ADD 
 	CONSTRAINT [PK_MELEGVIZ_TAROLO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[MOTOR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[MOTOR] ADD 
 	CONSTRAINT [PK_MOTOR] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[MUNKALAP] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[MUNKALAP] ADD 
 	CONSTRAINT [DF_MUNKALAP_REF] DEFAULT (null) FOR [REF],
 	CONSTRAINT [DF_MUNKALAP_AKOD] DEFAULT (user_name()) FOR [AKOD],
 	CONSTRAINT [DF_MUNKALAP_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
@@ -3537,7 +3543,10 @@ ALTER TABLE [dbo].[MUNKALAP] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[OBJEKTUM] WITH NOCHECK ADD 
+ CREATE  INDEX [IX_MUNKALAP] ON [dbo].[MUNKALAP]([MTIP]) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[OBJEKTUM] ADD 
 	CONSTRAINT [DF_OBJEKTUM_TULAJDON] DEFAULT ('S') FOR [TULAJDON],
 	CONSTRAINT [DF_OBJEKTUM_AKTIV] DEFAULT (1) FOR [AKTIV],
 	CONSTRAINT [DF_OBJEKTUM_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
@@ -3549,111 +3558,99 @@ ALTER TABLE [dbo].[OBJEKTUM] WITH NOCHECK ADD
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[PERMIS] WITH NOCHECK ADD 
+ CREATE  INDEX [IX_OBJEKTUM_1] ON [dbo].[OBJEKTUM]([KAPCSOLT], [MEGNEV], [TIPUS], [TELEPHSZ], [GYSZAM]) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[PERMIS] ADD 
 	CONSTRAINT [PK_PERMIS] PRIMARY KEY  NONCLUSTERED 
 	(
 		[OBJTIP]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[RAKTAR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[RAKTAR] ADD 
 	CONSTRAINT [DF_RAKTAR_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_RAKTAR_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[RAKTHISTORY] WITH NOCHECK ADD 
+ CREATE  UNIQUE  INDEX [fk_lekerd] ON [dbo].[RAKTAR]([OBJID], [OBJTIP], [ALLAPOT], [DOLG_ID], [SZLEVEL_SZAM], [SZLEVEL_DATUM], [DATUMIG]) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[RAKTHISTORY] ADD 
 	CONSTRAINT [DF_RAKTHISTORY_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_RAKTHISTORY_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[RAKTKEPVIS] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[RAKTKEPVIS] ADD 
 	CONSTRAINT [DF_RAKTKEPVIS_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_RAKTKEPVIS_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[SZABALYOZO_AUTOMATIKA] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZABALYOZO_AUTOMATIKA] ADD 
 	CONSTRAINT [PK_SZABALYOZO_AUTOMATIKA] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[SZABALYOZO_SZELEP] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZABALYOZO_SZELEP] ADD 
 	CONSTRAINT [PK_SZABALYOZO_SZELEP] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[SZERELVENY] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZERELVENY] ADD 
 	CONSTRAINT [PK_SZERELVENY] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[SZERZFEJ] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZERZFEJ] ADD 
 	CONSTRAINT [DF_SZERZFEJ_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_SZERZFEJ_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[SZERZTEL] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZERZTEL] ADD 
 	CONSTRAINT [DF_SZERZTEL_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_SZERZTEL_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[SZINTKAPCSOLO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZINTKAPCSOLO] ADD 
 	CONSTRAINT [PK_SZINTKAPCSOLO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[SZIVATTYU] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZIVATTYU] ADD 
 	CONSTRAINT [PK_SZIVATTYU] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[SZLA_ALT] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZLA_ALT] ADD 
 	CONSTRAINT [DF_SZLA_ALT_ZAROLT] DEFAULT (0) FOR [ZAROLT],
 	CONSTRAINT [DF_SZLA_ALT_EGYEDI] DEFAULT (0) FOR [EGYEDI],
 	CONSTRAINT [DF_SZLA_ALT_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_SZLA_ALT_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[SZLA_ALT_TET] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZLA_ALT_TET] ADD 
 	CONSTRAINT [DF_SZLA_ALT_TET_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_SZLA_ALT_TET_AKOD] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[SZUROK] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[SZUROK] ADD 
 	CONSTRAINT [PK_SZUROK] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[TAB_R01] WITH NOCHECK ADD 
-	CONSTRAINT [DF_TAB_R01_OBJTIP] DEFAULT ('?') FOR [OBJTIP],
-	CONSTRAINT [DF_TAB_R01_GYSZAM] DEFAULT ('-') FOR [GYSZAM],
-	CONSTRAINT [DF_TAB_R01_TIPUS] DEFAULT ('-') FOR [TIPUS],
-	CONSTRAINT [DF_TAB_R01_ALLAPOT] DEFAULT ('?') FOR [ALLAPOT],
-	CONSTRAINT [DF_TAB_R01_MEGJ] DEFAULT ('-') FOR [MEGJ]
-GO
-
-ALTER TABLE [dbo].[TAB_R03] WITH NOCHECK ADD 
-	CONSTRAINT [DF_TAB_R03_GYSZAM] DEFAULT ('-') FOR [GYSZAM],
-	CONSTRAINT [DF_TAB_R03_TIPUS] DEFAULT ('-') FOR [TIPUS],
-	CONSTRAINT [DF_TAB_R03_HITIDO] DEFAULT ('-') FOR [HITIDO],
-	CONSTRAINT [DF_TAB_R03_TERULET] DEFAULT ('-') FOR [TERULET],
-	CONSTRAINT [DF_TAB_R03_CIM] DEFAULT ('-') FOR [CIM],
-	CONSTRAINT [DF_TAB_R03_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
-	CONSTRAINT [DF_TAB_R03_AKOD] DEFAULT (user_name()) FOR [AKOD]
-GO
-
-ALTER TABLE [dbo].[TAB403] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB403] ADD 
 	CONSTRAINT [DF_TAB403_C62317] DEFAULT (0) FOR [C62317],
 	CONSTRAINT [DF_TAB403_C62318] DEFAULT (0) FOR [C62318],
 	CONSTRAINT [DF_TAB403_C62319] DEFAULT (0) FOR [C62319],
@@ -3662,11 +3659,11 @@ ALTER TABLE [dbo].[TAB403] WITH NOCHECK ADD
 	CONSTRAINT [DF_TAB403_C722] DEFAULT (0) FOR [C722]
 GO
 
-ALTER TABLE [dbo].[TAB403_1] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB403_1] ADD 
 	CONSTRAINT [DF_TAB403_1_MUNORA] DEFAULT (0) FOR [MUNORA]
 GO
 
-ALTER TABLE [dbo].[TAB404] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB404] ADD 
 	CONSTRAINT [DF_TAB404_E] DEFAULT (0) FOR [E],
 	CONSTRAINT [DF_TAB404_F] DEFAULT (0) FOR [F],
 	CONSTRAINT [DF_TAB404_G] DEFAULT (0) FOR [G],
@@ -3677,7 +3674,7 @@ ALTER TABLE [dbo].[TAB404] WITH NOCHECK ADD
 	CONSTRAINT [DF_TAB404_c737] DEFAULT (0) FOR [c737]
 GO
 
-ALTER TABLE [dbo].[TAB406] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB406] ADD 
 	CONSTRAINT [DF_TAB406_E] DEFAULT (0) FOR [EL],
 	CONSTRAINT [DF_TAB406_F] DEFAULT (0) FOR [FO],
 	CONSTRAINT [DF_TAB406_GB] DEFAULT (0) FOR [GB],
@@ -3689,12 +3686,12 @@ ALTER TABLE [dbo].[TAB406] WITH NOCHECK ADD
 	CONSTRAINT [DF_TAB406_SZUM] DEFAULT (0) FOR [SZUM]
 GO
 
-ALTER TABLE [dbo].[TAB407] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB407] ADD 
 	CONSTRAINT [DF_TAB407_CIM] DEFAULT (null) FOR [CIM],
 	CONSTRAINT [DF_TAB407_ORA] DEFAULT (0) FOR [ORA]
 GO
 
-ALTER TABLE [dbo].[TAB408] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB408] ADD 
 	CONSTRAINT [DF_TAB408_SZOLGJELL_ID] DEFAULT ('-') FOR [SZOLGJELL_ID],
 	CONSTRAINT [DF_TAB408_SZOLGJELL] DEFAULT ('-') FOR [SZOLGJELL],
 	CONSTRAINT [DF_TAB408_MUNKALAP_ID] DEFAULT (0) FOR [MUNKALAP_ID],
@@ -3703,261 +3700,246 @@ ALTER TABLE [dbo].[TAB408] WITH NOCHECK ADD
 	CONSTRAINT [DF_TAB408_MKAP] DEFAULT ('-') FOR [DOLG]
 GO
 
-ALTER TABLE [dbo].[TARCSA] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TAB_R01] ADD 
+	CONSTRAINT [DF_TAB_R01_OBJTIP] DEFAULT ('?') FOR [OBJTIP],
+	CONSTRAINT [DF_TAB_R01_GYSZAM] DEFAULT ('-') FOR [GYSZAM],
+	CONSTRAINT [DF_TAB_R01_TIPUS] DEFAULT ('-') FOR [TIPUS],
+	CONSTRAINT [DF_TAB_R01_ALLAPOT] DEFAULT ('?') FOR [ALLAPOT],
+	CONSTRAINT [DF_TAB_R01_MEGJ] DEFAULT ('-') FOR [MEGJ]
+GO
+
+ALTER TABLE [dbo].[TAB_R03] ADD 
+	CONSTRAINT [DF_TAB_R03_GYSZAM] DEFAULT ('-') FOR [GYSZAM],
+	CONSTRAINT [DF_TAB_R03_TIPUS] DEFAULT ('-') FOR [TIPUS],
+	CONSTRAINT [DF_TAB_R03_HITIDO] DEFAULT ('-') FOR [HITIDO],
+	CONSTRAINT [DF_TAB_R03_TERULET] DEFAULT ('-') FOR [TERULET],
+	CONSTRAINT [DF_TAB_R03_CIM] DEFAULT ('-') FOR [CIM],
+	CONSTRAINT [DF_TAB_R03_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
+	CONSTRAINT [DF_TAB_R03_AKOD] DEFAULT (user_name()) FOR [AKOD]
+GO
+
+ALTER TABLE [dbo].[TARCSA] ADD 
 	CONSTRAINT [PK_TARCSA] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[TARTALY] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TARTALY] ADD 
 	CONSTRAINT [PK_TARTALY] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[TELJM] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TELJM] ADD 
 	CONSTRAINT [DF_TELJM_AKOD] DEFAULT (user_name()) FOR [AKOD],
 	CONSTRAINT [DF_TELJM_ADATUM] DEFAULT (getdate()) FOR [ADATUM]
 GO
 
-ALTER TABLE [dbo].[TERMALKUT] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TERMALKUT] ADD 
 	CONSTRAINT [PK_TERMALKUT] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[TERMELO_CSO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[TERMELO_CSO] ADD 
 	CONSTRAINT [PK_TERMELO_CSO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[VENTILLATOR] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[VENTILLATOR] ADD 
 	CONSTRAINT [PK_VENTILLATOR] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[VIZLAGYITO] WITH NOCHECK ADD 
+ALTER TABLE [dbo].[VIZLAGYITO] ADD 
 	CONSTRAINT [PK_VIZLAGYITO] PRIMARY KEY  NONCLUSTERED 
 	(
 		[ID]
 	)  ON [PRIMARY] 
 GO
 
- CREATE  INDEX [IX_KAPCSOLAT_1] ON [dbo].[KAPCSOLAT]([ID1]) ON [PRIMARY]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[ARAMKOR]  TO [public]
 GO
 
- CREATE  INDEX [IX_KAPCSOLAT_2] ON [dbo].[KAPCSOLAT]([ID2]) ON [PRIMARY]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[ARVALT]  TO [public]
 GO
 
- CREATE  INDEX [IX_MUNKALAP] ON [dbo].[MUNKALAP]([MTIP]) ON [PRIMARY]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[BERRAKTAR]  TO [public]
 GO
 
- CREATE  INDEX [IX_OBJEKTUM_1] ON [dbo].[OBJEKTUM]([KAPCSOLT], [MEGNEV], [TIPUS], [TELEPHSZ], [GYSZAM]) ON [PRIMARY]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[BIZTONSAGI_SZELEP]  TO [public]
 GO
 
- CREATE  UNIQUE  INDEX [fk_lekerd] ON [dbo].[RAKTAR]([OBJID], [OBJTIP], [ALLAPOT], [DOLG_ID], [SZLEVEL_SZAM], [SZLEVEL_DATUM], [DATUMIG]) ON [PRIMARY]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[BOYLER]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[ARAMKOR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[DEMAG_EMELOGEP]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[ARVALT]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[DOLGOZO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[BERRAKTAR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[EPULET]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[BIZTONSAGI_SZELEP]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[ERZEKELO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[BOYLER]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[FAZISJAVITO_KONDENZATOR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[DEMAG_EMELOGEP]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[FOGYT]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[DOLGOZO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[FOKAPCSOLO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[EPULET]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[FREKVENCIAVALTO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[ERZEKELO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[FUTOMU]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[FAZISJAVITO_KONDENZATOR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[GAZNYOMAS_MERO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[FOGYT]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[GAZNYOMAS_SZABALYOZO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[FOKAPCSOLO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[GAZVESZELY_JELZO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[FREKVENCIAVALTO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[GRID_FEJLEC]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[FUTOMU]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HAJTOMU]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[GAZNYOMAS_MERO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HAZAK]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[GAZNYOMAS_SZABALYOZO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HOCSERELO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[GAZVESZELY_JELZO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HOKOZPONT]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[GRID_FEJLEC]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HOOSSZEGZO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[HAJTOMU]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[JEGYZ]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[HAZAK]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[JOGOS]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[HOCSERELO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KAPCSOLAT]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[HOKOZPONT]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KAPCSTAB]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[HOOSSZEGZO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KARBAN]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[JEGYZ]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KARBTERV]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[JOGOS]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KAZAN]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KAPCSOLAT]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KAZANEGO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KAPCSTAB]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KEPVIS]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KARBAN]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KEPV_TET]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KARBTERV]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KODLEIR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KAZAN]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KODSZOT]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KAZANEGO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KOLTSEGMEGOSZTO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KEPV_TET]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KOMPRESSZOR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KEPVIS]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[KONTIR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KODLEIR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[LAKAS]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KODSZOT]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[LANGOR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KOLTSEGMEGOSZTO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[LEPCSOHAZ]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KOMPRESSZOR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[MELEGVIZ_TAROLO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[KONTIR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[MLAPTAB]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[LAKAS]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[MOTOR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[LANGOR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[MUNKALAP]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[LEPCSOHAZ]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[OBJEKTUM]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[MELEGVIZ_TAROLO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[PERMIS]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[MLAPTAB]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[RAKTAR]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[MOTOR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[RAKTKEPVIS]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[MUNKALAP]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZABALYOZO_AUTOMATIKA]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[OBJEKTUM]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZABALYOZO_SZELEP]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[PERMIS]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZERELVENY]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[RAKTAR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZERZFEJ]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[RAKTKEPVIS]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZERZTEL]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZABALYOZO_AUTOMATIKA]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZINTKAPCSOLO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZABALYOZO_SZELEP]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZIVATTYU]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZERELVENY]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZLA_ALT]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZERZFEJ]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZLA_ALT_TET]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZERZTEL]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZINTKAPCSOLO]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZIVATTYU]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZLA_ALT]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZLA_ALT_TET]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[SZUROK]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TAB_LABORO]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TAB_PLOMB]  TO [public]
-GO
-
-GRANT  SELECT  ON [dbo].[TAB_R01]  TO [public]
-GO
-
-GRANT  SELECT  ON [dbo].[TAB_R03]  TO [public]
-GO
-
-GRANT  SELECT  ON [dbo].[TAB_R04]  TO [public]
-GO
-
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TAB_VIZORA]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZUROK]  TO [public]
 GO
 
 GRANT  SELECT ,  DELETE  ON [dbo].[TAB403]  TO [public]
@@ -3981,32 +3963,53 @@ GO
 GRANT  SELECT  ON [dbo].[TAB413]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TARCSA]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB_LABORO]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TARTALY]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB_PLOMB]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TELJM]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB_R01]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TERMALKUT]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB_R03]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[TERMELO_CSO]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB_R04]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[VENTILLATOR]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB_VIZORA]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[VIZLAGYITO]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TARCSA]  TO [public]
 GO
 
-GRANT  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON [dbo].[VIZORA]  TO [public]
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TARTALY]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TELJM]  TO [public]
 GO
+
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TERMALKUT]  TO [public]
+GO
+
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TERMELO_CSO]  TO [public]
+GO
+
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[VENTILLATOR]  TO [public]
+GO
+
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[VIZLAGYITO]  TO [public]
+GO
+
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[VIZORA]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  View dbo.Q271    Script Date: 2000. 07. 04. 18:55:51 ******/
@@ -4031,15 +4034,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '271'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q271]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4078,15 +4087,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '272'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q272]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4125,15 +4140,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '274'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q274]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4172,15 +4193,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '275'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q275]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4219,15 +4246,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '276'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q276]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4266,15 +4299,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '277'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q277]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4313,15 +4352,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '278'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q278]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4360,15 +4405,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '279'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q279]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4407,15 +4458,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '281'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q281]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4454,15 +4511,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '282'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q282]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4501,15 +4564,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '283'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q283]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4548,15 +4617,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '284'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q284]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4595,15 +4670,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '285'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q285]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4642,15 +4723,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '288'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q288]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4689,15 +4776,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '289'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q289]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4732,15 +4825,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '291'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q291]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4775,15 +4874,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '293'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q293]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4829,15 +4934,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q296]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4876,15 +4987,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '297'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q297]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4919,15 +5036,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '298'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q298]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4950,15 +5073,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '299')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q299]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -4993,15 +5122,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '300'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q300]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5022,15 +5157,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '302')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q302]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5065,15 +5206,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '304'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q304]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5108,15 +5255,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '305'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q305]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5151,15 +5304,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '306'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q306]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5194,15 +5353,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '307'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q307]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5237,15 +5402,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '308'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q308]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5280,15 +5451,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '309'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q309]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5318,15 +5495,21 @@ FROM KONTIR
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q310]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5340,15 +5523,21 @@ WHERE KIJELOLT = 'y'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q310A]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE VIEW dbo.Q310D
 AS
@@ -5359,15 +5548,21 @@ WHERE (FSZAM = '736') OR
     (FSZAM = '62317') OR
     (FSZAM = '62325')
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q310D]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5402,15 +5597,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '311'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q311]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5449,15 +5650,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '312'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q312]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5496,15 +5703,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '313'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q313]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5543,15 +5756,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '314'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q314]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5590,15 +5809,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '315'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q315]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5637,15 +5862,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '316'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q316]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5684,15 +5915,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '317'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q317]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5731,15 +5968,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '318'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q318]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5778,15 +6021,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '319'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q319]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5825,15 +6074,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '320'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q320]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5872,15 +6127,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '331'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q321]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5919,15 +6180,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '322'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q322]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -5966,15 +6233,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '323'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q323]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6013,15 +6286,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '324'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q324]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6060,15 +6339,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '325'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q325]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6107,15 +6392,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '326'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q326]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6154,15 +6445,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '327'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q327]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6201,15 +6498,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '328'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q328]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6248,15 +6551,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '329'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q329]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6295,15 +6604,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '330'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q330]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6338,15 +6653,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '331'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q331]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6381,15 +6702,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '332'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q332]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6424,15 +6751,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '333'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q333]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6468,15 +6801,21 @@ FROM DOLGOZO
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q334]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6507,15 +6846,21 @@ WHERE UGYFAZ = '05' AND KODTIP = '335'
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q335]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6546,15 +6891,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '336')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q336]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6577,15 +6928,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '337')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q337]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6606,15 +6963,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '338')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q338]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6635,15 +6998,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '339')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q339]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6664,15 +7033,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '340')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q340]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6693,15 +7068,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '341')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q341]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6722,15 +7103,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '342')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q342]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6751,15 +7138,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '343')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q343]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6782,15 +7175,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '344')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q344]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6804,15 +7203,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '345')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q345]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6826,15 +7231,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '346')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q346]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6848,15 +7259,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '347')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q347]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6870,15 +7287,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '348')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q348]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6892,15 +7315,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '349')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q349]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6914,15 +7343,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '350')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q350]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6936,15 +7371,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '351')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q351]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6958,15 +7399,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '352')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q352]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -6980,15 +7427,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '353')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q353]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7002,15 +7455,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '354')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q354]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7024,15 +7483,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '355')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q355]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7046,15 +7511,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '356')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q356]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7068,15 +7539,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '357')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q357]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7090,15 +7567,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '358')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q358]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7112,15 +7595,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '359')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q359]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7134,15 +7623,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '360')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q360]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7156,15 +7651,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '361')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q361]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7178,15 +7679,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '362')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q362]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7200,15 +7707,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '363')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q363]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -7222,15 +7735,21 @@ WHERE (UGYFAZ = '05') AND (KODTIP = '364')
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q364]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE VIEW dbo.Q365
@@ -7240,15 +7759,21 @@ FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '365')
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q365]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE VIEW dbo.Q366
@@ -7258,15 +7783,21 @@ FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '366')
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q366]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE VIEW dbo.Q367
@@ -7276,15 +7807,21 @@ FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '367')
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q367]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE VIEW dbo.Q368
 AS
@@ -7292,15 +7829,21 @@ SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '368')
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q368]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE VIEW dbo.Q369
 AS
@@ -7308,15 +7851,21 @@ SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '369')
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q369]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE VIEW dbo.Q370
 AS
@@ -7324,15 +7873,21 @@ SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '370')
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[Q370]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR1
 AS
@@ -7354,15 +7909,21 @@ AS
 	WHERE
 		SOR = 1
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR1]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR10
 AS
@@ -7384,15 +7945,21 @@ AS
 	WHERE
 		SOR = 10
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR10]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR11
 AS
@@ -7414,15 +7981,21 @@ AS
 	WHERE
 		SOR = 11
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR11]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR12
 AS
@@ -7444,15 +8017,21 @@ AS
 	WHERE
 		SOR = 12
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR12]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR13
 AS
@@ -7474,15 +8053,21 @@ AS
 	WHERE
 		SOR = 13
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR13]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR14
 AS
@@ -7504,15 +8089,21 @@ AS
 	WHERE
 		SOR = 14
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR14]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR15
 AS
@@ -7534,15 +8125,21 @@ AS
 	WHERE
 		SOR = 15
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR15]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR16
 AS
@@ -7564,15 +8161,21 @@ AS
 	WHERE
 		SOR = 16
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR16]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR17
 AS
@@ -7594,15 +8197,21 @@ AS
 	WHERE
 		SOR = 17
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR17]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR18
 AS
@@ -7624,15 +8233,21 @@ AS
 	WHERE
 		SOR = 18
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR18]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR19
 AS
@@ -7654,15 +8269,21 @@ AS
 	WHERE
 		SOR = 19
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR19]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR2
 AS
@@ -7684,15 +8305,21 @@ AS
 	WHERE
 		SOR = 2
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR2]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR20
 AS
@@ -7714,15 +8341,21 @@ AS
 	WHERE
 		SOR = 20
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR20]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR21
 AS
@@ -7744,15 +8377,21 @@ AS
 	WHERE
 		SOR = 21
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR21]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR22
 AS
@@ -7774,15 +8413,21 @@ AS
 	WHERE
 		SOR = 22
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR22]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR23
 AS
@@ -7804,15 +8449,21 @@ AS
 	WHERE
 		SOR = 23
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR23]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE VIEW dbo.QLABOR24
 AS
@@ -7822,15 +8473,21 @@ SELECT MUN AS MUN24, SORSZ AS SOR24, P AS P24,
 FROM TAB_LABORO
 WHERE (SOR = 24)
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR24]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE VIEW dbo.QLABOR25
 AS
@@ -7840,15 +8497,21 @@ SELECT MUN AS MUN25, SORSZ AS SOR25, P AS P25,
 FROM TAB_LABORO
 WHERE (SOR = 25)
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR25]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR3
 AS
@@ -7870,15 +8533,21 @@ AS
 	WHERE
 		SOR = 3
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR3]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR4
 AS
@@ -7900,15 +8569,21 @@ AS
 	WHERE
 		SOR = 4
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR4]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR5
 AS
@@ -7930,15 +8605,21 @@ AS
 	WHERE
 		SOR = 5
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR5]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR6
 AS
@@ -7960,15 +8641,21 @@ AS
 	WHERE
 		SOR = 6
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR6]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR7
 AS
@@ -7990,15 +8677,21 @@ AS
 	WHERE
 		SOR = 7
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR7]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR8
 AS
@@ -8020,15 +8713,21 @@ AS
 	WHERE
 		SOR = 8
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR8]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR9
 AS
@@ -8050,15 +8749,21 @@ AS
 	WHERE
 		SOR = 9
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QLABOR9]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8075,15 +8780,21 @@ GROUP BY KOZNEV, KOZCIM
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  SELECT  ON [dbo].[QTAB413]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE Procedure sp_CheckPermis
@@ -8198,15 +8909,21 @@ SELECT @RET
 RETURN @RET
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_CheckPermis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8228,15 +8945,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelArvalt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_DelDolgozo
@@ -8262,15 +8985,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelDolgozo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8290,15 +9019,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelEgyediSzlatet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8323,15 +9058,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelKarbterv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8356,15 +9097,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8400,15 +9147,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelKontir]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_DelObj
@@ -8617,15 +9370,21 @@ BEGIN
 END
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelObj]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_DelRaktarKepv
 @pID INTEGER
@@ -8636,15 +9395,21 @@ FROM
 WHERE
 	ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelRaktarKepv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8669,15 +9434,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelSzerzfej]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8702,15 +9473,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelSzerztet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8735,15 +9512,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelSzlaEgyedi]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -8779,15 +9562,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DelTeljm]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 /****** Object:  Stored Procedure dbo.sp_Duplikal    Script Date: 2000. 07. 04. 18:56:11 ******/
 CREATE PROCEDURE sp_Duplikal
@@ -9428,15 +10217,21 @@ EXEC sp_UpdObjUzem @RET, @FUR_ATM, @PRIMELL, @KAPCSOLAS, @TOLTESMOD, @FUTOTT, @S
 SELECT @RET
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Duplikal]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9555,15 +10350,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DuplikalEpul]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9674,15 +10475,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_DuplikalMunk]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9715,15 +10522,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillArvalt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9787,15 +10600,21 @@ END
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillConnected]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9836,15 +10655,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillDolgozo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9881,15 +10706,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillEgyediSzlaTet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_FillEpuletByFutomu
 @pFUTOMU_ID INTEGER = NULL
@@ -9953,15 +10784,21 @@ SET NOCOUNT OFF
 SELECT * FROM #ZZZ
 DROP TABLE #ZZZ
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillEpuletByFutomu]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -9994,15 +10831,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillKarb]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10031,15 +10874,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_FillLaborJegyz
 @pFUTOMU_ID INTEGER
@@ -10055,15 +10904,21 @@ WHERE
 ORDER BY
 	LABOR.ID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillLaborJegyz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10099,15 +10954,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillLakasByEpulet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_FillMunkalapJegyz
 AS
@@ -10123,15 +10984,21 @@ WHERE
 ORDER BY
 	ID DESC
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillMunkalapJegyz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10155,15 +11022,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillMunkalapszam]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10225,15 +11098,21 @@ ELSE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillNincsKarbterv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10295,15 +11174,21 @@ END
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillNotConnected]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_FillObjMegnev
@@ -10392,15 +11277,21 @@ BEGIN
 END
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillObjMegnev]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_FillObjTelephsz
@@ -10418,15 +11309,21 @@ ORDER BY
 	TELEPHSZ
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillObjTelephsz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_FillOsszesitoSorsz
 @pDATUM DATETIME
@@ -10492,15 +11389,21 @@ WHERE
 
 SET NOCOUNT OFF
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillOsszesitoSorsz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_FillRaktarKepv
 AS
@@ -10514,15 +11417,21 @@ ORDER BY
 	CIM
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillRaktarKepv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10560,15 +11469,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillSzertet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10595,15 +11510,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillSzerzfej]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10631,15 +11552,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillSzlaEgyedi]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_FillTabPlomb
@@ -10672,15 +11599,21 @@ COMMIT TRAN
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillTabPlomb]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_FillTabVizora
@@ -10714,15 +11647,21 @@ COMMIT TRAN
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillTabVizora]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10758,15 +11697,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillTeljm]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -10802,15 +11747,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillVanKarbterv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11198,15 +12149,21 @@ RETURN @NUM_OF_SZLA
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GeneralAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11274,15 +12231,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetElozoKapcs]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11320,15 +12283,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetFszamInfo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11366,15 +12335,21 @@ FROM
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetGridHeader]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_GetInfoAlt    Script Date: 2000. 07. 04. 18:56:14 ******/
@@ -11393,15 +12368,21 @@ WHERE
 	ID = @FUTOMU_ID
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetInfoAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11441,15 +12422,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetInfoSpec]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11488,15 +12475,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetJegyzKarbInfo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11536,15 +12529,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetKapcs]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11573,15 +12572,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetKarbLekerdInfo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_GetMunkalapObj
 @OBJID INTEGER
@@ -11625,15 +12630,21 @@ ELSE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetMunkalapObj]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_GetOsszesitoSorsz
 @pSORSZ VARCHAR(2)
@@ -11646,15 +12657,21 @@ FROM
 where
 	SOR = @pSORSZ
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetOsszesitoSorsz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11695,15 +12712,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetPermis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_GetRaktKepvisInfo
 @pID INTEGER
@@ -11723,15 +12746,21 @@ FROM
 WHERE
 	ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetRaktKepvisInfo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11761,15 +12790,21 @@ SELECT @PREV_NOTERT
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetSzertetOsszeg]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11793,15 +12828,21 @@ SELECT @MUNORA
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_GetTeljmSum]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_InsArvalt    Script Date: 2000. 07. 04. 18:56:14 ******/
@@ -11849,15 +12890,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsArvalt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_InsDolgozo
@@ -11899,15 +12946,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsDolgozo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -11955,15 +13008,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsEgyediSzlatet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12075,15 +13134,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsEpul]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12122,15 +13187,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsJegyz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12203,15 +13274,21 @@ END
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsKarban]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12316,15 +13393,21 @@ COMMIT TRAN
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsKarbterv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12368,15 +13451,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12418,15 +13507,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsKontir]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_InsLabor
 @TIPUS VARCHAR(1),
@@ -12505,15 +13600,21 @@ COMMIT TRAN
 SELECT @RET
 RETURN @RET
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsLabor]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -12636,15 +13737,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsMunkalap]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_InsObjAlt
@@ -12900,15 +14007,21 @@ SELECT @RET
 RETURN @RET
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsObjAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_InsRaktarKepv
 @ID INTEGER=NULL,
@@ -12943,15 +14056,21 @@ ELSE
 	EXEC sp_UpdRaktarKepv @ID, @NEV, @CIM, @LAK_TEL, @MOB_TEL, @MUN_TEL, @MEGB_NEV, @MEGB_LAK_TEL, @MEGB_MOB_TEL, @MEGB_MUN_TEL
 	END
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsRaktarKepv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -13019,15 +14138,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsSzerzfej]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -13081,15 +14206,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsSzerztet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -13148,15 +14279,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsSzlaEgyedi]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -13202,15 +14339,21 @@ RETURN @RET
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_InsTeljm]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Jegyzokonyv
 @pJTIP VARCHAR(2),
@@ -13480,15 +14623,21 @@ ELSE IF @pJTIP = '8'
 	END
 	
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Jegyzokonyv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Kapcsol
 @pID1 INTEGER,
@@ -13510,15 +14659,21 @@ SET
 WHERE
 	ID = @pID2
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Kapcsol]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LaborOsszesito
 @pDATUM AS VARCHAR(20)
@@ -13578,15 +14733,21 @@ FROM
 	ON QLABOR3.MUN3 <> QLABOR2.MUN2)
 	ON QLABOR2.MUN2 <> QLABOR1.MUN1
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LaborOsszesito]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdAlt
 @pOBJTIP VARCHAR(2),
@@ -14497,15 +15658,21 @@ ELSE*/ IF @pOBJTIP = '03'
 			OBJEKTUM.ID	= coalesce(@pID,OBJEKTUM.ID)
 		END
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdBerRaktar
 /*
@@ -14537,15 +15704,21 @@ WHERE
 ORDER BY
 	O.MEGNEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdBerRaktar]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdBerRaktarSz
 /*
@@ -14573,15 +15746,21 @@ WHERE
 ORDER BY
 	O.MEGNEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdBerRaktarSz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -14621,15 +15800,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdDolgozo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -14754,15 +15939,21 @@ ELSE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdHierarchia]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdJegyz
 @pJTIP VARCHAR(2)=NULL,
@@ -14868,15 +16059,21 @@ ELSE
 			JEGYZSZ
 	END
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdJegyz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 --KEP680
 CREATE PROCEDURE sp_LekerdKarban
@@ -14919,15 +16116,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdKarban]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdKarbterv
 @pMUVEL VARCHAR(3)=NULL,
@@ -15180,15 +16383,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdKarbterv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -15253,15 +16462,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -15304,15 +16519,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdKontir]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdMlap
 @MLAPTIP VARCHAR(1)=NULL,
@@ -15378,15 +16599,21 @@ WHERE
 ORDER BY
 	MUNKALAP.ID DESC
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdMlap]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LekerdRaktar
 @pOBJTIP VARCHAR(2),
@@ -15606,12 +16833,18 @@ ELSE
 	
 DROP TABLE #ZZZ
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -15706,15 +16939,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdSzerz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -15817,15 +17056,21 @@ ELSE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdSzlaAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -15926,15 +17171,21 @@ DROP TABLE #ZZZ
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LekerdSzolg]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -15964,15 +17215,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_ListKapcsID]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadBerRaktarDb
 /*
@@ -15994,15 +17251,21 @@ WHERE
 	AND ((@pDATUMTOL IS NULL AND @pDATUMIG IS NULL)
 		OR (@pDATUMTOL IS NOT NULL AND @pDATUMIG IS NOT NULL AND BEKERUL_DAT BETWEEN @pDATUMTOL AND @pDATUMIG))
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadBerRaktarDb]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadBerRaktarSzDb
 /*
@@ -16023,15 +17286,21 @@ WHERE
 	AND ((O.KAPCSOLT = 0)
 		AND (NOT EXISTS(SELECT ID FROM BERRAKTAR WHERE OBJID=O.ID)))
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadBerRaktarSzDb]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_LoadDolgozo
@@ -16058,15 +17327,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadDolgozo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -16149,15 +17424,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadEpul]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadJegyz
 @pID INTEGER
@@ -16169,15 +17450,21 @@ FROM
 WHERE
 	JEGYZSZ = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadJegyz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadJegyzDb
 @pJTIP VARCHAR(2)=NULL,
@@ -16232,15 +17519,21 @@ ELSE
 				OR (@pDATUMTOL IS NOT NULL AND @pDATUMIG IS NOT NULL AND JDAT BETWEEN @pDATUMTOL AND @pDATUMIG))
 	END
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadJegyzDb]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -16267,15 +17560,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -16312,15 +17611,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadKontir]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadLabor
 @pID INTEGER
@@ -16343,15 +17648,21 @@ FROM
 WHERE
 	LABOR.ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadLabor]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadMlapDb
 @MLAPTIP VARCHAR(1)=NULL,
@@ -16403,22 +17714,26 @@ WHERE
 	AND ((@TELEPHSZ IS NULL) OR (@TELEPHSZ IS NOT NULL AND OBJEKTUM.TELEPHSZ=@TELEPHSZ))
 	AND ((@MUNELV IS NULL) OR (@MUNELV IS NOT NULL AND MUNELV=@MUNELV))
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadMlapDb]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
-
-
-
+SET ANSI_NULLS ON 
+GO
 
 CREATE PROCEDURE sp_LoadMunkalap
 @pID INTEGER
 AS
+
+SET NOCOUNT ON
 DECLARE @OBJTIP VARCHAR(2)	--Lekérdezzük a munkalaphoz kapcsolt objektum típusát
 SELECT
 	@OBJTIP = OBJTIP
@@ -16427,161 +17742,85 @@ FROM
 WHERE
 	MUNKALAP.ID = @pID
 
-IF @OBJTIP = '01'	--Épület esetén EPUL_ID-ként adjuk visza az obj. id-t
-BEGIN
-	SELECT
-		BEJDAT,
-		BEJNEV,
-		TIPUSH,
-		HIBLEIR,
-		SZEREGYS,
-		MFDOLG,
-		MUNELV,
-		IDOTOL,
-		IDOIG,
-		SZOLGTIP,
-		MUNVEGZ,
-		SZOLGJELL,
-		OBJTIP,
-		OBJID,-- AS EPUL_ID,
-		KARBTIP,
-		MUVEL,
-		FELTIP,
-		FELLEIR,
-		JELENSTIP,
-		JELENSLEIR,
-		MUVLEIR,
-		INTEZ,
-		VONEV,
-		MUNKALAP.ID AS SORSZ,
-		NAPSZAM,
-		KIALLDAT,
-		MUNKALAP.FSZAM,
-		SZOLTIP,
-		MUNSZ,
-		MKAP,
-		ALLAPOT,
-		MVDOLG,
-		MVDAT,
-		LAKAS,
-		REF,
-		PLOMBAZAS,
-		UJ,
-		FELUJITOTT
-	FROM
-		OBJEKTUM RIGHT JOIN MUNKALAP ON OBJEKTUM.ID = MUNKALAP.OBJID
-	WHERE
-		MUNKALAP.ID = @pID
-END
-ELSE IF @OBJTIP = '02'	--Lakás esetén LAK_ID-ként adjuk visza az obj. id-t
-BEGIN
-	SELECT
-		BEJDAT,
-		BEJNEV,
-		TIPUSH,
-		HIBLEIR,
-		SZEREGYS,
-		MFDOLG,
-		MUNELV,
-		IDOTOL,
-		IDOIG,
-		SZOLGTIP,
-		MUNVEGZ,
-		SZOLGJELL,
-		OBJTIP,
-		OBJID,-- AS LAK_ID,
-		EPULET.ID AS EPULID,
-		KARBTIP,
-		MUVEL,
-		FELTIP,
-		FELLEIR,
-		JELENSTIP,
-		JELENSLEIR,
-		MUVLEIR,
-		INTEZ,
-		VONEV,
-		MUNKALAP.ID AS SORSZ,
-		NAPSZAM,
-		KIALLDAT,
-		MUNKALAP.FSZAM,
-		SZOLTIP,
-		MUNSZ,
-		MKAP,
-		ALLAPOT,
-		MVDOLG,
-		MVDAT,
-		LAKAS,
-		REF,
-		PLOMBAZAS,
-		UJ,
-		FELUJITOTT
-	FROM
-		EPULET RIGHT JOIN
-			(KAPCSOLAT INNER JOIN
-				(OBJEKTUM RIGHT JOIN MUNKALAP ON OBJEKTUM.ID = MUNKALAP.OBJID)
-			ON KAPCSOLAT.ID2=OBJEKTUM.ID)
-		ON EPULET.ID = KAPCSOLAT.ID1
-	WHERE
-		MUNKALAP.ID = @pID
-END
-ELSE	--Egyéb objektum esetén pedig OBJID-ként adjuk visza az obj. id-t
-BEGIN
-	SELECT
-		BEJDAT,
-		BEJNEV,
-		TIPUSH,
-		HIBLEIR,
-		SZEREGYS,
-		MFDOLG,
-		MUNELV,
-		IDOTOL,
-		IDOIG,
-		SZOLGTIP,
-		MUNVEGZ,
-		SZOLGJELL,
-		OBJTIP,
-		OBJID,
-		KARBTIP,
-		MUVEL,
-		FELTIP,
-		FELLEIR,
-		JELENSTIP,
-		JELENSLEIR,
-		MUVLEIR,
-		INTEZ,
-		VONEV,
-		MUNKALAP.ID AS SORSZ,
-		NAPSZAM,
-		KIALLDAT,
-		MUNKALAP.FSZAM,
-		SZOLTIP,
-		MUNSZ,
-		MKAP,
-		ALLAPOT,
-		MVDOLG,
-		MVDAT,
-		LAKAS,
-		REF,
-		PLOMBAZAS,
-		UJ,
-		FELUJITOTT
-	FROM
-		OBJEKTUM RIGHT JOIN MUNKALAP ON OBJEKTUM.ID = MUNKALAP.OBJID
-	WHERE
-		MUNKALAP.ID = @pID
-END
+DECLARE @EPUL_ID INTEGER
+IF @OBJTIP = '02'	--Lakás esetén EPUL_ID is kell
+	BEGIN
+		SELECT
+			@EPUL_ID = EPULET.ID
+		FROM
+			EPULET RIGHT JOIN
+				(KAPCSOLAT INNER JOIN
+					(OBJEKTUM RIGHT JOIN MUNKALAP ON OBJEKTUM.ID = MUNKALAP.OBJID)
+				ON KAPCSOLAT.ID2=OBJEKTUM.ID)
+			ON EPULET.ID = KAPCSOLAT.ID1
+		WHERE
+			MUNKALAP.ID = @pID
+	END
+ELSE
+	BEGIN
+		SELECT @EPUL_ID = NULL
+	END
+SET NOCOUNT OFF
 
-
+SELECT
+	BEJDAT,
+	BEJNEV,
+	TIPUSH,
+	HIBLEIR,
+	SZEREGYS,
+	MFDOLG,
+	MUNELV,
+	IDOTOL,
+	IDOIG,
+	SZOLGTIP,
+	MUNVEGZ,
+	SZOLGJELL,
+	OBJTIP,
+	OBJID,
+	@EPUL_ID AS EPULID,
+	KARBTIP,
+	MUVEL,
+	FELTIP,
+	FELLEIR,
+	JELENSTIP,
+	JELENSLEIR,
+	MUVLEIR,
+	INTEZ,
+	VONEV,
+	MUNKALAP.ID AS SORSZ,
+	NAPSZAM,
+	KIALLDAT,
+	MUNKALAP.FSZAM,
+	SZOLTIP,
+	MUNSZ,
+	MKAP,
+	ALLAPOT,
+	MVDOLG,
+	MVDAT,
+	LAKAS,
+	REF,
+	PLOMBAZAS,
+	UJ,
+	FELUJITOTT
+FROM
+	OBJEKTUM RIGHT JOIN MUNKALAP ON OBJEKTUM.ID = MUNKALAP.OBJID
+WHERE
+	MUNKALAP.ID = @pID
 
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadMunkalap]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_LoadObjAlt
@@ -16595,15 +17834,21 @@ WHERE
 	ID = @pID
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadObjAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -16968,15 +18213,21 @@ END
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadObjEgyedi]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadRaktar
 @pID INTEGER
@@ -16991,15 +18242,21 @@ FROM
 WHERE
 	BERRAKTAR.ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadRaktar]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadRaktarInfo
 @pID INTEGER
@@ -17290,15 +18547,21 @@ FROM
 DROP TABLE #ZZZ
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadRaktarInfo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadRaktarKepv
 @pID INTEGER
@@ -17310,15 +18573,21 @@ FROM
 WHERE
 	ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadRaktarKepv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadRaktarSz
 @pID INTEGER
@@ -17333,15 +18602,21 @@ FROM
 WHERE
 	O.ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadRaktarSz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -17393,15 +18668,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadSzerzfej]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -17423,15 +18704,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_LoadSzlaEgyedi]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -17496,250 +18783,21 @@ COMMIT TRAN
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeCsekk]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
 GO
 
-
-CREATE PROCEDURE sp_MakeTAB_R01
-AS
-SET NOCOUNT ON
-
---Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
-TRUNCATE TABLE TAB_R01
-*/
-DELETE FROM TAB_R01
-
-INSERT INTO
-	TAB_R01(OBJTIP, GYSZAM, TIPUS, HITIDO, ALLAPOT, DATUMTOL, MEGJ)
-SELECT
-	Q296.KODENEV,
-	OBJEKTUM.GYSZAM,
-	OBJEKTUM.TIPUS,
-	OBJEKTUM.HITIDO,
-	Q367.KODENEV,
-	RAKTAR.DATUMTOL,
-	RAKTAR.MEGJ
-FROM
-	Q367 RIGHT JOIN
-		(Q296 RIGHT JOIN
-			(RAKTAR INNER JOIN OBJEKTUM ON OBJEKTUM.ID = RAKTAR.OBJID)
-		ON Q296.KODERT = OBJEKTUM.OBJTIP)
-	ON Q367.KODERT = RAKTAR.ALLAPOT
-WHERE
-	RAKTAR.DATUMIG IS NULL
-ORDER BY
-	OBJEKTUM.OBJTIP
-	
-SET NOCOUNT OFF
-
-GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
-GO
-
-GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R01]  TO [public]
-GO
-
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
-GO
-
-
-CREATE PROCEDURE sp_MakeTAB_R03
-@pOBJTIP VARCHAR(2)
-AS
-SET NOCOUNT ON
-
---Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
-TRUNCATE TABLE TAB_R03
-*/
-DELETE FROM TAB_R03
-
-INSERT INTO
-	TAB_R03(OBJTIP, OBJID, GYSZAM, TIPUS, HITIDO, CIM, MEGJ)
-SELECT
-	O.OBJTIP,
-	O.ID,
-	O.GYSZAM,
-	O.TIPUS,
-	CONVERT(VARCHAR(4), DATEPART(year, O.HITIDO)) AS HITIDO,
-	COALESCE(O.UTCA, '?') + CHAR(32) + COALESCE(O.HSZ, '?') AS CIM,
-	R.MEGJ
-FROM
-	Q296 RIGHT JOIN
-		(RAKTAR R INNER JOIN OBJEKTUM O ON O.ID = R.OBJID)
-	ON Q296.KODERT = O.OBJTIP
-WHERE
-	R.ALLAPOT = 'E' OR R.ALLAPOT = 'J'
-	AND R.SZLEVEL_DATUM IS NULL
-	AND R.OBJTIP = @pOBJTIP
-
-
---Segédváltozók
-DECLARE @OBJ_ID INTEGER
-DECLARE @ARAMKOR_ID INTEGER
-
-DECLARE TAB_R03cursor CURSOR FAST_FORWARD FOR
-SELECT
-	OBJID
-FROM
-	TAB_R03
-
---Megnyitjuk a kurzort
-OPEN TAB_R03cursor
-
---Lekérjük az elso rekordot
-FETCH NEXT FROM TAB_R03cursor
-	INTO @OBJ_ID
-
---Amíg van következo rekord
-WHILE @@FETCH_STATUS = 0
-BEGIN
-	EXEC @ARAMKOR_ID = sp_Rekurziv @OBJ_ID,'30'
-
-	UPDATE
-		TAB_R03
-	SET
-		TERULET = OBJEKTUM.MEGNEV
-	FROM
-		OBJEKTUM
-	WHERE
-		OBJEKTUM.ID = @ARAMKOR_ID
-
-	--Lekérjük a következo rekordot
-	FETCH NEXT FROM TAB_R03cursor
-		INTO @OBJ_ID
-END
-
---Lezárjuk és töröljük a kurzort
-CLOSE TAB_R03cursor
-DEALLOCATE TAB_R03cursor
-
-SET NOCOUNT OFF
-
-
-GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
-GO
-
-GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R03]  TO [public]
-GO
-
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
-GO
-
-CREATE PROCEDURE sp_MakeTAB_R04
-@pID INTEGER
-AS
-
-SET NOCOUNT ON
-
---Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
-TRUNCATE TABLE TAB_R04
-*/
-DELETE FROM TAB_R04
-
-INSERT INTO
-	TAB_R04(
-		KEPVIS,
-		H_ID, H_GYSZAM, H_HITIDO, H_TIPUS, H_ELHELYEZ, H_IMPULZUS,
-		H_LEOLV, H_HELYZET, H_ELEKTRONIKA, H_PLOMBA, H_KULCS,
-		H_KULCS_LAKTEL, H_KULCS_MOBTEL, H_KULCS_MUNTEL,	H_TULAJDON,
-		H_MEGJ,
-		
-		V_ID, V_GYSZAM,	V_HITIDO, V_TIPUS, V_ELHELYEZ, V_IMPULZUS,
-		V_ATMERO, V_TOMEGARAM, V_PLOMBA, V_KULCS, V_KULCS_LAKTEL,
-		V_KULCS_MOBTEL, V_KULCS_MUNTEL,	V_TULAJDON,	V_MEGJ,
-		
-		E_ID, E_GYSZAM, E_HITIDO, E_TIPUS, E_ELHELYEZ, E_BENYHOSSZ,
-		E_VEZHOSSZ,	E_PLOMBA, E_PLOMBA2, E_SZUKSHOSSZ, E_KULCS,
-		E_KULCS_LAKTEL, E_KULCS_MOBTEL, E_KULCS_MUNTEL, E_TULAJDON,
-		E_MEGJ
-		)
-EXEC
-	sp_LoadRaktarInfo @pID
-
-
-DECLARE @HOOSSZEGZO_ID INTEGER
-DECLARE @VIZORA_ID INTEGER
-DECLARE @ERZEKELO_ID INTEGER
-
-DECLARE @OBJID INTEGER
-DECLARE @KEPVIS INTEGER
-SELECT @OBJID = OBJID, @KEPVIS = KEPVIS FROM RAKTAR WHERE ID = @pID
-
-DECLARE @EPULET_ID INTEGER
-DECLARE @FUTOMU_ID INTEGER
-EXEC @EPULET_ID = sp_Rekurziv @OBJID, '01' --Épület
-	--sp_Rekurziv @OBJID, '37'	--Lépcsoház
-EXEC @FUTOMU_ID = sp_Rekurziv @OBJID, '03' --Futomu
-
-SELECT @HOOSSZEGZO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
-	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '18'	--Hoösszegzo
-
-SELECT @VIZORA_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
-	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '19'	--Vízóra
-
-SELECT @ERZEKELO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
-	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '20'	--Érzékelo
-	
-DECLARE @FUTOMU_NEV VARCHAR(50)
-DECLARE @EPULET_NEV VARCHAR(50)
-SELECT @FUTOMU_NEV = MEGNEV FROM OBJEKTUM WHERE OBJEKTUM.ID = @FUTOMU_ID
-SELECT @EPULET_NEV = MEGNEV FROM OBJEKTUM WHERE OBJEKTUM.ID = @EPULET_ID
-
-UPDATE
-	TAB_R04
-SET
-	FUTOMU = @FUTOMU_NEV,
-	EPULET = @EPULET_NEV,
-	KEPVIS_NEV = K.NEV,
-	KEPVIS_CIM = K.CIM,
-	KEPVIS_LAKTEL = K.LAK_TEL,
-	KEPVIS_MOBTEL = K.MOB_TEL,
-	KEPVIS_MUNTEL = K.MUN_TEL,
-	MEGB_NEV = K.MEGB_NEV,
-	MEGB_LAKTEL = K.MEGB_LAK_TEL,
-	MEGB_MOBTEL = K.MEGB_MOB_TEL,
-	MEGB_MUNTEL = K.MEGB_MUN_TEL
-FROM
-	RAKTKEPVIS K
-WHERE
-	K.ID = @KEPVIS
-	
-UPDATE
-	TAB_R04
-SET
-	H_LEOLV = Q316.KODENEV,
-	H_HELYZET = Q365.KODENEV,
-	H_ELEKTRONIKA = Q366.KODENEV
-FROM
-	Q316 RIGHT JOIN
-		(Q365 RIGHT JOIN
-			(Q366 RIGHT JOIN HOOSSZEGZO H ON Q366.KODERT = H.ELEKTRONIKA)
-		ON Q365.KODERT = H.HELYZET)
-	ON Q316.KODERT = H.LEOLVMOD
-WHERE
-	H.ID = @HOOSSZEGZO_ID	
-	
-SET NOCOUNT OFF
-GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
-GO
-
-GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R04]  TO [public]
-GO
-
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
-GO
 
 
 
@@ -17871,15 +18929,21 @@ SET NOCOUNT OFF
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB403]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_MakeTAB404    Script Date: 2000. 07. 04. 18:56:19 ******/
@@ -18039,15 +19103,21 @@ SET NOCOUNT OFF
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB404]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_MakeTAB406    Script Date: 2000. 07. 04. 18:56:19 ******/
@@ -18161,15 +19231,21 @@ SET NOCOUNT OFF
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB406]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_MakeTAB407    Script Date: 2000. 07. 04. 18:56:19 ******/
@@ -18279,15 +19355,21 @@ SET NOCOUNT OFF
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB407]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_MakeTAB408    Script Date: 2000. 07. 04. 18:56:19 ******/
@@ -18412,15 +19494,21 @@ SET NOCOUNT OFF
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB408]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_MakeTAB413
@@ -18483,15 +19571,274 @@ COMMIT TRAN
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB413]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+CREATE PROCEDURE sp_MakeTAB_R01
+AS
+SET NOCOUNT ON
+
+--Töröljük a táblát, amibol a report táplálkozik
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
+TRUNCATE TABLE TAB_R01
+*/
+DELETE FROM TAB_R01
+
+INSERT INTO
+	TAB_R01(OBJTIP, GYSZAM, TIPUS, HITIDO, ALLAPOT, DATUMTOL, MEGJ)
+SELECT
+	Q296.KODENEV,
+	OBJEKTUM.GYSZAM,
+	OBJEKTUM.TIPUS,
+	OBJEKTUM.HITIDO,
+	Q367.KODENEV,
+	RAKTAR.DATUMTOL,
+	RAKTAR.MEGJ
+FROM
+	Q367 RIGHT JOIN
+		(Q296 RIGHT JOIN
+			(RAKTAR INNER JOIN OBJEKTUM ON OBJEKTUM.ID = RAKTAR.OBJID)
+		ON Q296.KODERT = OBJEKTUM.OBJTIP)
+	ON Q367.KODERT = RAKTAR.ALLAPOT
+WHERE
+	RAKTAR.DATUMIG IS NULL
+ORDER BY
+	OBJEKTUM.OBJTIP
+	
+SET NOCOUNT OFF
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R01]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+CREATE PROCEDURE sp_MakeTAB_R03
+@pOBJTIP VARCHAR(2)
+AS
+SET NOCOUNT ON
+
+--Töröljük a táblát, amibol a report táplálkozik
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
+TRUNCATE TABLE TAB_R03
+*/
+DELETE FROM TAB_R03
+
+INSERT INTO
+	TAB_R03(OBJTIP, OBJID, GYSZAM, TIPUS, HITIDO, CIM, MEGJ)
+SELECT
+	O.OBJTIP,
+	O.ID,
+	O.GYSZAM,
+	O.TIPUS,
+	CONVERT(VARCHAR(4), DATEPART(year, O.HITIDO)) AS HITIDO,
+	COALESCE(O.UTCA, '?') + CHAR(32) + COALESCE(O.HSZ, '?') AS CIM,
+	R.MEGJ
+FROM
+	Q296 RIGHT JOIN
+		(RAKTAR R INNER JOIN OBJEKTUM O ON O.ID = R.OBJID)
+	ON Q296.KODERT = O.OBJTIP
+WHERE
+	R.ALLAPOT = 'E' OR R.ALLAPOT = 'J'
+	AND R.SZLEVEL_DATUM IS NULL
+	AND R.OBJTIP = @pOBJTIP
+
+
+--Segédváltozók
+DECLARE @OBJ_ID INTEGER
+DECLARE @ARAMKOR_ID INTEGER
+
+DECLARE TAB_R03cursor CURSOR FAST_FORWARD FOR
+SELECT
+	OBJID
+FROM
+	TAB_R03
+
+--Megnyitjuk a kurzort
+OPEN TAB_R03cursor
+
+--Lekérjük az elso rekordot
+FETCH NEXT FROM TAB_R03cursor
+	INTO @OBJ_ID
+
+--Amíg van következo rekord
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	EXEC @ARAMKOR_ID = sp_Rekurziv @OBJ_ID,'30'
+
+	UPDATE
+		TAB_R03
+	SET
+		TERULET = OBJEKTUM.MEGNEV
+	FROM
+		OBJEKTUM
+	WHERE
+		OBJEKTUM.ID = @ARAMKOR_ID
+
+	--Lekérjük a következo rekordot
+	FETCH NEXT FROM TAB_R03cursor
+		INTO @OBJ_ID
+END
+
+--Lezárjuk és töröljük a kurzort
+CLOSE TAB_R03cursor
+DEALLOCATE TAB_R03cursor
+
+SET NOCOUNT OFF
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R03]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+CREATE PROCEDURE sp_MakeTAB_R04
+@pID INTEGER
+AS
+
+SET NOCOUNT ON
+
+--Töröljük a táblát, amibol a report táplálkozik
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
+TRUNCATE TABLE TAB_R04
+*/
+DELETE FROM TAB_R04
+
+INSERT INTO
+	TAB_R04(
+		KEPVIS,
+		H_ID, H_GYSZAM, H_HITIDO, H_TIPUS, H_ELHELYEZ, H_IMPULZUS,
+		H_LEOLV, H_HELYZET, H_ELEKTRONIKA, H_PLOMBA, H_KULCS,
+		H_KULCS_LAKTEL, H_KULCS_MOBTEL, H_KULCS_MUNTEL,	H_TULAJDON,
+		H_MEGJ,
+		
+		V_ID, V_GYSZAM,	V_HITIDO, V_TIPUS, V_ELHELYEZ, V_IMPULZUS,
+		V_ATMERO, V_TOMEGARAM, V_PLOMBA, V_KULCS, V_KULCS_LAKTEL,
+		V_KULCS_MOBTEL, V_KULCS_MUNTEL,	V_TULAJDON,	V_MEGJ,
+		
+		E_ID, E_GYSZAM, E_HITIDO, E_TIPUS, E_ELHELYEZ, E_BENYHOSSZ,
+		E_VEZHOSSZ,	E_PLOMBA, E_PLOMBA2, E_SZUKSHOSSZ, E_KULCS,
+		E_KULCS_LAKTEL, E_KULCS_MOBTEL, E_KULCS_MUNTEL, E_TULAJDON,
+		E_MEGJ
+		)
+EXEC
+	sp_LoadRaktarInfo @pID
+
+
+DECLARE @HOOSSZEGZO_ID INTEGER
+DECLARE @VIZORA_ID INTEGER
+DECLARE @ERZEKELO_ID INTEGER
+
+DECLARE @OBJID INTEGER
+DECLARE @KEPVIS INTEGER
+SELECT @OBJID = OBJID, @KEPVIS = KEPVIS FROM RAKTAR WHERE ID = @pID
+
+DECLARE @EPULET_ID INTEGER
+DECLARE @FUTOMU_ID INTEGER
+EXEC @EPULET_ID = sp_Rekurziv @OBJID, '01' --Épület
+	--sp_Rekurziv @OBJID, '37'	--Lépcsoház
+EXEC @FUTOMU_ID = sp_Rekurziv @OBJID, '03' --Futomu
+
+SELECT @HOOSSZEGZO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
+	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '18'	--Hoösszegzo
+
+SELECT @VIZORA_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
+	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '19'	--Vízóra
+
+SELECT @ERZEKELO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
+	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '20'	--Érzékelo
+	
+DECLARE @FUTOMU_NEV VARCHAR(50)
+DECLARE @EPULET_NEV VARCHAR(50)
+SELECT @FUTOMU_NEV = MEGNEV FROM OBJEKTUM WHERE OBJEKTUM.ID = @FUTOMU_ID
+SELECT @EPULET_NEV = MEGNEV FROM OBJEKTUM WHERE OBJEKTUM.ID = @EPULET_ID
+
+UPDATE
+	TAB_R04
+SET
+	FUTOMU = @FUTOMU_NEV,
+	EPULET = @EPULET_NEV,
+	KEPVIS_NEV = K.NEV,
+	KEPVIS_CIM = K.CIM,
+	KEPVIS_LAKTEL = K.LAK_TEL,
+	KEPVIS_MOBTEL = K.MOB_TEL,
+	KEPVIS_MUNTEL = K.MUN_TEL,
+	MEGB_NEV = K.MEGB_NEV,
+	MEGB_LAKTEL = K.MEGB_LAK_TEL,
+	MEGB_MOBTEL = K.MEGB_MOB_TEL,
+	MEGB_MUNTEL = K.MEGB_MUN_TEL
+FROM
+	RAKTKEPVIS K
+WHERE
+	K.ID = @KEPVIS
+	
+UPDATE
+	TAB_R04
+SET
+	H_LEOLV = Q316.KODENEV,
+	H_HELYZET = Q365.KODENEV,
+	H_ELEKTRONIKA = Q366.KODENEV
+FROM
+	Q316 RIGHT JOIN
+		(Q365 RIGHT JOIN
+			(Q366 RIGHT JOIN HOOSSZEGZO H ON Q366.KODERT = H.ELEKTRONIKA)
+		ON Q365.KODERT = H.HELYZET)
+	ON Q316.KODERT = H.LEOLVMOD
+WHERE
+	H.ID = @HOOSSZEGZO_ID	
+	
+SET NOCOUNT OFF
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R04]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18541,15 +19888,21 @@ DROP TABLE #ZZZ
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MlapObjFeltolt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18583,15 +19936,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q271]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18639,15 +19998,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q272]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18695,15 +20060,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q274]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18751,15 +20122,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q275]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18807,15 +20184,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q276]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18863,15 +20246,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q277]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18919,15 +20308,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q278]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -18975,15 +20370,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q279]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19031,15 +20432,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q281]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19087,15 +20494,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q282]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19143,15 +20556,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q283]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19199,15 +20618,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q284]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19255,15 +20680,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q285]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19311,15 +20742,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q288]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19367,15 +20804,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q289]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Q291
 AS
@@ -19388,15 +20831,21 @@ WHERE
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q291]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Q291D
 AS
@@ -19411,15 +20860,21 @@ WHERE
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q291D]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19459,15 +20914,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q293]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19497,15 +20958,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q296]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Q296_Diszp
 AS
@@ -19521,15 +20988,21 @@ WHERE
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q296_Diszp]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19577,15 +21050,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q297]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19625,15 +21104,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q298]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19661,15 +21146,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q299]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19709,15 +21200,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q300]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19743,15 +21240,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q302]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19791,15 +21294,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q304]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19839,15 +21348,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q305]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19887,15 +21402,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q306]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19935,15 +21456,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q307]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -19983,15 +21510,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q308]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20031,15 +21564,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q309]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20079,15 +21618,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q310]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20108,15 +21653,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q310A]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 Create Procedure sp_Q310D
 AS
@@ -20128,15 +21679,21 @@ FROM
 ORDER BY
 	FSZAM
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q310D]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20176,15 +21733,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q311]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20232,15 +21795,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q312]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20288,15 +21857,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q313]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20344,15 +21919,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q314]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20400,15 +21981,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q315]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20456,15 +22043,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q316]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20512,15 +22105,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q317]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20568,15 +22167,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q318]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20624,15 +22229,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q319]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20680,15 +22291,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q320]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20736,15 +22353,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q321]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20792,15 +22415,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q322]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20848,15 +22477,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q323]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20904,15 +22539,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q324]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -20960,15 +22601,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q325]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21016,15 +22663,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q326]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21072,15 +22725,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q327]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21128,15 +22787,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q328]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21184,15 +22849,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q329]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21240,15 +22911,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q330]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21288,15 +22965,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q331]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21337,15 +23020,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q332]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21385,15 +23074,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q333]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21434,15 +23129,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q334]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21478,15 +23179,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q335]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21518,15 +23225,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q336]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21554,15 +23267,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q337]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21588,15 +23307,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q338]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21622,15 +23347,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q339]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21656,15 +23387,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q340]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21690,15 +23427,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q341]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21724,15 +23467,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q342]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21758,15 +23507,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q343]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21792,15 +23547,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q344]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21823,15 +23584,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q345]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21854,15 +23621,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q346]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21885,15 +23658,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q347]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21911,15 +23690,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q348]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21937,15 +23722,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q349]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21963,15 +23754,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q350]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -21989,15 +23786,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q351]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22015,15 +23818,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q352]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22041,15 +23850,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q353]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22067,15 +23882,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q354]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22093,15 +23914,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q355]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22119,15 +23946,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q356]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22145,15 +23978,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q357]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22171,15 +24010,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q358]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22197,15 +24042,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q359]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22223,15 +24074,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q360]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22249,15 +24106,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q361]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22275,15 +24138,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q362]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22301,15 +24170,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q363]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22327,15 +24202,21 @@ ORDER BY
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q364]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_Q365
@@ -22347,15 +24228,21 @@ FROM
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q365]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_Q366
@@ -22367,15 +24254,21 @@ FROM
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q366]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_Q367
@@ -22387,15 +24280,21 @@ FROM
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q367]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Q368
 AS
@@ -22406,15 +24305,21 @@ FROM
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q368]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Q369
 AS
@@ -22425,15 +24330,21 @@ FROM
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q369]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_Q370
 AS
@@ -22444,15 +24355,21 @@ FROM
 ORDER BY
 	KODENEV
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Q370]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22488,15 +24405,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_QueryParams]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_Rekurziv    Script Date: 2000. 07. 04. 18:56:27 ******/
@@ -22566,15 +24489,21 @@ END
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Rekurziv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22601,15 +24530,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_SetMunkalapAllapot]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_Szetkapcsol
@@ -22643,15 +24578,21 @@ WHERE
 COMMIT TRAN
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Szetkapcsol]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_TruncKapcsTab    Script Date: 2000. 07. 04. 18:56:27 ******/
@@ -22674,15 +24615,21 @@ DELETE FROM KAPCSTAB
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_TruncKapcsTab]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_UpdDolgozo
@@ -22722,15 +24669,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdDolgozo]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22840,15 +24793,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdEpul]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22888,15 +24847,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -22925,15 +24890,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdKontir]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -23024,15 +24995,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdMunkalap]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_UpdMunkalapVisszair
 @pID INTEGER,
@@ -23049,15 +25026,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdMunkalapVisszair]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_UpdObjAlt
 @pID INTEGER,
@@ -23117,15 +25100,21 @@ WHERE
 	ID = @pID
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdObjAlt]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -23590,15 +25579,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdObjGep]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -23964,15 +25959,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdObjUzem]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 CREATE PROCEDURE sp_UpdObjVill
@@ -24325,15 +26326,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdObjVill]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_UpdRaktarAllapot
 @pID INTEGER,
@@ -24395,15 +26402,21 @@ WHERE
 
 COMMIT TRAN
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdRaktarAllapot]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_UpdRaktarKepv
 @pID INTEGER,
@@ -24434,15 +26447,21 @@ SET
 WHERE
 	ID = @pID
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdRaktarKepv]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_UpdRaktarObj
 @KEPVIS INTEGER=NULL,
@@ -24592,15 +26611,21 @@ WHERE
 COMMIT TRAN
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdRaktarObj]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -24698,15 +26723,21 @@ COMMIT TRAN
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdSzerzfej]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -24747,15 +26778,21 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_UpdSzlaEgyedi]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 /****** Object:  Stored Procedure dbo.sp_WriteKapcsTab    Script Date: 2000. 07. 04. 18:56:29 ******/
@@ -24783,15 +26820,21 @@ EXEC
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_WriteKapcsTab]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 /****** Object:  Stored Procedure dbo.sp_WriteMlapTab    Script Date: 2000. 07. 04. 18:56:29 ******/
 CREATE PROCEDURE sp_WriteMlapTab
@@ -24902,15 +26945,21 @@ WHERE
 	MUNKALAP.ID = @pID
 END
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_WriteMlapTab]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER  ON    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER ON 
 GO
+SET ANSI_NULLS ON 
+GO
+
 
 
 
@@ -24935,8 +26984,11 @@ WHERE
 
 
 
+
 GO
-SET QUOTED_IDENTIFIER  OFF    SET ANSI_NULLS  ON 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_Zarol]  TO [public]

@@ -36,3 +36,10 @@ X Összesíto formon a 2 új futomu is szerepeljen
 	EXE
 
 Telepítve:
+-----------------------------------------------------------------------------------
+2006.10.17.
+X Munkalap kiállítási dátumán utólag ne lehessen változtatni.
+	sp_LoadMunkalap
+	EXE
+	
+Telepítve:

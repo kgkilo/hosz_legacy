@@ -302,7 +302,7 @@ Begin VB.Form Form001a
       TabIndex        =   24
       Top             =   2790
       Width           =   2310
-      Begin VB.OptionButton Option1 
+      Begin VB.OptionButton optAllapot 
          Caption         =   "Visszaérkezett"
          Height          =   285
          Index           =   4
@@ -311,7 +311,7 @@ Begin VB.Form Form001a
          Top             =   1665
          Width           =   1680
       End
-      Begin VB.OptionButton Option1 
+      Begin VB.OptionButton optAllapot 
          Caption         =   "Sztornó"
          Height          =   285
          Index           =   3
@@ -320,7 +320,7 @@ Begin VB.Form Form001a
          Top             =   1215
          Width           =   1140
       End
-      Begin VB.OptionButton Option1 
+      Begin VB.OptionButton optAllapot 
          Caption         =   "Nyomtatott"
          Height          =   285
          Index           =   2
@@ -329,7 +329,7 @@ Begin VB.Form Form001a
          Top             =   765
          Width           =   1725
       End
-      Begin VB.OptionButton Option1 
+      Begin VB.OptionButton optAllapot 
          Caption         =   "Elõjegyzett"
          Height          =   285
          Index           =   1
@@ -1023,7 +1023,7 @@ End Sub
 Private Sub cmbSzolgjell_Change()
     Dim szolgJell As String
     If mode = 0 Then
-        szolgJell = GetComboErtek(cmbSZOLGJELL)
+        szolgJell = GetComboErtek(cmbSzolgjell)
         Select Case szolgJell
             Case "LE", "LA":
                 SetComboVal cmbMUVEL, "BHJ"
@@ -1112,13 +1112,13 @@ End Sub
 Private Sub cmdOK_Click()
     Screen.MousePointer = vbHourglass
     
-    If Option1(1) = True Then
+    If optAllapot(1) = True Then        'Elojegyzett
         txtAllapot = "1"
-    ElseIf Option1(2) = True Then
+    ElseIf optAllapot(2) = True Then    'Nyomtatott
         txtAllapot = "2"
-    ElseIf Option1(3) = True Then
+    ElseIf optAllapot(3) = True Then    'Sztorno
         txtAllapot = "3"
-    ElseIf Option1(4) = True Then
+    ElseIf optAllapot(4) = True Then    'Visszaerkezett
         txtAllapot = "4"
     End If
     
@@ -1174,22 +1174,22 @@ Private Sub Form_Load()
     KeyPreview = True
     SetCombo Me
     
-    If mode <> 0 Then
+    If mode <> 0 Then   'View/Edit record, recordId = mode
         TipushFriss = 0
         util.RekordFeltolt Me, "MUNKALAP", mode
-        Option1.Item(txtAllapot) = True
+        optAllapot.Item(txtAllapot) = True
         
-        If txtAllapot = 3 Then
+        If txtAllapot = 3 Then      'Sztorno
             spcALLAPOT.Enabled = False
         End If
         
+        txtKIALLDAT.Locked = True   'Kiallitas datuma nem javithato utolag
         If txtREF <> "" Then
             txtNAPSZAM.Locked = True
             txtBEJDAT.Locked = True
-            txtKIALLDAT.Locked = True
             cmbSZEREGYS.Locked = True
             cmbMFDOLG.Locked = True
-            cmbSZOLGJELL.Locked = True
+            cmbSzolgjell.Locked = True
             'txtBEJNEV.Locked = True
             cmbFSZAM.Locked = True
             cmbTIPUSH.Locked = True
@@ -1203,62 +1203,63 @@ Private Sub Form_Load()
             cmbMUNSZ.Locked = True
             cmbKARBTIP.Locked = True
             txtHIBLEIR.Locked = True
-        End If
   
-        Dim plomb As Integer
-        If cmbTIPUSH.ListIndex <> -1 Then
-            plomb = GetComboErtek(cmbTIPUSH)
-        Else
-            plomb = 0
-        End If
+           'Osszesito keszitese csak plombazashoz engedelyezett!
+           'Plombazas csak bizonyos tipushiba eseten lehetseges,
+           'ezert lekerdezzeuk, hogy mi is a tipushiba.
+           Dim tipusHiba As Integer
+           If cmbTIPUSH.ListIndex <> -1 Then
+               tipusHiba = GetComboErtek(cmbTIPUSH)
+           Else
+               tipusHiba = 0
+           End If
+       
+           'If tipusHiba = 272 Then
+               ' Me.cmbPLOMBAZAS.Visible = True
+               'Me.lblPLOMBAZAS.Visible = True
+           'Else
+               ' Me.cmbPLOMBAZAS.Visible = False
+               ' Me.lblPLOMBAZAS.Visible = False
+           'End If
     
-        'If plomb = 272 Then
-            ' Me.cmbPLOMBAZAS.Visible = True
-            'Me.lblPLOMBAZAS.Visible = True
-        'Else
-            ' Me.cmbPLOMBAZAS.Visible = False
-            ' Me.lblPLOMBAZAS.Visible = False
-        'End If
- 
-        'If plomb = "028" Or plomb = "029" Or plomb = "015" Or plomb = "016" Then
-            ' MsgBox "Vízóra"
-        'End If
- 
-        If plomb = 272 Or plomb = "028" Or plomb = "029" Or plomb = "015" Or plomb = "016" And Me.txtREF <> "" Then
-            cmdOSSZESITO.Enabled = True
+            Select Case tipusHiba   'Ezek a plombazassal kapcsolatos tipushibak
+                Case "272", "028", "029", "015", "016"
+                    cmdOSSZESITO.Enabled = True
+            End Select
         Else
             cmdOSSZESITO.Enabled = False
-        End If
+        End If  'txtREF
     
-    Else
+    Else    'Insert new record
         txtBEJDAT = DateValue(Now())
         txtKIALLDAT = DateValue(Now())
         txtMUNELV = DateValue(Now())
         SetComboVal cmbSZEREGYS, "01"
-    End If
+    End If  'mode
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
- KeyCommand KeyCode
- 'Keycode = 0
+    KeyCommand KeyCode
+    'Keycode = 0
 End Sub
 
 Private Sub KeyCommand(KeyCode As Integer)
- Static CtrlKey As Boolean
- Select Case KeyCode
-  Case vbKeyF1:
-  Case vbKeyX:
-             If CtrlKey Then
-              Unload Me
-             End If
-  Case vbKeyEscape: cmdClose_Click
-  Case vbKeyF5: cmdOK_Click
- End Select
- If KeyCode = vbKeyControl Then
-  CtrlKey = True
- Else
-  CtrlKey = False
- End If
+    Static CtrlKey As Boolean
+    
+    Select Case KeyCode
+        Case vbKeyF1:
+        Case vbKeyX:
+            If CtrlKey Then
+                Unload Me
+            End If
+        Case vbKeyEscape: cmdClose_Click
+        Case vbKeyF5: cmdOK_Click
+    End Select
+    
+    If KeyCode = vbKeyControl Then
+        CtrlKey = True
+    Else
+        CtrlKey = False
+    End If
 End Sub
-
 
