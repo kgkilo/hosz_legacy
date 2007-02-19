@@ -1,3 +1,72 @@
+IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'SZETAV')
+	DROP DATABASE [SZETAV]
+GO
+
+CREATE DATABASE [SZETAV]  ON (NAME = N'SZETAV_Data', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Data.MDF' , SIZE = 61, FILEGROWTH = 10%) LOG ON (NAME = N'SZETAV_Log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Log.LDF' , SIZE = 1, FILEGROWTH = 10%)
+ COLLATE Hungarian_CI_AS
+GO
+
+exec sp_dboption N'SZETAV', N'autoclose', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'bulkcopy', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'trunc. log', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'torn page detection', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'read only', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'dbo use', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'single', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'autoshrink', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'ANSI null default', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'recursive triggers', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'ANSI nulls', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'concat null yields null', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'cursor close on commit', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'default to local cursor', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'quoted identifier', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'ANSI warnings', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'auto create statistics', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'auto update statistics', N'true'
+GO
+
+if( ( (@@microsoftversion / power(2, 24) = 8) and (@@microsoftversion & 0xffff >= 724) ) or ( (@@microsoftversion / power(2, 24) = 7) and (@@microsoftversion & 0xffff >= 1082) ) )
+	exec sp_dboption N'SZETAV', N'db chaining', N'false'
+GO
+
+use [SZETAV]
+GO
+
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_CheckPermis]
 GO
@@ -2540,7 +2609,8 @@ CREATE TABLE [dbo].[MLAPTAB] (
 	[MUNELV] [datetime] NULL ,
 	[IDOTOL] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
 	[IDOIG] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
-	[SZOLGJELL] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
+	[SZOLGJELL] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
+	[MFDOLG] [varchar] (50) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -10365,10 +10435,6 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-
-
-
-
 CREATE PROCEDURE sp_DuplikalMunk
 @pID INTEGER
 AS
@@ -10454,10 +10520,13 @@ WHERE
 			@MUNSZ,
 			@MKAP,
 			@ALLAPOT,
-			@pID
+			@pID	--REF: a hivatkozott munkalap ID-je
 
 SELECT @RET = @@IDENTITY
 
+--A hivatkozott munkalapon is beállítjuk a referencia ID-t
+-- (saját magára hivatkozik)
+--Ez jelzi majd, hogy hivatkozott munkalap - nem illik törölni, módosítgatni
 UPDATE
 	MUNKALAP
 SET
@@ -26835,14 +26904,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+/*
+Feltolti a munkalap nyomtatasahoz hasznalt MLAPTAB tablat
+az eppen nyomtatni kivant munkalap adataival.
+*/
 
-/****** Object:  Stored Procedure dbo.sp_WriteMlapTab    Script Date: 2000. 07. 04. 18:56:29 ******/
 CREATE PROCEDURE sp_WriteMlapTab
 @pMTIP VARCHAR(1),
 @pID INTEGER
 AS
 
-DECLARE @OBJTIP VARCHAR(2)	--Lekérdezzük, hogy a munkalaphoz kapcsolt objektum milyen típusú
+--Lekérdezzük, hogy a munkalaphoz kapcsolt objektum milyen típusú
+--és mi az ID-je
+DECLARE @OBJTIP VARCHAR(2)
 DECLARE @OBJID INT
 
 SELECT
@@ -26855,6 +26929,7 @@ WHERE
 
 DECLARE @OBJNEV VARCHAR(200)	
 
+--Melyik futomu alá van bekapcsolva az objektum?
 DECLARE @FUTOMU_ID INT
 DECLARE @FUTOMU_NEV VARCHAR(100)
 EXEC @FUTOMU_ID = sp_Rekurziv @OBJID
@@ -26893,7 +26968,7 @@ BEGIN
 	SELECT @OBJNEV = @OBJNEV + ' ' + COALESCE(@HELY_NEV,'-')
 END
 
-/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködne csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE MLAPTAB
 */
 DELETE FROM MLAPTAB
@@ -26901,7 +26976,7 @@ DELETE FROM MLAPTAB
 IF @pMTIP = '1'
 BEGIN
 INSERT INTO
-	MLAPTAB(ID,SORSZ,KIALLDAT,BEJDAT,BEJNEV,UTCA,LAKAS,FSZAM,HIBLEIR,MUNELV,IDOTOL,IDOIG,SZOLGJELL)
+	MLAPTAB(ID,SORSZ,KIALLDAT,BEJDAT,BEJNEV,UTCA,LAKAS,FSZAM,HIBLEIR,MUNELV,IDOTOL,IDOIG,SZOLGJELL,MFDOLG)
 SELECT
 	MUNKALAP.ID,
 	SORSZ,
@@ -26915,16 +26990,19 @@ SELECT
 	MUNELV,
 	IDOTOL,
 	IDOIG,
-	SZOLGJELL
+	SZOLGJELL,
+	DOLGOZO.NEV
 FROM
-	MUNKALAP LEFT OUTER JOIN OBJEKTUM ON OBJEKTUM.ID = MUNKALAP.OBJID
+	DOLGOZO LEFT JOIN
+		(MUNKALAP LEFT OUTER JOIN OBJEKTUM ON OBJEKTUM.ID = MUNKALAP.OBJID)
+	ON DOLGOZO.ID = MUNKALAP.MFDOLG
 WHERE
 	MUNKALAP.ID = @pID
 END
 ELSE
 BEGIN
 INSERT INTO
-	MLAPTAB(ID,SORSZ,KIALLDAT,BEJDAT,BEJNEV,UTCA,LAKAS,FSZAM,HIBLEIR,MUNELV,IDOTOL,IDOIG,SZOLGJELL)
+	MLAPTAB(ID,SORSZ,KIALLDAT,BEJDAT,BEJNEV,UTCA,LAKAS,FSZAM,HIBLEIR,MUNELV,IDOTOL,IDOIG,SZOLGJELL,MFDOLG)
 SELECT
 	MUNKALAP.ID,
 	SORSZ,
@@ -26938,9 +27016,12 @@ SELECT
 	MUNELV,
 	IDOTOL,
 	IDOIG,
-	SZOLGJELL
+	SZOLGJELL,
+	DOLGOZO.NEV
 FROM
-	MUNKALAP LEFT OUTER JOIN OBJEKTUM ON OBJEKTUM.ID = MUNKALAP.OBJID
+	DOLGOZO LEFT JOIN
+		(MUNKALAP LEFT OUTER JOIN OBJEKTUM ON OBJEKTUM.ID = MUNKALAP.OBJID)
+	ON DOLGOZO.ID = MUNKALAP.MFDOLG
 WHERE
 	MUNKALAP.ID = @pID
 END

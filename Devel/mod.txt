@@ -41,5 +41,19 @@ Telepítve:
 X Munkalap kiállítási dátumán utólag ne lehessen változtatni.
 	sp_LoadMunkalap
 	EXE
-	
+O Vízórás lista készítésekor a másolati munkalapok után is lehessen
+	a dátumon, típushibán, hibaleíráson módosítani.
+	sp_DuplikalMunk
+	EXE
+
+BCP muködéséhez a server propertiesben a TCP/IP és a Named Pipes protocolt Enabled-re kell rakni!
+
 Telepítve:
+-----------------------------------------------------------------------------------
+2007.02.19.
+X Munkát felvevo dolgozó neve kerüljön fel a munkalapra.
+	MLAPTAB
+	sp_WriteMlapTab
+	munuf.rpt
+	munue.rpt
+	

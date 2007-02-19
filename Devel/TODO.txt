@@ -11,7 +11,6 @@ TODO
 - Jegyzokönyv nyomtatás
 
 2007.02.19.
-- Munkat felvevo dolgozo neve keruljon fel a munkalapra.
 - Lepcsohaz megszuntetese: karb.tervben nem jelennek meg a nem epulethez kotott berendezesek.
 - Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
 - Torles/inaktivva tetel helyett atiras nem jo, mert elvesznek adatok! Dolgozok figyelmet felhivni erre!
