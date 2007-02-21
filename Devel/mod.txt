@@ -48,7 +48,7 @@ O Vízórás lista készítésekor a másolati munkalapok után is lehessen
 
 BCP muködéséhez a server propertiesben a TCP/IP és a Named Pipes protocolt Enabled-re kell rakni!
 
-Telepítve:
+Telepítve: 2007.02.20.
 -----------------------------------------------------------------------------------
 2007.02.19.
 X Munkát felvevo dolgozó neve kerüljön fel a munkalapra.
@@ -56,4 +56,8 @@ X Munkát felvevo dolgozó neve kerüljön fel a munkalapra.
 	sp_WriteMlapTab
 	munuf.rpt
 	munue.rpt
+X Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
+	Nem reprodukalhato... tovabbi vizsgalat szukseges
 	
+Telepítve: 2007.02.20.
+-----------------------------------------------------------------------------------

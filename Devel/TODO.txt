@@ -12,6 +12,8 @@ TODO
 
 2007.02.19.
 - Lepcsohaz megszuntetese: karb.tervben nem jelennek meg a nem epulethez kotott berendezesek.
-- Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
+X Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
 - Torles/inaktivva tetel helyett atiras nem jo, mert elvesznek adatok! Dolgozok figyelmet felhivni erre!
 
+2007.02.20.
+- Regi: KEP701 grid fejlec el van csuszva
