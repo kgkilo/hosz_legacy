@@ -1522,7 +1522,7 @@ Public Function LekerdMunkalapAltalanos(ByRef lstControls As Access.Controls, _
     End If
     
     With grd
-        .FormatString = "<||Munkalap|Bejelentõ|Kiáll. dátum|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra|"
+        .FormatString = "<||Munkalap|Bejelentõ|Kiáll. dátum|Végezhetõ|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra|"
         .AllowUserResizing = flexResizeColumns
         .SelectionMode = flexSelectionByRow
     
