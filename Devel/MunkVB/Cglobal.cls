@@ -152,6 +152,7 @@ Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRe
             g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
             g_oKodszotar.Load "sp_Q310A", Nothing, "310A", "Aktív fõkönyvi szám", 12
             g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
+            g_oKodszotar.Load "sp_Q371", Nothing, "371", "Nyomtatás típusa", 5
             
         Case LABOR
             g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2

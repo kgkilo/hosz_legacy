@@ -1,74 +1,70 @@
-IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'HOSZOLG')
-	DROP DATABASE [HOSZOLG]
+IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'SZETAV')
+	DROP DATABASE [SZETAV]
 GO
 
-CREATE DATABASE [HOSZOLG]  ON (NAME = N'HOSZOLG_Data', FILENAME = N'd:\sql_data\MSSQL\data\HOSZOLG_Data.MDF' , SIZE = 98, FILEGROWTH = 10%) LOG ON (NAME = N'HOSZOLG_Log', FILENAME = N'd:\sql_data\MSSQL\data\HOSZOLG_Log.LDF' , SIZE = 344, FILEGROWTH = 10%)
+CREATE DATABASE [SZETAV]  ON (NAME = N'SZETAV_Data', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Data.MDF' , SIZE = 73, FILEGROWTH = 10%) LOG ON (NAME = N'SZETAV_Log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Log.LDF' , SIZE = 1, FILEGROWTH = 10%)
  COLLATE Hungarian_CI_AS
 GO
 
-exec sp_dboption N'HOSZOLG', N'autoclose', N'false'
+exec sp_dboption N'SZETAV', N'autoclose', N'true'
 GO
 
-exec sp_dboption N'HOSZOLG', N'bulkcopy', N'false'
+exec sp_dboption N'SZETAV', N'bulkcopy', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'trunc. log', N'false'
+exec sp_dboption N'SZETAV', N'trunc. log', N'true'
 GO
 
-exec sp_dboption N'HOSZOLG', N'torn page detection', N'true'
+exec sp_dboption N'SZETAV', N'torn page detection', N'true'
 GO
 
-exec sp_dboption N'HOSZOLG', N'read only', N'false'
+exec sp_dboption N'SZETAV', N'read only', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'dbo use', N'false'
+exec sp_dboption N'SZETAV', N'dbo use', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'single', N'false'
+exec sp_dboption N'SZETAV', N'single', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'autoshrink', N'false'
+exec sp_dboption N'SZETAV', N'autoshrink', N'true'
 GO
 
-exec sp_dboption N'HOSZOLG', N'ANSI null default', N'false'
+exec sp_dboption N'SZETAV', N'ANSI null default', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'recursive triggers', N'false'
+exec sp_dboption N'SZETAV', N'recursive triggers', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'ANSI nulls', N'false'
+exec sp_dboption N'SZETAV', N'ANSI nulls', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'concat null yields null', N'false'
+exec sp_dboption N'SZETAV', N'concat null yields null', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'cursor close on commit', N'false'
+exec sp_dboption N'SZETAV', N'cursor close on commit', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'default to local cursor', N'false'
+exec sp_dboption N'SZETAV', N'default to local cursor', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'quoted identifier', N'false'
+exec sp_dboption N'SZETAV', N'quoted identifier', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'ANSI warnings', N'false'
+exec sp_dboption N'SZETAV', N'ANSI warnings', N'false'
 GO
 
-exec sp_dboption N'HOSZOLG', N'auto create statistics', N'true'
+exec sp_dboption N'SZETAV', N'auto create statistics', N'true'
 GO
 
-exec sp_dboption N'HOSZOLG', N'auto update statistics', N'true'
+exec sp_dboption N'SZETAV', N'auto update statistics', N'true'
 GO
 
-if( (@@microsoftversion / power(2, 24) = 8) and (@@microsoftversion & 0xffff >= 724) )
-	exec sp_dboption N'HOSZOLG', N'db chaining', N'false'
+if( ( (@@microsoftversion / power(2, 24) = 8) and (@@microsoftversion & 0xffff >= 724) ) or ( (@@microsoftversion / power(2, 24) = 7) and (@@microsoftversion & 0xffff >= 1082) ) )
+	exec sp_dboption N'SZETAV', N'db chaining', N'false'
 GO
 
-use [HOSZOLG]
-GO
-
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_BerRaktMozgat]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_BerRaktMozgat]
+use [SZETAV]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -451,8 +447,8 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadEpu
 drop procedure [dbo].[sp_LoadEpul]
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadFelszereltInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_LoadFelszereltInfo]
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadJegyz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadJegyz]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadJegyzDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -465,6 +461,10 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadKontir]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadKontir]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadLabor]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_LoadLabor]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadMlapDb]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -497,10 +497,6 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadRaktarSz]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_LoadRaktarSz]
-GO
-
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadSzallitonalInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_LoadSzallitonalInfo]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_LoadSzerzfej]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -929,6 +925,10 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q370]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_Q370]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_Q371]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_Q371]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_QueryParams]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -1391,6 +1391,10 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q370]') an
 drop view [dbo].[Q370]
 GO
 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Q371]') and OBJECTPROPERTY(id, N'IsView') = 1)
+drop view [dbo].[Q371]
+GO
+
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[QLABOR1]') and OBJECTPROPERTY(id, N'IsView') = 1)
 drop view [dbo].[QLABOR1]
 GO
@@ -1535,10 +1539,6 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ERZEKELO]'
 drop table [dbo].[ERZEKELO]
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ERZEKELO1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[ERZEKELO1]
-GO
-
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[FAZISJAVITO_KONDENZATOR]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[FAZISJAVITO_KONDENZATOR]
 GO
@@ -1595,16 +1595,8 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HOOSSZEGZO
 drop table [dbo].[HOOSSZEGZO]
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HOOSSZEGZO1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[HOOSSZEGZO1]
-GO
-
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[JEGYZ]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[JEGYZ]
-GO
-
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[JEGYZ_OLD]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[JEGYZ_OLD]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[JOGOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -1667,10 +1659,6 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LABOR]') a
 drop table [dbo].[LABOR]
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LABOR1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[LABOR1]
-GO
-
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LAKAS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[LAKAS]
 GO
@@ -1701,10 +1689,6 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[OBJEKTUM]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[OBJEKTUM]
-GO
-
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[OBJEKTUM1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[OBJEKTUM1]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[PERMIS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -1847,24 +1831,9 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VIZORA]') 
 drop table [dbo].[VIZORA]
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VIZORA1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [dbo].[VIZORA1]
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'darazs')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'darazs', null, @logindb, @loginlang
-END
-GO
-
 if not exists (select * from master.dbo.syslogins where loginname = N'eszter')
 BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
 	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
 	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
@@ -1873,9 +1842,20 @@ BEGIN
 END
 GO
 
+if not exists (select * from master.dbo.syslogins where loginname = N'gabor')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'gabor', null, @logindb, @loginlang
+END
+GO
+
 if not exists (select * from master.dbo.syslogins where loginname = N'geza')
 BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
 	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
 	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
@@ -1884,103 +1864,64 @@ BEGIN
 END
 GO
 
-if not exists (select * from master.dbo.syslogins where loginname = N'jeno')
+if not exists (select * from master.dbo.syslogins where loginname = N'kerekes')
 BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
 	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
 	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
-	exec sp_addlogin N'jeno', null, @logindb, @loginlang
+	exec sp_addlogin N'kerekes', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master.dbo.syslogins where loginname = N'kata')
+if not exists (select * from master.dbo.syslogins where loginname = N'mini')
 BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
 	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
 	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
-	exec sp_addlogin N'kata', null, @logindb, @loginlang
+	exec sp_addlogin N'mini', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master.dbo.syslogins where loginname = N'marika')
+if not exists (select * from master.dbo.syslogins where loginname = N'szityu')
 BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
 	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
 		select @logindb = N'master'
 	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
 		select @loginlang = @@language
-	exec sp_addlogin N'marika', null, @logindb, @loginlang
+	exec sp_addlogin N'szityu', null, @logindb, @loginlang
 END
 GO
 
-if not exists (select * from master.dbo.syslogins where loginname = N'misi')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'misi', null, @logindb, @loginlang
-END
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'SBS2003HSZ\Rendszergazda')
-	exec sp_grantlogin N'SBS2003HSZ\Rendszergazda'
-	exec sp_defaultdb N'SBS2003HSZ\Rendszergazda', N'master'
-	exec sp_defaultlanguage N'SBS2003HSZ\Rendszergazda', N'us_english'
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'tunde')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'HOSZOLG', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'tunde', null, @logindb, @loginlang
-END
-GO
-
-exec sp_addsrvrolemember N'BUILTIN\Rendszergazdák', sysadmin
-GO
-
-exec sp_addsrvrolemember N'SBS2003HSZ\Rendszergazda', sysadmin
-GO
-
-if not exists (select * from dbo.sysusers where name = N'darazs' and uid < 16382)
-	EXEC sp_grantdbaccess N'darazs', N'darazs'
+exec sp_addsrvrolemember N'mini', sysadmin
 GO
 
 if not exists (select * from dbo.sysusers where name = N'eszter' and uid < 16382)
 	EXEC sp_grantdbaccess N'eszter', N'eszter'
 GO
 
+if not exists (select * from dbo.sysusers where name = N'gabor' and uid < 16382)
+	EXEC sp_grantdbaccess N'gabor', N'gabor'
+GO
+
 if not exists (select * from dbo.sysusers where name = N'geza' and uid < 16382)
 	EXEC sp_grantdbaccess N'geza', N'geza'
 GO
 
-if not exists (select * from dbo.sysusers where name = N'jeno' and uid < 16382)
-	EXEC sp_grantdbaccess N'jeno', N'jeno'
+if not exists (select * from dbo.sysusers where name = N'kerekes' and uid < 16382)
+	EXEC sp_grantdbaccess N'kerekes', N'kerekes'
 GO
 
-if not exists (select * from dbo.sysusers where name = N'kata' and uid < 16382)
-	EXEC sp_grantdbaccess N'kata', N'kata'
+if not exists (select * from dbo.sysusers where name = N'mini' and uid < 16382)
+	EXEC sp_grantdbaccess N'mini', N'mini'
 GO
 
-if not exists (select * from dbo.sysusers where name = N'marika' and uid < 16382)
-	EXEC sp_grantdbaccess N'marika', N'marika'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'misi' and uid < 16382)
-	EXEC sp_grantdbaccess N'misi', N'misi'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'tunde' and uid < 16382)
-	EXEC sp_grantdbaccess N'tunde', N'tunde'
+if not exists (select * from dbo.sysusers where name = N'szityu' and uid < 16382)
+	EXEC sp_grantdbaccess N'szityu', N'szityu'
 GO
 
 CREATE TABLE [dbo].[ARAMKOR] (
@@ -2071,14 +2012,14 @@ GO
 
 CREATE TABLE [dbo].[DOLGOZO] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[NEV] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
+	[NEV] [varchar] (20) COLLATE Hungarian_CI_AS NOT NULL ,
 	[LOGIN] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[SZEREGYS] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[BEOSZT] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[UFR] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[UFW] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[UER] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[UEW] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
+	[UFR] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[UFW] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[UER] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
+	[UEW] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
 	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL ,
 	[ADATUM] [datetime] NOT NULL 
 ) ON [PRIMARY]
@@ -2119,18 +2060,6 @@ CREATE TABLE [dbo].[EPULET] (
 GO
 
 CREATE TABLE [dbo].[ERZEKELO] (
-	[ID] [int] NOT NULL ,
-	[VEZHOSSZ] [real] NULL ,
-	[BENYHOSSZ] [real] NULL ,
-	[KIMENET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[CSATLMERET] [real] NULL ,
-	[PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
-	[PLOMBA2] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
-	[SZUKSHOSSZ] [real] NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[ERZEKELO1] (
 	[ID] [int] NOT NULL ,
 	[VEZHOSSZ] [real] NULL ,
 	[BENYHOSSZ] [real] NULL ,
@@ -2422,17 +2351,6 @@ CREATE TABLE [dbo].[HOOSSZEGZO] (
 ) ON [PRIMARY]
 GO
 
-CREATE TABLE [dbo].[HOOSSZEGZO1] (
-	[ID] [int] NOT NULL ,
-	[LEOLVMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[FESZULTS] [real] NULL ,
-	[IMPULZUS] [real] NULL ,
-	[PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
-	[HELYZET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[ELEKTRONIKA] [varchar] (2) COLLATE Hungarian_CI_AS NULL 
-) ON [PRIMARY]
-GO
-
 CREATE TABLE [dbo].[JEGYZ] (
 	[JEGYZSZ] [int] IDENTITY (1, 1) NOT NULL ,
 	[KARB_ID] [int] NOT NULL ,
@@ -2441,35 +2359,6 @@ CREATE TABLE [dbo].[JEGYZ] (
 	[VONEV] [datetime] NULL ,
 	[NEV] [int] NULL ,
 	[MSZAM] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
-	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[JEGYZ_OLD] (
-	[JEGYZSZ] [int] IDENTITY (1, 1) NOT NULL ,
-	[KARB_ID] [int] NOT NULL ,
-	[JTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
-	[JDAT] [datetime] NOT NULL ,
-	[VONEV] [datetime] NULL ,
-	[GAZMIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[GAZMAX] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[EGMIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[POROLAJ_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[PORLEV_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[PORGOZ_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[GOZMAX] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[VIZMAX] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[VESZVIZ_MIN] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[FUSTCSAP_RET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[EGYEB_RET] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[KETPONTSZAB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[HAROMPONTSZAB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[FOLYSZAB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[EGYEB] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[NEV] [int] NULL ,
-	[MSZAM] [varchar] (6) COLLATE Hungarian_CI_AS NULL ,
-	[FUST_TOM] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
 	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
@@ -2674,34 +2563,6 @@ CREATE TABLE [dbo].[LABOR] (
 ) ON [PRIMARY]
 GO
 
-CREATE TABLE [dbo].[LABOR1] (
-	[ID] [int] NOT NULL ,
-	[TIPUS] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
-	[SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
-	[MUN_SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
-	[MINTA_IDO] [datetime] NULL ,
-	[MINTA_NEV] [int] NULL ,
-	[MINTA_ATAD_IDO] [datetime] NULL ,
-	[MINTA_ATVEVO] [int] NULL ,
-	[VIZSG_NEV] [int] NULL ,
-	[VIZSG_KEZD] [datetime] NULL ,
-	[VIZSG_VEGE] [datetime] NULL ,
-	[PH] [real] NULL ,
-	[OXI] [real] NULL ,
-	[ELEKTRO] [real] NULL ,
-	[VAS] [real] NULL ,
-	[KOI] [real] NULL ,
-	[OK] [real] NULL ,
-	[KULSO] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
-	[AMMONIA] [real] NULL ,
-	[NITRAT] [real] NULL ,
-	[NITRIT] [real] NULL ,
-	[ERTEKELES] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
-	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
-) ON [PRIMARY]
-GO
-
 CREATE TABLE [dbo].[LAKAS] (
 	[ID] [int] NOT NULL ,
 	[FKOD] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
@@ -2792,7 +2653,7 @@ CREATE TABLE [dbo].[MUNKALAP] (
 	[FELLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[JELENSTIP] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
 	[JELENSLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
-	[MUVLEIR] [varchar] (8000) COLLATE Hungarian_CI_AS NULL ,
+	[MUVLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[INTEZ] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
 	[VONEV] [datetime] NULL ,
 	[SORSZ] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
@@ -2816,41 +2677,6 @@ CREATE TABLE [dbo].[MUNKALAP] (
 GO
 
 CREATE TABLE [dbo].[OBJEKTUM] (
-	[ID] [int] IDENTITY (1, 1) NOT NULL ,
-	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
-	[AZON] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
-	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
-	[TIPUS] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
-	[VAROS] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[UTCA] [varchar] (35) COLLATE Hungarian_CI_AS NULL ,
-	[HSZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
-	[ELHELYEZ] [varchar] (25) COLLATE Hungarian_CI_AS NULL ,
-	[GYSZAM] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
-	[GYARTO] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
-	[UZALL] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[UZEMIDO] [datetime] NULL ,
-	[HITIDO] [datetime] NULL ,
-	[GYARTM] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
-	[TELEPHSZ] [varchar] (20) COLLATE Hungarian_CI_AS NULL ,
-	[VESZO] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[FKOD] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
-	[ALAIR] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
-	[NEVLTELJ] [real] NULL ,
-	[NEVLTELJME] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
-	[KATEG] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[FSZAM] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
-	[TULAJDON] [varchar] (1) COLLATE Hungarian_CI_AS NULL ,
-	[KAPCSOLT] [int] NOT NULL ,
-	[ELOZOKAPCS] [int] NULL ,
-	[ELOZOKAPCSDATE] [datetime] NULL ,
-	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
-	[AKTIV] [varchar] (1) COLLATE Hungarian_CI_AS NOT NULL ,
-	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
-) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[OBJEKTUM1] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[OBJTIP] [varchar] (2) COLLATE Hungarian_CI_AS NOT NULL ,
 	[AZON] [varchar] (15) COLLATE Hungarian_CI_AS NULL ,
@@ -3333,7 +3159,7 @@ CREATE TABLE [dbo].[TAB_R03] (
 	[CIM] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[MEGJ] [varchar] (255) COLLATE Hungarian_CI_AS NULL ,
 	[ADATUM] [datetime] NOT NULL ,
-	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NULL 
+	[AKOD] [varchar] (12) COLLATE Hungarian_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
 
@@ -3490,18 +3316,6 @@ CREATE TABLE [dbo].[VIZORA] (
 ) ON [PRIMARY]
 GO
 
-CREATE TABLE [dbo].[VIZORA1] (
-	[ID] [int] NOT NULL ,
-	[LEOLVMOD] [varchar] (2) COLLATE Hungarian_CI_AS NULL ,
-	[SZAL_KOZ] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
-	[SZAL_MENNY] [real] NULL ,
-	[ATMERO] [real] NULL ,
-	[IMPULZUS] [real] NULL ,
-	[PLOMBA] [varchar] (12) COLLATE Hungarian_CI_AS NULL ,
-	[TOMEGARAM] [real] NULL 
-) ON [PRIMARY]
-GO
-
 ALTER TABLE [dbo].[ARAMKOR] WITH NOCHECK ADD 
 	CONSTRAINT [PK_ARAMKOR] PRIMARY KEY  CLUSTERED 
 	(
@@ -3596,7 +3410,7 @@ ALTER TABLE [dbo].[DEMAG_EMELOGEP] ADD
 GO
 
 ALTER TABLE [dbo].[DOLGOZO] ADD 
-	CONSTRAINT [DF_DOLGOZO_UFR] DEFAULT ('n') FOR [UFR],
+	CONSTRAINT [DF_DOLGOZO_IRASJOG] DEFAULT ('n') FOR [UFR],
 	CONSTRAINT [DF_DOLGOZO_UFW] DEFAULT ('n') FOR [UFW],
 	CONSTRAINT [DF_DOLGOZO_UER] DEFAULT ('n') FOR [UER],
 	CONSTRAINT [DF_DOLGOZO_UEW] DEFAULT ('n') FOR [UEW],
@@ -3690,9 +3504,9 @@ ALTER TABLE [dbo].[JEGYZ] ADD
 	CONSTRAINT [DF_JEGYZ_AKOD_1] DEFAULT (user_name()) FOR [AKOD]
 GO
 
-ALTER TABLE [dbo].[JEGYZ_OLD] ADD 
-	CONSTRAINT [DF_JEGYZ_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
-	CONSTRAINT [DF_JEGYZ_AKOD] DEFAULT (user_name()) FOR [AKOD]
+ALTER TABLE [dbo].[JOGOS] ADD 
+	CONSTRAINT [DF_JOGOS_AKOD] DEFAULT (user_name()) FOR [AKOD],
+	CONSTRAINT [DF_JOGOS_ADATUM] DEFAULT (getdate()) FOR [ADATUM]
 GO
 
 ALTER TABLE [dbo].[KAPCSOLAT] ADD 
@@ -3812,7 +3626,7 @@ GO
 
 ALTER TABLE [dbo].[OBJEKTUM] ADD 
 	CONSTRAINT [DF_OBJEKTUM_TULAJDON] DEFAULT ('S') FOR [TULAJDON],
-	CONSTRAINT [DF_OBJEKTUM_AKTIV] DEFAULT ('y') FOR [AKTIV],
+	CONSTRAINT [DF_OBJEKTUM_AKTIV] DEFAULT (1) FOR [AKTIV],
 	CONSTRAINT [DF_OBJEKTUM_ADATUM] DEFAULT (getdate()) FOR [ADATUM],
 	CONSTRAINT [DF_OBJEKTUM_AKOD] DEFAULT (user_name()) FOR [AKOD],
 	CONSTRAINT [IX_OBJEKTUM] UNIQUE  NONCLUSTERED 
@@ -4056,9 +3870,6 @@ GO
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[ERZEKELO]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[ERZEKELO1]  TO [public]
-GO
-
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[FAZISJAVITO_KONDENZATOR]  TO [public]
 GO
 
@@ -4101,13 +3912,7 @@ GO
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HOOSSZEGZO]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[HOOSSZEGZO1]  TO [public]
-GO
-
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[JEGYZ]  TO [public]
-GO
-
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[JEGYZ_OLD]  TO [public]
 GO
 
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[JOGOS]  TO [public]
@@ -4176,9 +3981,6 @@ GO
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[OBJEKTUM]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[OBJEKTUM1]  TO [public]
-GO
-
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[PERMIS]  TO [public]
 GO
 
@@ -4218,25 +4020,25 @@ GO
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[SZUROK]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB403]  TO [public]
+GRANT  SELECT ,  DELETE  ON [dbo].[TAB403]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB403_1]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB403_1]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB404]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB404]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB406]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB406]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB407]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB407]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB408]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB408]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB413]  TO [public]
+GRANT  SELECT  ON [dbo].[TAB413]  TO [public]
 GO
 
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB_LABORO]  TO [public]
@@ -4281,20 +4083,35 @@ GO
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[VIZORA]  TO [public]
 GO
 
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[VIZORA1]  TO [public]
-GO
-
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  View dbo.Q271    Script Date: 2000. 07. 04. 18:55:51 ******/
+
 CREATE VIEW dbo.Q271
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '271'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4310,12 +4127,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q272    Script Date: 2000. 07. 04. 18:55:51 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q272
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '272'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4331,12 +4180,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q274    Script Date: 2000. 07. 04. 18:55:51 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q274
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '274'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4352,12 +4233,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q275    Script Date: 2000. 07. 04. 18:55:52 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q275
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '275'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4373,12 +4286,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q276    Script Date: 2000. 07. 04. 18:55:53 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q276
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '276'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4394,12 +4339,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q277    Script Date: 2000. 07. 04. 18:55:53 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q277
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '277'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4415,12 +4392,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q278    Script Date: 2000. 07. 04. 18:55:54 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q278
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '278'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4436,12 +4445,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q279    Script Date: 2000. 07. 04. 18:55:54 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q279
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '279'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4457,12 +4498,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q281    Script Date: 2000. 07. 04. 18:55:54 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q281
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '281'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4478,12 +4551,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q282    Script Date: 2000. 07. 04. 18:55:55 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q282
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '282'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4499,12 +4604,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q283    Script Date: 2000. 07. 04. 18:55:55 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q283
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '283'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4520,12 +4657,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q284    Script Date: 2000. 07. 04. 18:55:56 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q284
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '284'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4541,12 +4710,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q285    Script Date: 2000. 07. 04. 18:55:56 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q285
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '285'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4562,12 +4763,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q288    Script Date: 2000. 07. 04. 18:55:57 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q288
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '288'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4583,12 +4816,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q289    Script Date: 2000. 07. 04. 18:55:57 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q289
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '289'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4604,12 +4869,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q291    Script Date: 2000. 07. 04. 18:55:57 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q291
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '291'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4625,12 +4918,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q293    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q293
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '293'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4646,7 +4967,21 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q296    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q296
 AS
 SELECT
@@ -4658,6 +4993,25 @@ WHERE
 	UGYFAZ = '05'
 	AND KODTIP = '296'
 	/*AND KODERT <> '01'*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4673,12 +5027,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q297    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q297
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '297'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4694,12 +5080,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q298    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q298
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '298'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4715,12 +5129,28 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q299    Script Date: 2000. 07. 04. 18:55:58 ******/
+
 CREATE VIEW dbo.Q299
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '299')
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4736,12 +5166,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q300    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q300
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '300'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4757,12 +5215,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q302    Script Date: 2000. 07. 04. 18:55:58 ******/
 CREATE VIEW dbo.Q302
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '302')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4778,12 +5250,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q304    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q304
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '304'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4799,12 +5299,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q305    Script Date: 2000. 07. 04. 18:55:58 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q305
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '305'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4820,12 +5348,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q306    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q306
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '306'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4841,12 +5397,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q307    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q307
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '307'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4862,12 +5446,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q308    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q308
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '308'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4883,12 +5495,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q309    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q309
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '309'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4904,11 +5544,35 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q310    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
 CREATE VIEW dbo.Q310
 AS
 SELECT FSZAM, FSZNEV
 FROM KONTIR
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4924,11 +5588,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q310A
 AS
 SELECT FSZAM, FSZNEV
 FROM KONTIR
 WHERE KIJELOLT = 'y'
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4944,6 +5616,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE VIEW dbo.Q310D
 AS
 SELECT FSZAM, FSZNEV
@@ -4952,6 +5625,7 @@ WHERE (FSZAM = '736') OR
     (FSZAM = '737') OR
     (FSZAM = '62317') OR
     (FSZAM = '62325')
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4967,12 +5641,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q311    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q311
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '311'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -4988,12 +5690,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q312    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q312
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '312'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5009,12 +5743,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q313    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q313
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '313'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5030,12 +5796,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q314    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q314
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '314'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5051,12 +5849,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q315    Script Date: 2000. 07. 04. 18:55:59 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q315
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '315'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5072,12 +5902,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q316    Script Date: 2000. 07. 04. 18:56:00 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q316
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '316'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5093,12 +5955,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q317    Script Date: 2000. 07. 04. 18:56:00 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q317
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '317'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5114,12 +6008,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q318    Script Date: 2000. 07. 04. 18:56:01 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q318
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '318'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5135,12 +6061,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q319    Script Date: 2000. 07. 04. 18:56:01 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q319
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '319'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5156,12 +6114,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q320    Script Date: 2000. 07. 04. 18:56:02 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q320
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '320'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5177,12 +6167,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q321    Script Date: 2000. 07. 04. 18:56:02 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q321
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '331'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5198,12 +6220,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q322    Script Date: 2000. 07. 04. 18:56:03 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q322
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '322'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5219,12 +6273,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q323    Script Date: 2000. 07. 04. 18:56:03 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q323
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '323'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5240,12 +6326,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q324    Script Date: 2000. 07. 04. 18:56:04 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q324
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '324'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5261,12 +6379,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q325    Script Date: 2000. 07. 04. 18:56:04 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q325
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '325'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5282,12 +6432,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q326    Script Date: 2000. 07. 04. 18:56:05 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q326
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '326'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5303,12 +6485,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q327    Script Date: 2000. 07. 04. 18:56:05 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q327
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '327'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5324,12 +6538,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q328    Script Date: 2000. 07. 04. 18:56:06 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q328
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '328'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5345,12 +6591,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q329    Script Date: 2000. 07. 04. 18:56:06 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q329
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '329'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5366,12 +6644,44 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q330    Script Date: 2000. 07. 04. 18:56:07 ******/
+
+
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q330
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '330'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5387,12 +6697,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q331    Script Date: 2000. 07. 04. 18:56:07 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q331
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '331'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5408,12 +6746,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q332    Script Date: 2000. 07. 04. 18:56:08 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q332
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '332'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5429,12 +6795,40 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q333    Script Date: 2000. 07. 04. 18:56:08 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q333
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '333'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5450,11 +6844,41 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q334    Script Date: 2000. 07. 04. 18:56:09 ******/
+
+
+
+
+
+
+
 CREATE VIEW dbo.Q334
 AS
 SELECT ID, NEV
 FROM DOLGOZO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5470,12 +6894,36 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q335    Script Date: 2000. 07. 04. 18:56:09 ******/
+
+
+
+
+
 CREATE VIEW dbo.Q335
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE UGYFAZ = '05' AND KODTIP = '335'
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5491,12 +6939,36 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q336    Script Date: 2000. 07. 04. 18:56:09 ******/
+
+
+
+
+
 CREATE VIEW dbo.Q336
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '336')
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5512,12 +6984,28 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q337    Script Date: 2000. 07. 04. 18:56:09 ******/
+
 CREATE VIEW dbo.Q337
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '337')
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5533,12 +7021,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q338    Script Date: 2000. 07. 04. 18:56:09 ******/
 CREATE VIEW dbo.Q338
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '338')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5554,12 +7056,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q339    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE VIEW dbo.Q339
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '339')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5575,12 +7091,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q340    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE VIEW dbo.Q340
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '340')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5596,12 +7126,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q341    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE VIEW dbo.Q341
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '341')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5617,12 +7161,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q342    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE VIEW dbo.Q342
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '342')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5638,12 +7196,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q343    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE VIEW dbo.Q343
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '343')
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5659,12 +7231,28 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  View dbo.Q344    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE VIEW dbo.Q344
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '344')
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5680,11 +7268,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q345
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '345')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5700,11 +7296,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q346
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '346')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5720,11 +7324,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q347
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '347')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5740,11 +7352,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q348
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '348')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5760,11 +7380,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q349
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '349')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5780,11 +7408,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q350
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '350')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5800,11 +7436,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q351
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '351')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5820,11 +7464,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q352
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '352')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5840,11 +7492,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q353
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '353')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5860,11 +7520,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q354
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '354')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5880,11 +7548,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q355
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '355')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5900,11 +7576,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q356
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '356')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5920,11 +7604,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q357
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '357')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5940,11 +7632,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q358
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '358')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5960,11 +7660,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q359
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '359')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -5980,11 +7688,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q360
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '360')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6000,11 +7716,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q361
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '361')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6020,11 +7744,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q362
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '362')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6040,11 +7772,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q363
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '363')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6060,11 +7800,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.Q364
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '364')
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6080,11 +7828,15 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE VIEW dbo.Q365
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '365')
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6100,11 +7852,15 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE VIEW dbo.Q366
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '366')
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6120,11 +7876,15 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE VIEW dbo.Q367
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '367')
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6135,16 +7895,18 @@ GO
 GRANT  SELECT  ON [dbo].[Q367]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE VIEW dbo.Q368
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '368')
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6160,11 +7922,13 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE VIEW dbo.Q369
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '369')
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6180,11 +7944,13 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE VIEW dbo.Q370
 AS
 SELECT KODERT, KODENEV
 FROM KODSZOT
 WHERE (UGYFAZ = '05') AND (KODTIP = '370')
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6195,10 +7961,31 @@ GO
 GRANT  SELECT  ON [dbo].[Q370]  TO [public]
 GO
 
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.Q371
+AS
+SELECT KODERT, KODENEV
+FROM dbo.KODSZOT
+WHERE (UGYFAZ = '05') AND (KODTIP = '371')
+
+GO
 SET QUOTED_IDENTIFIER OFF 
 GO
 SET ANSI_NULLS ON 
 GO
+
+GRANT  SELECT  ON [dbo].[Q371]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
 
 create view QLABOR1
 AS
@@ -6220,6 +8007,7 @@ AS
 	WHERE
 		SOR = 1
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6233,6 +8021,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR10
 AS
@@ -6254,6 +8043,7 @@ AS
 	WHERE
 		SOR = 10
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6267,6 +8057,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR11
 AS
@@ -6288,6 +8079,7 @@ AS
 	WHERE
 		SOR = 11
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6301,6 +8093,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR12
 AS
@@ -6322,6 +8115,7 @@ AS
 	WHERE
 		SOR = 12
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6335,6 +8129,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR13
 AS
@@ -6356,6 +8151,7 @@ AS
 	WHERE
 		SOR = 13
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6369,6 +8165,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR14
 AS
@@ -6390,6 +8187,7 @@ AS
 	WHERE
 		SOR = 14
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6403,6 +8201,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR15
 AS
@@ -6424,6 +8223,7 @@ AS
 	WHERE
 		SOR = 15
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6437,6 +8237,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR16
 AS
@@ -6458,6 +8259,7 @@ AS
 	WHERE
 		SOR = 16
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6471,6 +8273,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR17
 AS
@@ -6492,6 +8295,7 @@ AS
 	WHERE
 		SOR = 17
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6505,6 +8309,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR18
 AS
@@ -6526,6 +8331,7 @@ AS
 	WHERE
 		SOR = 18
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6539,6 +8345,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR19
 AS
@@ -6560,6 +8367,7 @@ AS
 	WHERE
 		SOR = 19
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6573,6 +8381,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR2
 AS
@@ -6594,6 +8403,7 @@ AS
 	WHERE
 		SOR = 2
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6607,6 +8417,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR20
 AS
@@ -6628,6 +8439,7 @@ AS
 	WHERE
 		SOR = 20
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6641,6 +8453,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR21
 AS
@@ -6662,6 +8475,7 @@ AS
 	WHERE
 		SOR = 21
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6675,6 +8489,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR22
 AS
@@ -6696,6 +8511,7 @@ AS
 	WHERE
 		SOR = 22
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6709,6 +8525,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR23
 AS
@@ -6729,6 +8546,7 @@ AS
 		TAB_LABORO
 	WHERE
 		SOR = 23
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -6792,6 +8610,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 create view QLABOR3
 AS
 	SELECT
@@ -6812,6 +8631,7 @@ AS
 	WHERE
 		SOR = 3
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6825,6 +8645,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR4
 AS
@@ -6846,6 +8667,7 @@ AS
 	WHERE
 		SOR = 4
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6859,6 +8681,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR5
 AS
@@ -6880,6 +8703,7 @@ AS
 	WHERE
 		SOR = 5
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6893,6 +8717,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR6
 AS
@@ -6914,6 +8739,7 @@ AS
 	WHERE
 		SOR = 6
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6927,6 +8753,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR7
 AS
@@ -6948,6 +8775,7 @@ AS
 	WHERE
 		SOR = 7
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6961,6 +8789,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR8
 AS
@@ -6982,6 +8811,7 @@ AS
 	WHERE
 		SOR = 8
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -6995,6 +8825,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 create view QLABOR9
 AS
@@ -7016,6 +8847,7 @@ AS
 	WHERE
 		SOR = 9
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -7030,6 +8862,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE VIEW dbo.QTAB413
 AS
 SELECT KOZNEV, KOZCIM, SUM(MENNY) AS MENNY, 
@@ -7037,6 +8873,11 @@ SELECT KOZNEV, KOZCIM, SUM(MENNY) AS MENNY,
     SUM(BRUTTO) AS BRUTTO
 FROM TAB413
 GROUP BY KOZNEV, KOZCIM
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7053,73 +8894,21 @@ SET ANSI_NULLS ON
 GO
 
 
-CREATE PROCEDURE sp_BerRaktMozgat
-@pIRANY VARCHAR(10),
-@OBJID INTEGER,
-@DATUM DATETIME=NULL,
-@MEROID INTEGER=1,
-@DOLGID INTEGER=1,
-@MEGJ VARCHAR(1024)=NULL
-AS
-
-SET NOCOUNT ON
-BEGIN TRAN
-
-IF @pIRANY = 'RAKTARBA'
-	BEGIN
-	INSERT INTO
-		BERRAKTAR(OBJID, OBJTIP, BEKERUL_DAT,
-			BEKERUL_MERO, BEKERUL_DOLG, BEKERUL_MEGJ)
-	SELECT
-		@OBJID,
-		OBJTIP,
-		@DATUM,
-		@MEROID,
-		@DOLGID,
-		@MEGJ
-	FROM
-		OBJEKTUM
-	WHERE
-		OBJEKTUM.ID = @OBJID
-	
-	UPDATE
-		OBJEKTUM
-	SET
-		KAPCSOLT = 1
-	WHERE
-		ID = @OBJID
-	END
-ELSE
-	BEGIN
-	SELECT 2
-	END
-
-COMMIT TRAN
-SET NOCOUNT OFF
-
-
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
-
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
 
 CREATE Procedure sp_CheckPermis
 @sForm VARCHAR(50),
 @sLogin VARCHAR(50)
 AS
+
 SET NOCOUNT ON
+
 DECLARE @PERM_NULL INTEGER
 DECLARE @PERM_RO INTEGER
 DECLARE @PERM_RW INTEGER
 SELECT @PERM_NULL = 0
 SELECT @PERM_RO = 1
 SELECT @PERM_RW = 2
+
 DECLARE @JOG_UFR TINYINT
 DECLARE @JOG_UFW TINYINT
 DECLARE @JOG_UER TINYINT
@@ -7128,8 +8917,10 @@ SELECT @JOG_UFR = 1
 SELECT @JOG_UFW = 2
 SELECT @JOG_UER = 4
 SELECT @JOG_UEW = 8
+
 DECLARE @RET INTEGER
 SELECT @RET = @PERM_NULL
+
 DECLARE @UFR VARCHAR(1)
 DECLARE @UFW VARCHAR(1)
 DECLARE @UER VARCHAR(1)
@@ -7151,7 +8942,9 @@ FROM
 	JOGOS
 WHERE
 	KEP = @sForm	
+
 DECLARE @TMP TINYINT
+
 IF @UFW = 'y'
 BEGIN
 	SELECT @TMP = @JOG & @JOG_UFW
@@ -7179,6 +8972,7 @@ BEGIN
 		END
 	END
 END
+
 IF @UEW = 'y'
 BEGIN
 	SELECT @TMP = @JOG & @JOG_UEW
@@ -7206,9 +9000,13 @@ BEGIN
 		END
 	END
 END
+
 SET NOCOUNT OFF
+
 SELECT @RET
 RETURN @RET
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7224,6 +9022,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_DelArvalt    Script Date: 2000. 07. 04. 18:56:10 ******/
 CREATE PROCEDURE sp_DelArvalt
 @pID INTEGER
@@ -7233,6 +9035,14 @@ FROM
 	ARVALT
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7248,8 +9058,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
--------------------------------------------------------------
-/****** Object:  Stored Procedure dbo.sp_DelDolgozo    Script Date: 2000. 07. 04. 18:56:10 ******/
+
+
 CREATE PROCEDURE sp_DelDolgozo
 @pID INTEGER
 AS
@@ -7258,6 +9068,21 @@ FROM
 	DOLGOZO
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7273,6 +9098,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_DelEgyediSzlatet
 @pID INTEGER
 AS
@@ -7280,6 +9111,12 @@ DELETE FROM
 	SZLA_ALT_TET
 WHERE
 	ID = @pID
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7295,6 +9132,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_DelKarbterv
 @pID INTEGER
 AS
@@ -7306,6 +9147,15 @@ SET
 	AKOD = User_Name()
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7321,6 +9171,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_DelKepvis    Script Date: 2000. 07. 04. 18:56:11 ******/
 CREATE PROCEDURE sp_DelKepvis
 @pID INTEGER
@@ -7330,6 +9188,13 @@ DELETE FROM
 WHERE
 	ID = @pID
 	
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7345,7 +9210,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_DelKontir    Script Date: 2000. 07. 04. 18:56:11 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_DelKontir
 @pID VARCHAR(12)
 AS
@@ -7354,6 +9232,19 @@ FROM
 	KONTIR
 WHERE
 	FSZAM = @pID
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7369,10 +9260,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Stored Procedure dbo.sp_DelObj    Script Date: 2000. 07. 04. 18:56:11 ******/
+
+
 CREATE PROCEDURE sp_DelObj
 @pID AS INTEGER
 AS
+
 DECLARE @pOBJTIP VARCHAR(2)
 SELECT /* Lekérdezzük az objektum típusát*/
 	@pOBJTIP = OBJTIP
@@ -7380,11 +9273,13 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @pID
+
 DELETE /* Töröljük az OBJEKTUM táblából a rekordot*/
 FROM
 	OBJEKTUM
 WHERE
 	ID = @pID
+
 /* Az objektum típusától függoen a megfelelo táblából is töröljük a rekordot*/
 IF @pOBJTIP = '01'
 BEGIN
@@ -7572,6 +9467,8 @@ BEGIN
  WHERE ID = @pID
 END
 
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -7586,6 +9483,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_DelRaktarKepv
 @pID INTEGER
 AS
@@ -7594,6 +9492,7 @@ FROM
 	RAKTKEPVIS
 WHERE
 	ID = @pID
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7609,6 +9508,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_DelSzerzfej    Script Date: 2000. 07. 04. 18:56:11 ******/
 CREATE PROCEDURE sp_DelSzerzfej
 @pID INTEGER
@@ -7617,6 +9524,14 @@ DELETE FROM
 	SZERZFEJ
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7632,6 +9547,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_DelSzerztet
 @pID INTEGER
 AS
@@ -7639,6 +9562,15 @@ DELETE FROM
 	SZERZTEL
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7654,6 +9586,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_DelSzlaEgyedi
 @pID INTEGER
 AS
@@ -7661,10 +9599,17 @@ DELETE FROM
 	SZLA_ALT
 WHERE
 	ID = @pID
+
 DELETE FROM
 	SZLA_ALT_TET
 WHERE
 	SZLA_ID = @pID
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7680,7 +9625,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_DelTeljm    Script Date: 2000. 07. 04. 18:56:11 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_DelTeljm
 @pID INTEGER
 AS
@@ -7689,6 +9647,19 @@ FROM
 	TELJM
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -7703,6 +9674,7 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 /****** Object:  Stored Procedure dbo.sp_Duplikal    Script Date: 2000. 07. 04. 18:56:11 ******/
 CREATE PROCEDURE sp_Duplikal
@@ -7823,7 +9795,9 @@ DECLARE @NYOMKUL REAL
 DECLARE @TOMEGARAM REAL
 DECLARE @NYOMAS_K REAL
 DECLARE @HOMER_SZ REAL
+
 DECLARE @RET INTEGER
+
 /* Kiolvassuk az objektum táblából a duplikálandó objektum adatait */
 SELECT 
 	@OBJTIP = OBJTIP,
@@ -7853,6 +9827,7 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @pID
+
 /*IF @pOBJTIP = '02'
 BEGIN
 SELECT
@@ -7883,7 +9858,7 @@ SELECT
 FROM
 	FUTOMU
 WHERE
-	ID = @pID
+	ID = @pID
 END
 ELSE IF @OBJTIP = '04'
 BEGIN
@@ -8154,7 +10129,7 @@ WHERE
 	ID = @pID
 END
 /*
-ELSE IF @OBJTIP = '25'
+ELSE IF @OBJTIP = '25'
 GIN
 SELECT
 	@VALAMI = VALAMI
@@ -8310,11 +10285,13 @@ WHERE
 	ID = @pID
 END
 */
+
 /* Betesszük az objektum táblába az új, duplikált rekordot */
 /* Az új rekord azonosítója lesz a visszatérési érték */
 EXEC @RET = sp_InsObjAlt @OBJTIP,@AZON,@MEGNEV,@TIPUS,@VAROS,@UTCA,@HSZ,@ELHELYEZ,
 		@GYSZAM,@GYARTO,@UZALL, @UZEMIDO, @HITIDO,
 		@GYARTM,@TELEPHSZ,@VESZO,@FKOD,@ALAIR,@NEVLTELJ,@NEVLTELJME,@KATEG,@FSZAM, @MEGJ
+
 /* Frissítjük a duplikált objektum gépészeti adatait */
 EXEC sp_UpdObjGep @RET, @MKHOM, @FAGYVED, @FELEP, @BOYTIP, @SZELTIP, @LEVNYOM, @VIZNYOM, @SZURTIP,
 	@ELLENALL, @LEMSZAM, @UZEMINYOM, @BEVTELJ, @FORDSZ, @EMEL_MAG, @SZAL_KOZ, @SZAL_MENNY,
@@ -8322,17 +10299,22 @@ EXEC sp_UpdObjGep @RET, @MKHOM, @FAGYVED, @FELEP, @BOYTIP, @SZELTIP, @LEVNYOM, @
 	@PRIM_ARAM, @NYITNYOM, @ZARNYOM, @HOSSZ_NAGY, @HOSSZ_KICS, @FELUGY, @HOLEP, @TERFOGAT,
 	@TERFARAM, @LEGSZAL, @SZABMOD, @VEGNYOM, @ATMERO, @BEALL_ERTEK, @IMPULZUS, @LEOLVMOD, @PLOMBA,
 	@HOSSZ,	@TERHEL, @VIZSZ, @FU_KOZ, @OSZLSZAM, @BECSOV
+
 /* Frissítjük a duplikált objektum villamos adatait */
 EXEC sp_UpdObjVill @RET, @ARAMFELV, @FESZULTS, @VEZHOSSZ, @BENYHOSSZ, @NYOMATEK, @ERZEKENY, @MUKMOD,
 	@KVS, @KIMARAM, @FOGYMERHELY, @KIMENET, @CSATLMERET, @MEDDTELJ, @KISMEGSZAK, @LEKVILLTELJ,
 	@VILLCSUCSNY, @VILLCSUCST, @VILLFORDSZ, @TELJT
+
 /* Frissítjük a duplikált objektum üzemeltetési adatait */
 EXEC sp_UpdObjUzem @RET, @FUR_ATM, @PRIMELL, @KAPCSOLAS, @TOLTESMOD, @FUTOTT, @SZABALYOZAS, @KUTFNYOM,
 	@NYUGVIZSZ, @UZEMIVIZSZ, @CIRKTERFARAM, @HOMERS, @NYOMTARTTIP, @HMVHOMERS, @FUT_LAKAS,
 	@HMV_LAKAS, @FUT_KOZULET, @HMV_KOZULET, @HOKOZP_SZAM, @SZEKU_TOM, @NYOMKUL, @TOMEGARAM,
 	@NYOMAS_K, @HOMER_SZ
+
 /* Visszaadjuk az új rekord azonosítóját */
-SELECT @RET
+SELECT @RET
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8348,7 +10330,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_DuplikalEpul    Script Date: 2000. 07. 04. 18:56:11 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_DuplikalEpul
 @pID INTEGER
 AS
@@ -8385,7 +10382,9 @@ DECLARE @CIRK_MOD VARCHAR(3)
 DECLARE @FOELZ VARCHAR(2)
 DECLARE @FELOSZT VARCHAR(3)
 DECLARE @UTEM VARCHAR(2)
+
 DECLARE @RET INTEGER
+
 SELECT
 	@IRSZAM = IRSZAM,
 	@VAROS = VAROS,
@@ -8426,12 +10425,29 @@ FROM
 WHERE
 	OBJEKTUM.ID = @pID
 	AND EPULET.ID = @pID
+
 EXEC @RET = sp_InsEpul @VAROS, @IRSZAM, @UTCA, @HSZ, @EPULNEV, @EPULTIP, @HELYR, @EPULSZ,
 	@FUTESMOD, @LEGTELTIP, @LEGTHELY, @EPULATAD, @FUTOTIP, @UZEMELT,
 	@KARBANTAR, @EPULHOSZ, @LAKTERF, @LEPCSOTERF, @KOZOSTERF, @KOZULTERF,
 	@TERF_ARAM, @HOLEPCSO, @EPUL_ARAM, @CIRK_ARAM, @FUTBESZAB, @CIRKUL,
 	@ATKOTES, @HMVRENDS, @NYOMKUL, @CIRK_MOD, @FOELZ, @FELOSZT, @UTEM
+
 RETURN @RET
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8446,7 +10462,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
-
 
 CREATE PROCEDURE sp_DuplikalMunk
 @pID INTEGER
@@ -8558,7 +10573,6 @@ RETURN @RET
 
 
 
-
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8573,10 +10587,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillArvalt    Script Date: 2000. 07. 04. 18:56:11 ******/
 CREATE PROCEDURE sp_FillArvalt
 @pSZOLG VARCHAR(1)
 AS
+
 SELECT
 	ID,
 		CONVERT(VARCHAR(15),NOTERT) + ';' +
@@ -8589,6 +10612,13 @@ WHERE
 	SZOLG = @pSZOLG
 ORDER BY
 	ERVDAT DESC
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8604,7 +10634,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillConnected    Script Date: 2000. 07. 04. 18:56:12 ******/
+
 CREATE PROCEDURE sp_FillConnected
 @pOBJTIP VARCHAR(2),
 @pID INTEGER
@@ -8650,6 +10689,15 @@ BEGIN
 		GYSZAM
 END
 
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8664,7 +10712,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillDolgozo    Script Date: 2000. 07. 04. 18:56:12 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_FillDolgozo
 AS
 SELECT
@@ -8674,6 +10737,21 @@ FROM
 	DOLGOZO
 ORDER BY
 	NEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8688,6 +10766,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
 
 CREATE PROCEDURE sp_FillEgyediSzlaTet
 @pSZLA_ID INTEGER
@@ -8714,6 +10798,12 @@ WHERE
 ORDER BY
 	TET_SORSZ
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8723,20 +10813,24 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_FillEgyediSzlaTet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_FillEpuletByFutomu
 @pFUTOMU_ID INTEGER = NULL
 AS
+
 SET NOCOUNT ON
+
 CREATE TABLE #ZZZ
 	(
 	ID INTEGER,
 	MEGNEV VARCHAR(100)
 	)
+
 DECLARE MEGNEVcursor CURSOR FAST_FORWARD FOR
 SELECT
 	OE.ID,
@@ -8745,16 +10839,20 @@ SELECT
 	E.EPULSZ
 FROM
 	OBJEKTUM OE INNER JOIN EPULET E ON E.ID = OE.ID
+
 DECLARE @OE_ID INTEGER
 DECLARE @UTCA VARCHAR(35)
 DECLARE @HSZ VARCHAR(3)
 DECLARE @EPULSZ VARCHAR(15)
 DECLARE @FUTOMU_ID INTEGER
+
 --Megnyitjuk a kurzort
 OPEN MEGNEVcursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM MEGNEVcursor
 	INTO @OE_ID,@UTCA,@HSZ,@EPULSZ
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
@@ -8768,16 +10866,21 @@ BEGIN
 				RTRIM(COALESCE(@HSZ, ' - ')) + ';' +
 				COALESCE(@EPULSZ, ' - ') + ';'
 		END
+
 	--Lekérjük a következo rekordot
 	FETCH NEXT FROM MEGNEVcursor
 		INTO @OE_ID,@UTCA,@HSZ,@EPULSZ
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE MEGNEVcursor
 DEALLOCATE MEGNEVcursor
+
 SET NOCOUNT OFF
+
 SELECT * FROM #ZZZ
 DROP TABLE #ZZZ
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8792,6 +10895,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_FillKarb    Script Date: 2000. 07. 04. 18:56:12 ******/
 CREATE PROCEDURE sp_FillKarb
@@ -8810,6 +10921,14 @@ WHERE
 ORDER BY
 	KDATUM
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8824,6 +10943,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillKepvis    Script Date: 2000. 07. 04. 18:56:12 ******/
 CREATE PROCEDURE sp_FillKepvis
 AS
@@ -8837,6 +10964,14 @@ ORDER BY
 	KOZNEV,
 	SZERNEV
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8846,14 +10981,16 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_FillKepvis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_FillLaborJegyz
 @pFUTOMU_ID INTEGER
 AS
+
 SELECT
 	LABOR.ID,
 	CONVERT(VARCHAR(20),LABOR.VIZSG_VEGE,102) + ' - ' + LABOR.SORSZ AS SORSZ
@@ -8863,6 +11000,7 @@ WHERE
 	MUNKALAP.OBJID = @pFUTOMU_ID
 ORDER BY
 	LABOR.ID
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8878,7 +11016,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillLakasByEpulet    Script Date: 2000. 07. 04. 18:56:12 ******/
+
 CREATE PROCEDURE sp_FillLakasByEpulet
 @pEPULID INTEGER
 AS
@@ -8896,6 +11043,15 @@ WHERE
 ORDER BY
 	NEV
 
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8905,10 +11061,11 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_FillLakasByEpulet]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_FillMunkalapJegyz
 AS
@@ -8920,9 +11077,10 @@ SELECT
 FROM
 	MUNKALAP
 WHERE
-	TIPUSH = '344' AND (ALLAPOT=1 OR ALLAPOT=2) AND KIALLDAT > '2001.01.01'
+	MUVEL = 'HIT' AND (ALLAPOT=1 OR ALLAPOT=2) AND KIALLDAT > '2001.01.01'
 ORDER BY
 	ID DESC
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8937,6 +11095,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_FillMunkalapszam    Script Date: 2000. 07. 04. 18:56:12 ******/
 CREATE PROCEDURE sp_FillMunkalapszam
@@ -8954,6 +11116,10 @@ WHERE
 ORDER BY
 	ID DESC
 
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -8967,6 +11133,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
 
 CREATE PROCEDURE sp_FillNincsKarbterv
 @pOBJTIP VARCHAR(2) = NULL
@@ -9023,6 +11193,9 @@ ELSE
 		END
 	END
 
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9037,7 +11210,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillNotConnected    Script Date: 2000. 07. 04. 18:56:12 ******/
+
 CREATE PROCEDURE sp_FillNotConnected
 @pOBJTIP VARCHAR(2),
 @pID INTEGER
@@ -9081,6 +11263,15 @@ BEGIN
 		GYSZAM
 END
 
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9095,12 +11286,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_FillObjMegnev
 @pObjTip VARCHAR(2),
 @pAKTIV INTEGER = 0,
 @ELSOOSZLOP VARCHAR(1) = NULL
 AS
+
 SET NOCOUNT ON
+
 DECLARE @IS_AKTIV VARCHAR(1)
 IF @pAKTIV = 1
 BEGIN
@@ -9110,7 +11305,9 @@ ELSE
 BEGIN
 	SELECT @IS_AKTIV = 'y'
 END
+
 SET NOCOUNT OFF
+
 IF @pObjTip = '01'
 BEGIN
 	SELECT
@@ -9176,6 +11373,8 @@ BEGIN
 	END
 END
 
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9190,8 +11389,11 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_FillObjTelephsz
 @pObjTip VARCHAR(2)
+
 AS
 SELECT
 	ID,
@@ -9203,6 +11405,8 @@ WHERE
 ORDER BY
 	TELEPHSZ
 
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9212,7 +11416,7 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_FillObjTelephsz]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
@@ -9258,7 +11462,8 @@ SELECT
 		WHEN 44 THEN 22
 		WHEN 1722 THEN 23
 		WHEN 40214 THEN 24
-		ELSE 25
+		WHEN 46476 THEN 25
+		ELSE 0
 	END,
 	LABOR.MINTA_IDO,
 	MUN_SORSZ,
@@ -9280,6 +11485,8 @@ WHERE
 	AND DATEPART(month, LABOR.MINTA_IDO) = DATEPART(month, @pDATUM)
 
 SET NOCOUNT OFF
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9294,6 +11501,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_FillRaktarKepv
 AS
 SELECT
@@ -9304,6 +11512,8 @@ FROM
 ORDER BY
 	NEV,
 	CIM
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -9318,6 +11528,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
 
 CREATE PROCEDURE sp_FillSzertet
 @pSZERZ_ID INTEGER
@@ -9345,6 +11561,12 @@ WHERE
 ORDER BY
 	SZERTET
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9359,6 +11581,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillSzerzfej    Script Date: 2000. 07. 04. 18:56:13 ******/
 CREATE PROCEDURE sp_FillSzerzfej
 AS
@@ -9370,6 +11600,13 @@ FROM
 	SZERZFEJ
 ORDER BY
 	MEGNEV
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -9384,6 +11621,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
 
 CREATE PROCEDURE sp_FillSzlaEgyedi
 AS
@@ -9401,6 +11644,12 @@ ORDER BY
 	SZOLG,
 	KDAT
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9415,14 +11664,17 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_FillTabPlomb
 @pREF INTEGER
 AS
 BEGIN TRAN
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB_PLOMB
 */
 DELETE FROM TAB_PLOMB
+
 INSERT INTO
 	TAB_PLOMB
 SELECT
@@ -9442,6 +11694,9 @@ WHERE
 	
 COMMIT TRAN
 
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9456,14 +11711,17 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_FillTabVizora
 @pREF INTEGER
 AS
 BEGIN TRAN
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB_VIZORA
 */
 DELETE FROM TAB_VIZORA
+
 INSERT INTO
 	TAB_VIZORA
 SELECT
@@ -9482,6 +11740,11 @@ WHERE
 	
 COMMIT TRAN
 
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9495,6 +11758,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_FillTeljm    Script Date: 2000. 07. 04. 18:56:13 ******/
 CREATE PROCEDURE sp_FillTeljm
@@ -9516,6 +11787,14 @@ ORDER BY
 	MUNDAT,
 	MUNORA
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9530,7 +11809,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_FillVanKarbterv    Script Date: 2000. 07. 04. 18:56:13 ******/
+
 CREATE PROCEDURE sp_FillVanKarbterv
 @pMUVEL VARCHAR(3),
 @pOBJTIP VARCHAR(2) = NULL
@@ -9553,6 +11841,10 @@ WHERE
 	AND KARBTERV.OBJTIP = COALESCE(@pOBJTIP, KARBTERV.OBJTIP)
 	AND KARBTERV.MUVEL = COALESCE(@pMUVEL, KARBTERV.MUVEL)
 
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -9567,13 +11859,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_GeneralAlt
 @TDAT DATETIME,
 @FDAT DATETIME,
 @SZLA_CIKL INTEGER
 AS
+
 SET NOCOUNT ON
+
 BEGIN TRAN
+
 --Segédváltozók
 DECLARE @SZLA_ID INTEGER
 DECLARE @MAX_SZLASZ INTEGER
@@ -9585,6 +11886,7 @@ DECLARE @OSSZ_NETTO REAL
 DECLARE @OSSZ_BRUTTO REAL
 DECLARE @OSSZ_AFA REAL
 DECLARE @NETTO REAL
+
 --Számla kurzorhoz
 DECLARE @SZERSZ VARCHAR(8)
 DECLARE @FIZMOD VARCHAR(1)
@@ -9600,6 +11902,8 @@ DECLARE @KOZIRSZ VARCHAR(4)
 DECLARE @SZERNEV VARCHAR(100)
 DECLARE @ERVDAT DATETIME
 DECLARE @BEFDAT DATETIME
+
+
 --Számla tétel kurzorhoz
 DECLARE @CIKK VARCHAR(2)
 DECLARE @CIKK_MENNY REAL
@@ -9608,6 +11912,8 @@ DECLARE @MENNY_ME VARCHAR(3)
 DECLARE @AFA VARCHAR(2)
 DECLARE @TET_SORSZ INTEGER
 DECLARE @CIM VARCHAR(100)
+
+
 DECLARE @CIKL_KEZD DATETIME
 DECLARE @CIKL_VEG DATETIME
 DECLARE @CIKL_SZAM INTEGER
@@ -9617,10 +11923,12 @@ DECLARE @AKT_HONAP DATETIME
 DECLARE @AKT_AR REAL
 DECLARE @PREV_AR REAL
 DECLARE @SZOLG_JEL VARCHAR(4)
+
 SELECT @CIKL_SZAM = MONTH(GetDate())
 SELECT @CIKL_SZAM = @CIKL_SZAM / @SZLA_CIKL
 SELECT @CIKL_KEZD = DATEADD(month, @CIKL_SZAM * @SZLA_CIKL, STR(YEAR(GetDate())) + '.01.01')
 SELECT @CIKL_VEG = DATEADD(month, @SZLA_CIKL, @CIKL_KEZD)
+
 ------------------------------------------
 --Számla kurzor: szerzodésekbol összeállítjuk a számlafejléc tartalmát
 DECLARE SZLACursor CURSOR FAST_FORWARD FOR
@@ -9670,10 +11978,16 @@ BEGIN
 END
 CLOSE SZLADelCursor
 DEALLOCATE SZLADelCursor
+
 DELETE FROM SZLA_ALT WHERE EGYEDI = 0 AND ZAROLT = 0
+
+
+
 --Hány db számlát generáltunk
 SELECT @NUM_OF_SZLA = 0
+
 OPEN SZLACursor
+
 FETCH NEXT FROM SZLACursor
 	INTO @SZERZ_ID,@SZERSZ,@FIZMOD,@JEL,@SZJ,@SZERTAR,@PAZ,@UGYFN,@SZOLG,@KOZNEV,@KOZCIM,@KOZIRSZ,@SZERNEV,@ERVDAT,@BEFDAT
 WHILE @@FETCH_STATUS = 0
@@ -9684,6 +11998,7 @@ BEGIN
 		BEGIN
 		SELECT @MAX_SZLASZ = 0
 		END
+
 	SELECT @OSSZ_NETTO = 0
 	SELECT @OSSZ_BRUTTO = 0
 	SELECT @OSSZ_AFA = 0
@@ -9732,6 +12047,7 @@ BEGIN
 		BEGIN
 		SELECT @SZAML_VEGE = @CIKL_VEG
 		END
+
 	SELECT @AKT_HONAP = @SZAML_ELEJE	--Ciklusváltozó, végigmegy a cikluson belüli hónapokon
 	SELECT @SZAMLAZANDO_HO = 0	--Hány hónapot kell az adott árral számlázni
 	SELECT @PREV_AR = NOTERT FROM ARVALT WHERE SZOLG = @SZOLG_JEL AND @AKT_HONAP BETWEEN ERVDAT AND COALESCE(BEFDAT,@AKT_HONAP)	--Elozo hónapban érvényes ár
@@ -9739,8 +12055,10 @@ BEGIN
 	BEGIN
 		--Adott hónapban érvényes ár
 		SELECT @AKT_AR = NOTERT FROM ARVALT WHERE SZOLG = @SZOLG_JEL AND @AKT_HONAP BETWEEN ERVDAT AND COALESCE(BEFDAT,@AKT_HONAP)
+
 		IF @AKT_AR <> @PREV_AR	--Ha másik ár jönne, akkor
 			BEGIN
+
 			DECLARE SZLA_TETCursor CURSOR FAST_FORWARD FOR
 			SELECT
 				CIKK,
@@ -9753,8 +12071,10 @@ BEGIN
 				SZERZTEL INNER JOIN LEPCSOHAZ ON SZERZTEL.OBJ_ID = LEPCSOHAZ.ID
 			WHERE
 				SZER_ID = @SZERZ_ID
+
 			SELECT @TET_SORSZ = 0
 			OPEN SZLA_TETCursor
+
 			FETCH NEXT FROM SZLA_TETCursor
 				INTO @CIKK,@CIKK_MENNY,@SZ_MENNY,@MENNY_ME,@AFA,@CIM
 			WHILE @@FETCH_STATUS = 0
@@ -9786,6 +12106,7 @@ BEGIN
 						WHEN '03' THEN ROUND(@NETTO * 1.12,0)
 						WHEN '04' THEN ROUND(@NETTO * 1.25,0)
 					END
+
 				SELECT @OSSZ_NETTO = @OSSZ_NETTO + @NETTO
 				SELECT @OSSZ_AFA = CASE @AFA
 										WHEN '01' THEN @OSSZ_AFA
@@ -9803,9 +12124,11 @@ BEGIN
 				FETCH NEXT FROM SZLA_TETCursor
 					INTO @CIKK,@CIKK_MENNY,@SZ_MENNY,@MENNY_ME,@AFA,@CIM
 			END
+
 			--Lezárjuk a kurzort
 			CLOSE SZLA_TETCursor
 			DEALLOCATE SZLA_TETCursor
+
 			SELECT @PREV_AR = @AKT_AR
 			SELECT @SZAMLAZANDO_HO = 1
 			END
@@ -9819,6 +12142,7 @@ BEGIN
 		
 		SELECT @AKT_HONAP = DATEADD(month, 1, @AKT_HONAP)	--Következo hónapra lépünk
 	END
+
 	IF @SZAMLAZANDO_HO <> 0
 		BEGIN
 		DECLARE SZLA_TETCursor CURSOR FAST_FORWARD FOR
@@ -9833,8 +12157,10 @@ BEGIN
 			SZERZTEL INNER JOIN LEPCSOHAZ ON LEPCSOHAZ.ID = SZERZTEL.OBJ_ID
 		WHERE
 			SZER_ID = @SZERZ_ID
+
 		SELECT @TET_SORSZ = 0
 		OPEN SZLA_TETCursor
+
 		FETCH NEXT FROM SZLA_TETCursor
 			INTO @CIKK,@CIKK_MENNY,@SZ_MENNY,@MENNY_ME,@AFA,@CIM
 		WHILE @@FETCH_STATUS = 0
@@ -9866,6 +12192,7 @@ BEGIN
 					WHEN '03' THEN ROUND(@NETTO * 1.12,0)
 					WHEN '04' THEN ROUND(@NETTO * 1.25,0)
 				END
+
 			SELECT @OSSZ_NETTO = @OSSZ_NETTO + @NETTO
 			SELECT @OSSZ_AFA = CASE @AFA
 									WHEN '01' THEN @OSSZ_AFA
@@ -9883,10 +12210,12 @@ BEGIN
 			FETCH NEXT FROM SZLA_TETCursor
 				INTO @CIKK,@CIKK_MENNY,@SZ_MENNY,@MENNY_ME,@AFA,@CIM
 			END
+
 		--Lezárjuk a kurzort
 		CLOSE SZLA_TETCursor
 		DEALLOCATE SZLA_TETCursor
 		END
+
 	UPDATE
 		SZLA_ALT
 	SET
@@ -9899,12 +12228,24 @@ BEGIN
 	FETCH NEXT FROM SZLACursor
 		INTO @SZERZ_ID,@SZERSZ,@FIZMOD,@JEL,@SZJ,@SZERTAR,@PAZ,@UGYFN,@SZOLG,@KOZNEV,@KOZCIM,@KOZIRSZ,@SZERNEV,@ERVDAT,@BEFDAT
 END
+
 CLOSE SZLACursor
 DEALLOCATE SZLACursor
+
 SET NOCOUNT OFF
+
+
 COMMIT TRAN
+
 SELECT @NUM_OF_SZLA
+
 RETURN @NUM_OF_SZLA
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -9920,15 +12261,23 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE Procedure sp_GetElozoKapcs
-@pID INTEGER,		--ennek az elõzõ kapcsolatát
+@pID INTEGER,		--ennek az elozo kapcsolatát
 @pOBJTIP VARCHAR(2),	--ilyen objektum típus alatt keresek
 @pOBJTIP2 VARCHAR(2)	--ilyen objektum típust keresek
+
 AS
+
 DECLARE @ID INTEGER
 DECLARE @ID_TEMP INTEGER
 DECLARE @ELOZOKAPCSDATE DATETIME
+
 SELECT @ELOZOKAPCSDATE = '1900.01.01'
+
 DECLARE zzz CURSOR fast_forward FOR
 SELECT
 	ID,
@@ -9939,11 +12288,14 @@ FROM
 	OBJEKTUM
 WHERE
 	OBJTIP = @pOBJTIP2 AND ELOZOKAPCS IS NOT NULL
+
 DECLARE @tID INTEGER
 DECLARE @tOBJTIP VARCHAR(2)
 DECLARE @tELOZOKAPCS INTEGER
 DECLARE @tELOZOKAPCSDATE DATETIME
+
 OPEN zzz
+
 FETCH NEXT FROM zzz INTO @tID, @tOBJTIP, @tELOZOKAPCS, @tELOZOKAPCSDATE
 WHILE @@fetch_status = 0
 BEGIN
@@ -9958,8 +12310,10 @@ BEGIN
 	
 	FETCH NEXT FROM zzz INTO @tID, @tOBJTIP, @tELOZOKAPCS, @tELOZOKAPCSDATE
 END
+
 CLOSE zzz
 DEALLOCATE zzz
+
 SELECT
 --	Q296.KODENEV AS OBJTIP,
 	MEGNEV,
@@ -9970,6 +12324,10 @@ FROM
 	Q296 RIGHT JOIN OBJEKTUM ON Q296.KODERT = OBJEKTUM.OBJTIP
 WHERE
 	ID = @ID
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -9985,7 +12343,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetFszamInfo    Script Date: 2000. 07. 04. 18:56:13 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_GetFszamInfo
 @pFSZAM VARCHAR(12)
 AS
@@ -9996,6 +12367,19 @@ FROM
 	OBJEKTUM
 WHERE
 	FSZAM = @pFSZAM
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10011,13 +12395,43 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetGridHeader    Script Date: 2000. 07. 04. 18:56:13 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_GetGridHeader
 AS
 SELECT
 	*
 FROM
 	GRID_FEJLEC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10028,23 +12442,29 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_GetGridHeader]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
+
+
 
 /****** Object:  Stored Procedure dbo.sp_GetInfoAlt    Script Date: 2000. 07. 04. 18:56:14 ******/
 CREATE PROCEDURE sp_GetInfoAlt
 @pID INTEGER
 AS
 DECLARE @FUTOMU_ID INT
+
 EXEC @FUTOMU_ID = sp_Rekurziv @pID
+
 SELECT
 	MEGNEV AS FUTOMUNEV
 FROM
 	OBJEKTUM
 WHERE
 	ID = @FUTOMU_ID
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10060,6 +12480,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetInfoSpec    Script Date: 2000. 07. 04. 18:56:14 ******/
 CREATE PROCEDURE sp_GetInfoSpec
 @pID INTEGER
@@ -10072,6 +12500,7 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @FUTOMU_ID
+
 SELECT
 	MEGNEV,
 	TELEPHSZ,
@@ -10082,6 +12511,14 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10096,6 +12533,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_GetJegyzKarbInfo    Script Date: 2000. 07. 04. 18:56:14 ******/
 CREATE PROCEDURE sp_GetJegyzKarbInfo
@@ -10120,6 +12565,14 @@ FROM
 WHERE
 	KARBAN.ID = @pID
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10134,7 +12587,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetKapcs    Script Date: 2000. 07. 04. 18:56:14 ******/
+
 CREATE PROCEDURE sp_GetKapcs
 @pID INTEGER,
 @pOBJTIP VARCHAR(2)=NULL
@@ -10156,6 +12618,15 @@ WHERE
 	OBJEKTUM.ID = @pID
 	AND OBJTIP = COALESCE(@pOBJTIP,OBJTIP)
 
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10170,18 +12641,34 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetKarbLekerdInfo    Script Date: 2000. 07. 04. 18:56:14 ******/
 CREATE PROCEDURE sp_GetKarbLekerdInfo
 @pID INTEGER
 AS
--- A karbantartás lekérdezõ képernyõn valamely kijelölt sorhoz kiírja
--- az adott objektum megjegyzés mezõjét.
+-- A karbantartás lekérdezo képernyon valamely kijelölt sorhoz kiírja
+-- az adott objektum megjegyzés mezojét.
 SELECT
 	coalesce(MEGJ,'-') AS MEGJ
 FROM
 	OBJEKTUM RIGHT JOIN KARBAN ON OBJEKTUM.ID = KARBAN.OBJID
 WHERE
 	KARBAN.ID = @pID
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10197,11 +12684,13 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_GetMunkalapObj
 @OBJID INTEGER
 AS
 DECLARE @OBJTIP VARCHAR(2)
 SELECT @OBJTIP = OBJTIP FROM OBJEKTUM WHERE ID = @OBJID
+
 DECLARE @FUTOMU_ID INT
 DECLARE @FUTOMU_NEV VARCHAR(100)
 EXEC @FUTOMU_ID = sp_Rekurziv @OBJID
@@ -10210,6 +12699,7 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @FUTOMU_ID
+
 IF @OBJTIP = '01' OR @OBJTIP = '02' OR @OBJTIP = '37'
 	BEGIN
 	SELECT
@@ -10235,6 +12725,9 @@ ELSE
 		ID = @OBJID
 	END
 
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10249,6 +12742,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_GetOsszesitoSorsz
 @pSORSZ VARCHAR(2)
 AS
@@ -10259,6 +12753,7 @@ FROM
 	TAB_LABORO
 where
 	SOR = @pSORSZ
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10274,7 +12769,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetPermis    Script Date: 2000. 07. 04. 18:56:14 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_GetPermis
 @pOBJTIP VARCHAR(2)
 AS
@@ -10285,6 +12795,21 @@ FROM
 WHERE
 	OBJTIP = @pOBJTIP
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10294,10 +12819,11 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_GetPermis]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_GetRaktKepvisInfo
 @pID INTEGER
@@ -10317,6 +12843,7 @@ FROM
 WHERE
 	ID = @pID
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10331,17 +12858,35 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_GetSzertetOsszeg    Script Date: 2000. 07. 04. 18:56:14 ******/
 CREATE PROCEDURE sp_GetSzertetOsszeg
 @SZOLG VARCHAR(1)
 AS
+
 DECLARE @PREV_NOTERT REAL	-- Elozo nettó ár
 DECLARE @PREV_DATE DATETIME	-- Elozo nettó ár felvitelének idopontja
 -- Adott szolgáltatás alatt mi volt utoljára felvive
 SELECT @PREV_DATE = max(ERVDAT) FROM ARVALT WHERE SZOLG = @SZOLG
 -- Ahhoz a dátumhoz tartozó nettó ár
 SELECT @PREV_NOTERT = NOTERT FROM ARVALT WHERE SZOLG = @SZOLG AND ERVDAT = @PREV_DATE
+
 SELECT @PREV_NOTERT
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10357,18 +12902,29 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_GetTeljmSum
 @pMUNKALAP_ID INTEGER
 AS
 DECLARE @MUNORA INTEGER
+
 SELECT @MUNORA = SUM(MUNORA)
 FROM
 	TELJM INNER JOIN MUNKALAP ON TELJM.MUNKALAP_ID = MUNKALAP.ID
 WHERE
 	MUNKALAP.ID = @pMUNKALAP_ID
+
 IF @MUNORA IS NULL
 SELECT @MUNORA = 0
+
 SELECT @MUNORA
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10379,10 +12935,12 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_GetTeljmSum]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
 SET ANSI_NULLS ON 
 GO
+
+
 
 /****** Object:  Stored Procedure dbo.sp_InsArvalt    Script Date: 2000. 07. 04. 18:56:14 ******/
 CREATE PROCEDURE sp_InsArvalt
@@ -10390,12 +12948,15 @@ CREATE PROCEDURE sp_InsArvalt
 @NOTERT REAL,
 @ERVDAT DATETIME
 AS
+
 DECLARE @RET INTEGER	-- Visszatérési érték
+
 BEGIN TRAN
+
 --Amikor új árat visz fel az adott szolgáltatáshoz,
 --csak az új ár érvényességi kezdetének dátuma ismert.
---Az elõzõ ár befejezési dátumát be kell írni, aminek értéke
---az új ár kezdete elõtti nap.
+--Az elozo ár befejezési dátumát be kell írni, aminek értéke
+--az új ár kezdete elotti nap.
 DECLARE @PREV_NOTERT REAL	-- Elozo nettó ár
 DECLARE @PREV_DATE DATETIME	-- Elozo nettó ár felvitelének idopontja
 -- Adott szolgáltatás alatt mi volt utoljára felvive
@@ -10403,6 +12964,7 @@ SELECT @PREV_DATE = max(ERVDAT) FROM ARVALT WHERE SZOLG = @SZOLG
 -- Ahhoz a dátumhoz tartozó nettó ár
 SELECT @PREV_NOTERT = NOTERT FROM ARVALT WHERE ERVDAT = @PREV_DATE AND SZOLG = @SZOLG
 UPDATE ARVALT SET BEFDAT = dateadd(day,-1,@ERVDAT) WHERE ERVDAT = @PREV_DATE AND SZOLG = @SZOLG
+
 INSERT INTO ARVALT(SZOLG, NOTERT, ERVDAT, BEFDAT, FELAR)
 SELECT
 	@SZOLG,
@@ -10410,10 +12972,21 @@ SELECT
 	@ERVDAT,
 	NULL,
 	@NOTERT - @PREV_NOTERT
+
 SELECT @RET = @@IDENTITY
+
 COMMIT TRAN
+
 SELECT @RET
 RETURN @RET
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10429,9 +13002,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_InsDolgozo
 @NEV VARCHAR(20) = NULL,
-@LOGIN VARCHAR(50) = NULL,
 @SZEREGYS VARCHAR(2) = NULL,
 @BEOSZT VARCHAR(2) = NULL,
 @UFR VARCHAR(1),
@@ -10441,19 +13015,34 @@ CREATE PROCEDURE sp_InsDolgozo
 AS
 DECLARE @RET INTEGER
 INSERT INTO
-	DOLGOZO(NEV,LOGIN,SZEREGYS,BEOSZT,UFR,UFW,UER,UEW)
+	DOLGOZO(NEV,SZEREGYS,BEOSZT,UFR,UFW,UER,UEW)
 SELECT
 	@NEV,
-	@LOGIN,
 	@SZEREGYS,
 	@BEOSZT,
 	@UFR,
 	@UFW,
 	@UER,
 	@UEW
+
 SELECT @RET = @@IDENTITY
+
 SELECT @RET
 RETURN @RET
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10469,6 +13058,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_InsEgyediSzlatet
 @SZLA_ID INTEGER,
 @CIKK VARCHAR(2),
@@ -10480,9 +13075,12 @@ CREATE PROCEDURE sp_InsEgyediSzlatet
 AS
 DECLARE @RET INTEGER
 DECLARE @PREV_SZLATET INTEGER
+
 BEGIN TRAN
+
 SELECT @PREV_SZLATET = MAX(TET_SORSZ) FROM SZLA_ALT_TET WHERE SZLA_ID = @SZLA_ID
 IF @PREV_SZLATET IS NULL SELECT @PREV_SZLATET = 0
+
 INSERT INTO
 	SZLA_ALT_TET(SZLA_ID,TET_SORSZ,CIKK,SZ_MENNY,MENNY_ME,NOTERT,OSSZEG,AFA)
 SELECT
@@ -10494,10 +13092,19 @@ SELECT
 	@NOTERT,
 	@OSSZEG,
 	@AFA
+
 SELECT @RET = @@IDENTITY
 SELECT @RET
+
 COMMIT TRAN
+
 RETURN @RET
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10512,6 +13119,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_InsEpul    Script Date: 2000. 07. 04. 18:56:15 ******/
 CREATE PROCEDURE sp_InsEpul
@@ -10550,7 +13161,9 @@ CREATE PROCEDURE sp_InsEpul
 @FELOSZT VARCHAR(3)=NULL,
 @UTEM VARCHAR(2)=NULL
 AS
+
 DECLARE @RET INTEGER
+
 INSERT INTO
 	OBJEKTUM(OBJTIP,MEGNEV,VAROS,UTCA,HSZ,KAPCSOLT,AZON)
 SELECT
@@ -10561,7 +13174,9 @@ SELECT
 	@HSZ,
 	0,	--Alapértelmezés szerint nem kapcsolt
 	@AZON
+
 SELECT @RET = @@IDENTITY
+
 INSERT INTO
 	EPULET(ID,IRSZAM,EPULTIP,HELYR,EPULSZ,FUTESMOD,LEGTELTIP,
 		LEGTHELY,EPULATAD,FUTOTIP,UZEMELT,KARBANTAR,
@@ -10600,8 +13215,22 @@ SELECT
 	@FOELZ,
 	@FELOSZT,
 	@UTEM
+
 SELECT @RET
 RETURN @RET
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10617,6 +13246,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_InsJegyz
 @KARB_ID INTEGER,
 @JTIP VARCHAR(2),
@@ -10625,6 +13260,7 @@ CREATE PROCEDURE sp_InsJegyz
 @NEV INTEGER
 AS
 DECLARE @RET INTEGER
+
 INSERT INTO
 	JEGYZ(KARB_ID,JTIP,JDAT,/*VONEV,*/NEV,MSZAM)
 SELECT
@@ -10641,7 +13277,13 @@ WHERE
 	
 SELECT @RET = @@IDENTITY
 SELECT @RET
+
 RETURN @RET
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10657,14 +13299,21 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_InsKarban    Script Date: 2000. 07. 04. 18:56:15 ******/
 CREATE PROCEDURE sp_InsKarban
 @MUN_ID INTEGER
 AS
+
 --Lekérdezzük az adott munkalaphoz kapcsolódó teljesítmény adatok
 --közül a legutóbbi bejegyzés dátumát
 DECLARE @MUNDAT DATETIME
 SELECT @MUNDAT=max(TELJM.MUNDAT) FROM TELJM WHERE TELJM.MUNKALAP_ID=@MUN_ID
+
+
 -- Ha még nem létezik ilyen KARBAN rekord, akkor insert kell.
 IF NOT EXISTS(SELECT MUN_SORSZ FROM KARBAN WHERE MUN_SORSZ = @MUN_ID)
 BEGIN
@@ -10720,6 +13369,9 @@ BEGIN
 		MUN_SORSZ = @MUN_ID
 END
 
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10734,6 +13386,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_InsKarbterv
 @OBJID INTEGER = NULL,
 @OBJTIP VARCHAR(2),
@@ -10742,9 +13398,12 @@ CREATE PROCEDURE sp_InsKarbterv
 @IDOE VARCHAR(2),
 @IDO INTEGER
 AS
+
 BEGIN TRAN
+
 IF @OBJID IS NULL
 	BEGIN
+
 	SET NOCOUNT ON
 	
 	-- Eloször az adott objektumtípushoz kapcsolt terv(ek)et inaktívvá tesszük.
@@ -10770,9 +13429,11 @@ IF @OBJID IS NULL
 	
 	--Megnyitjuk a kurzort
 	OPEN OBJIDcursor
+
 	--Lekérjük az elso rekordot
 	FETCH NEXT FROM OBJIDcursor
 		INTO @tmpOBJID
+
 	--Amíg van következo rekord
 	WHILE @@FETCH_STATUS = 0
 		BEGIN
@@ -10792,9 +13453,11 @@ IF @OBJID IS NULL
 		FETCH NEXT FROM OBJIDcursor
 			INTO @tmpOBJID
 		END	--WHILE
+
 	--Lezárjuk és töröljük a kurzort
 	CLOSE OBJIDcursor
 	DEALLOCATE OBJIDcursor
+
 	SET NOCOUNT OFF
 	END	--IF
 ELSE
@@ -10825,6 +13488,9 @@ ELSE
 	
 COMMIT TRAN
 
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -10839,6 +13505,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_InsKepvis    Script Date: 2000. 07. 04. 18:56:15 ******/
 CREATE PROCEDURE sp_InsKepvis
 @SZERNEV VARCHAR(50),
@@ -10850,6 +13524,7 @@ CREATE PROCEDURE sp_InsKepvis
 @MEGJ VARCHAR(1024)
 AS
 DECLARE @RET INTEGER
+
 INSERT INTO
 	KEPVIS(SZERNEV, SZERCIM, SZERIRSZ, KOZNEV, KOZCIM, KOZIRSZ, MEGJ)
 SELECT
@@ -10860,9 +13535,19 @@ SELECT
 	@KOZCIM,
 	@KOZIRSZ,
 	@MEGJ
+
 SELECT @RET = @@IDENTITY
 SELECT @RET
+
 RETURN @RET
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10878,13 +13563,28 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_InsKontir    Script Date: 2000. 07. 04. 18:56:15 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_InsKontir
 @FSZAM VARCHAR(12),
 @FSZNEV VARCHAR(30)=NULL,
 @KIJELOLT VARCHAR(1)='n'
 AS
+
 DECLARE @RET INTEGER
+
 INSERT INTO
 	KONTIR(FSZAM,FSZNEV,KIJELOLT)
 SELECT
@@ -10893,8 +13593,17 @@ SELECT
 	@KIJELOLT
 	
 SELECT @RET = @@IDENTITY
+
 SELECT @RET
 RETURN @RET
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10905,10 +13614,11 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_InsKontir]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_InsLabor
 @TIPUS VARCHAR(1),
@@ -10932,6 +13642,7 @@ CREATE PROCEDURE sp_InsLabor
 @KULSO VARCHAR(255) = NULL,
 @ERTEKELES VARCHAR(255) = NULL
 AS
+
 DECLARE @RET INTEGER
 BEGIN TRAN
 INSERT INTO
@@ -10962,13 +13673,16 @@ SELECT
 	@NITRIT,
 	@KULSO,
 	@ERTEKELES
+
 SELECT @RET = @@IDENTITY
+
 UPDATE
 	LABOR
 SET
 	SORSZ = @RET
 WHERE
 	ID = @RET
+
 /*UPDATE MUNKALAP
 SET
 	MUVLEIR = 'Jegyzokönyv száma: ' + CONVERT(VARCHAR(12),@RET),
@@ -10978,9 +13692,11 @@ SET
 WHERE
 	ID = @MUN_SORSZ
 */
+
 COMMIT TRAN
 SELECT @RET
 RETURN @RET
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -10991,10 +13707,14 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_InsLabor]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER ON 
+SET QUOTED_IDENTIFIER OFF 
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
 
 CREATE PROCEDURE sp_InsMunkalap
 @MTIP VARCHAR(1),
@@ -11017,7 +13737,7 @@ CREATE PROCEDURE sp_InsMunkalap
 @FELLEIR VARCHAR(1024)=NULL,
 @JELENSTIP VARCHAR(2)=NULL,
 @JELENSLEIR VARCHAR(1024)=NULL,
-@MUVLEIR VARCHAR(8000)=NULL,
+@MUVLEIR VARCHAR(1024)=NULL,
 @INTEZ VARCHAR(1024)=NULL,
 @VONEV DATETIME=NULL,
 @SORSZ VARCHAR(50)=NULL,
@@ -11037,6 +13757,7 @@ CREATE PROCEDURE sp_InsMunkalap
 @FELUJITOTT VARCHAR(10)=NULL
 AS
 DECLARE @OBJ INTEGER	--Az objid mezoben ezt tároljuk majd el.
+
 IF @EPUL_ID IS NOT NULL	--Ha épület id-t kell tárolni
 BEGIN
 	SELECT @OBJ = @EPUL_ID
@@ -11045,6 +13766,7 @@ ELSE	--Ha egyéb objektum id-t kell tárolni
 BEGIN
 	SELECT @OBJ = @OBJID
 END
+
 DECLARE @RET INTEGER
 INSERT INTO
 	MUNKALAP(MTIP, BEJDAT, BEJNEV, TIPUSH, HIBLEIR, SZEREGYS, MFDOLG, MUNELV,
@@ -11092,7 +13814,9 @@ SELECT
 	@PLOMBAZAS,
 	@UJ,
 	@FELUJITOTT
+
 SELECT @RET = @@IDENTITY
+
 IF @SORSZ IS NULL
 	BEGIN
 	UPDATE
@@ -11102,8 +13826,14 @@ IF @SORSZ IS NULL
 	WHERE
 		ID = @RET
 	END
+
 SELECT @RET
 RETURN @RET
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11114,10 +13844,12 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_InsMunkalap]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
+
+
 
 CREATE PROCEDURE sp_InsObjAlt
 @pOBJTIP VARCHAR(2),
@@ -11132,8 +13864,8 @@ CREATE PROCEDURE sp_InsObjAlt
 @GYARTO VARCHAR(3)=NULL,
 @UZALL VARCHAR(1)=NULL,
 @UZEMIDO VARCHAR(20)=NULL,
-@HITIDO VARCHAR(20)=NULL,
-@GYARTM VARCHAR(20)=NULL,
+@HITIDO DATETIME=NULL,
+@GYARTM DATETIME=NULL,
 @TELEPHSZ VARCHAR(20)=NULL,
 @VESZO VARCHAR(1)=NULL,
 @FKOD VARCHAR(3)=NULL,
@@ -11145,7 +13877,9 @@ CREATE PROCEDURE sp_InsObjAlt
 @MEGJ VARCHAR(255)=NULL,
 @AKTIV VARCHAR(1)='y'
 AS
+
 DECLARE @RET INTEGER
+
 INSERT INTO
 	OBJEKTUM(OBJTIP,AZON,MEGNEV,TIPUS,VAROS,UTCA,HSZ,
 		ELHELYEZ,GYSZAM,GYARTO,UZALL,UZEMIDO,HITIDO,
@@ -11163,8 +13897,8 @@ SELECT
 	@GYSZAM,
 	@GYARTO,
 	@UZALL,
-	CONVERT(datetime,@UZEMIDO,20),
-	CONVERT(datetime,@HITIDO,20),
+	@UZEMIDO,
+	@HITIDO,
 	@GYARTM,
 	@TELEPHSZ,
 	@VESZO,
@@ -11176,8 +13910,10 @@ SELECT
 	@FSZAM,
 	@MEGJ,
 	0,	--Alapértelmezés szerint nem kapcsolt
-	'y'	--@AKTIV
+	@AKTIV
+
 SELECT @RET = @@IDENTITY
+
 IF @pOBJTIP='01'
 BEGIN
  INSERT INTO EPULET(ID)
@@ -11363,8 +14099,11 @@ BEGIN
  INSERT INTO LEPCSOHAZ(ID)
  SELECT @RET
 END*/
+
 SELECT @RET
 RETURN @RET
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11379,6 +14118,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_InsRaktarKepv
 @ID INTEGER=NULL,
@@ -11413,6 +14153,7 @@ ELSE
 	EXEC sp_UpdRaktarKepv @ID, @NEV, @CIM, @LAK_TEL, @MOB_TEL, @MUN_TEL, @MEGB_NEV, @MEGB_LAK_TEL, @MEGB_MOB_TEL, @MEGB_MUN_TEL
 	END
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -11426,6 +14167,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_InsSzerzfej    Script Date: 2000. 07. 04. 18:56:16 ******/
 CREATE PROCEDURE sp_InsSzerzfej
@@ -11446,12 +14195,14 @@ CREATE PROCEDURE sp_InsSzerzfej
 @UGYFC VARCHAR(100)
 AS
 DECLARE @RET INTEGER
+
 DECLARE @ARVALT_ID INTEGER
 DECLARE @PREV_DATE DATETIME	-- Elozo nettó ár érvényességének idopontja
 -- Adott szolgáltatás alatt melyik a legutóbbi ervényességi dátumú
 SELECT @PREV_DATE = MAX(ERVDAT) FROM ARVALT WHERE SZOLG = @SZOLG
 -- Ahhoz a dátumhoz tartozó id
 SELECT @ARVALT_ID = ID FROM ARVALT WHERE ERVDAT = @PREV_DATE AND SZOLG = @SZOLG
+
 INSERT INTO
 	SZERZFEJ(PAZ,SZETIP,SZEJEL,SZEKELT,ERVDAT,FIZMOD,SZERTAR,SZOLG,BEFDAT,
 		SZERSZ,SZLA_CIKL,JEL,SZJ,UGYFN,UGYFC)
@@ -11471,9 +14222,19 @@ SELECT
 	@SZJ,
 	@UGYFN,
 	@UGYFC
+
 SELECT @RET = @@IDENTITY
 SELECT @RET
+
 RETURN @RET
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11489,6 +14250,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_InsSzerztet    Script Date: 2000. 07. 04. 18:56:16 ******/
 CREATE PROCEDURE sp_InsSzerztet
 @SZER_ID INTEGER,
@@ -11502,9 +14271,12 @@ CREATE PROCEDURE sp_InsSzerztet
 AS
 DECLARE @RET INTEGER
 DECLARE @PREV_SZERTET INTEGER
+
 BEGIN TRAN
+
 SELECT @PREV_SZERTET = MAX(SZERTET) FROM SZERZTEL WHERE SZER_ID = @SZER_ID
 IF @PREV_SZERTET IS NULL SELECT @PREV_SZERTET = 0
+
 INSERT INTO
 	SZERZTEL(SZER_ID,SZERTET,OBJ_ID,CIKK,CIKK_MENNY,SZ_MENNY,MENNY_ME,OSSZEG,AFA)
 SELECT
@@ -11517,10 +14289,20 @@ SELECT
 	@MENNY_ME,
 	@OSSZEG,
 	@AFA
+
 SELECT @RET = @@IDENTITY
 SELECT @RET
+
 COMMIT TRAN
+
 RETURN @RET
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11536,6 +14318,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_InsSzlaEgyedi
 @SZERZSZ VARCHAR(8) = NULL,
 @FIZMOD VARCHAR(1),
@@ -11548,14 +14336,18 @@ CREATE PROCEDURE sp_InsSzlaEgyedi
 @UGYFN VARCHAR(100) = NULL,
 @UGYFC VARCHAR(100) = NULL
 AS
+
 BEGIN TRAN
+
 DECLARE @RET INTEGER
+
 DECLARE @MAX_SZLASZ INTEGER
 SELECT @MAX_SZLASZ = MAX(SZLASZ) FROM SZLA_ALT
 IF @MAX_SZLASZ IS NULL
 	BEGIN
 	SELECT @MAX_SZLASZ = 0
 	END
+
 INSERT INTO
 	SZLA_ALT(SZLASZ,SZERZSZ,FIZMOD,TDAT,KDAT,FDAT,JEL,SZJ,SZERTAR,UGYFN,UGYFC,EGYEDI)
 SELECT
@@ -11571,10 +14363,19 @@ SELECT
 	@UGYFN,
 	@UGYFC,
 	1
+
 COMMIT TRAN
+
 SELECT @RET = @@IDENTITY
 SELECT @RET
+
 RETURN @RET
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11590,6 +14391,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_InsTeljm    Script Date: 2000. 07. 04. 18:56:16 ******/
 CREATE PROCEDURE sp_InsTeljm
 @MUNKALAP_ID INTEGER,
@@ -11597,7 +14406,9 @@ CREATE PROCEDURE sp_InsTeljm
 @MUNORA REAL=NULL,
 @MUNDAT DATETIME=NULL
 AS
+
 DECLARE @RET INTEGER
+
 INSERT INTO
 	TELJM(MUNKALAP_ID,DOLG_ID,MUNORA,MUNDAT)
 SELECT
@@ -11605,15 +14416,26 @@ SELECT
 	@DOLG_ID,
 	@MUNORA,
 	@MUNDAT
+
 SELECT @RET = @@IDENTITY
+
 UPDATE
 	MUNKALAP
 SET
 	ALLAPOT = 4
 WHERE
 	ID = @MUNKALAP_ID
+
 SELECT @RET
 RETURN @RET
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11629,10 +14451,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Jegyzokonyv
 @pJTIP VARCHAR(2),
 @pID INTEGER
 AS
+
 IF @pJTIP = '1'
 	BEGIN	--Homennyiség ellenorzo lap
 	SELECT
@@ -11698,6 +14522,7 @@ ELSE IF @pJTIP = '2'
 		ON OBJEKTUM.ID = KARBAN.OBJID
 	WHERE JEGYZSZ = @pID
 	END
+
 ELSE IF @pJTIP = '3'
 	BEGIN	--Hideg -és melegüzemi vizsgálat jegyzokönyve
 	DECLARE @EGO_ID INTEGER
@@ -11806,10 +14631,13 @@ ELSE IF @pJTIP = '3'
 	WHERE
 		JEGYZSZ = @pID
 	END
+
 ELSE IF @pJTIP = '4'
 	BEGIN	--Házi víznyomáspróba jegyzokönyve
+
 	--Lekérdezzük a kazán ID-jét
 	SELECT @KAZAN_ID = OBJID FROM JEGYZ INNER JOIN KARBAN ON KARBAN.ID = JEGYZ.KARB_ID WHERE JEGYZSZ = @pID
+
 	--Lekérdezzük a szelep fölött álló futomu ID-jét, majd annak nevét.
 	EXEC @FUTOMU_ID = sp_Rekurziv @KAZAN_ID
 	SELECT
@@ -11837,8 +14665,10 @@ ELSE IF @pJTIP = '4'
 	WHERE
 		JEGYZSZ = @pID
 	END
+
 ELSE IF @pJTIP = '8'
 	BEGIN	--Vízmintaveteli jegyzokönyv
+
 	SELECT
 		@FUTOMU_ID = OBJID
 	FROM
@@ -11890,6 +14720,7 @@ ELSE IF @pJTIP = '8'
 	END
 	
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -11904,16 +14735,18 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Stored Procedure dbo.sp_Kapcsol    Script Date: 2000. 07. 04. 18:56:16 ******/
+
 CREATE PROCEDURE sp_Kapcsol
 @pID1 INTEGER,
 @pID2 INTEGER
 AS
+
 INSERT INTO
 	KAPCSOLAT(ID1, ID2)
 SELECT
 	@pID1,
 	@pID2
+
 UPDATE
 	OBJEKTUM
 SET
@@ -11922,6 +14755,7 @@ SET
 	ELOZOKAPCSDATE = NULL
 WHERE
 	ID = @pID2
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -12006,12 +14840,12 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_LaborOsszesito]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Stored Procedure dbo.sp_LekerdAlt    Script Date: 2000. 07. 04. 18:56:16 ******/
+
 CREATE PROCEDURE sp_LekerdAlt
 @pOBJTIP VARCHAR(2),
 @pID INTEGER=NULL,
@@ -12046,8 +14880,10 @@ CREATE PROCEDURE sp_LekerdAlt
 @329 VARCHAR(2)=NULL,
 @278 VARCHAR(3)=NULL,
 @277 VARCHAR(3)=NULL,
-@281 VARCHAR(3)=NULL
+@281 VARCHAR(3)=NULL,
+@274 VARCHAR(3)=NULL
 AS
+
 IF @pOBJTIP	= '01'
 BEGIN
 	SELECT
@@ -12129,6 +14965,7 @@ BEGIN
 		AND	((@278 IS NULL)	OR (@278 IS	NOT	NULL AND KARBANTAR = @278))
 		AND	((@277 IS NULL)	OR (@277 IS	NOT	NULL AND FUTOTIP = @277))
 		AND	((@281 IS NULL)	OR (@281 IS	NOT	NULL AND FUTBESZAB = @281))
+		AND	((@274 IS NULL)	OR (@274 IS	NOT	NULL AND EPULTIP = @274))
 	END
 /*ELSE IF @pOBJTIP = '02'
 	BEGIN
@@ -12219,7 +15056,6 @@ ELSE*/ IF @pOBJTIP = '03'
 			ON Q279.KODERT=	NEVLTELJME
 		WHERE
 			OBJEKTUM.ID	= coalesce(@pID,OBJEKTUM.ID)
-			AND OBJEKTUM.AKTIV = 'y'
 		END
 		ELSE IF	@pOBJTIP = '05'
 		BEGIN
@@ -12285,12 +15121,10 @@ ELSE*/ IF @pOBJTIP = '03'
 			LEMSZAM,
 			MERET,
 			Q279_2.KODENEV AS MERETME,
-			FUTOFEL,
-			DB,
+			FUTOFEL,			DB,
 			Q285_1.KODENEV AS HOHOR_KO,
 			HOSSZ_NAGY,
-			HOSSZ_KICS,
-			FELUGY,
+			HOSSZ_KICS,			FELUGY,
 			Q285_2.KODENEV AS FU_KOZ,
 			RTRIM(MEGJ)	AS MEGJ
 		FROM
@@ -12320,7 +15154,7 @@ ELSE*/ IF @pOBJTIP = '03'
 			LEGSZAL,
 			Q285.KODENEV AS	FU_KOZ,
 			ARAMFELV,
-			FESZULTS,
+			FESZULTS,
 			RTRIM(MEGJ)	AS MEGJ
 		FROM
 			Q285 RIGHT JOIN
@@ -12485,7 +15319,7 @@ ELSE*/ IF @pOBJTIP = '03'
 			HOSSZ,
 			VIZSZ,
 			BECSOV,
-			RTRIM(MEGJ)	AS MEGJ
+			RTRIM(MEGJ)	AS MEGJ
 		FROM
 			OBJEKTUM INNER JOIN	TERMELO_CSO	ON TERMELO_CSO.ID =	OBJEKTUM.ID
 		WHERE
@@ -12527,7 +15361,7 @@ ELSE*/ IF @pOBJTIP = '03'
 		Q272.KODENEV AS	HOLEP,
 			RTRIM(FOGYMERHELY) AS FOGYMERHELY,
 			KISMEGSZAK,
-			LEKVILLTELJ,
+			LEKVILLTELJ,
 			PRIMELL,
 			FUT_LAKAS,
 			HMV_LAKAS,
@@ -12570,7 +15404,9 @@ ELSE*/ IF @pOBJTIP = '03'
 		WHERE
 			OBJEKTUM.ID	= coalesce(@pID,OBJEKTUM.ID)
 			AND	((@HOOSZIMPTOL IS NULL OR @HOOSZIMPIG IS NULL) OR (@HOOSZIMPTOL IS NOT NULL AND @HOOSZIMPIG	IS NOT NULL	AND	IMPULZUS BETWEEN @HOOSZIMPTOL AND @HOOSZIMPIG))
+
 		END
+
 		ELSE IF	@pOBJTIP = '19'
 		BEGIN
 		SELECT
@@ -12623,6 +15459,7 @@ ELSE*/ IF @pOBJTIP = '03'
 			AND	((@ERZVEZTOL IS NULL OR @ERZVEZIG IS NULL) OR (@ERZVEZTOL IS NOT NULL AND @ERZVEZIG	IS NOT NULL	AND	ERZEKELO.VEZHOSSZ BETWEEN @ERZVEZTOL AND @ERZVEZIG))
 			AND	((@ERZBENYTOL IS NULL OR @ERZBENYIG	IS NULL) OR	(@ERZBENYTOL IS NOT NULL AND @ERZBENYIG	IS NOT NULL	AND	ERZEKELO.BENYHOSSZ BETWEEN @ERZBENYTOL AND @ERZBENYIG))
 		END
+
 		ELSE IF	@pOBJTIP = '21'
 		BEGIN
 		SELECT
@@ -12652,7 +15489,7 @@ ELSE*/ IF @pOBJTIP = '03'
 			MEDDTELJ,
 			RTRIM(MEGJ)	AS MEGJ
 		FROM
-			OBJEKTUM INNER JOIN	FAZISJAVITO_KONDENZATOR	ON FAZISJAVITO_KONDENZATOR.ID =	OBJEKTUM.ID
+			OBJEKTUM INNER JOIN	FAZISJAVITO_KONDENZATOR	ON FAZISJAVITO_KONDENZATOR.ID =	OBJEKTUM.ID
 		WHERE
 			OBJEKTUM.ID	= coalesce(@pID,OBJEKTUM.ID)
 		END
@@ -12849,7 +15686,7 @@ ELSE*/ IF @pOBJTIP = '03'
 			TIPUS,
 			TELEPHSZ,
 			GYSZAM,
-			RTRIM(GYARTM) AS GYARTM,
+		RTRIM(GYARTM) AS GYARTM,
 			NEVLTELJ,
 			Q279.KODENEV AS	NEVLTELJME,
 			ATMERO,
@@ -12892,7 +15729,7 @@ ELSE*/ IF @pOBJTIP = '03'
 			TIPUS,
 			UZEMIDO,
 			Q289.KODENEV AS	VAROS,
-			UTCA,
+			UTCA,
 			HSZ,
 			RTRIM(MEGJ)	AS MEGJ
 		FROM
@@ -12919,6 +15756,7 @@ ELSE*/ IF @pOBJTIP = '03'
 		WHERE
 			OBJEKTUM.ID	= coalesce(@pID,OBJEKTUM.ID)
 		END
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -13022,7 +15860,18 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LekerdDolgozo    Script Date: 2000. 07. 04. 18:56:16 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_LekerdDolgozo
 @pID INTEGER=NULL
 AS
@@ -13038,6 +15887,19 @@ FROM
 WHERE
 	ID = coalesce(@pID,ID)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -13052,9 +15914,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_LekerdHierarchia
 @pID INTEGER
 AS
+
 IF not exists(select * from kapcsolat where id2=@pID)
 	BEGIN
 	SELECT ''
@@ -13072,6 +15939,7 @@ ELSE
 	DECLARE @SZINT INTEGER
 	DECLARE @OBJTIP VARCHAR(2)
 	SELECT @SZINT = 0
+
 	CREATE TABLE #ZZZ
 		(
 		SZINT INTEGER NULL,
@@ -13083,9 +15951,11 @@ ELSE
 		
 	DECLARE @FUTOMU_ID INTEGER
 	SELECT @FUTOMU_ID = -1
+
 	SELECT @ID2 = @pID	--Amit keresünk, az valamihez kapcsolva van, ezért
 						--a KAPCSOLAT táblában a második oszlopban keressük
-						-- az õ ID-jét.
+						-- az o ID-jét.
+
 	WHILE (@FUTOMU_ID = -1) AND (@SZINT < 40)
 		BEGIN
 		SELECT @SZINT = @SZINT + 1	-- Csak korlát, hogy ne szálljon el
@@ -13136,14 +16006,14 @@ ELSE
 			END
 			
 		SELECT @OBJTIP = OBJTIP FROM OBJEKTUM WHERE ID = @ID1
-		IF @OBJTIP = '03'	-- Ha a megfelelõ berendezés típus, a felsõbb kapcsolat
+		IF @OBJTIP = '03'	-- Ha a megfelelo berendezés típus, a felsobb kapcsolat
 			BEGIN
 			SELECT @FUTOMU_ID = @ID1	-- Az ID-t adjuk vissza
 			END
 		ELSE
 			BEGIN
-			SELECT @ID2 = @ID1	-- Egyébként nézzük tovább, most már az elõbb talált
-			END	-- objektum felsõbb kapcsolatát követve.
+			SELECT @ID2 = @ID1	-- Egyébként nézzük tovább, most már az elobb talált
+			END	-- objektum felsobb kapcsolatát követve.
 		END
 	
 	SET NOCOUNT OFF
@@ -13162,6 +16032,12 @@ ELSE
 	RETURN @FUTOMU_ID
 	
 	END
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -13297,6 +16173,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 --KEP680
 CREATE PROCEDURE sp_LekerdKarban
 @pMUVEL VARCHAR(3) = NULL,
@@ -13335,6 +16212,10 @@ WHERE
 --			KARBAN.KDATUM BETWEEN @pDATUMTOL AND @pDATUMIG))
 			MUNKALAP.KIALLDAT BETWEEN @pDATUMTOL AND @pDATUMIG))
 
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -13349,14 +16230,17 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-CREATE PROCEDURE sp_LekerdKarbterv
+/*Karbantartasi terv lekerdezesEloszor egy atmeneti tablaba legyujti a szuresi felteteleknek megfeleloterv adatokat, majd mindegyik rekordot kiegesziti a megfelelo objektumjellemzoivel. Ezutan a teljes atmeneti tablat lekerdezi.
+*/CREATE PROCEDURE sp_LekerdKarbterv
 @pMUVEL VARCHAR(3)=NULL,
 @pOBJTIP VARCHAR(2)=NULL,
 @pOBJID INTEGER=NULL,
 @pDATUMTOL DATETIME=NULL,
 @pDATUMIG DATETIME=NULL
 AS
+
 SET NOCOUNT ON
+
 CREATE TABLE #ZZZ
 	(
 	KARBTERVID INTEGER NULL,
@@ -13400,6 +16284,7 @@ DECLARE @IMPULZUS REAL
 DECLARE @VEZHOSSZ REAL
 DECLARE @BENYHOSSZ REAL
 DECLARE @MEGJ VARCHAR(255)
+
 DECLARE KARBTERVcursor CURSOR FAST_FORWARD FOR
 SELECT
 	KARBTERV.ID,
@@ -13440,18 +16325,11 @@ WHERE
 	AND KARBTERV.MUVEL = coalesce(@pMUVEL, KARBTERV.MUVEL)
 	AND KARBTERV.OBJTIP = coalesce(@pOBJTIP, KARBTERV.OBJTIP)
 	AND KARBTERV.OBJID = coalesce(@pOBJID, KARBTERV.OBJID)
---A dátumszurést az ideiglenes táblában kell csinálni
-/* --2001.12.17-kor kivettem
-	AND ((@pDATUMTOL IS NULL AND @pDATUMIG IS NULL)
-		OR (@pDATUMTOL IS NOT NULL AND @pDATUMIG IS NOT NULL AND
-			CASE KARBTERV.IDOE	-- 1-hónap, 2-év
-				WHEN 1 THEN	dateadd(month, KARBTERV.IDO, KARBAN.KDATUM)
-				WHEN 2 THEN dateadd(year, KARBTERV.IDO, KARBAN.KDATUM)
-			END
-			BETWEEN @pDATUMTOL AND @pDATUMIG))
-*/
+	--A dátumszurést az ideiglenes táblában kell csinálni
+
 --Megnyitjuk a kurzort
 OPEN KARBTERVcursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM KARBTERVcursor
 	INTO @KARBTERVID,@OBJID,@OBJTIP,@OBJTIPNEV,@OBJMEGNEV,@OBJTIPUS,@OBJTELEPHSZ,@OBJGYSZAM,
@@ -13460,6 +16338,7 @@ FETCH NEXT FROM KARBTERVcursor
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 	BEGIN
+
 --	IF @OBJTIP BETWEEN 18 AND 20
 --		BEGIN
 -- a Futomu adatainak kikeresése
@@ -13477,6 +16356,7 @@ WHILE @@FETCH_STATUS = 0
 			WHERE
 				OBJEKTUM.ID = @FUTOMU_ID
 			END
+
 -- a Lépcsoház adatainak kikeresése
 		EXEC @LEPCSOHAZ_ID = sp_Rekurziv @OBJID, '37' -- Lépcsoház
 --			IF @LEPCSOHAZ_ID IS NULL
@@ -13508,6 +16388,7 @@ WHILE @@FETCH_STATUS = 0
 			WHERE
 				OBJEKTUM.ID = @LEPCSOHAZ_ID
 			END
+
 -- Az adatok bevitele az ideiglenes táblába
 IF EXISTS (SELECT KDATUM FROM #ZZZ WHERE OBJID = @OBJID)
 BEGIN
@@ -13535,6 +16416,7 @@ BEGIN
 			MEGJ = @MEGJ
 		WHERE OBJID = @OBJID
 	END
+
 END
 ELSE
 BEGIN
@@ -13546,14 +16428,19 @@ BEGIN
 END
 -----------------------
 --		END
+
 	FETCH NEXT FROM KARBTERVcursor
 	INTO @KARBTERVID,@OBJID,@OBJTIP,@OBJTIPNEV,@OBJMEGNEV,@OBJTIPUS,@OBJTELEPHSZ,@OBJGYSZAM,
 		@CIM,@MUVEL,@TERVDATUM,@KDATUM,@ATMERO,@IMPULZUS,@VEZHOSSZ,@BENYHOSSZ,@MEGJ
+
 	END	--WHILE
+
 --Lezárjuk és töröljük a kurzort
 CLOSE KARBTERVcursor
 DEALLOCATE KARBTERVcursor
+
 SET NOCOUNT OFF
+
 SELECT 
 	KARBTERVID,
 	FUTOMU,
@@ -13597,6 +16484,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_LekerdKepvis    Script Date: 2000. 07. 04. 18:56:17 ******/
 CREATE PROCEDURE sp_LekerdKepvis
@@ -13652,6 +16547,9 @@ ORDER BY
 	KOZCIM,
 	MEGJ
 
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -13666,7 +16564,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LekerdKontir    Script Date: 2000. 07. 04. 18:56:17 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_LekerdKontir
 @pID VARCHAR(12)=NULL
 AS
@@ -13683,6 +16594,19 @@ FROM
 WHERE
 	FSZAM = coalesce(@pID,FSZAM)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -13696,6 +16620,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_LekerdMlap
 @MLAPTIP VARCHAR(1)=NULL,
@@ -13761,6 +16686,7 @@ WHERE
 ORDER BY
 	MUNKALAP.ID DESC
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -13774,6 +16700,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_LekerdRaktar
 @pOBJTIP VARCHAR(2),
@@ -13802,7 +16729,9 @@ CREATE PROCEDURE sp_LekerdRaktar
 	Y		Javitasra/hitelesitesre elokeszitve
 */
 AS
+
 SET NOCOUNT ON
+
 CREATE TABLE #ZZZ
 	(
 	ID INTEGER,
@@ -13819,6 +16748,7 @@ CREATE TABLE #ZZZ
 	SZLEVEL_SZAM VARCHAR(20),
 	SZLEVEL_DATUM DATETIME
 	)
+
 DECLARE RAKTARcursor CURSOR FAST_FORWARD FOR
 SELECT
 	R.ID,
@@ -13862,6 +16792,7 @@ WHERE
 	AND (@pSZUKSHOSSZ IS NULL OR
 			(@pSZUKSHOSSZ IS NOT NULL AND O.OBJTIP = '20' AND E.SZUKSHOSSZ = @pSZUKSHOSSZ))
 	AND R.DATUMIG IS NULL
+
 DECLARE @RAKTARID INTEGER
 DECLARE @OBJTIP VARCHAR(2)
 DECLARE @OBJID INTEGER
@@ -13873,8 +16804,10 @@ DECLARE @DOLG_ID INTEGER
 DECLARE @HITIDO DATETIME
 DECLARE @SZLEVEL_SZAM VARCHAR(20)
 DECLARE @SZLEVEL_DATUM DATETIME
+
 DECLARE @EPULET_ID INTEGER
 DECLARE @FUTOMU_ID INTEGER
+
 OPEN RAKTARcursor
 FETCH NEXT FROM RAKTARcursor
 	INTO @RAKTARID,@OBJTIP,@OBJID,@GYSZAM,@TIPUS,@DATUMTOL,@ALLAPOT,@HITIDO,@DOLG_ID,@SZLEVEL_SZAM,@SZLEVEL_DATUM
@@ -13882,11 +16815,13 @@ FETCH NEXT FROM RAKTARcursor
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 	BEGIN
+
 	EXEC @EPULET_ID = sp_Rekurziv @OBJID, '01'
 		--WHERE KAPCSOLAT.ID2 = @OBJID AND OBJEKTUM.OBJTIP = '37'	--Lépcsoház
 		--WHERE KAPCSOLAT.ID2 = @OBJID AND OBJEKTUM.OBJTIP = '01'	--Épület
 	EXEC @FUTOMU_ID = sp_Rekurziv @OBJID, '03'
 		--WHERE KAPCSOLAT.ID2 = @EPULET_ID AND OBJEKTUM.OBJTIP = '03'	--Futomu
+
 	INSERT INTO #ZZZ
 	SELECT
 		@RAKTARID,
@@ -13910,11 +16845,15 @@ WHILE @@FETCH_STATUS = 0
 			
 	FETCH NEXT FROM RAKTARcursor
 		INTO @RAKTARID,@OBJTIP,@OBJID,@GYSZAM,@TIPUS,@DATUMTOL,@ALLAPOT,@HITIDO,@DOLG_ID,@SZLEVEL_SZAM,@SZLEVEL_DATUM
+
 	END	--WHILE
+
 --Lezárjuk és töröljük a kurzort
-CLOSE RAKTARcursor
+CLOSE RAKTARcursor
 DEALLOCATE RAKTARcursor
+
 SET NOCOUNT OFF
+
 IF @pOBJTIP = '00'
 	BEGIN
 	SELECT
@@ -13981,6 +16920,7 @@ ELSE
 	
 DROP TABLE #ZZZ
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -13991,6 +16931,15 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_LekerdSzerz    Script Date: 2000. 07. 04. 18:56:17 ******/
 CREATE PROCEDURE sp_LekerdSzerz
@@ -14056,17 +17005,27 @@ WHERE
 			OR
 			SZERZFEJ.BEFDAT IS NOT NULL AND
 				(
-				(SZERZFEJ.ERVDAT <= @DATUMTOL AND SZERZFEJ.BEFDAT >= @DATUMTOL)   -- Hamarabb kezd és késõbb van vége
-				OR (SZERZFEJ.ERVDAT >= @DATUMTOL AND SZERZFEJ.BEFDAT <= @DATUMIG) -- Késõbb kezd és hamarabb van vége
-				OR (SZERZFEJ.ERVDAT >= @DATUMTOL AND SZERZFEJ.ERVDAT <= @DATUMIG) -- Késõbb kezd
+				(SZERZFEJ.ERVDAT <= @DATUMTOL AND SZERZFEJ.BEFDAT >= @DATUMTOL)   -- Hamarabb kezd és késobb van vége
+				OR (SZERZFEJ.ERVDAT >= @DATUMTOL AND SZERZFEJ.BEFDAT <= @DATUMIG) -- Késobb kezd és hamarabb van vége
+				OR (SZERZFEJ.ERVDAT >= @DATUMTOL AND SZERZFEJ.ERVDAT <= @DATUMIG) -- Késobb kezd
 				OR (SZERZFEJ.BEFDAT >= @DATUMTOL AND SZERZFEJ.BEFDAT <= @DATUMIG) -- Hamarabb van vége
 				)
 			)
 		))
+
 ORDER BY
 	KEPVIS.KOZNEV,
 	SZERZFEJ.PAZ,
 	LEPCSOHAZ.CIM
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14082,6 +17041,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LekerdSzlaAlt    Script Date: 2000. 07. 04. 18:56:17 ******/
 CREATE PROCEDURE sp_LekerdSzlaAlt
 @EGYEDI INTEGER = 0,
@@ -14092,6 +17059,7 @@ CREATE PROCEDURE sp_LekerdSzlaAlt
 @DATUMTOL DATETIME = NULL,
 @DATUMIG DATETIME = NULL
 AS
+
 IF @EGYEDI = 1
 	BEGIN
 	SELECT
@@ -14170,6 +17138,12 @@ ELSE
 		FDAT
 	END
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -14184,13 +17158,23 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LekerdSzolg    Script Date: 2000. 07. 04. 18:56:17 ******/
 CREATE PROCEDURE sp_LekerdSzolg
 @LEPCSOHAZ INTEGER = NULL,
 @FUTOMU INTEGER = NULL,
 @SZOLG VARCHAR(2) = NULL
 AS
+
 SET NOCOUNT ON
+
 CREATE TABLE #ZZZ
 	(
 	FUTOMU INTEGER NULL,
@@ -14199,7 +17183,9 @@ CREATE TABLE #ZZZ
 	NOTERT REAL NULL,
 	ERVDAT DATETIME NULL
 	)
+
 --Segédváltozók
+
 DECLARE SZOLGcursor CURSOR FAST_FORWARD FOR
 SELECT
 	LEPCSOHAZ.ID,
@@ -14208,18 +17194,22 @@ FROM
 	LEPCSOHAZ RIGHT JOIN
 		(SZERZTEL INNER JOIN SZERZFEJ ON SZERZTEL.SZER_ID = SZERZFEJ.ID)
 	ON LEPCSOHAZ.ID = SZERZTEL.OBJ_ID
+
 DECLARE @LEPCSOHAZ_ID INTEGER
 DECLARE @SZOLG_ID INTEGER
 DECLARE @FUTOMU_ID INTEGER
+
 --Megnyitjuk a kurzort
 OPEN SZOLGcursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM SZOLGcursor
 	INTO @LEPCSOHAZ_ID,@SZOLG_ID
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
-	--Megállapítjuk, hogy az adott lépcsõház melyik futomuhöz tartozik.
+	--Megállapítjuk, hogy az adott lépcsoház melyik futomuhöz tartozik.
 	EXEC @FUTOMU_ID = sp_Rekurziv @LEPCSOHAZ_ID
 	
 	INSERT INTO #ZZZ(FUTOMU,LEPCSOHAZ,SZOLG)
@@ -14227,13 +17217,17 @@ BEGIN
 		@FUTOMU_ID,
 		@LEPCSOHAZ_ID,
 		@SZOLG_ID
+
 	FETCH NEXT FROM SZOLGcursor
 		INTO @LEPCSOHAZ_ID,@SZOLG_ID
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE SZOLGcursor
 DEALLOCATE SZOLGcursor
+
 SET NOCOUNT OFF
+
 		
 SELECT
 	FUTOMU AS ID1,
@@ -14257,6 +17251,14 @@ WHERE
 	
 DROP TABLE #ZZZ
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -14271,7 +17273,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_ListKapcsID    Script Date: 2000. 07. 04. 18:56:18 ******/
+
 CREATE PROCEDURE sp_ListKapcsID
 @pID INTEGER
 AS
@@ -14282,6 +17293,15 @@ FROM
 	OBJEKTUM INNER JOIN KAPCSOLAT ON OBJEKTUM.ID = KAPCSOLAT.ID2
 WHERE
 	ID1 = @pID
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14368,7 +17388,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Stored Procedure dbo.sp_LoadDolgozo    Script Date: 2000. 07. 04. 18:56:18 ******/
+
+
 CREATE PROCEDURE sp_LoadDolgozo
 @pID INTEGER
 AS
@@ -14378,6 +17399,21 @@ FROM
 	DOLGOZO
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14393,7 +17429,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LoadEpul    Script Date: 2000. 07. 04. 18:56:18 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_LoadEpul
 @pID INTEGER
 AS
@@ -14438,6 +17493,25 @@ WHERE
  EPULET.ID = @pID
  AND OBJEKTUM.ID = @pID
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -14452,69 +17526,17 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-CREATE PROCEDURE sp_LoadFelszereltInfo
+
+CREATE PROCEDURE sp_LoadJegyz
 @pID INTEGER
 AS
-DECLARE @pOBJTIP VARCHAR(2)
-SELECT @pOBJTIP = OBJTIP FROM FELSZERELT WHERE ID = @pID
-IF @pOBJTIP = '18'	--Hõösszegzõ
-BEGIN
-	SELECT
-		OBJEKTUM.GYSZAM		AS H_GYSZAM,
-		OBJEKTUM.HITIDO		AS H_HITIDO,
-		OBJEKTUM.TIPUS		AS H_TIPUS,
-		OBJEKTUM.ELHELYEZ	AS H_ELHELYEZ,
-		HOOSSZEGZO.IMPULZUS	AS H_IMPULZUS,
-		HOOSSZEGZO.LEOLVMOD	AS H_LEOLV,
-		HOOSSZEGZO.FESZULTS	AS H_FESZULTS,
-		HOOSSZEGZO.PLOMBA	AS H_PLOMBA,
-		OBJEKTUM.ALAIR		AS H_KULCS,
-		FELSZERELT.MEGJ		AS H_MEGJ
-	FROM
-		HOOSSZEGZO RIGHT JOIN
-			(FELSZERELT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = FELSZERELT.OBJID)
-		ON HOOSSZEGZO.ID = OBJEKTUM.ID
-	WHERE
-		FELSZERELT.ID = @pID
-END
-ELSE IF @pOBJTIP = '19'	--Vízóra
-BEGIN
-	SELECT
-		OBJEKTUM.GYSZAM		AS V_GYSZAM,
-		OBJEKTUM.HITIDO		AS V_HITIDO,
-		OBJEKTUM.TIPUS		AS V_TIPUS,
-		OBJEKTUM.ELHELYEZ	AS V_ELHELYEZ,
-		VIZORA.IMPULZUS		AS V_IMPULZUS,
-		VIZORA.ATMERO		AS V_ATMERO,
-		--
-		VIZORA.PLOMBA		AS V_PLOMBA,
-		OBJEKTUM.ALAIR		AS V_KULCS,
-		FELSZERELT.MEGJ		AS V_MEGJ
-	FROM
-		VIZORA RIGHT JOIN
-			(FELSZERELT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = FELSZERELT.OBJID)
-		ON VIZORA.ID = OBJEKTUM.ID
-	WHERE
-		FELSZERELT.ID = @pID
-END
-ELSE IF @pOBJTIP = '20'	--Érzékelõ
-BEGIN
-	SELECT
-		OBJEKTUM.GYSZAM		AS E_GYSZAM,
-		OBJEKTUM.HITIDO		AS E_HITIDO,
-		--OBJEKTUM.TIPUS AS E_TIPUS,
-		OBJEKTUM.ELHELYEZ	AS E_ELHELYEZ,
-		ERZEKELO.BENYHOSSZ	AS E_BENYHOSSZ,
-		ERZEKELO.VEZHOSSZ	AS E_VEZHOSSZ,
-		ERZEKELO.PLOMBA		AS E_PLOMBA,
-		ERZEKELO.PLOMBA2	AS E_PLOMBA2
-	FROM
-		ERZEKELO RIGHT JOIN
-			(FELSZERELT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = FELSZERELT.OBJID)
-		ON ERZEKELO.ID = OBJEKTUM.ID
-	WHERE
-		FELSZERELT.ID = @pID
-END
+SELECT
+	*
+FROM
+	JEGYZ
+WHERE
+	JEGYZSZ = @pID
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14522,7 +17544,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-GRANT  EXECUTE  ON [dbo].[sp_LoadFelszereltInfo]  TO [public]
+GRANT  EXECUTE  ON [dbo].[sp_LoadJegyz]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER ON 
@@ -14599,6 +17621,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LoadKepvis    Script Date: 2000. 07. 04. 18:56:18 ******/
 CREATE PROCEDURE sp_LoadKepvis
 @pID INTEGER
@@ -14609,6 +17639,14 @@ FROM
 	KEPVIS
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14624,7 +17662,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LoadKontir    Script Date: 2000. 07. 04. 18:56:18 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_LoadKontir
 @pID VARCHAR(12)
 AS
@@ -14634,6 +17685,19 @@ FROM
 	KONTIR
 WHERE
 	FSZAM = @pID
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14648,6 +17712,44 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+CREATE PROCEDURE sp_LoadLabor
+@pID INTEGER
+AS
+SELECT
+	*,
+	CONVERT(varchar(10),MINTA_IDO,102) AS MINTA_DAT,
+	CONVERT(varchar(10),MINTA_IDO,108) AS MINTA_TIM,
+	CONVERT(varchar(10),MINTA_ATAD_IDO,102) AS MINTA_ATAD_DAT,
+	CONVERT(varchar(10),MINTA_ATAD_IDO,108) AS MINTA_ATAD_TIM,
+	CONVERT(varchar(10),VIZSG_KEZD,102) AS VIZSG_KEZD_DAT,
+	CONVERT(varchar(10),VIZSG_KEZD,108) AS VIZSG_KEZD_TIM,
+	CONVERT(varchar(10),VIZSG_VEGE,102) AS VIZSG_VEGE_DAT,
+	CONVERT(varchar(10),VIZSG_VEGE,108) AS VIZSG_VEGE_TIM/*,
+	CONVERT(VARCHAR(10),MUN_SORSZ) + ';' +
+		COALESCE(CONVERT(VARCHAR(30),KIALLDAT,111),'-') + ';'
+		AS MUN_SORSZ*/
+FROM
+	LABOR --INNER JOIN MUNKALAP ON MUNKALAP.ID = LABOR.MUN_SORSZ
+WHERE
+	LABOR.ID = @pID
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_LoadLabor]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
 
 CREATE PROCEDURE sp_LoadMlapDb
 @MLAPTIP VARCHAR(1)=NULL,
@@ -14668,6 +17770,7 @@ CREATE PROCEDURE sp_LoadMlapDb
 @TELEPHSZ VARCHAR(20)=NULL,
 @MUNELV DATETIME=NULL
 AS
+
 SELECT
 	COUNT(DISTINCT MUNKALAP.ID) AS MLAPDB
 FROM
@@ -14698,6 +17801,7 @@ WHERE
 	AND ((@TELEPHSZ IS NULL) OR (@TELEPHSZ IS NOT NULL AND OBJEKTUM.TELEPHSZ=@TELEPHSZ))
 	AND ((@MUNELV IS NULL) OR (@MUNELV IS NOT NULL AND MUNELV=@MUNELV))
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -14711,7 +17815,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
-
 
 CREATE PROCEDURE sp_LoadMunkalap
 @pID INTEGER
@@ -14791,7 +17894,6 @@ FROM
 WHERE
 	MUNKALAP.ID = @pID
 
-
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -14806,7 +17908,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-/****** Object:  Stored Procedure dbo.sp_LoadObjAlt    Script Date: 2000. 07. 04. 18:56:18 ******/
+
+
 CREATE PROCEDURE sp_LoadObjAlt
 @pID INTEGER
 AS
@@ -14816,6 +17919,8 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @pID
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -14831,10 +17936,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_LoadObjEgyedi    Script Date: 2000. 07. 04. 18:56:18 ******/
+
 CREATE PROCEDURE sp_LoadObjEgyedi
 @pID INTEGER
 AS
+
 DECLARE @pOBJTIP VARCHAR(2)
 SELECT
 	@pOBJTIP = OBJTIP
@@ -14842,6 +17957,7 @@ FROM
 	OBJEKTUM
 WHERE
 	ID = @pID
+
 IF @pOBJTIP = '01'
 BEGIN
 SELECT
@@ -15176,6 +18292,15 @@ BEGIN
 		ID = @pID
 END
 
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -15219,25 +18344,35 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_LoadRaktarInfo
 @pID INTEGER
 AS
+
 SET NOCOUNT ON
+
 DECLARE @HOOSSZEGZO_ID INTEGER
 DECLARE @VIZORA_ID INTEGER
 DECLARE @ERZEKELO_ID INTEGER
+
 DECLARE @OBJID INTEGER
 DECLARE @KEPVIS INTEGER
 SELECT @OBJID = OBJID, @KEPVIS = KEPVIS FROM RAKTAR WHERE ID = @pID
+
 DECLARE @EPULET_ID INTEGER
 EXEC @EPULET_ID = sp_Rekurziv @OBJID, '01' --Épület
 	--sp_Rekurziv @OBJID, '37'	--Lépcsoház
+
 SELECT @HOOSSZEGZO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
 	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '18'	--Hoösszegzo
+
 SELECT @VIZORA_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
 	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '19'	--Vízóra
+
 SELECT @ERZEKELO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
 	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '20'	--Érzékelo
+
+
 CREATE TABLE #ZZZ
 	(
 	KEPVIS INTEGER,
@@ -15258,6 +18393,7 @@ CREATE TABLE #ZZZ
 	H_KULCS_MUNTEL VARCHAR(20),
 	H_TULAJDON VARCHAR(1),
 	H_MEGJ VARCHAR(1024),
+
 	V_ID INTEGER,
 	V_GYSZAM VARCHAR(15),
 	V_HITIDO DATETIME,
@@ -15291,6 +18427,7 @@ CREATE TABLE #ZZZ
 	E_TULAJDON VARCHAR(1),
 	E_MEGJ VARCHAR(1024)
 	)
+
 INSERT INTO
 	#ZZZ(KEPVIS, H_ID, H_GYSZAM, H_HITIDO, H_TIPUS, H_ELHELYEZ,
 		H_IMPULZUS, H_LEOLV, H_HELYZET, H_ELEKTRONIKA, H_PLOMBA,
@@ -15320,6 +18457,8 @@ FROM
 	ON R.OBJID = O.ID
 WHERE
 	H.ID = @HOOSSZEGZO_ID
+
+
 UPDATE
 	#ZZZ
 SET
@@ -15344,6 +18483,8 @@ FROM
 	ON R.OBJID = O.ID
 WHERE
 	V.ID = @VIZORA_ID
+
+
 UPDATE
 	#ZZZ
 SET
@@ -15369,6 +18510,9 @@ FROM
 	ON R.OBJID = O.ID
 WHERE
 	E.ID = @ERZEKELO_ID
+
+
+
 /*Történelem lekérdezése
 Mindhárom berendezés típusra külön-külön le kell futtatni a kurzort.
 És sajnos nem elég lezárni és újranyitni, teljesen újra kell csinálni...
@@ -15377,10 +18521,13 @@ DECLARE @HIST_ID INTEGER
 DECLARE @ALLAPOT VARCHAR(1)
 DECLARE @MEGJ VARCHAR(255)
 DECLARE @DATUMIG DATETIME
+
 DECLARE @FULLMEGJ VARCHAR(1024)
 SELECT @FULLMEGJ = ''
+
 DECLARE @I INTEGER
 SELECT @I = 1
+
 WHILE @I <= 3
 	BEGIN
 	IF @I = 1
@@ -15398,6 +18545,7 @@ WHILE @I <= 3
 		ORDER BY
 			RH.DATUMIG
 		END
+
 	ELSE IF @I = 2
 		BEGIN
 		DECLARE HISTcursor CURSOR FAST_FORWARD FOR
@@ -15413,6 +18561,7 @@ WHILE @I <= 3
 		ORDER BY
 			RH.DATUMIG
 		END
+
 	ELSE IF @I = 3
 		BEGIN
 		DECLARE HISTcursor CURSOR FAST_FORWARD FOR
@@ -15428,6 +18577,7 @@ WHILE @I <= 3
 		ORDER BY
 			RH.DATUMIG
 		END
+
 	OPEN HISTcursor
 	FETCH NEXT FROM HISTcursor
 		INTO @HIST_ID,@ALLAPOT,@MEGJ,@DATUMIG
@@ -15435,6 +18585,7 @@ WHILE @I <= 3
 	--Amíg van következo rekord
 	WHILE @@FETCH_STATUS = 0
 		BEGIN
+
 		IF @MEGJ IS NOT NULL
 			BEGIN
 			SELECT
@@ -15444,9 +18595,11 @@ WHILE @I <= 3
 			WHERE
 				Q367.KODERT = @ALLAPOT
 			END
+
 		FETCH NEXT FROM HISTcursor
 			INTO @HIST_ID,@ALLAPOT,@MEGJ,@DATUMIG
 		END	--WHILE FETCH
+
 	IF @I = 1
 		BEGIN
 		UPDATE #ZZZ SET H_MEGJ = @FULLMEGJ
@@ -15459,20 +18612,28 @@ WHILE @I <= 3
 		BEGIN
 		UPDATE #ZZZ SET E_MEGJ = @FULLMEGJ
 		END
+
 	SELECT @FULLMEGJ = ''
 	SELECT @I = @I + 1
+
 	--Lezárjuk a kurzort
 	CLOSE HISTcursor
 	--és töröljük a kurzort
 	DEALLOCATE HISTcursor
 	END	--WHILE @I
+
 --Itt a vége...
+
 SET NOCOUNT OFF
+
 SELECT
 	*
 FROM
 	#ZZZ
+
 DROP TABLE #ZZZ
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -15488,6 +18649,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_LoadRaktarKepv
 @pID INTEGER
 AS
@@ -15497,6 +18659,7 @@ FROM
 	RAKTKEPVIS
 WHERE
 	ID = @pID
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -15517,13 +18680,12 @@ CREATE PROCEDURE sp_LoadRaktarSz
 @pID INTEGER
 AS
 SELECT
-	Q296.KODENEV AS SZ_OBJTIP,
 	O.MEGNEV AS SZ_MEGNEV,
 	O.TIPUS AS SZ_TIPUS,
 	O.GYSZAM AS SZ_GYSZAM,
 	O.TELEPHSZ AS SZ_TELEPHSZ
 FROM
-	Q296 RIGHT JOIN OBJEKTUM O ON Q296.KODERT = O.OBJTIP
+	OBJEKTUM O
 WHERE
 	O.ID = @pID
 
@@ -15542,92 +18704,24 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-CREATE PROCEDURE sp_LoadSzallitonalInfo
-@pID INTEGER--,
-AS
-DECLARE @pOBJTIP VARCHAR(2)
-SELECT @pOBJTIP = OBJTIP FROM SZALLITONAL WHERE ID = @pID
-IF @pOBJTIP = '18'	--Hõösszegzõ
-BEGIN
-	SELECT
-		OBJEKTUM.GYSZAM		AS H_GYSZAM,
-		OBJEKTUM.HITIDO		AS H_HITIDO,
-		OBJEKTUM.TIPUS		AS H_TIPUS,
-		OBJEKTUM.ELHELYEZ	AS H_ELHELYEZ,
-		HOOSSZEGZO.IMPULZUS	AS H_IMPULZUS,
-		HOOSSZEGZO.LEOLVMOD	AS H_LEOLV,
-		HOOSSZEGZO.FESZULTS	AS H_FESZULTS,
-		HOOSSZEGZO.PLOMBA	AS H_PLOMBA,
-		OBJEKTUM.ALAIR		AS H_KULCS,
-		SZALLITONAL.MEGJ	AS H_MEGJ
-	FROM
-		HOOSSZEGZO RIGHT JOIN
-			(SZALLITONAL INNER JOIN OBJEKTUM ON OBJEKTUM.ID = SZALLITONAL.OBJID)
-		ON HOOSSZEGZO.ID = OBJEKTUM.ID
-	WHERE
-		SZALLITONAL.ID = @pID
-END
-ELSE IF @pOBJTIP = '19'	--Vízóra
-BEGIN
-	SELECT
-		OBJEKTUM.GYSZAM		AS V_GYSZAM,
-		OBJEKTUM.HITIDO		AS V_HITIDO,
-		OBJEKTUM.TIPUS		AS V_TIPUS,
-		OBJEKTUM.ELHELYEZ	AS V_ELHELYEZ,
-		VIZORA.IMPULZUS		AS V_IMPULZUS,
-		VIZORA.ATMERO		AS V_ATMERO,
-		--
-		VIZORA.PLOMBA		AS V_PLOMBA,
-		OBJEKTUM.ALAIR		AS V_KULCS,
-		SZALLITONAL.MEGJ	AS V_MEGJ
-	FROM
-		VIZORA RIGHT JOIN
-			(SZALLITONAL INNER JOIN OBJEKTUM ON OBJEKTUM.ID = SZALLITONAL.OBJID)
-		ON VIZORA.ID = OBJEKTUM.ID
-	WHERE
-		SZALLITONAL.ID = @pID
-END
-ELSE IF @pOBJTIP = '20'	--Érzékelõ
-BEGIN
-	SELECT
-		OBJEKTUM.GYSZAM		AS E_GYSZAM,
-		OBJEKTUM.HITIDO		AS E_HITIDO,
-		--OBJEKTUM.TIPUS AS E_TIPUS,
-		OBJEKTUM.ELHELYEZ	AS E_ELHELYEZ,
-		ERZEKELO.BENYHOSSZ	AS E_BENYHOSSZ,
-		ERZEKELO.VEZHOSSZ	AS E_VEZHOSSZ,
-		ERZEKELO.PLOMBA		AS E_PLOMBA,
-		ERZEKELO.PLOMBA2	AS E_PLOMBA2
-	FROM
-		ERZEKELO RIGHT JOIN
-			(SZALLITONAL INNER JOIN OBJEKTUM ON OBJEKTUM.ID = SZALLITONAL.OBJID)
-		ON ERZEKELO.ID = OBJEKTUM.ID
-	WHERE
-		SZALLITONAL.ID = @pID
-END
 
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
 
-GRANT  EXECUTE  ON [dbo].[sp_LoadSzallitonalInfo]  TO [public]
-GO
 
-SET QUOTED_IDENTIFIER ON 
-GO
-SET ANSI_NULLS ON 
-GO
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_LoadSzerzfej    Script Date: 2000. 07. 04. 18:56:19 ******/
 CREATE PROCEDURE sp_LoadSzerzfej
 @pID INTEGER
 AS
+
 DECLARE @LAST_KEPVIS_DATUM DATETIME
 SELECT @LAST_KEPVIS_DATUM = MAX(KEZDATUM) FROM KEPV_TET WHERE SZERZ_ID = @pID
 DECLARE @LAST_KEPVIS INTEGER
 SELECT @LAST_KEPVIS = KEPVIS_ID FROM KEPV_TET WHERE SZERZ_ID = @pID AND KEZDATUM = @LAST_KEPVIS_DATUM
+
 SELECT
 	SZERZFEJ.ID,
 	SZERZFEJ.PAZ,
@@ -15656,6 +18750,12 @@ WHERE
 	SZERZFEJ.ID = @pID
 	AND (@LAST_KEPVIS IS NULL OR (@LAST_KEPVIS IS NOT NULL AND KEPVIS_ID = @LAST_KEPVIS))
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -15670,6 +18770,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_LoadSzlaEgyedi
 @pID INTEGER
 AS
@@ -15679,6 +18785,12 @@ FROM
 	SZLA_ALT
 WHERE
 	ID = @pID
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -15694,11 +18806,17 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE Procedure sp_MakeCsekk
 @EGYEDI INTEGER = 0
 AS
 BEGIN TRAN
+
 TRUNCATE TABLE CSEKK
+
 IF @EGYEDI = 1
 	BEGIN
 	INSERT INTO CSEKK(BRUTTO,KOZCIM,KOZNEV,/*KOZIRSZ,*/SZLASZ)
@@ -15747,6 +18865,12 @@ ELSE
 	END
 COMMIT TRAN
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -15761,19 +18885,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_MakeTAB403
 @DATUMTOL DATETIME=NULL,
 @DATUMIG DATETIME=NULL,
 @SZOLGJELL VARCHAR(2)=NULL
 AS
+
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB403
 TRUNCATE TABLE TAB403_1
 */
 DELETE FROM TAB403
 DELETE FROM TAB403_1
+
 --Feltöltjük a futomuvek neveit és azonosítóit
 INSERT INTO
 	TAB403(FUTOMU_ID,NEV)
@@ -15786,12 +18917,14 @@ WHERE
 	OBJTIP='03'
 ORDER BY
 	MEGNEV
+
 --Segédváltozók
 DECLARE @OBJ_ID INTEGER
 DECLARE @FUTOMU_ID INTEGER
 DECLARE @FSZAM VARCHAR(12)
 DECLARE @MUNORA INTEGER
 DECLARE @OBJTIP VARCHAR(2)
+
 --Csinálunk egy kurzort, ami azt mutatja meg,
 --hogy az egyes objektumokon hány órát dolgoztak
 --és milyen fokönyvi számon
@@ -15810,11 +18943,14 @@ WHERE
 	AND ((@DATUMTOL IS NULL AND @DATUMIG IS NULL)
 		OR (@DATUMTOL IS NOT NULL AND @DATUMIG IS NOT NULL
 			AND TELJM.MUNDAT BETWEEN @DATUMTOL AND @DATUMIG))
+
 --Megnyitjuk a kurzort
 OPEN TAB403cursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM TAB403cursor
 	INTO @OBJ_ID,@FSZAM,@MUNORA, @OBJTIP
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
@@ -15870,10 +19006,16 @@ BEGIN
 	FETCH NEXT FROM TAB403cursor
 		INTO @OBJ_ID,@FSZAM,@MUNORA, @OBJTIP
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE TAB403cursor
 DEALLOCATE TAB403cursor
+
 SET NOCOUNT OFF
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -15889,17 +19031,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_MakeTAB404    Script Date: 2000. 07. 04. 18:56:19 ******/
 CREATE PROCEDURE sp_MakeTAB404
 @DATUMTOL DATETIME=NULL,
 @DATUMIG DATETIME=NULL
 AS
+
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB404
 */
 DELETE FROM TAB404
+
 --Feltöltjük a futomuvek neveit és azonosítóit
 INSERT INTO
 	TAB404(FUTOMU_ID,NEV)
@@ -15912,11 +19059,13 @@ WHERE
 	OBJTIP='03'
 ORDER BY
 	MEGNEV
+
 INSERT INTO
 	TAB404(FUTOMU_ID,NEV)
 SELECT
 	0,
 	'736 & 737'
+
 --Segédváltozók
 DECLARE @OBJ_ID INTEGER
 DECLARE @OBJTIP VARCHAR(2)
@@ -15924,6 +19073,7 @@ DECLARE @SZOLGJELL VARCHAR(2)
 DECLARE @MUNORA INTEGER
 DECLARE @FUTOMU_ID INTEGER
 DECLARE @FSZAM VARCHAR(12)
+
 --Csinálunk egy kurzort, ami azt mutatja meg, hogy az
 --egyes objektumokon hány órát dolgoztak, és milyen fokönyvi számon,
 --szolgáltatás jellege szerint csoportosítva
@@ -15942,11 +19092,14 @@ WHERE
 	(@DATUMTOL IS NULL AND @DATUMIG IS NULL)
 		OR (@DATUMTOL IS NOT NULL AND @DATUMIG IS NOT NULL
 			AND TELJM.MUNDAT BETWEEN @DATUMTOL AND @DATUMIG)
+
 --Megnyitjuk a kurzort
 OPEN TAB404cursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM TAB404cursor
 	INTO @OBJ_ID,@SZOLGJELL,@FSZAM,@MUNORA,@OBJTIP
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
@@ -15959,6 +19112,7 @@ BEGIN
 		BEGIN
 		EXEC @FUTOMU_ID = sp_Rekurziv @OBJ_ID
 		END
+
 	IF @FUTOMU_ID <> 0	--IS NOT NULL
 		BEGIN
 			--Szolgáltatás jellege szerint növeljük a megfelelo oszlop értékét
@@ -16005,18 +19159,37 @@ BEGIN
 	FETCH NEXT FROM TAB404cursor
 		INTO @OBJ_ID,@SZOLGJELL,@FSZAM,@MUNORA,@OBJTIP
 END
+
 DECLARE @C736 INTEGER
 DECLARE @C737 INTEGER
+
 SELECT @C736 = TAB404.C736 FROM TAB404 WHERE FUTOMU_ID = 0
 SELECT @C737 = TAB404.C737 FROM TAB404 WHERE FUTOMU_ID = 0
+
 UPDATE TAB404
 SET
 	C736 = @C736,
 	C737 = @C737
+
 --Lezárjuk és töröljük a kurzort
 CLOSE TAB404cursor
 DEALLOCATE TAB404cursor
+
 SET NOCOUNT OFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16032,23 +19205,30 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_MakeTAB406    Script Date: 2000. 07. 04. 18:56:19 ******/
 CREATE PROCEDURE sp_MakeTAB406
 @DATUMTOL DATETIME=NULL,
 @DATUMIG DATETIME=NULL
 AS
+
 SET NOCOUNT ON
---Töröljük a táblát, amibõl a report táplálkozik
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+
+--Töröljük a táblát, amibol a report táplálkozik
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB406
 */
 DELETE FROM TAB406
+
 --Feltöltjük a dolgozó IDjét és nevét
 INSERT INTO TAB406(DOLGID,NEV) SELECT ID,NEV FROM DOLGOZO ORDER BY NEV
+
 --Segédváltozók
 DECLARE @DOLG_ID INTEGER
 DECLARE @SZOLGJELL VARCHAR(2)
 DECLARE @MUNORA INTEGER
+
 --Csinálunk egy kurzort, ami azt mutatja meg,
 --hogy az egyes dolgozók hány órát dolgoztak
 --az adott szolgáltatás jellegen belül
@@ -16065,15 +19245,18 @@ WHERE
 	(@DATUMTOL IS NULL AND @DATUMIG IS NULL)
 		OR (@DATUMTOL IS NOT NULL AND @DATUMIG IS NOT NULL
 			AND TELJM.MUNDAT BETWEEN @DATUMTOL AND @DATUMIG)
+
 --Megnyitjuk a kurzort
 OPEN TAB406cursor
---Lekérjük az elsõ rekordot
+
+--Lekérjük az elso rekordot
 FETCH NEXT FROM TAB406cursor
 	INTO @DOLG_ID,@SZOLGJELL,@MUNORA
---Amíg van következõ rekord
+
+--Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
-	--A szolgáltatás jellegétõl függõen növeljük meg
+	--A szolgáltatás jellegétol függoen növeljük meg
 	--az egyes dolgozók óráinak számát.
 	IF @SZOLGJELL = 'EL'
 		BEGIN
@@ -16111,14 +19294,30 @@ BEGIN
 	--Megnöveljük a dolgozó összmunkaóráinak számát is
 	UPDATE TAB406 SET SZUM = SZUM + @MUNORA WHERE DOLGID = @DOLG_ID
 	
-	--Lekérjük a következõ rekordot
+	--Lekérjük a következo rekordot
 	FETCH NEXT FROM TAB406cursor
 		INTO @DOLG_ID,@SZOLGJELL,@MUNORA
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE TAB406cursor
 DEALLOCATE TAB406cursor
+
 SET NOCOUNT OFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16134,6 +19333,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_MakeTAB407    Script Date: 2000. 07. 04. 18:56:19 ******/
 CREATE PROCEDURE sp_MakeTAB407
 @DATUMTOL DATETIME=NULL,
@@ -16141,12 +19342,15 @@ CREATE PROCEDURE sp_MakeTAB407
 @DOLG_ID INTEGER=NULL,
 @SZOLGJELL VARCHAR(2)=NULL
 AS
+
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB407
 */
 DELETE FROM TAB407
+
 --Feltöltjük a futomuvek neveit és azonosítóit
 INSERT INTO
 	TAB407(FUTOMU_ID,NEV)
@@ -16159,11 +19363,13 @@ WHERE
 	OBJTIP='03'
 ORDER BY
 	MEGNEV
+
 --Segédváltozók
 DECLARE @OBJ_ID INTEGER
 DECLARE @OBJTIP VARCHAR(2)
 DECLARE @FUTOMU_ID INTEGER
 DECLARE @MUNORA INTEGER
+
 --Csinálunk egy kurzort, ami azt mutatja meg,
 --hogy az egyes objektumokon hány órát dolgozott az adott dolgozó
 DECLARE TAB407cursor CURSOR FAST_FORWARD FOR
@@ -16183,11 +19389,14 @@ WHERE
 	AND ((@DATUMTOL IS NULL AND @DATUMIG IS NULL)
 		OR (@DATUMTOL IS NOT NULL AND @DATUMIG IS NOT NULL
 			AND TELJM.MUNDAT BETWEEN @DATUMTOL AND @DATUMIG))
+
 --Megnyitjuk a kurzort
 OPEN TAB407cursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM TAB407cursor
 	INTO @OBJ_ID,@MUNORA,@OBJTIP
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
@@ -16208,14 +19417,31 @@ BEGIN
 		ORA = ORA + @MUNORA
 	WHERE
 		FUTOMU_ID = @FUTOMU_ID
+
 	--Lekérjük a következo rekordot
 	FETCH NEXT FROM TAB407cursor
 		INTO @OBJ_ID,@MUNORA,@OBJTIP
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE TAB407cursor
 DEALLOCATE TAB407cursor
+
 SET NOCOUNT OFF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16231,18 +19457,23 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_MakeTAB408    Script Date: 2000. 07. 04. 18:56:19 ******/
 CREATE PROCEDURE sp_MakeTAB408
 @DATUMTOL DATETIME=NULL,
 @DATUMIG DATETIME=NULL,
 @FUTOMU INTEGER
 AS
+
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB408
 */
 DELETE FROM TAB408
+
 --Segédváltozók
 DECLARE @SZOLGJELL VARCHAR(2)
 DECLARE @MUNKALAP_ID INTEGER
@@ -16253,6 +19484,7 @@ DECLARE @MUNORA INTEGER
 DECLARE @OBJ_ID INTEGER
 DECLARE @OBJTIP VARCHAR(2)
 DECLARE @FUTOMU_ID INTEGER
+
 DECLARE TAB408cursor CURSOR FAST_FORWARD FOR
 SELECT
 	MUNKALAP.SZOLGJELL,
@@ -16287,9 +19519,11 @@ WHERE
 	
 --Megnyitjuk a kurzort
 OPEN TAB408cursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM TAB408cursor
 	INTO @SZOLGJELL,@MUNKALAP_ID,@DATUM,@HIBLEIR,@DOLG,@MUNORA,@OBJ_ID,@OBJTIP
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
@@ -16332,10 +19566,21 @@ BEGIN
 	FETCH NEXT FROM TAB408cursor
 		INTO @SZOLGJELL,@MUNKALAP_ID,@DATUM,@HIBLEIR,@DOLG,@MUNORA,@OBJ_ID,@OBJTIP
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE TAB408cursor
 DEALLOCATE TAB408cursor
+
 SET NOCOUNT OFF
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16351,15 +19596,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_MakeTAB413
 @DATUMTOL DATETIME = NULL,
 @DATUMIG DATETIME = NULL
 AS
 BEGIN TRAN
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB413
 */
 DELETE FROM TAB413
+
 INSERT INTO TAB413
 SELECT
 	SZLA_ALT.KOZNEV,
@@ -16400,7 +19649,15 @@ GROUP BY
 	NOTERT,
 	SZLA_ALT_TET.OSSZEG,
 	AFA
+
 COMMIT TRAN
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16416,14 +19673,18 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_MakeTAB_R01
 AS
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
 /*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB_R01
 */
 DELETE FROM TAB_R01
+
 INSERT INTO
 	TAB_R01(OBJTIP, GYSZAM, TIPUS, HITIDO, ALLAPOT, DATUMTOL, MEGJ)
 SELECT
@@ -16447,6 +19708,7 @@ ORDER BY
 	
 SET NOCOUNT OFF
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -16461,15 +19723,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_MakeTAB_R03
 @pOBJTIP VARCHAR(2)
 AS
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
 /*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB_R03
 */
 DELETE FROM TAB_R03
+
 INSERT INTO
 	TAB_R03(OBJTIP, OBJID, GYSZAM, TIPUS, HITIDO, CIM, MEGJ)
 SELECT
@@ -16488,23 +19754,30 @@ WHERE
 	R.ALLAPOT = 'E' OR R.ALLAPOT = 'J'
 	AND R.SZLEVEL_DATUM IS NULL
 	AND R.OBJTIP = @pOBJTIP
+
+
 --Segédváltozók
 DECLARE @OBJ_ID INTEGER
 DECLARE @ARAMKOR_ID INTEGER
+
 DECLARE TAB_R03cursor CURSOR FAST_FORWARD FOR
 SELECT
 	OBJID
 FROM
 	TAB_R03
+
 --Megnyitjuk a kurzort
 OPEN TAB_R03cursor
+
 --Lekérjük az elso rekordot
 FETCH NEXT FROM TAB_R03cursor
 	INTO @OBJ_ID
+
 --Amíg van következo rekord
 WHILE @@FETCH_STATUS = 0
 BEGIN
 	EXEC @ARAMKOR_ID = sp_Rekurziv @OBJ_ID,'30'
+
 	UPDATE
 		TAB_R03
 	SET
@@ -16513,14 +19786,19 @@ BEGIN
 		OBJEKTUM
 	WHERE
 		OBJEKTUM.ID = @ARAMKOR_ID
+
 	--Lekérjük a következo rekordot
 	FETCH NEXT FROM TAB_R03cursor
 		INTO @OBJ_ID
 END
+
 --Lezárjuk és töröljük a kurzort
 CLOSE TAB_R03cursor
 DEALLOCATE TAB_R03cursor
+
 SET NOCOUNT OFF
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16536,15 +19814,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_MakeTAB_R04
 @pID INTEGER
 AS
+
 SET NOCOUNT ON
+
 --Töröljük a táblát, amibol a report táplálkozik
 /*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE TAB_R04
 */
 DELETE FROM TAB_R04
+
 INSERT INTO
 	TAB_R04(
 		KEPVIS,
@@ -16564,21 +19846,28 @@ INSERT INTO
 		)
 EXEC
 	sp_LoadRaktarInfo @pID
+
+
 DECLARE @HOOSSZEGZO_ID INTEGER
 DECLARE @VIZORA_ID INTEGER
 DECLARE @ERZEKELO_ID INTEGER
+
 DECLARE @OBJID INTEGER
 DECLARE @KEPVIS INTEGER
 SELECT @OBJID = OBJID, @KEPVIS = KEPVIS FROM RAKTAR WHERE ID = @pID
+
 DECLARE @EPULET_ID INTEGER
 DECLARE @FUTOMU_ID INTEGER
 EXEC @EPULET_ID = sp_Rekurziv @OBJID, '01' --Épület
 	--sp_Rekurziv @OBJID, '37'	--Lépcsoház
 EXEC @FUTOMU_ID = sp_Rekurziv @OBJID, '03' --Futomu
+
 SELECT @HOOSSZEGZO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
 	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '18'	--Hoösszegzo
+
 SELECT @VIZORA_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
 	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '19'	--Vízóra
+
 SELECT @ERZEKELO_ID = ID2 FROM KAPCSOLAT INNER JOIN OBJEKTUM ON OBJEKTUM.ID = KAPCSOLAT.ID2
 	WHERE KAPCSOLAT.ID1 = @EPULET_ID AND OBJEKTUM.OBJTIP = '20'	--Érzékelo
 	
@@ -16586,6 +19875,7 @@ DECLARE @FUTOMU_NEV VARCHAR(50)
 DECLARE @EPULET_NEV VARCHAR(50)
 SELECT @FUTOMU_NEV = MEGNEV FROM OBJEKTUM WHERE OBJEKTUM.ID = @FUTOMU_ID
 SELECT @EPULET_NEV = MEGNEV FROM OBJEKTUM WHERE OBJEKTUM.ID = @EPULET_ID
+
 UPDATE
 	TAB_R04
 SET
@@ -16636,17 +19926,24 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_MlapObjFeltolt    Script Date: 2000. 07. 04. 18:56:19 ******/
 CREATE PROCEDURE sp_MlapObjFeltolt
 @pOBJTIP VARCHAR(2)
 AS
+
 SET NOCOUNT ON
+
 CREATE TABLE #ZZZ
 	(
 	ID INT NOT NULL,
 	FUTOMU_ID INT NULL,
 	FUTOMU_NEV VARCHAR(50) NULL
 	)
+
 INSERT INTO
 	#ZZZ
 SELECT
@@ -16657,7 +19954,9 @@ FROM
 	OBJEKTUM
 WHERE
 	OBJTIP=@pOBJTIP
+
 SET NOCOUNT OFF
+
 SELECT
 	OBJEKTUM.ID,
 		COALESCE(MEGNEV, ' - ') + ';' +
@@ -16673,6 +19972,10 @@ ORDER BY
 	
 DROP TABLE #ZZZ
 
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -16687,7 +19990,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q271    Script Date: 2000. 07. 04. 18:56:19 ******/
+
 CREATE PROCEDURE sp_Q271
 AS
 SELECT
@@ -16696,6 +20008,21 @@ FROM
 	Q271
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16711,7 +20038,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q272    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q272
 AS
 SELECT
@@ -16720,6 +20066,25 @@ FROM
  Q272
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16735,7 +20100,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q274    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q274
 AS
 SELECT
@@ -16744,6 +20128,25 @@ FROM
  Q274
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16759,7 +20162,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q275    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q275
 AS
 SELECT
@@ -16768,6 +20190,25 @@ FROM
  Q275
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16783,7 +20224,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q276    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q276
 AS
 SELECT
@@ -16792,6 +20252,25 @@ FROM
  Q276
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16807,7 +20286,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q277    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q277
 AS
 SELECT
@@ -16816,6 +20314,25 @@ FROM
  Q277
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16831,7 +20348,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q278    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q278
 AS
 SELECT
@@ -16840,6 +20376,25 @@ FROM
  Q278
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16855,7 +20410,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q279    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q279
 AS
 SELECT
@@ -16864,6 +20438,25 @@ FROM
  Q279
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16879,7 +20472,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q281    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q281
 AS
 SELECT
@@ -16888,6 +20500,25 @@ FROM
  Q281
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16903,7 +20534,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q282    Script Date: 2000. 07. 04. 18:56:20 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q282
 AS
 SELECT
@@ -16912,6 +20562,25 @@ FROM
  Q282
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16927,7 +20596,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q283    Script Date: 2000. 07. 04. 18:56:21 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q283
 AS
 SELECT
@@ -16936,6 +20624,25 @@ FROM
  Q283
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16951,7 +20658,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q284    Script Date: 2000. 07. 04. 18:56:21 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q284
 AS
 SELECT
@@ -16960,6 +20686,25 @@ FROM
  Q284
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16975,7 +20720,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q285    Script Date: 2000. 07. 04. 18:56:21 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q285
 AS
 SELECT
@@ -16984,6 +20748,25 @@ FROM
  Q285
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -16999,7 +20782,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q288    Script Date: 2000. 07. 04. 18:56:21 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q288
 AS
 SELECT
@@ -17008,6 +20810,25 @@ FROM
  Q288
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17023,7 +20844,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q289    Script Date: 2000. 07. 04. 18:56:21 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q289
 AS
 SELECT
@@ -17032,6 +20872,25 @@ FROM
  Q289
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17047,6 +20906,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Q291
 AS
 SELECT
@@ -17057,6 +20917,7 @@ WHERE
 	KODERT <> 'GB'
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17072,6 +20933,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Q291D
 AS
 SELECT
@@ -17084,6 +20946,7 @@ WHERE
 	KODERT = 'HK'
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17099,7 +20962,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q293    Script Date: 2000. 07. 04. 18:56:21 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q293
 AS
 SELECT
@@ -17108,6 +20986,21 @@ FROM
 	Q293
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17123,7 +21016,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q296    Script Date: 2000. 07. 04. 18:56:21 ******/
+
 CREATE PROCEDURE sp_Q296
 AS
 SELECT
@@ -17134,6 +21036,15 @@ FROM
 --	KODERT <> '37'	--Lépcsoház
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17149,6 +21060,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Q296_Diszp
 AS
 SELECT
@@ -17162,6 +21074,7 @@ WHERE
 	KODERT = '37'		--Lépcsoház
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17177,7 +21090,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q297    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q297
 AS
 SELECT
@@ -17186,6 +21118,25 @@ FROM
  Q297
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17201,7 +21152,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q298    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q298
 AS
 SELECT
@@ -17210,6 +21176,21 @@ FROM
 	Q298
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17225,7 +21206,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q299    Script Date: 2000. 07. 04. 18:56:22 ******/
+
 CREATE PROCEDURE sp_Q299
 AS
 SELECT
@@ -17234,6 +21224,15 @@ FROM
 	Q299
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17249,7 +21248,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q300    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q300
 AS
 SELECT
@@ -17258,6 +21272,21 @@ FROM
 	Q300
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17273,6 +21302,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q302    Script Date: 2000. 07. 04. 18:56:22 ******/
 CREATE PROCEDURE sp_Q302
 AS
@@ -17282,6 +21319,14 @@ FROM
 	Q302
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17297,7 +21342,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q304    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q304
 AS
 SELECT
@@ -17306,6 +21366,21 @@ FROM
 	Q304
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17321,7 +21396,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q305    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q305
 AS
 SELECT
@@ -17330,6 +21420,21 @@ FROM
 	Q305
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17345,7 +21450,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q306    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q306
 AS
 SELECT
@@ -17354,6 +21474,21 @@ FROM
 	Q306
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17369,7 +21504,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q307    Script Date: 2000. 07. 04. 18:56:22 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q307
 AS
 SELECT
@@ -17378,6 +21528,21 @@ FROM
 	Q307
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17393,7 +21558,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q308    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q308
 AS
 SELECT
@@ -17402,6 +21582,21 @@ FROM
 	Q308
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17417,7 +21612,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q309    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q309
 AS
 SELECT
@@ -17426,6 +21636,21 @@ FROM
 	Q309
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17441,7 +21666,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q310    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_Q310
 AS
 SELECT
@@ -17451,6 +21689,22 @@ FROM
 	Q310
 ORDER BY
 	FSZAM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17466,7 +21720,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 Create Procedure sp_Q310A
+
 AS
 SELECT
 	FSZAM AS KODERT,
@@ -17475,6 +21734,12 @@ FROM
 	Q310A
 ORDER BY
 	FSZAM
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17490,6 +21755,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 Create Procedure sp_Q310D
 AS
 SELECT
@@ -17499,6 +21765,7 @@ FROM
 	Q310D
 ORDER BY
 	FSZAM
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17514,7 +21781,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q311    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q311
 AS
 SELECT
@@ -17523,6 +21805,21 @@ FROM
 	Q311
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17538,7 +21835,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q312    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q312
 AS
 SELECT
@@ -17547,6 +21863,25 @@ FROM
  Q312
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17562,7 +21897,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q313    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q313
 AS
 SELECT
@@ -17571,6 +21925,25 @@ FROM
  Q313
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17586,7 +21959,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q314    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q314
 AS
 SELECT
@@ -17595,6 +21987,25 @@ FROM
  Q314
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17610,7 +22021,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q315    Script Date: 2000. 07. 04. 18:56:23 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q315
 AS
 SELECT
@@ -17619,6 +22049,25 @@ FROM
  Q315
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17634,7 +22083,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q316    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q316
 AS
 SELECT
@@ -17643,6 +22111,25 @@ FROM
  Q316
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17658,7 +22145,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q317    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q317
 AS
 SELECT
@@ -17667,6 +22173,25 @@ FROM
  Q317
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17682,7 +22207,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q318    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q318
 AS
 SELECT
@@ -17691,6 +22235,25 @@ FROM
  Q318
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17706,7 +22269,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q319    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q319
 AS
 SELECT
@@ -17715,6 +22297,25 @@ FROM
  Q319
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17730,7 +22331,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q320    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q320
 AS
 SELECT
@@ -17739,6 +22359,25 @@ FROM
  Q320
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17754,7 +22393,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q321    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q321
 AS
 SELECT
@@ -17763,6 +22421,25 @@ FROM
  Q321
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17778,7 +22455,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q322    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q322
 AS
 SELECT
@@ -17787,6 +22483,25 @@ FROM
  Q322
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17802,7 +22517,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q323    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q323
 AS
 SELECT
@@ -17811,6 +22545,25 @@ FROM
  Q323
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17826,7 +22579,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q324    Script Date: 2000. 07. 04. 18:56:24 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q324
 AS
 SELECT
@@ -17835,6 +22607,25 @@ FROM
  Q324
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17850,7 +22641,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q325    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q325
 AS
 SELECT
@@ -17859,6 +22669,25 @@ FROM
  Q325
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17874,7 +22703,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q326    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q326
 AS
 SELECT
@@ -17883,6 +22731,25 @@ FROM
  Q326
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17898,7 +22765,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q327    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q327
 AS
 SELECT
@@ -17907,6 +22793,25 @@ FROM
  Q327
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17922,7 +22827,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q328    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q328
 AS
 SELECT
@@ -17931,6 +22855,25 @@ FROM
  Q328
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17946,7 +22889,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q329    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q329
 AS
 SELECT
@@ -17955,6 +22917,25 @@ FROM
  Q329
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17970,7 +22951,26 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q330    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q330
 AS
 SELECT
@@ -17979,6 +22979,25 @@ FROM
  Q330
 ORDER BY
  KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -17994,7 +23013,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q331    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q331
 AS
 SELECT
@@ -18003,6 +23037,21 @@ FROM
 	Q331
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18018,7 +23067,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q332    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q332
 AS
 SELECT
@@ -18027,6 +23091,22 @@ FROM
 	Q332
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18042,7 +23122,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q333    Script Date: 2000. 07. 04. 18:56:25 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q333
 AS
 SELECT
@@ -18051,6 +23146,21 @@ FROM
 	Q333
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18066,7 +23176,22 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q334    Script Date: 2000. 07. 04. 18:56:26 ******/
+
+
+
+
+
+
+
 CREATE PROCEDURE sp_Q334
 AS
 SELECT
@@ -18075,6 +23200,22 @@ FROM
 	Q334
 ORDER BY
 	NEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18090,7 +23231,20 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q335    Script Date: 2000. 07. 04. 18:56:26 ******/
+
+
+
+
+
 CREATE PROCEDURE sp_Q335
 AS
 SELECT
@@ -18099,6 +23253,19 @@ FROM
 	Q335
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18114,7 +23281,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q336    Script Date: 2000. 07. 04. 18:56:26 ******/
+
 CREATE PROCEDURE sp_Q336
 AS
 SELECT
@@ -18123,6 +23299,19 @@ FROM
 	Q336
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18138,7 +23327,16 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q337    Script Date: 2000. 07. 04. 18:56:26 ******/
+
 Create PROCEDURE sp_Q337
 AS
 SELECT
@@ -18147,6 +23345,15 @@ FROM
 	Q337
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18162,6 +23369,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q338    Script Date: 2000. 07. 04. 18:56:26 ******/
 CREATE PROCEDURE sp_Q338
 AS
@@ -18171,6 +23386,14 @@ FROM
 	Q338
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18186,6 +23409,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q339    Script Date: 2000. 07. 04. 18:56:26 ******/
 CREATE PROCEDURE sp_Q339
 AS
@@ -18195,6 +23426,14 @@ FROM
 	Q339
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18210,6 +23449,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q340    Script Date: 2000. 07. 04. 18:56:26 ******/
 CREATE PROCEDURE sp_Q340
 AS
@@ -18219,6 +23466,14 @@ FROM
 	Q340
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18234,6 +23489,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q341    Script Date: 2000. 07. 04. 18:56:26 ******/
 CREATE PROCEDURE sp_Q341
 AS
@@ -18243,6 +23506,14 @@ FROM
 	Q341
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18258,6 +23529,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q342    Script Date: 2000. 07. 04. 18:56:27 ******/
 CREATE PROCEDURE sp_Q342
 AS
@@ -18267,6 +23546,14 @@ FROM
 	Q342
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18282,6 +23569,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q343    Script Date: 2000. 07. 04. 18:56:27 ******/
 CREATE PROCEDURE sp_Q343
 AS
@@ -18291,6 +23586,14 @@ FROM
 	Q343
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18306,6 +23609,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q344    Script Date: 2000. 07. 04. 18:56:27 ******/
 CREATE PROCEDURE sp_Q344
 AS
@@ -18315,6 +23626,14 @@ FROM
 	Q344
 ORDER BY
 	KODENEV
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18330,6 +23649,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q345    Script Date: 2000. 07. 04. 18:56:27 ******/
 Create PROCEDURE sp_Q345
 AS
@@ -18339,6 +23666,11 @@ FROM
 	Q345
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18354,6 +23686,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q346    Script Date: 2000. 07. 04. 18:56:27 ******/
 Create PROCEDURE sp_Q346
 AS
@@ -18363,6 +23703,11 @@ FROM
 	Q346
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18378,6 +23723,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Q346    Script Date: 2000. 07. 04. 18:56:27 ******/
 Create PROCEDURE sp_Q347
 AS
@@ -18387,6 +23740,11 @@ FROM
 	Q347
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18402,6 +23760,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q348
 AS
 SELECT
@@ -18410,6 +23772,11 @@ FROM
 	Q348
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18425,6 +23792,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q349
 AS
 SELECT
@@ -18433,6 +23804,11 @@ FROM
 	Q349
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18448,6 +23824,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q350
 AS
 SELECT
@@ -18456,6 +23836,11 @@ FROM
 	Q350
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18471,6 +23856,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q351
 AS
 SELECT
@@ -18479,6 +23868,11 @@ FROM
 	Q351
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18494,6 +23888,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q352
 AS
 SELECT
@@ -18502,6 +23900,11 @@ FROM
 	Q352
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18517,6 +23920,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q353
 AS
 SELECT
@@ -18525,6 +23932,11 @@ FROM
 	Q353
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18540,6 +23952,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q354
 AS
 SELECT
@@ -18548,6 +23964,11 @@ FROM
 	Q354
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18563,6 +23984,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q355
 AS
 SELECT
@@ -18571,6 +23996,11 @@ FROM
 	Q355
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18586,6 +24016,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q356
 AS
 SELECT
@@ -18594,6 +24028,11 @@ FROM
 	Q356
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18609,6 +24048,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q357
 AS
 SELECT
@@ -18617,6 +24060,11 @@ FROM
 	Q357
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18632,6 +24080,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q358
 AS
 SELECT
@@ -18640,6 +24092,11 @@ FROM
 	Q358
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18655,6 +24112,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q359
 AS
 SELECT
@@ -18663,6 +24124,11 @@ FROM
 	Q359
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18678,6 +24144,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q360
 AS
 SELECT
@@ -18686,6 +24156,11 @@ FROM
 	Q360
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18701,6 +24176,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q361
 AS
 SELECT
@@ -18709,6 +24188,11 @@ FROM
 	Q361
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18724,6 +24208,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q362
 AS
 SELECT
@@ -18732,6 +24220,11 @@ FROM
 	Q362
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18747,6 +24240,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q363
 AS
 SELECT
@@ -18755,6 +24252,11 @@ FROM
 	Q363
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18770,6 +24272,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
 CREATE PROCEDURE sp_Q364
 AS
 SELECT
@@ -18778,6 +24284,11 @@ FROM
 	Q364
 ORDER BY
 	KODENEV
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18793,6 +24304,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_Q365
 AS
 SELECT
@@ -18801,6 +24314,7 @@ FROM
 	Q365
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18816,6 +24330,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_Q366
 AS
 SELECT
@@ -18824,6 +24340,7 @@ FROM
 	Q366
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18839,6 +24356,8 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_Q367
 AS
 SELECT
@@ -18847,6 +24366,7 @@ FROM
 	Q367
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18862,6 +24382,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Q368
 AS
 SELECT
@@ -18870,6 +24391,7 @@ FROM
 	Q368
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18885,6 +24407,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Q369
 AS
 SELECT
@@ -18893,6 +24416,7 @@ FROM
 	Q369
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18908,6 +24432,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_Q370
 AS
 SELECT
@@ -18916,6 +24441,7 @@ FROM
 	Q370
 ORDER BY
 	KODENEV
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -18930,6 +24456,34 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+CREATE PROCEDURE sp_Q371
+AS
+SELECT
+	*
+FROM
+	Q371
+ORDER BY
+	KODENEV
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_Q371]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
 
 CREATE PROCEDURE sp_QueryParams
 @QRYNAME VARCHAR(92)
@@ -18948,6 +24502,21 @@ WHERE
  C.ID = @OBJID
  AND C.USERTYPE *= T.USERTYPE
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -18962,15 +24531,19 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_Rekurziv    Script Date: 2000. 07. 04. 18:56:27 ******/
 CREATE PROCEDURE sp_Rekurziv
-@pID INTEGER,	-- Melyik objektum felsõbb kapcsolatát keressük
-@pOBJTIP VARCHAR(2)='03'	--Milyen felsõbb kapcsolatot keresünk. 03 - Fûtõmû
+@pID INTEGER,	-- Melyik objektum felsobb kapcsolatát keressük
+@pOBJTIP VARCHAR(2)='03'	--Milyen felsobb kapcsolatot keresünk. 03 - Futomu
 AS
+
 --Megállapítjuk, hogy a kérdéses objektum milyen berendezés
 DECLARE @OBJTIP VARCHAR(2)
 SELECT @OBJTIP = OBJTIP FROM OBJEKTUM WHERE ID = @pID
--- Ha õ maga már a keresett típus, akkor 0-t adunk vissza.
+
+-- Ha o maga már a keresett típus, akkor 0-t adunk vissza.
 IF @OBJTIP = @pOBJTIP
 	BEGIN
 	RETURN 0
@@ -18989,11 +24562,14 @@ ELSE
 	DECLARE @ID2 INTEGER
 	DECLARE @SZINT INTEGER
 	SELECT @SZINT = 0
+
 	DECLARE @FUTOMU_ID INTEGER
 	SELECT @FUTOMU_ID = -1
+
 	SELECT @ID2 = @pID	--Amit keresünk, az valamihez kapcsolva van, ezért
 						--a KAPCSOLAT táblában a második oszlopban keressük
-						-- az õ ID-jét.
+						-- az o ID-jét.
+
 	WHILE (@FUTOMU_ID = -1) AND (@SZINT < 40)
 		BEGIN
 		SELECT @SZINT = @SZINT + 1	-- Csak korlát, hogy ne szálljon el
@@ -19001,22 +24577,29 @@ if exists (		SELECT ID1 FROM KAPCSOLAT WHERE ID2=@ID2)
 begin
 		SELECT @ID1=ID1 FROM KAPCSOLAT WHERE ID2=@ID2	-- Mihez kapcsolódik
 		SELECT @OBJTIP = OBJTIP FROM OBJEKTUM WHERE ID = @ID1	-- és az milyen berendezés
-		IF @OBJTIP = @pOBJTIP	-- Ha a megfelelõ berendezés típus, a felsõbb kapcsolat
+		IF @OBJTIP = @pOBJTIP	-- Ha a megfelelo berendezés típus, a felsobb kapcsolat
 			BEGIN
 			SELECT @FUTOMU_ID = @ID1	-- Az ID-t adjuk vissza
 			END
 		ELSE
 			BEGIN
-			SELECT @ID2 = @ID1	-- Egyébként nézzük tovább, most már az elõbb talált
-			END	-- objektum felsõbb kapcsolatát követve.
+			SELECT @ID2 = @ID1	-- Egyébként nézzük tovább, most már az elobb talált
+			END	-- objektum felsobb kapcsolatát követve.
 end
-else	-- Legfelsõ szintre jutott			
+else	-- Legfelso szintre jutott			
 	BEGIN
 		SELECT @FUTOMU_ID = 0
 	END
+
 	END
+
 RETURN @FUTOMU_ID
+
 END
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19032,7 +24615,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_SetMunkalapAllapot    Script Date: 2000. 07. 04. 18:56:27 ******/
+
 CREATE PROCEDURE sp_SetMunkalapAllapot
 @pID INTEGER, @pALLAPOT INTEGER
 AS
@@ -19042,6 +24632,15 @@ SET
 	ALLAPOT = @pALLAPOT
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19057,19 +24656,27 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_Szetkapcsol
 @pID1 INTEGER,
 @pID2 INTEGER
 AS
+
 BEGIN TRAN
+
 DECLARE @ELOZOKAPCS INT
+
 SELECT @ELOZOKAPCS = ID1 FROM KAPCSOLAT WHERE ID1 = @pID1 AND ID2 = @pID2
+
 DELETE
 FROM
 	KAPCSOLAT
 WHERE
 	ID1 = @pID1
 	AND ID2 = @pID2
+
+
 UPDATE
 	OBJEKTUM
 SET
@@ -19078,7 +24685,10 @@ SET
 	ELOZOKAPCSDATE = GETDATE()
 WHERE
 	ID = @pID2
+
 COMMIT TRAN
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19094,13 +24704,28 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_TruncKapcsTab    Script Date: 2000. 07. 04. 18:56:27 ******/
 CREATE PROCEDURE sp_TruncKapcsTab
 AS
-/*	Ez akkor mûködik csak, ha a sysadmin csoport tagja hívja meg...
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
 TRUNCATE TABLE KAPCSTAB
 */
 DELETE FROM KAPCSTAB
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19116,10 +24741,11 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 CREATE PROCEDURE sp_UpdDolgozo
 @pID INTEGER,
 @NEV VARCHAR(20) = NULL,
-@LOGIN VARCHAR(50) = NULL,
 @SZEREGYS VARCHAR(2) = NULL,
 @BEOSZT VARCHAR(2) = NULL,
 @UFR VARCHAR(1),
@@ -19131,7 +24757,6 @@ UPDATE
 	DOLGOZO
 SET
 	NEV = @NEV,
-	LOGIN = @LOGIN,
 	SZEREGYS = @SZEREGYS,
 	BEOSZT = @BEOSZT,
 	UFR = @UFR,
@@ -19140,6 +24765,21 @@ SET
 	UEW = @UEW
 WHERE
 	ID = @pID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19155,7 +24795,17 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_UpdEpul    Script Date: 2000. 07. 04. 18:56:28 ******/
+
+
 CREATE PROCEDURE sp_UpdEpul
 @pID INTEGER,
 @IRSZAM INTEGER=NULL,
@@ -19236,6 +24886,25 @@ SET
 WHERE
  ID = @pID
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -19249,6 +24918,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_UpdKepvis    Script Date: 2000. 07. 04. 18:56:28 ******/
 CREATE PROCEDURE sp_UpdKepvis
@@ -19274,6 +24951,14 @@ SET
 WHERE
 	ID = @pID
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -19288,6 +24973,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_UpdKontir    Script Date: 2000. 07. 04. 18:56:28 ******/
 CREATE PROCEDURE sp_UpdKontir
 @pID VARCHAR(12),
@@ -19300,6 +24993,14 @@ SET
 	KIJELOLT = @KIJELOLT
 WHERE
 	FSZAM = @pID
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19314,6 +25015,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_UpdMunkalap    Script Date: 2000. 07. 04. 18:56:28 ******/
 CREATE PROCEDURE sp_UpdMunkalap
@@ -19398,6 +25103,10 @@ SET
 WHERE
 	ID = @pID
 
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -19412,9 +25121,10 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_UpdMunkalapVisszair
 @pID INTEGER,
-@MUVLEIR VARCHAR(8000)=NULL
+@MUVLEIR VARCHAR(1024)=NULL
 AS
 UPDATE MUNKALAP
 SET
@@ -19423,6 +25133,10 @@ SET
 	AKOD = User_Name()
 WHERE
 	ID = @pID
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19437,6 +25151,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_UpdObjAlt
 @pID INTEGER,
@@ -19495,6 +25210,8 @@ SET
 WHERE
 	ID = @pID
 
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -19508,6 +25225,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
 
 CREATE PROCEDURE sp_UpdObjGep
 @pID INTEGER,
@@ -19783,7 +25504,8 @@ SET
 WHERE
  ID = @pID
 END
-ELSE IF @pOBJTIP = '18'	--Hõösszegzõ
+
+ELSE IF @pOBJTIP = '18'	--Hoösszegzo
 BEGIN
 	UPDATE HOOSSZEGZO
 SET
@@ -19792,7 +25514,7 @@ SET
 	PLOMBA = @PLOMBA
 WHERE
 	ID = @pID
-END
+END
 ELSE IF @pOBJTIP = '19'	--Vízóra
 BEGIN
 	UPDATE
@@ -19807,6 +25529,7 @@ BEGIN
 	WHERE
 		ID = @pID
 END
+
 ELSE IF @pOBJTIP = '20'
 BEGIN
 	UPDATE
@@ -19955,6 +25678,7 @@ SET
 WHERE
  ID = @pID
 END
+
 UPDATE
 	OBJEKTUM
 SET
@@ -19962,6 +25686,10 @@ SET
 	AKOD = User_Name()
 WHERE
 	ID = @pID
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19976,6 +25704,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_UpdObjUzem    Script Date: 2000. 07. 04. 18:56:28 ******/
 CREATE PROCEDURE sp_UpdObjUzem
@@ -20327,6 +26063,14 @@ SET
 WHERE
  ID = @pID
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -20340,6 +26084,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
 
 CREATE PROCEDURE sp_UpdObjVill
 @pID INTEGER,
@@ -20508,6 +26254,7 @@ SET
 WHERE
  ID = @pID
 END
+
 ELSE IF @pOBJTIP = '18'
 BEGIN
 	UPDATE HOOSSZEGZO
@@ -20516,6 +26263,7 @@ SET
 WHERE
 	ID = @pID
 END
+
 /*ELSE IF @pOBJTIP = '19'
 BEGIN
 UPDATE VIZORA
@@ -20626,7 +26374,7 @@ UPDATE KOLTSEGMEGOSZTO
 SET
  VALAMI = @VALAMI 
 WHERE
- ID = @pID
+ ID = @pID
 END*/
 /*ELSE IF @pOBJTIP = '32'
 BEGIN
@@ -20682,6 +26430,14 @@ SET
 WHERE
  ID = @pID
 
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -20696,6 +26452,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_UpdRaktarAllapot
 @pID INTEGER,
 @pALLAPOT VARCHAR(1),
@@ -20704,7 +26461,9 @@ CREATE PROCEDURE sp_UpdRaktarAllapot
 @pSZLEVEL_SZAM VARCHAR(20)=NULL,
 @pSZLEVEL_DATUM DATETIME=NULL
 AS
+
 BEGIN TRAN
+
 --Lementjük a jelenlegi rekordot a historyba
 INSERT INTO
 	RAKTHISTORY(OBJTIP,OBJID,DATUMTOL,DATUMIG,MEGJ,ALLAPOT,
@@ -20735,6 +26494,7 @@ IF @pALLAPOT <> 'E' AND @pALLAPOT <> 'J'
 	SELECT @pSZLEVEL_SZAM = NULL
 	SELECT @pSZLEVEL_DATUM = NULL
 	END
+
 --És mehet az update
 UPDATE
 	RAKTAR
@@ -20750,7 +26510,9 @@ SET
 	SZLEVEL_DATUM = ((@pALLAPOT='E' OR @pALLAPOT='J') AND @pSZLEVEL_DATUM) OR NULL*/
 WHERE
 	ID = @pID
+
 COMMIT TRAN
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -20765,6 +26527,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
 
 CREATE PROCEDURE sp_UpdRaktarKepv
 @pID INTEGER,
@@ -20795,6 +26558,7 @@ SET
 WHERE
 	ID = @pID
 
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -20809,9 +26573,11 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
 CREATE PROCEDURE sp_UpdRaktarObj
 @KEPVIS INTEGER=NULL,
 @KULCS INTEGER=NULL,
+
 @H_ID INTEGER=NULL,
 @H_IMPULZUS REAL=NULL,
 @H_LEOLV VARCHAR(2)=NULL,
@@ -20825,6 +26591,7 @@ CREATE PROCEDURE sp_UpdRaktarObj
 @H_KULCS_MOBTEL VARCHAR(20)=NULL,
 @H_KULCS_MUNTEL VARCHAR(20)=NULL,
 --@H_MEGJ VARCHAR(255)=NULL,
+
 @V_ID INTEGER=NULL,
 @V_IMPULZUS REAL=NULL,
 @V_ATMERO REAL=NULL,
@@ -20837,6 +26604,7 @@ CREATE PROCEDURE sp_UpdRaktarObj
 @V_KULCS_MOBTEL VARCHAR(20)=NULL,
 @V_KULCS_MUNTEL VARCHAR(20)=NULL,
 --@V_MEGJ VARCHAR(255)=NULL,
+
 @E_ID INTEGER=NULL,
 @E_BENYHOSSZ REAL=NULL,
 @E_VEZHOSSZ REAL=NULL,
@@ -20851,7 +26619,9 @@ CREATE PROCEDURE sp_UpdRaktarObj
 @E_KULCS_MUNTEL VARCHAR(20)=NULL
 --@E_MEGJ VARCHAR(255)=NULL
 AS
+
 BEGIN TRAN
+
 UPDATE
 	HOOSSZEGZO
 SET
@@ -20862,6 +26632,7 @@ SET
 	PLOMBA = @H_PLOMBA
 WHERE
 	ID = @H_ID
+
 UPDATE
 	OBJEKTUM
 SET
@@ -20870,6 +26641,7 @@ SET
 --	MEGJ = @H_MEGJ
 WHERE
 	ID = @H_ID
+
 UPDATE
 	RAKTAR
 SET
@@ -20933,6 +26705,7 @@ SET
 --	MEGJ = @E_MEGJ
 WHERE
 	ID = @E_ID
+
 UPDATE
 	RAKTAR
 SET
@@ -20948,6 +26721,8 @@ WHERE
 	
 COMMIT TRAN
 
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -20961,6 +26736,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
+
+
+
+
+
+
+
+
+
+
+
 
 /****** Object:  Stored Procedure dbo.sp_UpdSzerzfej    Script Date: 2000. 07. 04. 18:56:29 ******/
 CREATE PROCEDURE sp_UpdSzerzfej
@@ -20985,12 +26771,14 @@ CREATE PROCEDURE sp_UpdSzerzfej
 @BEFDATUM DATETIME=NULL
 AS
 BEGIN TRAN
+
 DECLARE @ARVALT_ID INTEGER
 DECLARE @PREV_DATE DATETIME	-- Elozo nettó ár felvitelének idopontja
 -- Adott szolgáltatás alatt mi volt utoljára felvive
 SELECT @PREV_DATE = MAX(ERVDAT) FROM ARVALT WHERE SZOLG = @SZOLG
 -- Ahhoz a dátumhoz tartozó id
 SELECT @ARVALT_ID = ID FROM ARVALT WHERE ERVDAT = @PREV_DATE AND SZOLG = @SZOLG
+
 UPDATE
 	SZERZFEJ
 SET
@@ -21011,6 +26799,7 @@ SET
 	UGYFC = @UGYFC
 WHERE
 	ID = @pID
+
 IF @KEPVIS IS NOT NULL
 	BEGIN
 	IF EXISTS(SELECT KEPVIS_ID FROM KEPV_TET WHERE SZERZ_ID = @pID AND KEPVIS_ID = @KEPVIS)
@@ -21037,6 +26826,15 @@ IF @KEPVIS IS NOT NULL
 	
 COMMIT TRAN
 
+
+
+
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -21051,6 +26849,12 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
 CREATE PROCEDURE sp_UpdSzlaEgyedi
 @pID INTEGER,
 @SZERZSZ VARCHAR(8) = NULL,
@@ -21064,6 +26868,7 @@ CREATE PROCEDURE sp_UpdSzlaEgyedi
 @UGYFN VARCHAR(100) = NULL,
 @UGYFC VARCHAR(100) = NULL
 AS
+
 UPDATE SZLA_ALT
 SET
 	SZERZSZ = @SZERZSZ,
@@ -21079,6 +26884,12 @@ SET
 WHERE
 	ID = @pID
 
+
+
+
+
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -21093,15 +26904,33 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
 /****** Object:  Stored Procedure dbo.sp_WriteKapcsTab    Script Date: 2000. 07. 04. 18:56:29 ******/
 CREATE PROCEDURE sp_WriteKapcsTab
 @pID INTEGER,
 @pOBJTIP VARCHAR(2)=NULL
 AS
+
 INSERT INTO
 	KAPCSTAB
 EXEC
 	sp_GetKapcs @pID, @pOBJTIP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -21116,7 +26945,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
-
 
 /*
 Feltolti a munkalap nyomtatasahoz hasznalt MLAPTAB tablat
@@ -21239,6 +27067,8 @@ FROM
 WHERE
 	MUNKALAP.ID = @pID
 END
+
+
 GO
 SET QUOTED_IDENTIFIER OFF 
 GO
@@ -21253,6 +27083,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+
+
+
+
+
+
+
+
 /****** Object:  Stored Procedure dbo.sp_Zarol    Script Date: 2000. 07. 04. 18:56:29 ******/
 CREATE PROCEDURE sp_Zarol
 @EGYEDI INTEGER = 0
@@ -21263,6 +27101,12 @@ SET
 	ZAROLT = 1
 WHERE
 	EGYEDI = @EGYEDI
+
+
+
+
+
+
 
 GO
 SET QUOTED_IDENTIFIER OFF 

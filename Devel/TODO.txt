@@ -17,3 +17,8 @@ X Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
 
 2007.02.20.
 X Regi: KEP701 grid fejlec el van csuszva
+
+2007.05.15.
+O Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
+	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
+	a képernyon látható, aktuális, szurt adatok szerepeljenek.
