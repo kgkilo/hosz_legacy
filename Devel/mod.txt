@@ -61,3 +61,10 @@ X Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
 	
 Telepítve: 2007.02.20.
 -----------------------------------------------------------------------------------
+2007.02.26.
+X Regi: KEP701 grid fejlec el van csuszva
+	sztkdll.dll
+2007.04.17.
+Épület lekérdezést bovíteni kell 'Épület típusa' paraméterrel
+	sp_LekerdAlt
+	Q333 bovítendo: 05,333,274,'Épület típusa'

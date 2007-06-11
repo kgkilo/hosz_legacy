@@ -1023,7 +1023,7 @@ End Sub
 Private Sub cmbSzolgjell_Change()
     Dim szolgJell As String
     If mode = 0 Then
-        szolgJell = GetComboErtek(cmbSzolgjell)
+        szolgJell = GetComboErtek(cmbSZOLGJELL)
         Select Case szolgJell
             Case "LE", "LA":
                 SetComboVal cmbMUVEL, "BHJ"
@@ -1057,9 +1057,7 @@ Private Sub cmbTIPUSH_change()
     If mode = 0 Then
         TipushFriss = 1
     
-        If cmbTIPUSH.ListIndex <> -1 Then
-            txtHIBLEIR = cmbTIPUSH
-        End If
+        If cmbTIPUSH.ListIndex <> -1 Then txtHIBLEIR = cmbTIPUSH
  
         Select Case tipusHiba
             Case "229":
@@ -1104,9 +1102,7 @@ End Sub
 Private Sub cmdHELY_Click()
     Form001b.mode = 0
     Form001b.Show 1
-    If iWorkMode = DISZPECSER Then
-        cmbSzolgjell_Change
-    End If
+    If iWorkMode = DISZPECSER Then cmbSzolgjell_Change
 End Sub
 
 Private Sub cmdOK_Click()
@@ -1161,13 +1157,9 @@ End Sub
 
 Private Sub Form_Activate()
     Form001a.Caption = "Munkalap " & AktivForm()
-    If txtOBJID <> "" Then
-        util.MunkalapObjKiir Me
-    End If
+    If txtOBJID <> "" Then util.MunkalapObjKiir Me
     
-    If txtREF <> "" Then
-        MsgBox txtREF & ". munkalapról készített másolat! Bizonyos adatai nem módosíthatóak!", vbExclamation, "Tisztelt felhasználó!"
-    End If
+    If txtREF <> "" Then MsgBox txtREF & ". munkalapról készített másolat! Bizonyos adatai nem módosíthatóak!", vbExclamation, "Tisztelt felhasználó!"
 End Sub
 
 Private Sub Form_Load()
@@ -1179,30 +1171,31 @@ Private Sub Form_Load()
         util.RekordFeltolt Me, "MUNKALAP", mode
         optAllapot.Item(txtAllapot) = True
         
-        If txtAllapot = 3 Then      'Sztorno
-            spcALLAPOT.Enabled = False
-        End If
+        'Sztorno munkalapot nem lehet masmilyen allapotura allitani,
+        'orokre sztorno marad.
+        If txtAllapot = 3 Then spcALLAPOT.Enabled = False
         
-        txtKIALLDAT.Locked = True   'Kiallitas datuma nem javithato utolag
+        txtKIALLDAT.Locked = True   'Kiallitas datuma nem javithato utolag (altalaban)
         If txtREF <> "" Then
             txtNAPSZAM.Locked = True
             txtBEJDAT.Locked = True
             cmbSZEREGYS.Locked = True
             cmbMFDOLG.Locked = True
-            cmbSzolgjell.Locked = True
+            cmbSZOLGJELL.Locked = True
             'txtBEJNEV.Locked = True
             cmbFSZAM.Locked = True
-            cmbTIPUSH.Locked = True
-            txtMUNELV.Locked = True
-            'Me.txtIDOTOL.Locked = True
-            'Me.txtIDOIG.Locked = True
             cmbMKAP.Locked = True
             cmbMUVEL.Locked = True
             cmbMUNVEGZ.Locked = True
             cmbSZOLTIP.Locked = True
             cmbMUNSZ.Locked = True
             cmbKARBTIP.Locked = True
-            txtHIBLEIR.Locked = True
+            'Me.txtIDOTOL.Locked = True
+            'Me.txtIDOIG.Locked = True
+  
+            txtMUNELV.Locked = False
+            cmbTIPUSH.Locked = False
+            txtHIBLEIR.Locked = False
   
            'Osszesito keszitese csak plombazashoz engedelyezett!
            'Plombazas csak bizonyos tipushiba eseten lehetseges,
