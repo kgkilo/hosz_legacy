@@ -512,7 +512,7 @@ Begin VB.Form Form001
    End
    Begin VB.Line Line1 
       X1              =   5178.297
-      X2              =   5322.823
+      X2              =   5322.822
       Y1              =   2640
       Y2              =   2640
    End
@@ -1024,7 +1024,10 @@ Private Sub cmdEXIT_Click()
 End Sub
 
 Private Sub cmdLIST_Click()
-    Select Case GetComboErtek(cmbNyomtTip)
+    Dim sNyomtTip As String
+    
+    sNyomtTip = GetComboErtek(cmbNyomtTip)
+    Select Case sNyomtTip
         Case "mlap" 'Kijelolt munkalap nyomtatasa
             If cmbMLAPTIP.ListIndex <> -1 And GetComboErtek(cmbALLAPOT) = "1" Then
                 If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
@@ -1034,9 +1037,14 @@ Private Sub cmdLIST_Click()
                 End If
             End If
             
-        Case "kint" 'Kintlevo munkalapok nyomtatasa
-        Case "vissz"    'Visszairt munkalapok nyomtatas (Marikanak)
-        Case "ber"  'Milyen berendezesen milyen munkak folynak/folytak
+        'kint: Kintlevo munkalapok nyomtatasa
+        'vissz: Visszairt munkalapok nyomtatas (Marikanak)
+        'ber: Milyen berendezesen milyen munkak folynak/folytak
+        Case "kint", "vissz", "ber"
+            If MsgBox("Biztosan nyomtatni szeretné a képernyõ tartalmát?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
+                util.PrintMunkalapLekerd Me, sNyomtTip
+                Nyomtat "TAB" + sNyomtTip + ".rpt", 0
+            End If
     End Select
 End Sub
 

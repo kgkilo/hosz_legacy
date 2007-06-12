@@ -520,38 +520,9 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
     
     Select Case sKateg
         Case "MUNKALAP"
-            sParam = GetComboErtek(frm.Controls("cmbMLAPTIP"))
-            lstParams.Add sParam, "MLAPTIP"
-            sParam = GetComboErtek(frm.Controls("cmbSZOLGJELL"))
-            lstParams.Add sParam, "SZOLGJELL"
-            sParam = GetComboErtek(frm.Controls("cmbTIPUSH"))
-            lstParams.Add sParam, "TIPUSH"
-            sParam = GetComboErtek(frm.Controls("cmbFSZAM"))
-            lstParams.Add sParam, "FSZAM"
-            sParam = GetComboErtek(frm.Controls("cmbALLAPOT"))
-            lstParams.Add sParam, "ALLAPOT"
-            sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
-            lstParams.Add sParam, "OBJTIP"
-            sParam = GetComboErtek(frm.Controls("cmbOBJID"))
-            lstParams.Add sParam, "OBJID"
-            sParam = GetComboErtek(frm.Controls("cmbDOLGID"))
-            lstParams.Add sParam, "DOLGID"
-            sParam = IIf(IsNull(frm.Controls("datDATUMTOL").Value), "", frm.Controls("datDATUMTOL").Value)
-            lstParams.Add sParam, "DATUMTOL"
-            sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
-            lstParams.Add sParam, "DATUMIG"
-            sParam = IIf(IsNull(frm.Controls("datMUNDATTOL").Value), "", frm.Controls("datMUNDATTOL").Value)
-            lstParams.Add sParam, "MUNDATTOL"
-            sParam = IIf(IsNull(frm.Controls("datMUNDATIG").Value), "", frm.Controls("datMUNDATIG").Value)
-            lstParams.Add sParam, "MUNDATIG"
-            sParam = frm.Controls("txtMUNKALAPID").Text
-            lstParams.Add sParam, "MUNKALAPID"
-            sParam = GetComboNev(frm.Controls("cmbTELEPHSZ"))
-            lstParams.Add sParam, "TELEPHSZ"
-            sParam = IIf(IsNull(frm.Controls("datMUNELV").Value), "", frm.Controls("datMUNELV").Value)
-            lstParams.Add sParam, "MUNELV"
-
-' Lekérdezem a munkalap darabszámot
+            CollectQueryParams frm, lstParams
+            
+            ' Lekérdezem a munkalap darabszámot
             sQuery = "sp_LoadMlapDb"
             If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
@@ -559,7 +530,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             Else
                 frm.Controls("txtTALALAT").Text = ""
             End If
-' Elkészítem a grid-et
+            ' Elkészítem a grid-et
             sFormatstring = "<||Munkalap|Bejelentõ|Kiáll. dátum|Végezhetõ|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra"
             sQuery = "sp_LekerdMlap"
             iMerge = 5
@@ -1039,3 +1010,86 @@ Public Function OsszesitoKivalaszt(ByRef sDate As String, ByRef frm As Object) A
 errOsszesitoKivalaszt:
     MsgBox Err.Description + ", No:" + CStr(Err.Number), , "OsszesitoKivalaszt"
 End Function    'OsszesitoKivalaszt
+
+
+'   PrintMunkalapLekerd
+'
+'   A munkalap lekérdezés képernyõ aktuális állapota alapján elõkészíti a nyomtatást
+'
+'   Paraméterek:    sDate   -   jegyzõkönyvek készítési dátuma (csak év/hónap számít)
+'
+'   Visszatérés:    Boolean. True, ha minden OK, egyébként False
+'
+Public Function PrintMunkalapLekerd(ByRef frm As Object, ByVal sNyomtTip As String) As Boolean
+    On Error GoTo errPrintMunkalapLekerd
+    PrintMunkalapLekerd = False
+    
+    'összeszedjük a lekérdezés paramétereit
+    Dim lstParams As New Collection
+    CollectQueryParams frm, lstParams
+    
+    'bepakolja az adatokat a megfelelõ nevû táblába
+    'oAdmin.BeginTrans
+    oAdmin.Exec "sp_MakeTab_" + sNyomtTip, lstParams
+    'oAdmin.CommitTrans
+    
+    PrintMunkalapLekerd = True
+    Exit Function
+    
+errPrintMunkalapLekerd:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "PrintMunkalapLekerd"
+End Function    'PrintMunkalapLekerd
+
+
+'   CollectQueryParams
+'
+'   Utility function, a munkalap lekérdezés paramétereinek összegyûjtésére.
+'   A GridderX és a PrintMunkalapLekerd is hívja...
+'
+'   Paraméterek:    frm   -   a lekérdezõ képernyõ
+'                   lstParams   -   collection, amibe a paramétereket pakolni kell
+'
+'   Visszatérés:    Boolean. True, ha minden OK, egyébként False
+'
+Public Function CollectQueryParams(ByRef frm As Object, ByRef lstParams As Collection) As Boolean
+    On Error GoTo errCollectQueryParams
+    CollectQueryParams = False
+    
+    Dim sParam As String
+    sParam = GetComboErtek(frm.Controls("cmbMLAPTIP"))
+    lstParams.Add sParam, "MLAPTIP"
+    sParam = GetComboErtek(frm.Controls("cmbSZOLGJELL"))
+    lstParams.Add sParam, "SZOLGJELL"
+    sParam = GetComboErtek(frm.Controls("cmbTIPUSH"))
+    lstParams.Add sParam, "TIPUSH"
+    sParam = GetComboErtek(frm.Controls("cmbFSZAM"))
+    lstParams.Add sParam, "FSZAM"
+    sParam = GetComboErtek(frm.Controls("cmbALLAPOT"))
+    lstParams.Add sParam, "ALLAPOT"
+    sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
+    lstParams.Add sParam, "OBJTIP"
+    sParam = GetComboErtek(frm.Controls("cmbOBJID"))
+    lstParams.Add sParam, "OBJID"
+    sParam = GetComboErtek(frm.Controls("cmbDOLGID"))
+    lstParams.Add sParam, "DOLGID"
+    sParam = IIf(IsNull(frm.Controls("datDATUMTOL").Value), "", frm.Controls("datDATUMTOL").Value)
+    lstParams.Add sParam, "DATUMTOL"
+    sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
+    lstParams.Add sParam, "DATUMIG"
+    sParam = IIf(IsNull(frm.Controls("datMUNDATTOL").Value), "", frm.Controls("datMUNDATTOL").Value)
+    lstParams.Add sParam, "MUNDATTOL"
+    sParam = IIf(IsNull(frm.Controls("datMUNDATIG").Value), "", frm.Controls("datMUNDATIG").Value)
+    lstParams.Add sParam, "MUNDATIG"
+    sParam = frm.Controls("txtMUNKALAPID").Text
+    lstParams.Add sParam, "MUNKALAPID"
+    sParam = GetComboNev(frm.Controls("cmbTELEPHSZ"))
+    lstParams.Add sParam, "TELEPHSZ"
+    sParam = IIf(IsNull(frm.Controls("datMUNELV").Value), "", frm.Controls("datMUNELV").Value)
+    lstParams.Add sParam, "MUNELV"
+    
+    CollectQueryParams = True
+    Exit Function
+    
+errCollectQueryParams:
+    MsgBox Err.Description + ", No:" + CStr(Err.Number), , "CollectQueryParams"
+End Function

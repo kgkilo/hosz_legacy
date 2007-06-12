@@ -24,7 +24,8 @@ Public Const VISSZAIR = 4
 Public gIdTable() As Variant
 
 Sub Main()
-    sReportDir = "I:\HOSZOLG\"
+    'sReportDir = "I:\HOSZOLG\"
+    sReportDir = "C:\Work\HOSZOLG\"
     sANTSZDir = "I:\HOSZOLG\"
     
     Set util = New CGlobal

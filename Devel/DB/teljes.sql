@@ -547,6 +547,10 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB
 drop procedure [dbo].[sp_MakeTAB_R04]
 GO
 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTab_kint]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_MakeTab_kint]
+GO
+
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MlapObjFeltolt]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_MlapObjFeltolt]
 GO
@@ -1797,6 +1801,10 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_VIZORA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB_VIZORA]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_kint]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_kint]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TARCSA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -3237,6 +3245,15 @@ CREATE TABLE [dbo].[TAB_VIZORA] (
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE [dbo].[TAB_kint] (
+	[MUN_SORSZ] [int] NULL ,
+	[KIALLDAT] [datetime] NULL ,
+	[MUVLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TELEPHSZ] [varchar] (20) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
 CREATE TABLE [dbo].[TARCSA] (
 	[ID] [int] NOT NULL ,
 	[ATMERO] [real] NULL ,
@@ -4057,6 +4074,9 @@ GRANT  SELECT  ON [dbo].[TAB_R04]  TO [public]
 GO
 
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB_VIZORA]  TO [public]
+GO
+
+GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TAB_kint]  TO [public]
 GO
 
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[TARCSA]  TO [public]
@@ -19919,6 +19939,72 @@ SET ANSI_NULLS ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_R04]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE PROCEDURE sp_MakeTab_kint
+@MLAPTIP VARCHAR(1)=NULL,
+@SZOLGJELL VARCHAR(2)=NULL,
+@TIPUSH VARCHAR(3)=NULL,
+@FSZAM VARCHAR(12)=NULL,
+@OBJTIP VARCHAR(2)=NULL,
+@OBJID INTEGER=NULL,
+@DATUMTOL DATETIME=NULL,
+@DATUMIG DATETIME=NULL,
+@TELEPHSZ VARCHAR(20)=NULL,
+@MUNELV DATETIME=NULL
+AS
+
+DECLARE @ALLAPOT INTEGER
+SELECT @ALLAPOT = 2	--Nyomtatott
+BEGIN TRAN
+
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
+TRUNCATE TABLE TAB_kint
+*/
+DELETE FROM TAB_kint
+
+INSERT INTO TAB_kint
+SELECT
+	MUNKALAP.ID,--SORSZ,
+	KIALLDAT,
+	RTRIM(MUVLEIR) AS MUVLEIR,
+	RTRIM(MEGNEV) AS MEGNEV,
+	RTRIM(TELEPHSZ) AS TELEPHSZ
+FROM
+	OBJEKTUM RIGHT JOIN
+		(Q291 RIGHT JOIN MUNKALAP ON Q291.KODERT = MUNKALAP.SZOLGJELL)
+	ON OBJEKTUM.ID = MUNKALAP.OBJID
+WHERE
+	((@MLAPTIP IS NULL) OR (@MLAPTIP IS NOT NULL AND MUNKALAP.MTIP=@MLAPTIP))
+	--AND ((@SZEREGYS IS NULL) OR (@SZEREGYS IS NOT NULL AND MUNKALAP.SZEREGYS=@SZEREGYS))
+	AND ((@SZOLGJELL IS NULL) OR (@SZOLGJELL IS NOT NULL AND SZOLGJELL=@SZOLGJELL))
+	AND ((@TIPUSH IS NULL) OR (@TIPUSH IS NOT NULL AND TIPUSH=@TIPUSH))
+	AND ((@FSZAM IS NULL) OR (@FSZAM IS NOT NULL AND MUNKALAP.FSZAM=@FSZAM))
+	AND ((@OBJTIP IS NULL) OR (@OBJTIP IS NOT NULL AND OBJTIP=@OBJTIP))
+	AND ((@OBJID IS NULL) OR (@OBJID IS NOT NULL AND OBJID=@OBJID))
+	--AND ((@EPULID IS NULL) OR (@EPULID IS NOT NULL AND OBJID=@EPULID))
+	AND ((@ALLAPOT IS NULL) OR (@ALLAPOT IS NOT NULL AND (ALLAPOT=@ALLAPOT OR (@ALLAPOT=5 AND (ALLAPOT=1 OR ALLAPOT=2 OR ALLAPOT=4)))))
+	AND ((@DATUMTOL IS NULL AND @DATUMIG IS NULL)
+		OR (@DATUMTOL IS NOT NULL AND @DATUMIG IS NOT NULL AND KIALLDAT BETWEEN @DATUMTOL AND @DATUMIG))
+	--AND ((@TELEPHSZ IS NULL) OR (@TELEPHSZ IS NOT NULL AND OBJEKTUM.TELEPHSZ LIKE '%'+@TELEPHSZ+'%'))
+	AND ((@TELEPHSZ IS NULL) OR (@TELEPHSZ IS NOT NULL AND OBJEKTUM.TELEPHSZ=@TELEPHSZ))
+	AND ((@MUNELV IS NULL) OR (@MUNELV IS NOT NULL AND MUNELV=@MUNELV))
+ORDER BY
+	MUNKALAP.ID DESC
+COMMIT TRAN
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_MakeTab_kint]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER ON 
