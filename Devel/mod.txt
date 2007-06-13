@@ -72,7 +72,8 @@ X Regi: KEP701 grid fejlec el van csuszva
 O Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
 	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
 	a képernyon látható, aktuális, szurt adatok szerepeljenek.
-	Új: Q371, sp_Q371, TAB_kint, sp_MakeTab_kint
+	Új: Q371, sp_Q371, TAB_kint, sp_MakeTab_kint, TAB_vissz, sp_MakeTAB_vissz
+	TABkint.rpt, TABvissz.rpt
 	KODLEIR, KODSZOT bovítése! helyben
 	05	371	Nyomtatás típusa	1	NYOMTTIP len:5			
 	05	371	mlap	1-Munkalap
