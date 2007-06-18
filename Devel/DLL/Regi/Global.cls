@@ -926,18 +926,23 @@ Public Function Gridder(ByRef cmbOBJTIP As Object, ByRef cmbMegnev As Object, _
     Dim sQry As String
     Dim sHeader As String
     
+    'Ha kell, szûrünk objektum típusra
     If TypeName(cmbOBJTIP) = "Nothing" Or cmbOBJTIP = Null Then
         sOBJTIP = ""
     Else
         sOBJTIP = ComboBoxGet(Nothing, cmbOBJTIP)   'Lekérdezzük az objektumtípust
     End If
     
+    'Ha kell, szûrünk objektumra
     If TypeName(cmbMegnev) = "Nothing" Or cmbMegnev = Null Then
         sID = ""
     Else
         sID = ComboBoxGet(Nothing, cmbMegnev)
     End If
     
+    'Ha egyedi szûrési feltételek vannak, akkor azokat leolvassuk
+    'Alapértelmezés szerint tól/ig paraméterek vannak, ha nem,
+    'akkor a "tól" értékbe tesszük a szûrési feltételt
     If TypeName(cmbPar) <> "Nothing" Then
         sParamName = ComboBoxGet(Nothing, cmbPar)
         If TypeName(objParTol) <> "Nothing" And TypeName(objParIg) <> "Nothing" _
@@ -1749,40 +1754,45 @@ Private Function GridderBase(ByRef grd As Object, ByRef sQry As String, _
     On Error GoTo errGridderBase
     GridderBase = False
     
+    'Ha van, szûrési feltételként átadjuk az objektum típust és a konkrét objektumot
     Dim lstParams As New Collection
     If sOBJTIP <> "" Then lstParams.Add sOBJTIP, "pOBJTIP"
     If sID <> "" Then lstParams.Add sID, "pID"
     
+    'Ha van egyedi szûrési feltétel, azt is átadjuk
     If sParamName <> "" Then
+        'Ha tól/ig paraméter, akkor automatikusan meghatározzuk a nevét
         If sParamIg <> "" Then
             lstParams.Add sParamTol, sParamName & "TOL"
             lstParams.Add sParamIg, sParamName & "IG"
+        'Ha csak 1 paraméter, akkor egyszerûbb a helyzet
         Else
             lstParams.Add sParamTol, sParamName
         End If
     End If
     
+    'Fejléc kitöltése, ehhez egyszer sajna lefut a lekérdezés...
     Dim rstHeader As New ADODB.Recordset
     Dim rstFirstRecord As New ADODB.Recordset
     oAdmin.ExecVal "sp_GetGridHeader", Nothing, rstHeader
     oAdmin.ExecVal sQry, lstParams, rstFirstRecord
     
-    If rstFirstRecord.EOF Then
+    If rstFirstRecord.EOF Then  'Ha nincs rekord a lekérdezésben, akkor itt a vége
         grd.Rows = 1
     Else
-        If sHeader = "" Then
-            sHeader = "<"
-            Dim i As ADODB.Field
-            For Each i In rstFirstRecord.Fields
+        If sHeader = "" Then    'Ha nincs megadva a fejléc, akkor automatikusan
+            sHeader = "<"       'kitölti a GRID_FEJLEC táblából,
+            Dim i As ADODB.Field    'a lekérdezésben szereplõ mezõknek megkeresi
+            For Each i In rstFirstRecord.Fields 'a "human readable" nevét
                 If i.Name <> "ID" Then
                     sHeader = sHeader & "|" & rstHeader.Fields.Item(i.Name).Value
                 Else
                     sHeader = sHeader & "|" & "ID"
-                End If
-            Next
+                End If          'persze minden egyszerûbb, ha megadtuk
+            Next                'explicite a fejlécet
         End If
         
-        With grd
+        With grd    'grid feltöltése
             .FormatString = sHeader
             .AllowUserResizing = flexResizeColumns
             .SelectionMode = flexSelectionByRow
