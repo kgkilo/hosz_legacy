@@ -343,7 +343,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   22806529
+      Format          =   22740993
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNDATIG 
@@ -375,7 +375,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   22806529
+      Format          =   22740993
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMTOL 
@@ -407,7 +407,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   22806529
+      Format          =   22740993
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datDATUMIG 
@@ -439,7 +439,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   22806529
+      Format          =   22740993
       CurrentDate     =   37013
    End
    Begin MSComCtl2.DTPicker datMUNELV 
@@ -471,7 +471,7 @@ Begin VB.Form Form001
       EndProperty
       CheckBox        =   -1  'True
       DateIsNull      =   -1  'True
-      Format          =   22806529
+      Format          =   22740993
       CurrentDate     =   37013
    End
    Begin VB.Label lblMUNELV 
@@ -1031,9 +1031,10 @@ Private Sub cmdLIST_Click()
         Case "mlap" 'Kijelolt munkalap nyomtatasa
             If cmbMLAPTIP.ListIndex <> -1 And GetComboErtek(cmbALLAPOT) = "1" Then
                 If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
-                    util.MunkalapAllapot grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1), 2
-                    util.PrintMunkalap "1", grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)
-                    Nyomtat "munuf.rpt", 1
+                    iMunkalap = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)  'Munkalap sorszama
+                    util.MunkalapAllapot iMunkalap, 2   'Nyomtatott allapotra allitjuk
+                    util.PrintMunkalap "1", iMunkalap   'Elokeszites
+                    Nyomtat "munuf.rpt", 1  'nyomtassssssssss
                 End If
             End If
             
@@ -1042,8 +1043,8 @@ Private Sub cmdLIST_Click()
         'ber: Milyen berendezesen milyen munkak folynak/folytak
         Case "kint", "vissz", "ber"
             If MsgBox("Biztosan nyomtatni szeretné a képernyõ tartalmát?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
-                util.PrintMunkalapLekerd Me, sNyomtTip
-                Nyomtat "TAB" + sNyomtTip + ".rpt", 0
+                util.PrintMunkalapLekerd Me, sNyomtTip  'Elokeszites
+                Nyomtat "TAB" + sNyomtTip + ".rpt", 0   'meheeeet
             End If
     End Select
 End Sub

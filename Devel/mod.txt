@@ -65,11 +65,11 @@ Telepítve: 2007.02.20.
 X Regi: KEP701 grid fejlec el van csuszva
 	sztkdll.dll
 2007.04.17.
-Épület lekérdezést bovíteni kell 'Épület típusa' paraméterrel
+X Épület lekérdezést bovíteni kell 'Épület típusa' paraméterrel
 	sp_LekerdAlt
 	Q333 bovítendo: 05,333,274,'Épület típusa'
 2007.06.11.
-O Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
+X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
 	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
 	a képernyon látható, aktuális, szurt adatok szerepeljenek.
 	Új: Q371, sp_Q371, TAB_kint, sp_MakeTab_kint, TAB_vissz, sp_MakeTAB_vissz
@@ -80,5 +80,11 @@ O Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
 	05	371	kint	2-Kintlévõ munkalapok
 	05	371	vissz	3-Visszaírt
 	05	371	ber	4-Berendezések alapján
-	
-	
+2007.11.06.
+X Vízóra/plombázás másolt munkalapokat nem sorrendben írta ki
+	az összesítore. Most létrehozás dátuma alapján rendezésre kerül
+	sp_FillTabPlomb, sp_FillTabVizora
+	TESZTELNI!!!
+
+Telepítve: 2007.11.08.
+-----------------------------------------------------------------------------------
