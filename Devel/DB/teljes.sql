@@ -1,72 +1,3 @@
-IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'SZETAV')
-	DROP DATABASE [SZETAV]
-GO
-
-CREATE DATABASE [SZETAV]  ON (NAME = N'SZETAV_Data', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Data.MDF' , SIZE = 81, FILEGROWTH = 10%) LOG ON (NAME = N'SZETAV_Log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Log.LDF' , SIZE = 1, FILEGROWTH = 10%)
- COLLATE Hungarian_CI_AS
-GO
-
-exec sp_dboption N'SZETAV', N'autoclose', N'true'
-GO
-
-exec sp_dboption N'SZETAV', N'bulkcopy', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'trunc. log', N'true'
-GO
-
-exec sp_dboption N'SZETAV', N'torn page detection', N'true'
-GO
-
-exec sp_dboption N'SZETAV', N'read only', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'dbo use', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'single', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'autoshrink', N'true'
-GO
-
-exec sp_dboption N'SZETAV', N'ANSI null default', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'recursive triggers', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'ANSI nulls', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'concat null yields null', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'cursor close on commit', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'default to local cursor', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'quoted identifier', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'ANSI warnings', N'false'
-GO
-
-exec sp_dboption N'SZETAV', N'auto create statistics', N'true'
-GO
-
-exec sp_dboption N'SZETAV', N'auto update statistics', N'true'
-GO
-
-if( ( (@@microsoftversion / power(2, 24) = 8) and (@@microsoftversion & 0xffff >= 724) ) or ( (@@microsoftversion / power(2, 24) = 7) and (@@microsoftversion & 0xffff >= 1082) ) )
-	exec sp_dboption N'SZETAV', N'db chaining', N'false'
-GO
-
-use [SZETAV]
-GO
-
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_CheckPermis]
 GO
@@ -1847,99 +1778,6 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VIZORA]') 
 drop table [dbo].[VIZORA]
 GO
 
-if not exists (select * from master.dbo.syslogins where loginname = N'eszter')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'eszter', null, @logindb, @loginlang
-END
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'gabor')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'gabor', null, @logindb, @loginlang
-END
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'geza')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'geza', null, @logindb, @loginlang
-END
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'kerekes')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'kerekes', null, @logindb, @loginlang
-END
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'mini')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'mini', null, @logindb, @loginlang
-END
-GO
-
-if not exists (select * from master.dbo.syslogins where loginname = N'szityu')
-BEGIN
-	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
-	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
-		select @logindb = N'master'
-	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
-		select @loginlang = @@language
-	exec sp_addlogin N'szityu', null, @logindb, @loginlang
-END
-GO
-
-exec sp_addsrvrolemember N'mini', sysadmin
-GO
-
-if not exists (select * from dbo.sysusers where name = N'eszter' and uid < 16382)
-	EXEC sp_grantdbaccess N'eszter', N'eszter'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'gabor' and uid < 16382)
-	EXEC sp_grantdbaccess N'gabor', N'gabor'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'geza' and uid < 16382)
-	EXEC sp_grantdbaccess N'geza', N'geza'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'kerekes' and uid < 16382)
-	EXEC sp_grantdbaccess N'kerekes', N'kerekes'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'mini' and uid < 16382)
-	EXEC sp_grantdbaccess N'mini', N'mini'
-GO
-
-if not exists (select * from dbo.sysusers where name = N'szityu' and uid < 16382)
-	EXEC sp_grantdbaccess N'szityu', N'szityu'
-GO
-
 CREATE TABLE [dbo].[ARAMKOR] (
 	[ID] [int] NOT NULL ,
 	[HOLEP] [varchar] (3) COLLATE Hungarian_CI_AS NULL ,
@@ -3256,7 +3094,8 @@ GO
 CREATE TABLE [dbo].[TAB_kint] (
 	[MUN_SORSZ] [int] NULL ,
 	[KIALLDAT] [datetime] NULL ,
-	[MUVLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[HIBLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MUVLEIR] [varchar] (8000) COLLATE Hungarian_CI_AS NULL ,
 	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[TELEPHSZ] [varchar] (20) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
@@ -3266,7 +3105,7 @@ CREATE TABLE [dbo].[TAB_vissz] (
 	[MUN_SORSZ] [int] NULL ,
 	[KIALLDAT] [datetime] NULL ,
 	[HIBLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
-	[MUVLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MUVLEIR] [varchar] (8000) COLLATE Hungarian_CI_AS NULL ,
 	[DOLGOZO] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
 	[MUNDAT] [datetime] NULL ,
 	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
@@ -8939,8 +8778,14 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-
-
+/*
+A JOGOS és a DOLGOZO táblából a form neve és a felhasználó login neve
+	alapján kikeresi, milyen jogosultsága van az adott felhasználónak
+	az adott formhoz:
+	-semmi (PERM_NULL)
+	-olvasás (PERM_RO)
+	-írás (PERM_RW)
+*/
 CREATE Procedure sp_CheckPermis
 @sForm VARCHAR(50),
 @sLogin VARCHAR(50)
@@ -8948,6 +8793,7 @@ AS
 
 SET NOCOUNT ON
 
+/*Jogosultság konstansok (visszatérési értékek)*/
 DECLARE @PERM_NULL INTEGER
 DECLARE @PERM_RO INTEGER
 DECLARE @PERM_RW INTEGER
@@ -8955,6 +8801,7 @@ SELECT @PERM_NULL = 0
 SELECT @PERM_RO = 1
 SELECT @PERM_RW = 2
 
+/*Csoportok a JOGOS táblában, aki és ahogyan hozzáférhet a formhoz*/
 DECLARE @JOG_UFR TINYINT
 DECLARE @JOG_UFW TINYINT
 DECLARE @JOG_UER TINYINT
@@ -8964,9 +8811,7 @@ SELECT @JOG_UFW = 2
 SELECT @JOG_UER = 4
 SELECT @JOG_UEW = 8
 
-DECLARE @RET INTEGER
-SELECT @RET = @PERM_NULL
-
+/*Melyik csoporthoz tartozik a dolgozó?*/
 DECLARE @UFR VARCHAR(1)
 DECLARE @UFW VARCHAR(1)
 DECLARE @UER VARCHAR(1)
@@ -8980,7 +8825,8 @@ FROM
 	DOLGOZO
 WHERE
 	DOLGOZO.LOGIN = @sLogin
-	
+
+/*Az adott formhoz melyik csoportnak milyen hozzáférése van?*/
 DECLARE @JOG TINYINT
 SELECT
 	@JOG = JOGOK
@@ -8989,19 +8835,25 @@ FROM
 WHERE
 	KEP = @sForm	
 
+
 DECLARE @TMP TINYINT
 
+/*Alapértelmezés szerint nem jogosult megnyitni a formot*/
+DECLARE @RET INTEGER
+SELECT @RET = @PERM_NULL
+
+/*Üzemfenntartás, írási joggal*/
 IF @UFW = 'y'
 BEGIN
 	SELECT @TMP = @JOG & @JOG_UFW
-	IF @TMP <> 0
+	IF @TMP <> 0	/*Írhatja ez a csoport?*/
 	BEGIN
 		SELECT @RET = @PERM_RW
 	END
 	ELSE
 	BEGIN
 		SELECT @TMP = @JOG & @JOG_UFR
-		IF @TMP <> 0
+		IF @TMP <> 0	/*Olvashatja ez a csoport?*/
 		BEGIN
 			SELECT @RET = @PERM_RO
 		END
@@ -9009,27 +8861,29 @@ BEGIN
 END
 ELSE
 BEGIN
+	/*Üzemfenntartás, csak olvasás joggal*/
 	IF @UFR = 'y'
 	BEGIN
 		SELECT @TMP = @JOG & @JOG_UFR
-		IF @TMP <> 0
+		IF @TMP <> 0	/*Olvashatja ez a csoport?*/
 		BEGIN
 			SELECT @RET = @PERM_RO
 		END
 	END
 END
 
+/*Üzemeltetés, írási joggal*/
 IF @UEW = 'y'
 BEGIN
 	SELECT @TMP = @JOG & @JOG_UEW
-	IF @TMP <> 0
+	IF @TMP <> 0	/*Írhatja ez a csoport?*/
 	BEGIN
 		SELECT @RET = @PERM_RW
 	END
 	ELSE
 	BEGIN
 		SELECT @TMP = @JOG & @JOG_UER
-		IF @TMP <> 0
+		IF @TMP <> 0	/*Olvashatja ez a csoport?*/
 		BEGIN
 			SELECT @RET = @PERM_RO
 		END
@@ -9037,10 +8891,11 @@ BEGIN
 END
 ELSE
 BEGIN
+	/*Üzemeltetés, csak olvasás joggal*/
 	IF @UER = 'y'
 	BEGIN
 		SELECT @TMP = @JOG & @JOG_UER
-		IF @TMP <> 0
+		IF @TMP <> 0	/*Olvashatja ez a csoport?*/
 		BEGIN
 			SELECT @RET = @RET & @PERM_RO
 		END
@@ -9051,8 +8906,6 @@ SET NOCOUNT OFF
 
 SELECT @RET
 RETURN @RET
-
-
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11869,13 +11722,13 @@ CREATE PROCEDURE sp_FillVanKarbterv
 AS
 SELECT
 	KARBTERV.ID,
-	COALESCE(MEGNEV,' - '),
-	COALESCE(TIPUS,' - '),
-	COALESCE(TELEPHSZ, ' - '),
-	COALESCE(GYSZAM,' - '),
+	COALESCE(MEGNEV,' - ') AS MEGNEV,
+	COALESCE(TIPUS,' - ') AS TIPUS,
+	COALESCE(TELEPHSZ, ' - ') AS TELEPHSZ,
+	COALESCE(GYSZAM,' - ') AS GYSZAM,
 		--RTRIM(MUVEL),
 	IDO,
-	Q299.KODENEV
+	Q299.KODENEV AS IDOEGYSEG
 FROM
 	Q299 RIGHT JOIN
 		(OBJEKTUM INNER JOIN KARBTERV ON OBJEKTUM.ID = KARBTERV.OBJID)
@@ -11884,10 +11737,10 @@ WHERE
 	KARBTERV.AKTIV = 1
 	AND KARBTERV.OBJTIP = COALESCE(@pOBJTIP, KARBTERV.OBJTIP)
 	AND KARBTERV.MUVEL = COALESCE(@pMUVEL, KARBTERV.MUVEL)
-
-
-
-
+ORDER BY
+	MEGNEV,
+	TIPUS,
+	TELEPHSZ
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -19988,7 +19841,7 @@ CREATE PROCEDURE sp_MakeTAB_vissz
 AS
 
 DECLARE @ALLAPOT INTEGER
-SELECT @ALLAPOT = 4	--Visszaerkezett
+SELECT @ALLAPOT = 4	--Visszaerkezett, csak ezeket akarjuk latni
 BEGIN TRAN
 
 /*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
@@ -20081,6 +19934,7 @@ INSERT INTO TAB_kint
 SELECT
 	MUNKALAP.ID,--SORSZ,
 	KIALLDAT,
+	RTRIM(HIBLEIR) AS HIBLEIR,
 	RTRIM(MUVLEIR) AS MUVLEIR,
 	RTRIM(MEGNEV) AS MEGNEV,
 	RTRIM(TELEPHSZ) AS TELEPHSZ

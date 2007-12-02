@@ -94,3 +94,7 @@ X Új munkalap (Form001a) típushiba választásakor csak az elso
 	karakternél frissültek a Muvelet típusa, Karbantartás típusa,
 	Hibaleírás mezok.
 	MunkaVB.exe
+X KEP675 Karbantartási tervek: Jobb oldali listában nincs rendezés,
+	legyen ua., mint a bal oldalon.
+	sp_FillVanKarbTerv
+	
