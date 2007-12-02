@@ -1023,7 +1023,7 @@ End Sub
 Private Sub cmbSzolgjell_Change()
     Dim szolgJell As String
     If mode = 0 Then
-        szolgJell = GetComboErtek(cmbSZOLGJELL)
+        szolgJell = GetComboErtek(cmbSzolgjell)
         Select Case szolgJell
             Case "LE", "LA":
                 SetComboVal cmbMUVEL, "BHJ"
@@ -1053,12 +1053,16 @@ End Sub
 Private Sub cmbTIPUSH_change()
     Dim tipusHiba As String
     tipusHiba = GetComboErtek(cmbTIPUSH)
-
+    
     If mode = 0 Then
         TipushFriss = 1
     
-        If cmbTIPUSH.ListIndex <> -1 Then txtHIBLEIR = cmbTIPUSH
- 
+        If tipusHiba = "" Then
+            txtHIBLEIR = ""
+        Else
+            txtHIBLEIR = cmbTIPUSH
+        End If
+        
         Select Case tipusHiba
             Case "229":
                 SetComboVal cmbMUVEL, "SZV"
@@ -1071,6 +1075,10 @@ Private Sub cmbTIPUSH_change()
             Case "246", "247", "027":
                 SetComboVal cmbMUVEL, "SAV"
                 SetComboVal cmbKARBTIP, "1"
+                
+            Case Else:
+                SetComboVal cmbMUVEL, ""
+                SetComboVal cmbKARBTIP, ""
         End Select
     End If
 
@@ -1181,7 +1189,7 @@ Private Sub Form_Load()
             txtBEJDAT.Locked = True
             cmbSZEREGYS.Locked = True
             cmbMFDOLG.Locked = True
-            cmbSZOLGJELL.Locked = True
+            cmbSzolgjell.Locked = True
             'txtBEJNEV.Locked = True
             cmbFSZAM.Locked = True
             cmbMKAP.Locked = True

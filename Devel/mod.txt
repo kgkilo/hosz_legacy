@@ -88,3 +88,9 @@ X Vízóra/plombázás másolt munkalapokat nem sorrendben írta ki
 
 Telepítve: 2007.11.08.
 -----------------------------------------------------------------------------------
+
+2007.12.02.
+X Új munkalap (Form001a) típushiba választásakor csak az elso
+	karakternél frissültek a Muvelet típusa, Karbantartás típusa,
+	Hibaleírás mezok.
+	MunkaVB.exe
