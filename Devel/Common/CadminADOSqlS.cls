@@ -345,7 +345,10 @@ Private Sub ProcessError()
     Dim strError As String
     
     For Each errLoop In m_cnn.Errors
-        MsgBox errLoop.Description & "; code=" & CStr(errLoop.Number), vbExclamation, "Admin/ADO error"
+        MsgBox errLoop.Description & "; code=" & CStr(errLoop.NativeError), vbExclamation, "Admin/ADO error"
+        'If errLoop.Number = -2147217911 Then
+        '    MsgBox "Bingo"
+        'End If
     Next
 End Sub
 
