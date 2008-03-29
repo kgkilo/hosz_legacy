@@ -67,21 +67,6 @@ Public Function Permis(ByVal sObject As String) As Byte
     Permis = P_READ Or P_INSERT Or P_UPDATE Or P_DELETE
 End Function
 
-Public Function ExecVal(ByVal sQry As String, ByVal lstParams As Collection, ByRef rst As ADODB.Recordset) As Boolean
-    On Error GoTo errExecVal
-    ExecVal = False
-    
-    MakeCommand sQry, lstParams
-    
-    Set rst = m_cmdCommand.Execute
-    
-    ExecVal = True
-    Exit Function
-    
-errExecVal:
-    ProcessError
-End Function
-
 Public Function Exec(ByVal sQry As String, ByVal lstParams As Collection) As Boolean
     On Error GoTo errExec
     Exec = False
@@ -269,7 +254,7 @@ errFillArray:
     ProcessError
 End Function
 
-Public Function LoadFirstRecord(ByVal sQry As String, lstParams As Collection, ByRef rstRecordset) As Boolean
+Public Function LoadFirstRecord(ByVal sQry As String, lstParams As Collection, ByRef rstRecordset As ADODB.Recordset) As Boolean
     On Error GoTo errLoadFirstRecord
     LoadFirstRecord = False
     

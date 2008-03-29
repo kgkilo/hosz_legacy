@@ -115,4 +115,5 @@ X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
 	TAB_eloj, sp_MakeTAB_eloj, TABeloj.rpt
 	KODSZOT bovítése! helyben
 	05	371	eloj	5-Elõjegyzett munkalapok
-	
+X ExecVal-LoadFirstRecord egyformak, elobbit megszüntetük.
+	MunkVB.exe Sztkdll.dll

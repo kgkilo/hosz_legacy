@@ -318,7 +318,7 @@ On Error GoTo errFillGrid
     Dim vCellValue As Variant
     
     Dim rstRecordset As New ADODB.Recordset
-    oAdmin.ExecVal sQry, lstParams, rstRecordset
+    oAdmin.LoadFirstRecord sQry, lstParams, rstRecordset
     
     With oGrid
         iCols = rstRecordset.Fields.Count

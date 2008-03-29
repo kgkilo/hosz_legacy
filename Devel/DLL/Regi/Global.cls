@@ -341,7 +341,7 @@ Public Function RekordInsert(ByRef cmbOBJTIP As Object, ByRef lstControls As Acc
     
     'oAdmin.BeginTrans
     Dim rstResult As New ADODB.Recordset
-    If oAdmin.ExecVal(sQuery, lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
+    If oAdmin.LoadFirstRecord(sQuery, lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
         'oAdmin.CommitTrans
         RekordInsert = CStr(rstResult(0).Value)
     Else
@@ -793,7 +793,7 @@ Public Function Duplikal(ByRef cmbMegnev As Object, sKategoria As String) As Lon
     End Select
     
     Dim rst As New ADODB.Recordset
-    If oAdmin.ExecVal(sQuery, lstParams, rst) = True Then
+    If oAdmin.LoadFirstRecord(sQuery, lstParams, rst) = True Then
         Duplikal = rst(0).Value
     End If
     Exit Function
@@ -1008,8 +1008,8 @@ Public Function Gridder2(ByRef cmbMegnev As Object, ByRef cmbOBJTIP As Object, B
     
     Dim rstHeader As New ADODB.Recordset
     Dim rstFirstRecord As New ADODB.Recordset
-    oAdmin.ExecVal "sp_GetGridHeader", Nothing, rstHeader
-    oAdmin.ExecVal "sp_GetKapcs", lstParams, rstFirstRecord
+    oAdmin.LoadFirstRecord "sp_GetGridHeader", Nothing, rstHeader
+    oAdmin.LoadFirstRecord "sp_GetKapcs", lstParams, rstFirstRecord
     
     Dim sHeader As String
     sHeader = "<"
@@ -1048,7 +1048,7 @@ Public Function Gridder2(ByRef cmbMegnev As Object, ByRef cmbOBJTIP As Object, B
         For Each z In lstID
             lstParams.Remove ("pID")
             lstParams.Add CStr(z), "pID"
-            oAdmin.ExecVal "sp_GetKapcs", lstParams, rstRecordset
+            oAdmin.LoadFirstRecord "sp_GetKapcs", lstParams, rstRecordset
             If Not rstRecordset.EOF Then
                 lCurRow = lCurRow + 1
                 .Rows = lCurRow + 1
@@ -1107,8 +1107,8 @@ Public Function Gridder4(ByRef grd As Object, ByRef sOBJTIP As String, _
     
     Dim rstHeader As New ADODB.Recordset
     Dim rstFirstRecord As New ADODB.Recordset
-    oAdmin.ExecVal "sp_GetGridHeader", Nothing, rstHeader
-    oAdmin.ExecVal "sp_LekerdAlt", lstParams, rstFirstRecord
+    oAdmin.LoadFirstRecord "sp_GetGridHeader", Nothing, rstHeader
+    oAdmin.LoadFirstRecord "sp_LekerdAlt", lstParams, rstFirstRecord
     
     Dim sHeader As String
     sHeader = "<"
@@ -1150,7 +1150,7 @@ Public Function Gridder4(ByRef grd As Object, ByRef sOBJTIP As String, _
         For Each z In lstID
             lstParams.Remove ("pID")
             lstParams.Add CStr(z), "pID"
-            oAdmin.ExecVal "sp_LekerdAlt", lstParams, rstRecordset
+            oAdmin.LoadFirstRecord "sp_LekerdAlt", lstParams, rstRecordset
             If Not rstRecordset.EOF Then
                 lCurRow = lCurRow + 1
                 .Rows = lCurRow + 1
@@ -1199,7 +1199,7 @@ Private Function FillGrid2(ByRef lstID As Collection, ByVal sID As String, ByVal
     lstParams.Add sID, "pID"
     Dim rstID As New ADODB.Recordset
     
-    oAdmin.ExecVal "sp_ListKapcsID", lstParams, rstID
+    oAdmin.LoadFirstRecord "sp_ListKapcsID", lstParams, rstID
     
     If sOBJTIP = "" Then    'Ha nem kell objektumtípusra szûrni,
         Do While Not rstID.EOF  'akkor egyszerûen felfûzzük az összes kapott ID-t
@@ -1315,7 +1315,7 @@ Public Function MunkalapObjFeltolt(ByRef cmbMunkalapszam As Object, ByRef cmbOBJ
         lstParams.Add sID, "pID"
 
         Dim rst As New ADODB.Recordset
-        If oAdmin.ExecVal("sp_LoadMunkalap", lstParams, rst) = True Then
+        If oAdmin.LoadFirstRecord("sp_LoadMunkalap", lstParams, rst) = True Then
             If IsNull(rst("OBJID").Value) Then
                 ComboBoxSet cmbOBJID, Nothing
             Else
@@ -1358,7 +1358,7 @@ Public Function MunkalapEpulFeltolt(ByRef cmbMunkalapszam As Object, ByRef cmbEP
         lstParams.Add sID, "pID"
         
         Dim rst As New ADODB.Recordset
-        If oAdmin.ExecVal("sp_LoadMunkalap", lstParams, rst) = True Then
+        If oAdmin.LoadFirstRecord("sp_LoadMunkalap", lstParams, rst) = True Then
             ComboBoxSet cmbEPUL, rst("OBJID")
             cmbEPUL.ListWidth = 350
             MunkalapEpulFeltolt = True
@@ -1384,7 +1384,7 @@ Public Function MunkalapFszamValaszt(ByRef cmbFszam As Object, ByRef cmbOBJTIP A
     lstParams.Add sFszam, "pFSZAM"
     
     Dim rst As New ADODB.Recordset
-    If oAdmin.ExecVal("sp_GetFszamInfo", lstParams, rst) = True Then
+    If oAdmin.LoadFirstRecord("sp_GetFszamInfo", lstParams, rst) = True Then
         If Not rst.EOF Then
             ComboBoxSet cmbOBJTIP, rst("OBJTIP")
         
@@ -1395,7 +1395,7 @@ Public Function MunkalapFszamValaszt(ByRef cmbFszam As Object, ByRef cmbOBJTIP A
             cmbMegnev.ListWidth = 350
             MunkalapFszamValaszt = True
         End If  'Not rst.EOF
-    End If  'ExecVal
+    End If  'LoadFirstRecord
     Exit Function
 
 errMunkalapFszamValaszt:
@@ -1519,7 +1519,7 @@ Public Function LekerdMunkalapAltalanos(ByRef lstControls As Access.Controls, _
 ' Lekérdezem a munkalap darabszámot
     Dim rs As New ADODB.Recordset   'A visszatérési rekordszett
     Dim iRet As Integer
-    If oAdmin.ExecVal("sp_LoadMlapDb", lstParams, rs) = True Then
+    If oAdmin.LoadFirstRecord("sp_LoadMlapDb", lstParams, rs) = True Then
         rs.MoveFirst                 'A recordset elejére állunk
         iRet = CInt(rs.Fields("MLAPDB").Value)
     Else
@@ -1774,8 +1774,8 @@ Private Function GridderBase(ByRef grd As Object, ByRef sQry As String, _
     'Fejléc kitöltése, ehhez egyszer sajna lefut a lekérdezés...
     Dim rstHeader As New ADODB.Recordset
     Dim rstFirstRecord As New ADODB.Recordset
-    oAdmin.ExecVal "sp_GetGridHeader", Nothing, rstHeader
-    oAdmin.ExecVal sQry, lstParams, rstFirstRecord
+    oAdmin.LoadFirstRecord "sp_GetGridHeader", Nothing, rstHeader
+    oAdmin.LoadFirstRecord sQry, lstParams, rstFirstRecord
     
     If rstFirstRecord.EOF Then  'Ha nincs rekord a lekérdezésben, akkor itt a vége
         grd.Rows = 1
@@ -1839,7 +1839,7 @@ Public Function TeljListFeltolt(ByRef cmbMUNKALAP As Object, ByRef lstTeljm As O
     Dim lstParams As New Collection
     lstParams.Add sMUNKALAP_ID, "pMUNKALAP_ID"
     Dim rstResult As New ADODB.Recordset
-    If oAdmin.ExecVal("sp_GetTeljmSum", lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
+    If oAdmin.LoadFirstRecord("sp_GetTeljmSum", lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
         spcMUNOSZ.Value = CStr(rstResult(0).Value)
     End If
     
@@ -1887,7 +1887,7 @@ Public Function MunkalapLakasFeltolt(ByRef cmbMunkalapszam As Object, _
         lstParams.Add sID, "pID"
         
         Dim rst As New ADODB.Recordset
-        If oAdmin.ExecVal("sp_LoadMunkalap", lstParams, rst) = True Then
+        If oAdmin.LoadFirstRecord("sp_LoadMunkalap", lstParams, rst) = True Then
             ComboBoxSet cmbEPUL, rst("EPULID")
             ComboBoxSet cmbLAKAS, rst("OBJID")
             cmbLAKAS.ListWidth = 350
@@ -2313,7 +2313,7 @@ Public Function Jegyzokonyv(ByRef cmbJTIP As Object, ByVal iJEGYZSZ As Integer, 
     lstParams.Add iJEGYZSZ, "pID"
     lstParams.Add sJTIP, "pJTIP"
     Dim rstJEGYZ As New ADODB.Recordset
-    oAdmin.ExecVal "sp_Jegyzokonyv", lstParams, rstJEGYZ
+    oAdmin.LoadFirstRecord "sp_Jegyzokonyv", lstParams, rstJEGYZ
     
     Dim lstReplace As New Collection
     Dim a As ADODB.Field
@@ -2602,7 +2602,7 @@ Public Function SzerTetOsszegSzamol(ByRef lstControls As Access.Controls) As Dou
     dMenny = CDbl(lstControls("txtSZ_MENNY").Value)
     
     Dim rstResult As New ADODB.Recordset
-    If oAdmin.ExecVal("sp_GetSzertetOsszeg", lstParams, rstResult) = True Then
+    If oAdmin.LoadFirstRecord("sp_GetSzertetOsszeg", lstParams, rstResult) = True Then
         SzerTetOsszegSzamol = Round(CDbl(rstResult(0).Value) * dMenny / 12, 2)
     Else
         SzerTetOsszegSzamol = 0
@@ -2718,7 +2718,7 @@ Public Function SzlaGenAlt(ByRef txtTDAT As Object, ByRef txtFDAT As Object, ByR
     lstParams.Add txtSZLA_CIKL.Value, "SZLA_CIKL"
     
     Dim rst As New ADODB.Recordset
-    oAdmin.ExecVal "sp_GeneralAlt", lstParams, rst
+    oAdmin.LoadFirstRecord "sp_GeneralAlt", lstParams, rst
     
     SzlaGenAlt = rst(0)
     
