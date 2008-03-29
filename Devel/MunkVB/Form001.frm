@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
 Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Begin VB.Form Form001 
@@ -1041,7 +1041,7 @@ Private Sub cmdLIST_Click()
         'kint: Kintlevo munkalapok nyomtatasa
         'vissz: Visszairt munkalapok nyomtatas (Marikanak)
         'ber: Milyen berendezesen milyen munkak folynak/folytak
-        Case "kint", "vissz", "ber"
+        Case "kint", "vissz", "ber", "eloj"
             If MsgBox("Biztosan nyomtatni szeretné a képernyõ tartalmát?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
                 util.PrintMunkalapLekerd Me, sNyomtTip  'Elokeszites
                 Nyomtat "TAB" + sNyomtTip + ".rpt", 0   'meheeeet

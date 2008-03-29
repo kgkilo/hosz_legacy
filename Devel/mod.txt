@@ -109,5 +109,10 @@ Telepítve: 2008.03.28.
 X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
 	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
 	a képernyon látható, aktuális, szurt adatok szerepeljenek.
-	(Berendezések alapján)
+	-(Berendezések alapján)
 	TAB_ber, sp_MakeTAB_ber, TABber.rpt
+	-(Elojegyzetteket)
+	TAB_eloj, sp_MakeTAB_eloj, TABeloj.rpt
+	KODSZOT bovítése! helyben
+	05	371	eloj	5-Elõjegyzett munkalapok
+	
