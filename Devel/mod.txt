@@ -84,7 +84,7 @@ X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
 X Vízóra/plombázás másolt munkalapokat nem sorrendben írta ki
 	az összesítore. Most létrehozás dátuma alapján rendezésre kerül
 	sp_FillTabPlomb, sp_FillTabVizora
-	TESZTELNI!!!
+	TESZTELNI!!! NEM OK :(
 
 Telepítve: 2007.11.08.
 -----------------------------------------------------------------------------------
@@ -97,4 +97,17 @@ X Új munkalap (Form001a) típushiba választásakor csak az elso
 X KEP675 Karbantartási tervek: Jobb oldali listában nincs rendezés,
 	legyen ua., mint a bal oldalon.
 	sp_FillVanKarbTerv
-	
+X Vízóra/plombázás másolt munkalapokat nem sorrendben írta ki
+	az összesítore. Most a munkalap sorszáma alapján rendezésre kerül
+	sp_FillTabPlomb, sp_FillTabVizora
+	TESZTELNI!!!
+
+Telepítve: 2008.03.28.
+-----------------------------------------------------------------------------------
+
+2008.03.29.
+X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
+	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
+	a képernyon látható, aktuális, szurt adatok szerepeljenek.
+	(Berendezések alapján)
+	TAB_ber, sp_MakeTAB_ber, TABber.rpt

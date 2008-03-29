@@ -67,8 +67,8 @@ GO
 use [SZETAV]
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_FillDolgozo]
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_MakeTAB_ber]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_MakeTAB_ber]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -141,6 +141,10 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillConnected]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillConnected]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_FillDolgozo]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillEgyediSzlaTet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -1807,6 +1811,10 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_VIZORA
 drop table [dbo].[TAB_VIZORA]
 GO
 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_ber]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TAB_ber]
+GO
+
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TAB_kint]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[TAB_kint]
 GO
@@ -3250,6 +3258,15 @@ CREATE TABLE [dbo].[TAB_VIZORA] (
 	[MEGJ] [varchar] (100) COLLATE Hungarian_CI_AS NULL ,
 	[UJ] [varchar] (10) COLLATE Hungarian_CI_AS NULL ,
 	[FELUJITOTT] [varchar] (10) COLLATE Hungarian_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TAB_ber] (
+	[MUN_SORSZ] [int] NULL ,
+	[KIALLDAT] [datetime] NULL ,
+	[HIBLEIR] [varchar] (1024) COLLATE Hungarian_CI_AS NULL ,
+	[MEGNEV] [varchar] (50) COLLATE Hungarian_CI_AS NULL ,
+	[TELEPHSZ] [varchar] (20) COLLATE Hungarian_CI_AS NULL 
 ) ON [PRIMARY]
 GO
 
@@ -8932,51 +8949,74 @@ GO
 GRANT  SELECT  ON [dbo].[QTAB413]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
+SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
 GO
 
-
-
-
-
-
-
-
-
-/****** Object:  Stored Procedure dbo.sp_FillDolgozo    Script Date: 2000. 07. 04. 18:56:12 ******/
-
-
-
-
-
-
-
-CREATE PROCEDURE sp_FillDolgozo
+CREATE PROCEDURE sp_MakeTAB_ber
+@MLAPTIP VARCHAR(1)=NULL,
+@SZOLGJELL VARCHAR(2)=NULL,
+@TIPUSH VARCHAR(3)=NULL,
+@FSZAM VARCHAR(12)=NULL,
+@OBJTIP VARCHAR(2)=NULL,
+@OBJID INTEGER=NULL,
+@DOLGID INTEGER=NULL,
+@DATUMTOL DATETIME=NULL,
+@DATUMIG DATETIME=NULL,
+@MUNDATTOL DATETIME=NULL,
+@MUNDATIG DATETIME=NULL,
+@MUNKALAPID INTEGER=NULL,
+@TELEPHSZ VARCHAR(20)=NULL,
+@MUNELV DATETIME=NULL
 AS
+
+DECLARE @ALLAPOT INTEGER
+SELECT @ALLAPOT = 4	--Visszaerkezett, csak ezeket akarjuk latni
+BEGIN TRAN
+
+/*	Ez akkor muködik csak, ha a sysadmin csoport tagja hívja meg...
+TRUNCATE TABLE TAB_vissz
+*/
+DELETE FROM TAB_ber
+
+INSERT INTO TAB_ber
 SELECT
-	ID,
-	NEV
+	MUNKALAP.ID,--SORSZ,
+	KIALLDAT,
+	RTRIM(HIBLEIR) AS HIBLEIR,
+	RTRIM(MEGNEV) AS MEGNEV,
+	RTRIM(TELEPHSZ) AS TELEPHSZ
 FROM
-	DOLGOZO
+	DOLGOZO RIGHT JOIN
+		(TELJM RIGHT JOIN
+			(OBJEKTUM RIGHT JOIN
+				(Q291 RIGHT JOIN MUNKALAP ON Q291.KODERT = MUNKALAP.SZOLGJELL)
+			ON OBJEKTUM.ID = MUNKALAP.OBJID)
+		ON TELJM.MUNKALAP_ID = MUNKALAP.ID)
+	ON DOLGOZO.ID = TELJM.DOLG_ID
+WHERE
+	(@MUNKALAPID IS NULL OR (@MUNKALAPID IS NOT NULL AND MUNKALAP.ID = @MUNKALAPID)) AND
+	((@MLAPTIP IS NULL) OR (@MLAPTIP IS NOT NULL AND MUNKALAP.MTIP=@MLAPTIP))
+	--AND ((@SZEREGYS IS NULL) OR (@SZEREGYS IS NOT NULL AND MUNKALAP.SZEREGYS=@SZEREGYS))
+	AND ((@SZOLGJELL IS NULL) OR (@SZOLGJELL IS NOT NULL AND SZOLGJELL=@SZOLGJELL))
+	AND ((@TIPUSH IS NULL) OR (@TIPUSH IS NOT NULL AND TIPUSH=@TIPUSH))
+	AND ((@FSZAM IS NULL) OR (@FSZAM IS NOT NULL AND MUNKALAP.FSZAM=@FSZAM))
+	AND ((@OBJTIP IS NULL) OR (@OBJTIP IS NOT NULL AND OBJTIP=@OBJTIP))
+	AND ((@OBJID IS NULL) OR (@OBJID IS NOT NULL AND OBJID=@OBJID))
+	--AND ((@EPULID IS NULL) OR (@EPULID IS NOT NULL AND OBJID=@EPULID))
+	AND ((@DOLGID IS NULL) OR (@DOLGID IS NOT NULL AND DOLGOZO.ID=@DOLGID))
+	AND ((@ALLAPOT IS NULL) OR (@ALLAPOT IS NOT NULL AND (ALLAPOT=@ALLAPOT OR (@ALLAPOT=5 AND (ALLAPOT=1 OR ALLAPOT=2 OR ALLAPOT=4)))))
+	AND ((@DATUMTOL IS NULL AND @DATUMIG IS NULL)
+		OR (@DATUMTOL IS NOT NULL AND @DATUMIG IS NOT NULL AND KIALLDAT BETWEEN @DATUMTOL AND @DATUMIG))
+	AND ((@MUNDATTOL IS NULL AND @MUNDATIG IS NULL)
+		OR (@MUNDATTOL IS NOT NULL AND @MUNDATIG IS NOT NULL AND MUNDAT BETWEEN @MUNDATTOL AND @MUNDATIG))
+	--AND ((@TELEPHSZ IS NULL) OR (@TELEPHSZ IS NOT NULL AND OBJEKTUM.TELEPHSZ LIKE '%'+@TELEPHSZ+'%'))
+	AND ((@TELEPHSZ IS NULL) OR (@TELEPHSZ IS NOT NULL AND OBJEKTUM.TELEPHSZ=@TELEPHSZ))
+	AND ((@MUNELV IS NULL) OR (@MUNELV IS NOT NULL AND MUNELV=@MUNELV))
 ORDER BY
-	NEV
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	MUNKALAP.ID DESC
+COMMIT TRAN
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -8984,7 +9024,7 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-GRANT  EXECUTE  ON [dbo].[sp_FillDolgozo]  TO [public]
+GRANT  EXECUTE  ON [dbo].[sp_MakeTAB_ber]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER ON 
@@ -10814,6 +10854,61 @@ SET ANSI_NULLS ON
 GO
 
 GRANT  EXECUTE  ON [dbo].[sp_FillConnected]  TO [public]
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+
+
+
+
+
+/****** Object:  Stored Procedure dbo.sp_FillDolgozo    Script Date: 2000. 07. 04. 18:56:12 ******/
+
+
+
+
+
+
+
+CREATE PROCEDURE sp_FillDolgozo
+AS
+SELECT
+	ID,
+	NEV
+FROM
+	DOLGOZO
+ORDER BY
+	NEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_FillDolgozo]  TO [public]
 GO
 
 SET QUOTED_IDENTIFIER ON 
