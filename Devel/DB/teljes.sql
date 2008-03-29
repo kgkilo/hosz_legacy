@@ -1,3 +1,76 @@
+IF EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'SZETAV')
+	DROP DATABASE [SZETAV]
+GO
+
+CREATE DATABASE [SZETAV]  ON (NAME = N'SZETAV_Data', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Data.MDF' , SIZE = 81, FILEGROWTH = 10%) LOG ON (NAME = N'SZETAV_Log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL\Data\SZETAV_Log.LDF' , SIZE = 1, FILEGROWTH = 10%)
+ COLLATE Hungarian_CI_AS
+GO
+
+exec sp_dboption N'SZETAV', N'autoclose', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'bulkcopy', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'trunc. log', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'torn page detection', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'read only', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'dbo use', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'single', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'autoshrink', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'ANSI null default', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'recursive triggers', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'ANSI nulls', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'concat null yields null', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'cursor close on commit', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'default to local cursor', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'quoted identifier', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'ANSI warnings', N'false'
+GO
+
+exec sp_dboption N'SZETAV', N'auto create statistics', N'true'
+GO
+
+exec sp_dboption N'SZETAV', N'auto update statistics', N'true'
+GO
+
+if( ( (@@microsoftversion / power(2, 24) = 8) and (@@microsoftversion & 0xffff >= 724) ) or ( (@@microsoftversion / power(2, 24) = 7) and (@@microsoftversion & 0xffff >= 1082) ) )
+	exec sp_dboption N'SZETAV', N'db chaining', N'false'
+GO
+
+use [SZETAV]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[sp_FillDolgozo]
+GO
+
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_CheckPermis]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_CheckPermis]
 GO
@@ -68,10 +141,6 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillConnected]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[sp_FillConnected]
-GO
-
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillDolgozo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [dbo].[sp_FillDolgozo]
 GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[sp_FillEgyediSzlaTet]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -1776,6 +1845,99 @@ GO
 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VIZORA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[VIZORA]
+GO
+
+if not exists (select * from master.dbo.syslogins where loginname = N'eszter')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'eszter', null, @logindb, @loginlang
+END
+GO
+
+if not exists (select * from master.dbo.syslogins where loginname = N'gabor')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'gabor', null, @logindb, @loginlang
+END
+GO
+
+if not exists (select * from master.dbo.syslogins where loginname = N'geza')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'geza', null, @logindb, @loginlang
+END
+GO
+
+if not exists (select * from master.dbo.syslogins where loginname = N'kerekes')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'kerekes', null, @logindb, @loginlang
+END
+GO
+
+if not exists (select * from master.dbo.syslogins where loginname = N'mini')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'magyar'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'mini', null, @logindb, @loginlang
+END
+GO
+
+if not exists (select * from master.dbo.syslogins where loginname = N'szityu')
+BEGIN
+	declare @logindb nvarchar(132), @loginlang nvarchar(132) select @logindb = N'SZETAV', @loginlang = N'us_english'
+	if @logindb is null or not exists (select * from master.dbo.sysdatabases where name = @logindb)
+		select @logindb = N'master'
+	if @loginlang is null or (not exists (select * from master.dbo.syslanguages where name = @loginlang) and @loginlang <> N'us_english')
+		select @loginlang = @@language
+	exec sp_addlogin N'szityu', null, @logindb, @loginlang
+END
+GO
+
+exec sp_addsrvrolemember N'mini', sysadmin
+GO
+
+if not exists (select * from dbo.sysusers where name = N'eszter' and uid < 16382)
+	EXEC sp_grantdbaccess N'eszter', N'eszter'
+GO
+
+if not exists (select * from dbo.sysusers where name = N'gabor' and uid < 16382)
+	EXEC sp_grantdbaccess N'gabor', N'gabor'
+GO
+
+if not exists (select * from dbo.sysusers where name = N'geza' and uid < 16382)
+	EXEC sp_grantdbaccess N'geza', N'geza'
+GO
+
+if not exists (select * from dbo.sysusers where name = N'kerekes' and uid < 16382)
+	EXEC sp_grantdbaccess N'kerekes', N'kerekes'
+GO
+
+if not exists (select * from dbo.sysusers where name = N'mini' and uid < 16382)
+	EXEC sp_grantdbaccess N'mini', N'mini'
+GO
+
+if not exists (select * from dbo.sysusers where name = N'szityu' and uid < 16382)
+	EXEC sp_grantdbaccess N'szityu', N'szityu'
 GO
 
 CREATE TABLE [dbo].[ARAMKOR] (
@@ -3738,9 +3900,6 @@ GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[BOYLER]  TO [public]
 GO
 
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[DEMAG_EMELOGEP]  TO [public]
-GO
-
-GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[DOLGOZO]  TO [public]
 GO
 
 GRANT  SELECT ,  UPDATE ,  INSERT ,  DELETE  ON [dbo].[EPULET]  TO [public]
@@ -8773,6 +8932,61 @@ GO
 GRANT  SELECT  ON [dbo].[QTAB413]  TO [public]
 GO
 
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+
+
+
+
+
+/****** Object:  Stored Procedure dbo.sp_FillDolgozo    Script Date: 2000. 07. 04. 18:56:12 ******/
+
+
+
+
+
+
+
+CREATE PROCEDURE sp_FillDolgozo
+AS
+SELECT
+	ID,
+	NEV
+FROM
+	DOLGOZO
+ORDER BY
+	NEV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+GRANT  EXECUTE  ON [dbo].[sp_FillDolgozo]  TO [public]
+GO
+
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
@@ -10602,61 +10816,6 @@ GO
 GRANT  EXECUTE  ON [dbo].[sp_FillConnected]  TO [public]
 GO
 
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
-
-
-
-
-
-
-
-
-
-/****** Object:  Stored Procedure dbo.sp_FillDolgozo    Script Date: 2000. 07. 04. 18:56:12 ******/
-
-
-
-
-
-
-
-CREATE PROCEDURE sp_FillDolgozo
-AS
-SELECT
-	ID,
-	NEV
-FROM
-	DOLGOZO
-ORDER BY
-	NEV
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GO
-SET QUOTED_IDENTIFIER OFF 
-GO
-SET ANSI_NULLS ON 
-GO
-
-GRANT  EXECUTE  ON [dbo].[sp_FillDolgozo]  TO [public]
-GO
-
 SET QUOTED_IDENTIFIER ON 
 GO
 SET ANSI_NULLS ON 
@@ -11559,6 +11718,15 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+/*
+Feltolti a TAB_PLOMB tablat,
+amibol azutan riportot nyomtatunk (plombossz.rpt).
+Ez a lista a plombazasokhoz keszulo osszesito,
+amikor egy munkalapbol sok masolatot csinalnak.
+
+A masolat munkalapoknak mindig ki van toltve a REF mezoje,
+amelyik az eredeti munkalap ID=jet tartalmazza.
+*/
 CREATE PROCEDURE sp_FillTabPlomb
 @pREF INTEGER
 AS
@@ -11585,12 +11753,9 @@ WHERE
 	MUNKALAP.REF = @pREF
 	AND MUNKALAP.ALLAPOT <> 3
 ORDER BY
-	MUNKALAP.ADATUM
+	MUNKALAP.ID
 		
 COMMIT TRAN
-
-
-
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11606,8 +11771,15 @@ GO
 SET ANSI_NULLS ON 
 GO
 
+/*
+Feltolti a TAB_VIZORA tablat,
+amibol azutan riportot nyomtatunk (vizoraossz.rpt).
+Ez a lista a vizora hitelesitesekhez keszulo osszesito,
+amikor egy munkalapbol sok masolatot csinalnak.
 
-
+A masolat munkalapoknak mindig ki van toltve a REF mezoje,
+amelyik az eredeti munkalap ID=jet tartalmazza.
+*/
 CREATE PROCEDURE sp_FillTabVizora
 @pREF INTEGER
 AS
@@ -11633,14 +11805,9 @@ WHERE
 	MUNKALAP.REF = @pREF
 	AND MUNKALAP.ALLAPOT <> 3
 ORDER BY
-	MUNKALAP.ADATUM
+	MUNKALAP.ID
 	
 COMMIT TRAN
-
-
-
-
-
 
 GO
 SET QUOTED_IDENTIFIER OFF 
@@ -11705,16 +11872,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON 
 GO
-
-
-
-
-
-
-
-
-
-/****** Object:  Stored Procedure dbo.sp_FillVanKarbterv    Script Date: 2000. 07. 04. 18:56:13 ******/
 
 CREATE PROCEDURE sp_FillVanKarbterv
 @pMUVEL VARCHAR(3),
@@ -12899,8 +13056,6 @@ GO
 SET ANSI_NULLS ON 
 GO
 
-
-
 CREATE PROCEDURE sp_InsDolgozo
 @NEV VARCHAR(20) = NULL,
 @SZEREGYS VARCHAR(2) = NULL,
@@ -12926,20 +13081,6 @@ SELECT @RET = @@IDENTITY
 
 SELECT @RET
 RETURN @RET
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 GO
 SET QUOTED_IDENTIFIER OFF 
