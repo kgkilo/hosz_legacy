@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.Form FormStart 
+   Caption         =   "Szegedi Hõszolgáltató Kft."
    ClientHeight    =   4875
    ClientLeft      =   60
    ClientTop       =   345
@@ -16,6 +17,7 @@ Begin VB.Form FormStart
       Left            =   1305
       TabIndex        =   2
       Top             =   2527
+      Visible         =   0   'False
       Width           =   1800
    End
    Begin VB.CommandButton cmdJEGYZ 
@@ -33,6 +35,15 @@ Begin VB.Form FormStart
       TabIndex        =   0
       Top             =   1702
       Width           =   1800
+   End
+   Begin VB.Label lblFormel 
+      Alignment       =   2  'Center
+      Caption         =   "(C) 2000-2008 Formel Kft."
+      Height          =   255
+      Left            =   1035
+      TabIndex        =   3
+      Top             =   4560
+      Width           =   6015
    End
 End
 Attribute VB_Name = "FormStart"

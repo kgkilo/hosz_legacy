@@ -33,7 +33,7 @@ Sub Main()
     util.Init sReportDir, sANTSZDir, iWorkMode
     Select Case iWorkMode
         Case NORMAL
-            FormStart.Show 1
+            FormStart.Show 0
         Case DISZPECSER
             Form001.Show 1
         Case LABOR
@@ -45,5 +45,4 @@ Sub Main()
     End Select
     
 End Sub
-
 

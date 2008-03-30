@@ -427,7 +427,7 @@ Public Function RekordInsert(ByRef frm As Object, ByVal sKategoria As String) As
     ControlsGet lstParams, frm 'Lekérdezzük az összes látható kontroll értékét
     
     Dim rstResult As New ADODB.Recordset
-    If oAdmin.ExecVal(sQuery, lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
+    If oAdmin.LoadFirstRecord(sQuery, lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
         RekordInsert = CStr(rstResult(0).Value)
     End If
     Exit Function
@@ -524,7 +524,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             
             ' Lekérdezem a munkalap darabszámot
             sQuery = "sp_LoadMlapDb"
-            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+            If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
                 frm.Controls("txtTALALAT").Text = CInt(rs.Fields("MLAPDB").Value)
             Else
@@ -558,7 +558,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
         
 ' Lekérdezem a munkalap darabszámot
             sQuery = "sp_LoadJegyzDb"
-            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+            If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
                 frm.Controls("txtTALALAT").Text = CInt(rs.Fields("JEGYZDB").Value)
             Else
@@ -590,7 +590,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "pDATUMIG"
             'Találatszám lekérdezése
             sQuery = "sp_LoadBerRaktarDb"
-            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+            If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
                 frm.Controls("txtR_TALALAT").Text = CLng(rs.Fields("TALALAT").Value)
             Else
@@ -608,7 +608,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "pOBJID"
             'Találatszám lekérdezése
             sQuery = "sp_LoadBerRaktarSzDb"
-            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+            If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
                 frm.Controls("txtSZ_TALALAT").Text = CLng(rs.Fields("TALALAT").Value)
             Else
@@ -660,7 +660,7 @@ Public Function TeljListFeltolt(ByRef sMUNKALAP_ID As String, ByRef frm As Objec
     Dim lstParams As New Collection
     lstParams.Add sMUNKALAP_ID, "pMUNKALAP_ID"
     Dim rstResult As New ADODB.Recordset
-    If oAdmin.ExecVal("sp_GetTeljmSum", lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
+    If oAdmin.LoadFirstRecord("sp_GetTeljmSum", lstParams, rstResult) = True Then 'Végrehajtjuk az inzertet
         frm.Controls("spcMUNOSZ") = CStr(rstResult(0).Value)
     End If
     
@@ -708,7 +708,7 @@ Public Function MunkalapObjKiir(ByRef frm As Object) As Boolean
     
     Dim rs As New ADODB.Recordset   'Betöltjük az azonosító alapján a rekordot
     
-    If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+    If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
     'If oAdmin.LoadFirstRecord("sp_GetTulajInfo", lstParams, rs) = True Then    'és ha sikerült
         On Error Resume Next
         frm.Controls("txt1") = IIf(IsNull(rs("OBJTIP").Value), "", rs("OBJTIP").Value)
@@ -746,7 +746,7 @@ Public Function DuplikalMunk(ByRef strMUNKALAP_ID As String) As Long
     lstParams.Add strMUNKALAP_ID, "pID"
     
     Dim rst As New ADODB.Recordset
-    If oAdmin.ExecVal("sp_DuplikalMunk", lstParams, rst) = True Then
+    If oAdmin.LoadFirstRecord("sp_DuplikalMunk", lstParams, rst) = True Then
         DuplikalMunk = rst(0).Value
     End If
     Exit Function
@@ -793,7 +793,7 @@ Public Function Jegyzokonyv(ByRef sJTIP As String, ByVal iJEGYZSZ As Integer, By
     lstParams.Add iJEGYZSZ, "pID"
     lstParams.Add sJTIP, "pJTIP"
     Dim rstJEGYZ As New ADODB.Recordset
-    oAdmin.ExecVal "sp_Jegyzokonyv", lstParams, rstJEGYZ
+    oAdmin.LoadFirstRecord "sp_Jegyzokonyv", lstParams, rstJEGYZ
     
     Dim lstReplace As New Collection
     Dim a As ADODB.Field
@@ -927,7 +927,7 @@ Public Function LaborOsszesito(ByRef sDocPath As String, sDate As String) As Boo
     Dim rstLabor As New ADODB.Recordset
     Dim lstParams As New Collection
     lstParams.Add sDate, "pDATUM"
-    oAdmin.ExecVal "sp_LaborOsszesito", lstParams, rstLabor
+    oAdmin.LoadFirstRecord "sp_LaborOsszesito", lstParams, rstLabor
     
     'Melyik mezõket kell cserélni és mire
     Dim lstReplace As New Collection
@@ -995,7 +995,7 @@ Public Function OsszesitoKivalaszt(ByRef sDate As String, ByRef frm As Object) A
             sCmbSorsz = Right(cmb.Tag, Len(cmb.Tag) - 5)    'a nevébõl kiolvasható, melyik sorban van az adata
             lstParams.Add sCmbSorsz, "pSORSZ"
             On Error Resume Next
-            If oAdmin.ExecVal("sp_GetOsszesitoSorsz", lstParams, rstResult) = True Then
+            If oAdmin.LoadFirstRecord("sp_GetOsszesitoSorsz", lstParams, rstResult) = True Then
                 SetComboVal cmb, rstResult("SORSZ").Value
                 cmb.Enabled = True
             End If
