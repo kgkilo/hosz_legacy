@@ -37,9 +37,9 @@ Public Property Get Connect()
     Connect = m_cnn
 End Property
 
-Public Function Login(ByVal sConnect As String) As Integer
+Public Function Login(ByVal sConnect As String) As Boolean
     On Error GoTo errLogin
-    Login = vbOK
+    Login = False
     
     If sConnect = "" Then
         sConnectString = "DRIVER={SQL Server};Server=NTSERVER;uid=sa;pwd=;database=SZETAV"
@@ -55,7 +55,7 @@ Public Function Login(ByVal sConnect As String) As Integer
     'm_cmdCommand.CommandType = ADODB.adCmdText
     'm_cmdCommand.Execute
     
-    Login = 0
+    Login = True
     Exit Function
 
 errLogin:
@@ -327,7 +327,6 @@ End Function
 
 Private Sub ProcessError()
     Dim errLoop As ADODB.Error
-    Dim strError As String
     
     For Each errLoop In m_cnn.Errors
         MsgBox errLoop.Description & "; code=" & CStr(errLoop.NativeError), vbExclamation, "Admin/ADO error"

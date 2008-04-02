@@ -1031,9 +1031,10 @@ Private Sub cmdLIST_Click()
         Case "mlap" 'Kijelolt munkalap nyomtatasa
             If cmbMLAPTIP.ListIndex <> -1 And GetComboErtek(cmbALLAPOT) = "1" Then
                 If MsgBox("Biztosan nyomtatni szeretné a választott munkalapot?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
-                    iMunkalap = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)  'Munkalap sorszama
-                    util.MunkalapAllapot iMunkalap, 2   'Nyomtatott allapotra allitjuk
-                    util.PrintMunkalap "1", iMunkalap   'Elokeszites
+                    Dim sMunkalapID As String
+                    sMunkalapID = grdMUNKALAP.TextMatrix(grdMUNKALAP.Row, 1)  'Munkalap sorszama
+                    util.MunkalapAllapot sMunkalapID, 2   'Nyomtatott allapotra allitjuk
+                    util.PrintMunkalap "1", sMunkalapID   'Elokeszites
                     Nyomtat "munuf.rpt", 1  'nyomtassssssssss
                 End If
             End If

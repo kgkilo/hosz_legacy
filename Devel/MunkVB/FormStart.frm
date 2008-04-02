@@ -6,11 +6,18 @@ Begin VB.Form FormStart
    ClientTop       =   345
    ClientWidth     =   8085
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    Moveable        =   0   'False
    ScaleHeight     =   4875
    ScaleWidth      =   8085
    StartUpPosition =   1  'CenterOwner
+   Begin VB.CommandButton cmdExit 
+      Caption         =   "Kilépés"
+      Height          =   645
+      Left            =   3142
+      TabIndex        =   3
+      Top             =   3360
+      Width           =   1800
+   End
    Begin VB.CommandButton cmdRAKTAR 
       Caption         =   "Raktár"
       Height          =   645
@@ -41,7 +48,7 @@ Begin VB.Form FormStart
       Caption         =   "(C) 2000-2008 Formel Kft."
       Height          =   255
       Left            =   1035
-      TabIndex        =   3
+      TabIndex        =   4
       Top             =   4560
       Width           =   6015
    End
@@ -52,6 +59,10 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 ' $Id$
+
+Private Sub cmdEXIT_Click()
+    Unload FormStart
+End Sub
 
 Private Sub cmdJEGYZ_Click()
     Form003.Show 1

@@ -36,9 +36,8 @@ End Sub
 '
 '   Visszatérés:    Boolean, True ha sikeres. Egyébként False.
 '
-Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRef iWorkMode As Integer) As Boolean
-'Public Function Init(ByRef sReportDir As String) As Boolean
-    'On Error GoTo errInit
+Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRef iWorkMode As Integer, ByRef sUsername As String, ByRef sPassword As String) As Boolean
+    On Error GoTo errInit
     Init = False
 
     'A formel.ini file-ból a szükséges adatok betöltése
@@ -70,122 +69,122 @@ Public Function Init(ByRef sReportDir As String, ByRef sANTSZDir As String, ByRe
     Wend
     Close #FileNum                              'File zárás
 
-    m_sConnect = sDriver & "; " & sServer & ";uid=sa;pwd=;" & sDatabase
-    oAdmin.Login m_sConnect   'Bejelentkezik az SQL szerverre
+    m_sConnect = sDriver & "; " & sServer & ";uid=" & sUsername & ";pwd=" & sPassword & ";" & sDatabase
+    If oAdmin.Login(m_sConnect) Then    'Bejelentkezik az SQL szerverre
+        g_oKodszotar.Load "sp_Q271", Nothing, "271", "Szervezeti egység", 2  'Betöltjük a kódszótári elemeket
+        g_oKodszotar.Load "sp_Q272", Nothing, "272", "Hõlépcsõ", 3
+        g_oKodszotar.Load "sp_Q274", Nothing, "274", "Épület típusa", 3
+        g_oKodszotar.Load "sp_Q275", Nothing, "275", "Fûtési mód", 3
+        g_oKodszotar.Load "sp_Q276", Nothing, "276", "Légtelenítõ típusa", 3
+        g_oKodszotar.Load "sp_Q277", Nothing, "277", "Fûtõtest típusa", 3
+        g_oKodszotar.Load "sp_Q278", Nothing, "278", "Épület karbantartó", 3
+        g_oKodszotar.Load "sp_Q279", Nothing, "279", "Mértékegység", 3
+        g_oKodszotar.Load "sp_Q281", Nothing, "281", "Fûtési beszabályozás módja", 3
+        g_oKodszotar.Load "sp_Q282", Nothing, "282", "Cirkulációs strang típusa", 3
+        g_oKodszotar.Load "sp_Q283", Nothing, "283", "HMV rendszer típusa", 3
+        g_oKodszotar.Load "sp_Q284", Nothing, "284", "Cirkulációs szabályozás módja", 3
+        g_oKodszotar.Load "sp_Q285", Nothing, "285", "Közeg", 3
+        g_oKodszotar.Load "sp_Q288", Nothing, "288", "Fûtõvíz elosztása", 3
+        g_oKodszotar.Load "sp_Q289", Nothing, "289", "Város", 1
+        g_oKodszotar.Load "sp_Q297", Nothing, "297", "Üzemállapot", 1
+        g_oKodszotar.Load "sp_Q298", Nothing, "298", "Mûvelet típusa", 3
+        g_oKodszotar.Load "sp_Q299", Nothing, "299", "Idõegység", 2
+        g_oKodszotar.Load "sp_Q300", Nothing, "300", "Karbantartás típusa", 2
+        g_oKodszotar.Load "sp_Q302", Nothing, "302", "Jegyzõkönyv típusa", 1
+        g_oKodszotar.Load "sp_Q304", Nothing, "304", "Beosztás", 2
+        g_oKodszotar.Load "sp_Q305", Nothing, "305", "Szolgáltatás típusa", 2
+        g_oKodszotar.Load "sp_Q306", Nothing, "306", "Munkavégzés/javítás típusa", 2
+        g_oKodszotar.Load "sp_Q307", Nothing, "307", "Végzendõ feladat típusa", 2
+        g_oKodszotar.Load "sp_Q308", Nothing, "308", "Észlelt jelenség típusa", 2
+        g_oKodszotar.Load "sp_Q309", Nothing, "309", "Szolgálat típusa", 2
+        g_oKodszotar.Load "sp_Q310", Nothing, "310", "Fõkönyvi szám", 12
+        g_oKodszotar.Load "sp_Q311", Nothing, "311", "Munkalap szervezeti egység", 1
+        g_oKodszotar.Load "sp_Q312", Nothing, "312", "Gyártó cég", 3
+        g_oKodszotar.Load "sp_Q313", Nothing, "313", "Veszélyességi osztály", 1
+        g_oKodszotar.Load "sp_Q314", Nothing, "314", "Kulcs található", 3
+        g_oKodszotar.Load "sp_Q315", Nothing, "315", "Aláírásra jogosult", 3
+        g_oKodszotar.Load "sp_Q316", Nothing, "316", "Leolvasási mód", 2
+        g_oKodszotar.Load "sp_Q317", Nothing, "317", "Kategória", 2
+        g_oKodszotar.Load "sp_Q318", Nothing, "318", "Szabályozás módja", 2
+        g_oKodszotar.Load "sp_Q319", Nothing, "319", "Szivattyú fokozat", 2
+        g_oKodszotar.Load "sp_Q320", Nothing, "320", "Boyler típus", 2
+        g_oKodszotar.Load "sp_Q321", Nothing, "321", "Töltési mód", 2
+        g_oKodszotar.Load "sp_Q322", Nothing, "322", "Szûrõ típus", 2
+        g_oKodszotar.Load "sp_Q323", Nothing, "323", "Kimenet típusa", 2
+        g_oKodszotar.Load "sp_Q324", Nothing, "324", "Mûködési mód", 3
+        g_oKodszotar.Load "sp_Q325", Nothing, "325", "Szelep típus", 3
+        g_oKodszotar.Load "sp_Q326", Nothing, "326", "Felépítés", 2
+        g_oKodszotar.Load "sp_Q327", Nothing, "327", "Ütem", 2
+        g_oKodszotar.Load "sp_Q328", Nothing, "328", "Légtelenítõ elhelyezése", 3
+        g_oKodszotar.Load "sp_Q329", Nothing, "329", "Épület üzemeltetõje", 3
+        g_oKodszotar.Load "sp_Q330", Nothing, "330", "Fûtési fõelzáró elhelyezése", 3
+        g_oKodszotar.Load "sp_Q331", Nothing, "331", "Fûtõmû lekérdezés típusa", 20
+        g_oKodszotar.Load "sp_Q332", Nothing, "332", "Hõközpont lekérdezés típusa", 20
+        g_oKodszotar.Load "sp_Q333", Nothing, "333", "Épület lekérdezés típusa", 20
+        g_oKodszotar.Load "sp_Q334", Nothing, "334", "Dolgozó", 3
+        g_oKodszotar.Load "sp_Q335", Nothing, "335", "Munkalap állapota", 3
+        g_oKodszotar.Load "sp_Q336", Nothing, "336", "Mûvelet rövid leirása", 3
+        g_oKodszotar.Load "sp_Q337", Nothing, "337", "Munkalap típusa", 1
+        g_oKodszotar.Load "sp_Q338", Nothing, "338", "Szolgáltatás", 1
+        g_oKodszotar.Load "sp_Q339", Nothing, "339", "Fizetési mód", 1
+        g_oKodszotar.Load "sp_Q340", Nothing, "340", "Szolgáltatás jellege", 1
+        g_oKodszotar.Load "sp_Q341", Nothing, "341", "ÁFA kulcs", 2
+        g_oKodszotar.Load "sp_Q342", Nothing, "342", "Cikk", 2
+        g_oKodszotar.Load "sp_Q343", Nothing, "343", "Szerzõdés típus", 1
+        g_oKodszotar.Load "sp_Q344", Nothing, "344", "Szerzõdés jellege", 2
+        g_oKodszotar.Load "sp_Q345", Nothing, "345", "Lekérdezés vízórára", 11
+        g_oKodszotar.Load "sp_Q346", Nothing, "346", "Lekérdezés érzékelõpárra", 11
+        g_oKodszotar.Load "sp_Q347", Nothing, "347", "Lekérdezés hõösszegzõre", 11
+        g_oKodszotar.Load "sp_Q348", Nothing, "348", "Plombázás", 1
+        
+        Select Case iWorkMode
+            Case DISZPECSER
+                g_oKodszotar.Load "sp_Q291D", Nothing, "291", "Szolgáltatás jellege", 2
+                'g_oKodszotar.Load "sp_Q369", Nothing, "369", "Diszp.típushiba", 3
+                g_oKodszotar.Load "sp_Q369", Nothing, "293", "Diszp.típushiba", 3
+                g_oKodszotar.Load "sp_Q296_Diszp", Nothing, "296", "Objektum típus", 2
+                g_oKodszotar.Load "sp_Q310D", Nothing, "310A", "Aktív fõkönyvi szám", 12
+            Case NORMAL, MLAP
+                g_oKodszotar.Load "sp_Q291", Nothing, "291", "Szolgáltatás jellege", 2
+                g_oKodszotar.Load "sp_Q293", Nothing, "293", "Típus hiba", 3
+                g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
+                g_oKodszotar.Load "sp_Q310A", Nothing, "310A", "Aktív fõkönyvi szám", 12
+                g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
+                g_oKodszotar.Load "sp_Q371", Nothing, "371", "Nyomtatás típusa", 5
+                
+            Case LABOR
+                g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
+                g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
+        End Select
+        
+        'ReDim gIdTable(24)
+        'gIdTable = Array( _
+        '27, _
+        '28, _
+        '29, _
+        '30, _
+        '31, _
+        '32, _
+        '9, _
+        '26, _
+        '34, _
+        '38, _
+        '20, _
+        '39, _
+        '24, _
+        '43, _
+        '41, _
+        '45, _
+        '40, _
+        '46, _
+        '915, _
+        '47, _
+        '674, _
+        '44, _
+        '1722)
     
-    g_oKodszotar.Load "sp_Q271", Nothing, "271", "Szervezeti egység", 2  'Betöltjük a kódszótári elemeket
-    g_oKodszotar.Load "sp_Q272", Nothing, "272", "Hõlépcsõ", 3
-    g_oKodszotar.Load "sp_Q274", Nothing, "274", "Épület típusa", 3
-    g_oKodszotar.Load "sp_Q275", Nothing, "275", "Fûtési mód", 3
-    g_oKodszotar.Load "sp_Q276", Nothing, "276", "Légtelenítõ típusa", 3
-    g_oKodszotar.Load "sp_Q277", Nothing, "277", "Fûtõtest típusa", 3
-    g_oKodszotar.Load "sp_Q278", Nothing, "278", "Épület karbantartó", 3
-    g_oKodszotar.Load "sp_Q279", Nothing, "279", "Mértékegység", 3
-    g_oKodszotar.Load "sp_Q281", Nothing, "281", "Fûtési beszabályozás módja", 3
-    g_oKodszotar.Load "sp_Q282", Nothing, "282", "Cirkulációs strang típusa", 3
-    g_oKodszotar.Load "sp_Q283", Nothing, "283", "HMV rendszer típusa", 3
-    g_oKodszotar.Load "sp_Q284", Nothing, "284", "Cirkulációs szabályozás módja", 3
-    g_oKodszotar.Load "sp_Q285", Nothing, "285", "Közeg", 3
-    g_oKodszotar.Load "sp_Q288", Nothing, "288", "Fûtõvíz elosztása", 3
-    g_oKodszotar.Load "sp_Q289", Nothing, "289", "Város", 1
-    g_oKodszotar.Load "sp_Q297", Nothing, "297", "Üzemállapot", 1
-    g_oKodszotar.Load "sp_Q298", Nothing, "298", "Mûvelet típusa", 3
-    g_oKodszotar.Load "sp_Q299", Nothing, "299", "Idõegység", 2
-    g_oKodszotar.Load "sp_Q300", Nothing, "300", "Karbantartás típusa", 2
-    g_oKodszotar.Load "sp_Q302", Nothing, "302", "Jegyzõkönyv típusa", 1
-    g_oKodszotar.Load "sp_Q304", Nothing, "304", "Beosztás", 2
-    g_oKodszotar.Load "sp_Q305", Nothing, "305", "Szolgáltatás típusa", 2
-    g_oKodszotar.Load "sp_Q306", Nothing, "306", "Munkavégzés/javítás típusa", 2
-    g_oKodszotar.Load "sp_Q307", Nothing, "307", "Végzendõ feladat típusa", 2
-    g_oKodszotar.Load "sp_Q308", Nothing, "308", "Észlelt jelenség típusa", 2
-    g_oKodszotar.Load "sp_Q309", Nothing, "309", "Szolgálat típusa", 2
-    g_oKodszotar.Load "sp_Q310", Nothing, "310", "Fõkönyvi szám", 12
-    g_oKodszotar.Load "sp_Q311", Nothing, "311", "Munkalap szervezeti egység", 1
-    g_oKodszotar.Load "sp_Q312", Nothing, "312", "Gyártó cég", 3
-    g_oKodszotar.Load "sp_Q313", Nothing, "313", "Veszélyességi osztály", 1
-    g_oKodszotar.Load "sp_Q314", Nothing, "314", "Kulcs található", 3
-    g_oKodszotar.Load "sp_Q315", Nothing, "315", "Aláírásra jogosult", 3
-    g_oKodszotar.Load "sp_Q316", Nothing, "316", "Leolvasási mód", 2
-    g_oKodszotar.Load "sp_Q317", Nothing, "317", "Kategória", 2
-    g_oKodszotar.Load "sp_Q318", Nothing, "318", "Szabályozás módja", 2
-    g_oKodszotar.Load "sp_Q319", Nothing, "319", "Szivattyú fokozat", 2
-    g_oKodszotar.Load "sp_Q320", Nothing, "320", "Boyler típus", 2
-    g_oKodszotar.Load "sp_Q321", Nothing, "321", "Töltési mód", 2
-    g_oKodszotar.Load "sp_Q322", Nothing, "322", "Szûrõ típus", 2
-    g_oKodszotar.Load "sp_Q323", Nothing, "323", "Kimenet típusa", 2
-    g_oKodszotar.Load "sp_Q324", Nothing, "324", "Mûködési mód", 3
-    g_oKodszotar.Load "sp_Q325", Nothing, "325", "Szelep típus", 3
-    g_oKodszotar.Load "sp_Q326", Nothing, "326", "Felépítés", 2
-    g_oKodszotar.Load "sp_Q327", Nothing, "327", "Ütem", 2
-    g_oKodszotar.Load "sp_Q328", Nothing, "328", "Légtelenítõ elhelyezése", 3
-    g_oKodszotar.Load "sp_Q329", Nothing, "329", "Épület üzemeltetõje", 3
-    g_oKodszotar.Load "sp_Q330", Nothing, "330", "Fûtési fõelzáró elhelyezése", 3
-    g_oKodszotar.Load "sp_Q331", Nothing, "331", "Fûtõmû lekérdezés típusa", 20
-    g_oKodszotar.Load "sp_Q332", Nothing, "332", "Hõközpont lekérdezés típusa", 20
-    g_oKodszotar.Load "sp_Q333", Nothing, "333", "Épület lekérdezés típusa", 20
-    g_oKodszotar.Load "sp_Q334", Nothing, "334", "Dolgozó", 3
-    g_oKodszotar.Load "sp_Q335", Nothing, "335", "Munkalap állapota", 3
-    g_oKodszotar.Load "sp_Q336", Nothing, "336", "Mûvelet rövid leirása", 3
-    g_oKodszotar.Load "sp_Q337", Nothing, "337", "Munkalap típusa", 1
-    g_oKodszotar.Load "sp_Q338", Nothing, "338", "Szolgáltatás", 1
-    g_oKodszotar.Load "sp_Q339", Nothing, "339", "Fizetési mód", 1
-    g_oKodszotar.Load "sp_Q340", Nothing, "340", "Szolgáltatás jellege", 1
-    g_oKodszotar.Load "sp_Q341", Nothing, "341", "ÁFA kulcs", 2
-    g_oKodszotar.Load "sp_Q342", Nothing, "342", "Cikk", 2
-    g_oKodszotar.Load "sp_Q343", Nothing, "343", "Szerzõdés típus", 1
-    g_oKodszotar.Load "sp_Q344", Nothing, "344", "Szerzõdés jellege", 2
-    g_oKodszotar.Load "sp_Q345", Nothing, "345", "Lekérdezés vízórára", 11
-    g_oKodszotar.Load "sp_Q346", Nothing, "346", "Lekérdezés érzékelõpárra", 11
-    g_oKodszotar.Load "sp_Q347", Nothing, "347", "Lekérdezés hõösszegzõre", 11
-    g_oKodszotar.Load "sp_Q348", Nothing, "348", "Plombázás", 1
-    
-    Select Case iWorkMode
-        Case DISZPECSER
-            g_oKodszotar.Load "sp_Q291D", Nothing, "291", "Szolgáltatás jellege", 2
-            'g_oKodszotar.Load "sp_Q369", Nothing, "369", "Diszp.típushiba", 3
-            g_oKodszotar.Load "sp_Q369", Nothing, "293", "Diszp.típushiba", 3
-            g_oKodszotar.Load "sp_Q296_Diszp", Nothing, "296", "Objektum típus", 2
-            g_oKodszotar.Load "sp_Q310D", Nothing, "310A", "Aktív fõkönyvi szám", 12
-        Case NORMAL, MLAP
-            g_oKodszotar.Load "sp_Q291", Nothing, "291", "Szolgáltatás jellege", 2
-            g_oKodszotar.Load "sp_Q293", Nothing, "293", "Típus hiba", 3
-            g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
-            g_oKodszotar.Load "sp_Q310A", Nothing, "310A", "Aktív fõkönyvi szám", 12
-            g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
-            g_oKodszotar.Load "sp_Q371", Nothing, "371", "Nyomtatás típusa", 5
-            
-        Case LABOR
-            g_oKodszotar.Load "sp_Q296", Nothing, "296", "Objektum típus", 2
-            g_oKodszotar.Load "sp_Q370", Nothing, "370", "Labor.jegyz.típus", 1
-    End Select
-    
-    'ReDim gIdTable(24)
-    'gIdTable = Array( _
-    '27, _
-    '28, _
-    '29, _
-    '30, _
-    '31, _
-    '32, _
-    '9, _
-    '26, _
-    '34, _
-    '38, _
-    '20, _
-    '39, _
-    '24, _
-    '43, _
-    '41, _
-    '45, _
-    '40, _
-    '46, _
-    '915, _
-    '47, _
-    '674, _
-    '44, _
-    '1722)
-
-    Init = True
+        Init = True
+    End If
     Exit Function
     
 errInit:
