@@ -65,11 +65,11 @@ Private Sub cmdEXIT_Click()
 End Sub
 
 Private Sub cmdJEGYZ_Click()
-    Form003.Show 1
+    Form003.Show 0
 End Sub
 
 Private Sub cmdMunkalap_Click()
-    Form001.Show 1
+    Form001.Show 0
 End Sub
 
 Private Sub cmdRAKTAR_Click()

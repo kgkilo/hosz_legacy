@@ -1151,7 +1151,7 @@ Private Sub cmdOSSZESITO_Click()
     tipusHiba = GetComboErtek(cmbTIPUSH)
 
     If MsgBox("Biztosan nyomtatni szeretné az összesítõt?", vbYesNo + vbExclamation, "Tisztelt felhasználó!") = vbYes Then
-        If tipusHiba = 272 Then
+        If tipusHiba = 272 Then 'Vizora plombazas
             util.PrintMunkalapSok txtREF, 1
             Nyomtat "plombossz.rpt", 0
         Else
@@ -1184,8 +1184,8 @@ Private Sub Form_Load()
         If txtAllapot = 3 Then spcALLAPOT.Enabled = False
         
         txtKIALLDAT.Locked = True   'Kiallitas datuma nem javithato utolag (altalaban)
-        If txtREF <> "" Then
-            txtNAPSZAM.Locked = True
+        If txtREF <> "" Then    'Ha van mar errol a munkalaprol masolat, azaz a referencia mezo nem ures
+            txtNAPSZAM.Locked = True    'egy csomo minden nem javithato utolag.
             txtBEJDAT.Locked = True
             cmbSZEREGYS.Locked = True
             cmbMFDOLG.Locked = True
@@ -1207,7 +1207,7 @@ Private Sub Form_Load()
   
            'Osszesito keszitese csak plombazashoz engedelyezett!
            'Plombazas csak bizonyos tipushiba eseten lehetseges,
-           'ezert lekerdezzeuk, hogy mi is a tipushiba.
+           'ezert lekerdezzuk, hogy mi is a tipushiba.
            Dim tipusHiba As Integer
            If cmbTIPUSH.ListIndex <> -1 Then
                tipusHiba = GetComboErtek(cmbTIPUSH)
