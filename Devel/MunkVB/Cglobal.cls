@@ -885,6 +885,8 @@ Public Function OsszesitoFeltolt(ByRef frm As Object) As Boolean
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 674), "labor21", "labor21", 10
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 44), "labor22", "labor22", 10
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 1722), "labor23", "labor23", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 40214), "labor24", "labor24", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor25", "labor25", 10
     
     OsszesitoFeltolt = SetCombo(frm)
     Exit Function
