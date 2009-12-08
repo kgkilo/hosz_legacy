@@ -1,12 +1,12 @@
 VERSION 5.00
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
 Begin VB.Form Form003b 
    BorderStyle     =   1  'Fixed Single
    ClientHeight    =   6540
    ClientLeft      =   45
    ClientTop       =   330
-   ClientWidth     =   8910
+   ClientWidth     =   11910
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -21,7 +21,7 @@ Begin VB.Form Form003b
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   6540
-   ScaleWidth      =   8910
+   ScaleWidth      =   11910
    StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton cmdFeltolt 
       Caption         =   "Feltöltés"
@@ -35,7 +35,7 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   4675
+      Left            =   6175
       TabIndex        =   1
       ToolTipText     =   "F 5"
       Top             =   105
@@ -44,7 +44,7 @@ Begin VB.Form Form003b
    Begin VB.TextBox Text1 
       Height          =   435
       Left            =   0
-      TabIndex        =   52
+      TabIndex        =   65
       TabStop         =   0   'False
       Top             =   0
       Visible         =   0   'False
@@ -62,8 +62,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   7565
-      TabIndex        =   28
+      Left            =   10680
+      TabIndex        =   41
       ToolTipText     =   "E S C"
       Top             =   6075
       Width           =   1135
@@ -82,7 +82,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   375
       Left            =   90
-      TabIndex        =   27
+      TabIndex        =   40
       ToolTipText     =   "F 5"
       Top             =   6075
       Width           =   1135
@@ -98,7 +98,7 @@ Begin VB.Form Form003b
          SubFormatType   =   0
       EndProperty
       Height          =   330
-      Left            =   3100
+      Left            =   4600
       TabIndex        =   0
       Top             =   105
       Width           =   1245
@@ -115,8 +115,476 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   22740993
       CurrentDate     =   37013
+   End
+   Begin VB.Label lbl26 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kisteleki u. 6."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   80
+      Top             =   720
+      Width           =   1605
+   End
+   Begin VB.Label lbl30 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 1."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   79
+      Top             =   2340
+      Width           =   1605
+   End
+   Begin VB.Label lbl29 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Körtöltés u. 46."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   78
+      Top             =   1935
+      Width           =   1605
+   End
+   Begin VB.Label lbl28 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Körtöltés u. 36."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   77
+      Top             =   1560
+      Width           =   1605
+   End
+   Begin VB.Label lbl27 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kossuth L. sgt. 99."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   76
+      Top             =   1125
+      Width           =   1605
+   End
+   Begin VB.Label lbl32 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 15."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   75
+      Top             =   3150
+      Width           =   1605
+   End
+   Begin VB.Label lbl31 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 14."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   74
+      Top             =   2745
+      Width           =   1605
+   End
+   Begin VB.Label lbl34 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 27."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   73
+      Top             =   3960
+      Width           =   1605
+   End
+   Begin VB.Label lbl33 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 21."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   72
+      Top             =   3555
+      Width           =   1605
+   End
+   Begin VB.Label lbl35 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 3."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   71
+      Top             =   4365
+      Width           =   1605
+   End
+   Begin VB.Label lbl36 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Kukovecz N. u. 5."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   70
+      Top             =   4770
+      Width           =   1605
+   End
+   Begin MSForms.ComboBox cmb26 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   27
+      Tag             =   "labor26"
+      Top             =   675
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb34 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   35
+      Tag             =   "labor34"
+      Top             =   3915
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb33 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   34
+      Tag             =   "labor33"
+      Top             =   3510
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb31 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   32
+      Tag             =   "labor31"
+      Top             =   2700
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb28 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   29
+      Tag             =   "labor28"
+      Top             =   1485
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb27 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   28
+      Tag             =   "labor27"
+      Top             =   1080
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb29 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   30
+      Tag             =   "labor29"
+      Top             =   1890
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb30 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   31
+      Tag             =   "labor30"
+      Top             =   2295
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb32 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   33
+      Tag             =   "labor32"
+      Top             =   3105
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb35 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   36
+      Tag             =   "kabor35"
+      Top             =   4320
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb36 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   37
+      Tag             =   "labor36"
+      Top             =   4725
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin MSForms.ComboBox cmb37 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   38
+      Tag             =   "labor37"
+      Top             =   5130
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin VB.Label lbl37 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Puskás u. 11."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7800
+      TabIndex        =   69
+      Top             =   5175
+      Width           =   1605
+   End
+   Begin MSForms.ComboBox cmb38 
+      Height          =   315
+      Left            =   9480
+      TabIndex        =   39
+      Tag             =   "labor38"
+      Top             =   5535
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin VB.Label lbl38 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Puskás u. 21."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   7905
+      TabIndex        =   68
+      Top             =   5580
+      Width           =   1500
    End
    Begin VB.Label lbl25 
       Alignment       =   1  'Right Justify
@@ -131,14 +599,14 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4770
-      TabIndex        =   54
+      Left            =   3810
+      TabIndex        =   67
       Top             =   5580
       Width           =   1500
    End
    Begin MSForms.ComboBox cmb25 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   26
       Tag             =   "labor25"
       Top             =   5535
@@ -167,14 +635,14 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   53
+      Left            =   3705
+      TabIndex        =   66
       Top             =   5175
       Width           =   1605
    End
    Begin MSForms.ComboBox cmb24 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   25
       Tag             =   "labor24"
       Top             =   5130
@@ -192,7 +660,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb23 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   24
       Tag             =   "labor23"
       Top             =   4725
@@ -210,7 +678,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb22 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   23
       Tag             =   "labor22"
       Top             =   4320
@@ -228,7 +696,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb19 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   20
       Tag             =   "labor19"
       Top             =   3105
@@ -246,7 +714,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb17 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   18
       Tag             =   "labor17"
       Top             =   2295
@@ -264,7 +732,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb16 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   17
       Tag             =   "labor16"
       Top             =   1890
@@ -282,7 +750,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb14 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   15
       Tag             =   "labor14"
       Top             =   1080
@@ -300,7 +768,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb15 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   16
       Tag             =   "labor15"
       Top             =   1485
@@ -318,7 +786,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb18 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   19
       Tag             =   "labor18"
       Top             =   2700
@@ -336,7 +804,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb20 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   21
       Tag             =   "labor20"
       Top             =   3510
@@ -354,7 +822,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb21 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   22
       Tag             =   "labor21"
       Top             =   3915
@@ -372,7 +840,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb13 
       Height          =   315
-      Left            =   6345
+      Left            =   5385
       TabIndex        =   14
       Tag             =   "labor13"
       Top             =   675
@@ -390,7 +858,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb12 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   13
       Tag             =   "labor12"
       Top             =   5130
@@ -408,7 +876,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb11 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   12
       Tag             =   "labor11"
       Top             =   4725
@@ -426,7 +894,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb10 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   11
       Tag             =   "labor10"
       Top             =   4320
@@ -444,7 +912,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb7 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   8
       Tag             =   "labor7"
       Top             =   3105
@@ -462,7 +930,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb5 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   6
       Tag             =   "labor5"
       Top             =   2295
@@ -480,7 +948,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb4 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   5
       Tag             =   "labor4"
       Top             =   1890
@@ -498,7 +966,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb2 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   3
       Tag             =   "labor2"
       Top             =   1080
@@ -527,8 +995,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   51
+      Left            =   3705
+      TabIndex        =   64
       Top             =   4770
       Width           =   1605
    End
@@ -545,10 +1013,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   45
-      TabIndex        =   50
+      Left            =   120
+      TabIndex        =   63
       Top             =   1935
-      Width           =   1725
+      Width           =   1035
    End
    Begin VB.Label lbl12 
       Alignment       =   1  'Right Justify
@@ -563,14 +1031,14 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   49
+      Left            =   120
+      TabIndex        =   62
       Top             =   5175
-      Width           =   1500
+      Width           =   1035
    End
    Begin MSForms.ComboBox cmb9 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   10
       Tag             =   "labor9"
       Top             =   3915
@@ -588,7 +1056,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb8 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   9
       Tag             =   "labor8"
       Top             =   3510
@@ -606,7 +1074,7 @@ Begin VB.Form Form003b
    End
    Begin MSForms.ComboBox cmb6 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   7
       Tag             =   "labor6"
       Top             =   2700
@@ -635,8 +1103,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   48
+      Left            =   3705
+      TabIndex        =   61
       Top             =   4365
       Width           =   1605
    End
@@ -653,8 +1121,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   47
+      Left            =   3705
+      TabIndex        =   60
       Top             =   3555
       Width           =   1605
    End
@@ -671,8 +1139,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   46
+      Left            =   3705
+      TabIndex        =   59
       Top             =   3960
       Width           =   1605
    End
@@ -689,8 +1157,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   45
+      Left            =   3705
+      TabIndex        =   58
       Top             =   2745
       Width           =   1605
    End
@@ -707,8 +1175,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   44
+      Left            =   3705
+      TabIndex        =   57
       Top             =   3150
       Width           =   1605
    End
@@ -725,8 +1193,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   43
+      Left            =   3705
+      TabIndex        =   56
       Top             =   1125
       Width           =   1605
    End
@@ -743,9 +1211,9 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   42
-      Top             =   1530
+      Left            =   3705
+      TabIndex        =   55
+      Top             =   1560
       Width           =   1605
    End
    Begin VB.Label lbl16 
@@ -761,8 +1229,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   41
+      Left            =   3705
+      TabIndex        =   54
       Top             =   1935
       Width           =   1605
    End
@@ -779,8 +1247,8 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   40
+      Left            =   3705
+      TabIndex        =   53
       Top             =   2340
       Width           =   1605
    End
@@ -797,14 +1265,14 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4665
-      TabIndex        =   39
+      Left            =   3705
+      TabIndex        =   52
       Top             =   720
       Width           =   1605
    End
    Begin MSForms.ComboBox cmb1 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   2
       Tag             =   "labor1"
       Top             =   675
@@ -833,10 +1301,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   38
+      Left            =   120
+      TabIndex        =   51
       Top             =   4365
-      Width           =   1500
+      Width           =   1035
    End
    Begin VB.Label lbl11 
       Alignment       =   1  'Right Justify
@@ -851,10 +1319,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   37
+      Left            =   120
+      TabIndex        =   50
       Top             =   4770
-      Width           =   1500
+      Width           =   1035
    End
    Begin VB.Label lbl6 
       Alignment       =   1  'Right Justify
@@ -869,10 +1337,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   36
+      Left            =   120
+      TabIndex        =   49
       Top             =   2745
-      Width           =   1500
+      Width           =   1035
    End
    Begin VB.Label lbl7 
       Alignment       =   1  'Right Justify
@@ -887,10 +1355,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   165
-      TabIndex        =   35
+      Left            =   120
+      TabIndex        =   48
       Top             =   3150
-      Width           =   1605
+      Width           =   1035
    End
    Begin VB.Label lbl8 
       Alignment       =   1  'Right Justify
@@ -905,10 +1373,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   34
+      Left            =   120
+      TabIndex        =   47
       Top             =   3555
-      Width           =   1500
+      Width           =   1035
    End
    Begin VB.Label lbl9 
       Alignment       =   1  'Right Justify
@@ -923,10 +1391,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   15
-      TabIndex        =   33
+      Left            =   120
+      TabIndex        =   46
       Top             =   3960
-      Width           =   1755
+      Width           =   1035
    End
    Begin VB.Label lbl2 
       Alignment       =   1  'Right Justify
@@ -941,10 +1409,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   32
+      Left            =   120
+      TabIndex        =   45
       Top             =   1125
-      Width           =   1500
+      Width           =   1035
    End
    Begin VB.Label lbl1 
       Alignment       =   1  'Right Justify
@@ -959,14 +1427,14 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   90
-      TabIndex        =   31
+      Left            =   120
+      TabIndex        =   44
       Top             =   720
-      Width           =   1680
+      Width           =   1035
    End
    Begin MSForms.ComboBox cmb3 
       Height          =   315
-      Left            =   1845
+      Left            =   1245
       TabIndex        =   4
       Tag             =   "labor3"
       Top             =   1485
@@ -995,10 +1463,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   45
-      TabIndex        =   30
+      Left            =   120
+      TabIndex        =   43
       Top             =   1530
-      Width           =   1725
+      Width           =   1035
    End
    Begin VB.Label lbl5 
       Alignment       =   1  'Right Justify
@@ -1013,10 +1481,10 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   270
-      TabIndex        =   29
+      Left            =   120
+      TabIndex        =   42
       Top             =   2340
-      Width           =   1500
+      Width           =   1035
    End
 End
 Attribute VB_Name = "Form003b"
