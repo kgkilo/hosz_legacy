@@ -884,9 +884,26 @@ Public Function OsszesitoFeltolt(ByRef frm As Object) As Boolean
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 47), "labor20", "labor20", 10
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 674), "labor21", "labor21", 10
     g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 44), "labor22", "labor22", 10
-    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 1722), "labor23", "labor23", 10
-    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 40214), "labor24", "labor24", 10
-    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor25", "labor25", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 1722), "labor23", "labor23", 10  'Rokus eromu
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 40214), "labor24", "labor24", 10 'Odessza I Termal
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor25", "labor25", 10 'Berzsenyi hokozpont
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39309), "labor26", "labor26", 10 'Kisteleki u. 6.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39354), "labor27", "labor27", 10 'Kossuth L. sgt. 99.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39336), "labor28", "labor28", 10 'Kortoltes u. 36.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39341), "labor29", "labor29", 10 'Kortoltes u. 46.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39366), "labor30", "labor30", 10 'Kukovecz N. u. 1.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39371), "labor31", "labor31", 10 'Kukovecz N. u. 14.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39372), "labor32", "labor32", 10 'Kukovecz N. u. 15.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39377), "labor33", "labor33", 10 'Kukovecz N. u. 21.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39381), "labor34", "labor34", 10 'Kukovecz N. u. 27.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39383), "labor35", "labor35", 10 'Kukovecz N. u. 3.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39385), "labor36", "labor36", 10 'Kukovecz N. u. 5.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39550), "labor37", "labor37", 10 'Puskas u. 11.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 39553), "labor38", "labor38", 10 'Puskas u. 21.
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor39", "labor39", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor40", "labor40", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor41", "labor41", 10
+    g_oKodszotar.Load "sp_FillLaborJegyz", Array("pFUTOMU_ID", 46476), "labor42", "labor42", 10
     
     OsszesitoFeltolt = SetCombo(frm)
     Exit Function
