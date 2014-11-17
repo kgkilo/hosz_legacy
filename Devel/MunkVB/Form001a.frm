@@ -313,6 +313,7 @@ Begin VB.Form Form001a
       End
       Begin VB.OptionButton optAllapot 
          Caption         =   "Sztornó"
+         Enabled         =   0   'False
          Height          =   285
          Index           =   3
          Left            =   360
