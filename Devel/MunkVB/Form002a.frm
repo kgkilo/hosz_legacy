@@ -195,7 +195,7 @@ End Sub
 Private Sub cmdOK_Click()
     If txtMUNORA <> "" And txtMUNDAT <> "" And cmbDOLG_ID.ListIndex <> -1 Then
         util.RekordInsert Me, "Telj"
-        util.MunkalapAllapot txtOBJID, 4
+        'util.MunkalapAllapot txtOBJID, 4
         Form002.Munora = txtMUNORA
         Form002.Mundat = txtMUNDAT
         Back Me

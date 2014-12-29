@@ -159,3 +159,82 @@ X Bejelentkezo ablak a Munkalap rendszerben
 Telepítve: 2013.12.03.
 
 ----------------------------------------------------------------------------------
+
+Alter PROCEDURE sp_DelTeljm
+@pID INTEGER
+AS
+
+DECLARE @VISSZAIRT INTEGER
+SELECT @VISSZAIRT = ALLAPOT
+	FROM MUNKALAP INNER JOIN TELJM ON MUNKALAP.ID = TELJM.MUNKALAP_ID
+	WHERE TELJM.ID = @pID
+
+IF @VISSZAIRT != 4	--2014.12.04: Nem visszairt munkalap modosithato csak
+BEGIN
+	DELETE
+	FROM
+		TELJM
+	WHERE
+		ID = @pID
+END
+
+
+Alter PROCEDURE sp_UpdMunkalapVisszair
+@pID INTEGER,
+@MUVLEIR VARCHAR(1024)=NULL
+AS
+
+DECLARE @VISSZAIRT INTEGER
+SELECT @VISSZAIRT = ALLAPOT FROM MUNKALAP WHERE ID = @pID
+IF @VISSZAIRT != 4	--2014.12.04: Nem visszairt munkalap modosithato csak
+BEGIN
+	UPDATE MUNKALAP
+	SET
+		ALLAPOT = 4,	--Visszairt
+		MUVLEIR = @MUVLEIR,
+		ADATUM  = GetDate(),
+		AKOD = User_Name()
+	WHERE
+		ID = @pID
+END
+
+
+/****** Object:  Stored Procedure dbo.sp_InsTeljm    Script Date: 2000. 07. 04. 18:56:16 ******/
+Alter PROCEDURE sp_InsTeljm
+@MUNKALAP_ID INTEGER,
+@DOLG_ID INTEGER,
+@MUNORA REAL=NULL,
+@MUNDAT DATETIME=NULL
+AS
+
+DECLARE @RET INTEGER
+
+DECLARE @VISSZAIRT INTEGER
+SELECT @VISSZAIRT = ALLAPOT FROM MUNKALAP WHERE ID = @MUNKALAP_ID
+IF @VISSZAIRT != 4	--2014.12.04: Nem visszairt munkalap modosithato csak
+BEGIN
+	INSERT INTO
+		TELJM(MUNKALAP_ID,DOLG_ID,MUNORA,MUNDAT)
+	SELECT
+		@MUNKALAP_ID,
+		@DOLG_ID,
+		@MUNORA,
+		@MUNDAT
+
+	SELECT @RET = @@IDENTITY
+
+/*	UPDATE	--2014.12.16: A munkalap allapota nem az elso visszairaskor, hanem az OK-val lesz visszairt.
+		MUNKALAP
+	SET
+		ALLAPOT = 4
+	WHERE
+		ID = @MUNKALAP_ID
+*/
+END
+ELSE
+BEGIN
+	SELECT @RET = 0
+END
+
+SELECT @RET
+RETURN @RET
