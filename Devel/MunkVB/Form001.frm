@@ -177,8 +177,8 @@ Begin VB.Form Form001
       BackColor       =   &H80000004&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -217,8 +217,8 @@ Begin VB.Form Form001
       BackColor       =   &H80000004&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -528,10 +528,10 @@ Begin VB.Form Form001
       Width           =   915
       Caption         =   "Munkaóra"
       Size            =   "1614;423"
-      FontName        =   "Arial"
-      FontHeight      =   195
+      FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
    Begin VB.Label lblMUNDAT 
       Alignment       =   1  'Right Justify
@@ -805,10 +805,10 @@ Begin VB.Form Form001
       Width           =   1500
       Caption         =   "Azonnali frissítés"
       Size            =   "2646;423"
-      FontName        =   "Arial"
-      FontHeight      =   195
+      FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
    Begin MSForms.Label lblTALALAT 
       Height          =   240
@@ -818,10 +818,10 @@ Begin VB.Form Form001
       Width           =   825
       Caption         =   "Találatok"
       Size            =   "1455;423"
-      FontName        =   "Arial"
-      FontHeight      =   195
+      FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
    Begin MSForms.ComboBox cmbTIPUSH 
       Height          =   315
@@ -931,6 +931,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Public iRefresh As Integer
 
 Private Sub frissit()

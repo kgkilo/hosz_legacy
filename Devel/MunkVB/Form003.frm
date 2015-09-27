@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{00025600-0000-0000-C000-000000000046}#5.1#0"; "crystl32.ocx"
 Object = "{8AE029D0-08E3-11D1-BAA2-444553540000}#3.0#0"; "VSFLEX3.OCX"
 Begin VB.Form Form003 
@@ -35,7 +36,7 @@ Begin VB.Form Form003
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   120
+      Left            =   105
       TabIndex        =   4
       ToolTipText     =   "F 2"
       Top             =   4176
@@ -127,7 +128,7 @@ Begin VB.Form Form003
       EndProperty
       Height          =   375
       Left            =   120
-      TabIndex        =   10
+      TabIndex        =   13
       ToolTipText     =   "E s c "
       Top             =   8040
       Width           =   1275
@@ -139,7 +140,7 @@ Begin VB.Form Form003
       BorderStyle     =   0  'None
       BeginProperty Font 
          Name            =   "Arial"
-         Size            =   9.75
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -149,7 +150,7 @@ Begin VB.Form Form003
       Height          =   285
       Left            =   360
       Locked          =   -1  'True
-      TabIndex        =   13
+      TabIndex        =   14
       TabStop         =   0   'False
       Top             =   900
       Width           =   960
@@ -163,7 +164,7 @@ Begin VB.Form Form003
    Begin VB.CheckBox chkFrissit 
       Height          =   285
       Left            =   720
-      TabIndex        =   9
+      TabIndex        =   12
       TabStop         =   0   'False
       Top             =   1620
       Width           =   285
@@ -201,11 +202,26 @@ Begin VB.Form Form003
       WindowMinButton =   -1  'True
       PrintFileLinesPerPage=   60
    End
-   Begin VB.Label lblMUVEL 
-      Alignment       =   1  'Right Justify
-      Caption         =   "Mûvelet típusa"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
+   Begin MSComCtl2.DTPicker datDATUMTOL 
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy/MM/dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
+      Height          =   330
+      Left            =   3285
+      TabIndex        =   8
+      Top             =   1680
+      Width           =   1455
+      _ExtentX        =   2566
+      _ExtentY        =   582
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -213,17 +229,162 @@ Begin VB.Form Form003
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      CheckBox        =   -1  'True
+      DateIsNull      =   -1  'True
+      Format          =   51249153
+      CurrentDate     =   37013
+   End
+   Begin MSComCtl2.DTPicker datDATUMIG 
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "yyyy/MM/dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1038
+         SubFormatType   =   0
+      EndProperty
+      Height          =   330
+      Left            =   5085
+      TabIndex        =   9
+      Top             =   1680
+      Width           =   1455
+      _ExtentX        =   2566
+      _ExtentY        =   582
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CheckBox        =   -1  'True
+      DateIsNull      =   -1  'True
+      Format          =   51249153
+      CurrentDate     =   37013
+   End
+   Begin VB.Label lblTITLE 
+      Alignment       =   2  'Center
+      Caption         =   "Jegyzõkönyvek"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   15.75
+         Charset         =   238
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000001&
+      Height          =   435
+      Left            =   4778
+      TabIndex        =   22
+      Top             =   105
+      Width           =   2325
+   End
+   Begin VB.Label lblOBJID 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Berendezés megn.:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   240
-      Index           =   0
-      Left            =   1800
-      TabIndex        =   19
+      Left            =   6555
+      TabIndex        =   21
       Top             =   1275
-      Width           =   1410
+      Width           =   1515
+   End
+   Begin VB.Label lblOBJTIP 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Berendezés típusa:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   6555
+      TabIndex        =   20
+      Top             =   840
+      Width           =   1515
+   End
+   Begin VB.Label lblDATUMTOL 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Jegyzõkönyv dátuma:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   1620
+      TabIndex        =   19
+      Top             =   1710
+      Width           =   1620
+   End
+   Begin VB.Label lblJTIP 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Jegyzõkönyv típusa:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   1725
+      TabIndex        =   18
+      Top             =   840
+      Width           =   1515
+   End
+   Begin VB.Label lblMUVEL 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Mûvelet:"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   1725
+      TabIndex        =   17
+      Top             =   1275
+      Width           =   1515
+   End
+   Begin VB.Line lblDATUMIG 
+      X1              =   5170.804
+      X2              =   5315.329
+      Y1              =   1845
+      Y2              =   1845
    End
    Begin MSForms.ComboBox cmbMUVEL 
       Height          =   315
       Left            =   3285
-      TabIndex        =   18
+      TabIndex        =   7
       Tag             =   "298"
       Top             =   1260
       Width           =   3255
@@ -237,48 +398,10 @@ Begin VB.Form Form003
       FontCharSet     =   0
       FontPitchAndFamily=   2
    End
-   Begin VB.Label lblKAPCSOLAT 
-      Alignment       =   1  'Right Justify
-      Caption         =   "Berendezés megn."
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   240
-      Index           =   3
-      Left            =   6660
-      TabIndex        =   17
-      Top             =   1275
-      Width           =   1410
-   End
-   Begin VB.Label lblCEG 
-      Alignment       =   1  'Right Justify
-      Caption         =   "Berendezés típus"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   240
-      Index           =   1
-      Left            =   6660
-      TabIndex        =   16
-      Top             =   870
-      Width           =   1410
-   End
    Begin MSForms.ComboBox cmbOBJTIP 
       Height          =   315
       Left            =   8145
-      TabIndex        =   7
+      TabIndex        =   10
       Tag             =   "296"
       Top             =   855
       Width           =   3255
@@ -295,7 +418,7 @@ Begin VB.Form Form003
    Begin MSForms.ComboBox cmbOBJID 
       Height          =   315
       Left            =   8145
-      TabIndex        =   8
+      TabIndex        =   11
       Tag             =   "MEGNEV"
       Top             =   1260
       Width           =   3255
@@ -312,28 +435,30 @@ Begin VB.Form Form003
    Begin MSForms.Label lblFRISSIT 
       Height          =   240
       Left            =   135
-      TabIndex        =   15
+      TabIndex        =   16
       Top             =   1350
       Width           =   1500
       Caption         =   "Azonnali frissítés"
       Size            =   "2646;423"
       FontName        =   "Arial"
-      FontHeight      =   195
+      FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
    Begin MSForms.Label lblTALALAT 
       Height          =   240
       Left            =   450
-      TabIndex        =   14
+      TabIndex        =   15
       Top             =   630
       Width           =   825
       Caption         =   "Találatok"
       Size            =   "1455;423"
       FontName        =   "Arial"
-      FontHeight      =   195
+      FontHeight      =   165
       FontCharSet     =   0
       FontPitchAndFamily=   2
+      ParagraphAlign  =   3
    End
    Begin MSForms.ComboBox cmbJTIP 
       Height          =   315
@@ -361,51 +486,14 @@ Begin VB.Form Form003
       Top             =   540
       Width           =   11535
    End
-   Begin VB.Label lblUGYFELFORM 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Jegyzõkönyvek"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   16.5
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H80000001&
-      Height          =   420
-      Index           =   0
-      Left            =   5235
-      TabIndex        =   12
-      Top             =   45
-      Width           =   2490
-   End
-   Begin VB.Label lblJTIP 
-      Alignment       =   1  'Right Justify
-      Caption         =   "Jegyzõkönyv típusa"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   240
-      Index           =   0
-      Left            =   1665
-      TabIndex        =   11
-      Top             =   870
-      Width           =   1545
-   End
 End
 Attribute VB_Name = "Form003"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Public iRefresh As Integer
 
 Private Sub frissit()
@@ -419,6 +507,26 @@ Private Sub frissit()
         End If
     End If
     iRefresh = 0
+End Sub
+
+Private Sub cmbJTIP_Change()
+    If cmbJTIP.ListIndex <> -1 Then
+        If GetComboErtek(cmbJTIP) = 8 Then 'Vizvizsgalati jegyzokonyv
+            cmbMUVEL.Enabled = False
+            lblMUVEL.Enabled = False
+            cmbOBJTIP.Enabled = False
+            lblOBJTIP.Enabled = False
+            cmbOBJID.Enabled = False
+            lblOBJID.Enabled = False
+        Else
+            cmbMUVEL.Enabled = True
+            lblMUVEL.Enabled = True
+            cmbOBJTIP.Enabled = True
+            lblOBJTIP.Enabled = True
+            cmbOBJID.Enabled = True
+            lblOBJID.Enabled = True
+        End If
+    End If
 End Sub
 
 Private Sub cmbOBJTIP_Change()
@@ -487,9 +595,11 @@ Private Sub cmdFRISSIT_Click()
 End Sub
 
 Private Sub cmdMODOSIT_Click()
-'    Form003a.mode = grdJEGYZ.TextMatrix(grdJEGYZ.Row, 1)
-'    Form003a.Show 1
+    On Error GoTo errModosit
+    Form003a.mode = grdJEGYZ.TextMatrix(grdJEGYZ.Row, 1)
+    Form003a.Show 1
     frissit
+errModosit:
 End Sub
 
 Private Sub cmdUJ_Click()
@@ -506,12 +616,14 @@ End Sub
 Private Sub Form_Load()
     Screen.MousePointer = vbHourglass
     iRefresh = 0
+    datDATUMIG.Value = DateValue(Now())
+    datDATUMTOL.Value = DateValue(DateAdd("m", -1, Now()))
     SetCombo Me
     Screen.MousePointer = vbDefault
 End Sub
 
 Private Sub grdJEGYZ_DblClick()
-'    cmdVISSZAI_Click
+    cmdMODOSIT_Click
 End Sub
 
 Private Sub KeyCommand(KeyCode As Integer)

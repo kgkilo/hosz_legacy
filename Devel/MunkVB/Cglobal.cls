@@ -346,6 +346,8 @@ Public Function RekordFeltolt(ByRef frm As Object, ByVal sKategoria As String, B
             sQuery = "sp_LoadMunkalap"
         Case "LABOR"
             sQuery = "sp_LoadLabor"
+        Case "JEGYZ"
+            sQuery = "sp_LoadJegyz"
         Case Else
             sQuery = "sp_LoadObjEgyedi"
     End Select
@@ -354,6 +356,20 @@ Public Function RekordFeltolt(ByRef frm As Object, ByVal sKategoria As String, B
     If oAdmin.LoadFirstRecord(sQuery, lstParams, rs) = True Then
         If ControlsSet(rs, frm) Then    'Ha sikerült, feltöltjük a képernyõ kontrolljait adatokkal.
             RekordFeltolt = True
+        End If
+        
+        If sKategoria = "LABOR" Then
+            Dim oControl As Control
+            On Error Resume Next
+            For Each oControl In frm.Controls
+                If Left(oControl.Name, 3) = "spc" Then
+                    oControl = rs(Mid(oControl.Name, 4)).Value
+                ElseIf oControl.Name = "cmbMUN_SORSZ" Then
+                    MsgBox rs("MUN_SORSZ").Value
+                    SetComboVal oControl, rs("MUN_SORSZ").Value
+                End If
+            Next
+            On Error GoTo errRekordFeltolt
         End If
     End If
     
@@ -487,6 +503,7 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
     Dim iMerge As Integer
     Dim sParam As String
     Dim lstParams As New Collection
+    Dim rs As New ADODB.Recordset   'A darabszam lekerdezeshez
     
     Select Case sKateg
         Case "MUNKALAP"
@@ -522,13 +539,12 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "MUNELV"
 
 ' Lekérdezem a munkalap darabszámot
-            Dim rs As New ADODB.Recordset   'A visszatérési rekordszett
             sQuery = "sp_LoadMlapDb"
             If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
                 rs.MoveFirst                 'A recordset elejére állunk
                 frm.Controls("txtTALALAT").Text = CInt(rs.Fields("MLAPDB").Value)
             Else
-                'Hiba
+                frm.Controls("txtTALALAT").Text = ""
             End If
 ' Elkészítem a grid-et
             sFormatstring = "<||Munkalap|Bejelentõ|Kiáll. dátum|Végezhetõ|Szolg. jellege|Helyszín|Berendezés|Telep. hsz.|Hiba leírása|Elvégzett munka|Dolgozó|Visszaírás|Munkaóra"
@@ -551,18 +567,41 @@ Public Function GridderX(ByRef oGrid As Object, ByRef sKateg As String, ByRef fr
             lstParams.Add sParam, "pOBJID"
             sParam = GetComboErtek(frm.Controls("cmbJTIP"))
             lstParams.Add sParam, "pJTIP"
+            sParam = IIf(IsNull(frm.Controls("datDATUMTOL").Value), "", frm.Controls("datDATUMTOL").Value)
+            lstParams.Add sParam, "pDATUMTOL"
+            sParam = IIf(IsNull(frm.Controls("datDATUMIG").Value), "", frm.Controls("datDATUMIG").Value)
+            lstParams.Add sParam, "pDATUMIG"
         
-            sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
+' Lekérdezem a munkalap darabszámot
+            sQuery = "sp_LoadJegyzDb"
+            If oAdmin.ExecVal(sQuery, lstParams, rs) = True Then
+                rs.MoveFirst                 'A recordset elejére állunk
+                frm.Controls("txtTALALAT").Text = CInt(rs.Fields("JEGYZDB").Value)
+            Else
+                frm.Controls("txtTALALAT").Text = ""
+            End If
+' Elkészítem a grid-et
+
+            Select Case lstParams("pJTIP")
+                Case "1", "2", "3", "4", "5", "6", "7"
+                    sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
+                    iMerge = 9
+                Case "8"
+                    sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Jegyz. típusa|Fûtõmû|Munkalap"
+                    iMerge = 2
+                Case Else
+                    sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Jegyz. típusa|Berendezés|Ber.típus|Gy.szám"
+                    iMerge = 3
+            End Select
             sQuery = "sp_LekerdJegyz"
-            iMerge = 9
         
-        Case "LABOR"
-            sFormatstring = "<||Jegyz. száma|Jegyz. dátuma|Karbant. típ.|Mûvelet|Ber.típus|Berendezés|Gy. típ.|Telep.hsz.|Gy.szám"
-            sQuery = "sp_LekerdLabor"
-            iMerge = 9
-            
-        Case Else
-            
+        Case "RAKTAR"
+            sFormatstring = "<||objtip|objid|bekeruldat"
+            sQuery = "sp_LekerdBerraktar"
+            iMerge = 1
+            sParam = GetComboErtek(frm.Controls("cmbOBJTIP"))
+            lstParams.Add sParam, "pOBJTIP"
+        
     End Select
     
     FillGrid sQuery, lstParams, oGrid, sFormatstring, iMerge

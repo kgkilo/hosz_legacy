@@ -3,7 +3,7 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form Form003b 
    BorderStyle     =   1  'Fixed Single
-   ClientHeight    =   6120
+   ClientHeight    =   6540
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   8910
@@ -20,7 +20,7 @@ Begin VB.Form Form003b
    LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   6120
+   ScaleHeight     =   6540
    ScaleWidth      =   8910
    StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton cmdFeltolt 
@@ -44,7 +44,7 @@ Begin VB.Form Form003b
    Begin VB.TextBox Text1 
       Height          =   435
       Left            =   0
-      TabIndex        =   50
+      TabIndex        =   52
       TabStop         =   0   'False
       Top             =   0
       Visible         =   0   'False
@@ -63,9 +63,9 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   375
       Left            =   7565
-      TabIndex        =   26
+      TabIndex        =   28
       ToolTipText     =   "E S C"
-      Top             =   5670
+      Top             =   6075
       Width           =   1135
    End
    Begin VB.CommandButton cmdOK 
@@ -82,9 +82,9 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   375
       Left            =   90
-      TabIndex        =   25
+      TabIndex        =   27
       ToolTipText     =   "F 5"
-      Top             =   5670
+      Top             =   6075
       Width           =   1135
    End
    Begin MSComCtl2.DTPicker datOSSZESITO 
@@ -115,8 +115,80 @@ Begin VB.Form Form003b
          Strikethrough   =   0   'False
       EndProperty
       DateIsNull      =   -1  'True
-      Format          =   23068673
+      Format          =   23003137
       CurrentDate     =   37013
+   End
+   Begin VB.Label lbl25 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Berzsenyi kis hkp."
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   4770
+      TabIndex        =   54
+      Top             =   5580
+      Width           =   1500
+   End
+   Begin MSForms.ComboBox cmb25 
+      Height          =   315
+      Left            =   6345
+      TabIndex        =   26
+      Tag             =   "labor25"
+      Top             =   5535
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
+   End
+   Begin VB.Label lbl24 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Odessza I. Termál"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   238
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   240
+      Left            =   4665
+      TabIndex        =   53
+      Top             =   5175
+      Width           =   1605
+   End
+   Begin MSForms.ComboBox cmb24 
+      Height          =   315
+      Left            =   6345
+      TabIndex        =   25
+      Tag             =   "labor24"
+      Top             =   5130
+      Width           =   2355
+      VariousPropertyBits=   746604569
+      DisplayStyle    =   3
+      Size            =   "4154;556"
+      MatchEntry      =   1
+      ShowDropButtonWhen=   2
+      FontName        =   "Arial"
+      FontEffects     =   1073750016
+      FontHeight      =   165
+      FontCharSet     =   0
+      FontPitchAndFamily=   2
    End
    Begin MSForms.ComboBox cmb23 
       Height          =   315
@@ -321,7 +393,7 @@ Begin VB.Form Form003b
       Left            =   1845
       TabIndex        =   13
       Tag             =   "labor12"
-      Top             =   5145
+      Top             =   5130
       Width           =   2355
       VariousPropertyBits=   746604569
       DisplayStyle    =   3
@@ -442,7 +514,7 @@ Begin VB.Form Form003b
       FontCharSet     =   0
       FontPitchAndFamily=   2
    End
-   Begin VB.Label Label1 
+   Begin VB.Label lbl23 
       Alignment       =   1  'Right Justify
       Caption         =   "Rókus erõmû"
       BeginProperty Font 
@@ -456,7 +528,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   49
+      TabIndex        =   51
       Top             =   4770
       Width           =   1605
    End
@@ -474,7 +546,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   45
-      TabIndex        =   48
+      TabIndex        =   50
       Top             =   1935
       Width           =   1725
    End
@@ -492,7 +564,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   47
+      TabIndex        =   49
       Top             =   5175
       Width           =   1500
    End
@@ -564,7 +636,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   46
+      TabIndex        =   48
       Top             =   4365
       Width           =   1605
    End
@@ -582,7 +654,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   45
+      TabIndex        =   47
       Top             =   3555
       Width           =   1605
    End
@@ -600,7 +672,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   44
+      TabIndex        =   46
       Top             =   3960
       Width           =   1605
    End
@@ -618,7 +690,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   43
+      TabIndex        =   45
       Top             =   2745
       Width           =   1605
    End
@@ -636,7 +708,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   42
+      TabIndex        =   44
       Top             =   3150
       Width           =   1605
    End
@@ -654,7 +726,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   41
+      TabIndex        =   43
       Top             =   1125
       Width           =   1605
    End
@@ -672,7 +744,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   40
+      TabIndex        =   42
       Top             =   1530
       Width           =   1605
    End
@@ -690,7 +762,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   39
+      TabIndex        =   41
       Top             =   1935
       Width           =   1605
    End
@@ -708,7 +780,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   38
+      TabIndex        =   40
       Top             =   2340
       Width           =   1605
    End
@@ -726,7 +798,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   37
+      TabIndex        =   39
       Top             =   720
       Width           =   1605
    End
@@ -762,7 +834,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   36
+      TabIndex        =   38
       Top             =   4365
       Width           =   1500
    End
@@ -780,7 +852,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   35
+      TabIndex        =   37
       Top             =   4770
       Width           =   1500
    End
@@ -798,7 +870,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   34
+      TabIndex        =   36
       Top             =   2745
       Width           =   1500
    End
@@ -816,7 +888,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   165
-      TabIndex        =   33
+      TabIndex        =   35
       Top             =   3150
       Width           =   1605
    End
@@ -834,7 +906,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   32
+      TabIndex        =   34
       Top             =   3555
       Width           =   1500
    End
@@ -852,7 +924,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   15
-      TabIndex        =   31
+      TabIndex        =   33
       Top             =   3960
       Width           =   1755
    End
@@ -870,7 +942,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   30
+      TabIndex        =   32
       Top             =   1125
       Width           =   1500
    End
@@ -888,7 +960,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   90
-      TabIndex        =   29
+      TabIndex        =   31
       Top             =   720
       Width           =   1680
    End
@@ -924,7 +996,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   45
-      TabIndex        =   28
+      TabIndex        =   30
       Top             =   1530
       Width           =   1725
    End
@@ -942,7 +1014,7 @@ Begin VB.Form Form003b
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   27
+      TabIndex        =   29
       Top             =   2340
       Width           =   1500
    End
@@ -952,6 +1024,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+' $Id
+
 Private Sub cmdClose_Click()
     Back Me
 End Sub
