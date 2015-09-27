@@ -24,6 +24,15 @@ Begin VB.Form Form003a
    ScaleHeight     =   6120
    ScaleWidth      =   8910
    StartUpPosition =   1  'CenterOwner
+   Begin VB.TextBox txtMINTA_IDO 
+      Height          =   315
+      Left            =   1890
+      TabIndex        =   52
+      TabStop         =   0   'False
+      Top             =   0
+      Visible         =   0   'False
+      Width           =   1515
+   End
    Begin VB.TextBox txtERTEKELES 
       Height          =   720
       Left            =   1845
@@ -34,7 +43,7 @@ Begin VB.Form Form003a
    Begin VB.TextBox txtOBJID 
       Height          =   435
       Left            =   210
-      TabIndex        =   51
+      TabIndex        =   50
       TabStop         =   0   'False
       Top             =   0
       Visible         =   0   'False
@@ -113,7 +122,7 @@ Begin VB.Form Form003a
    Begin VB.TextBox txtVIZSG_KEZD 
       Height          =   315
       Left            =   5040
-      TabIndex        =   29
+      TabIndex        =   28
       TabStop         =   0   'False
       Top             =   0
       Visible         =   0   'False
@@ -122,7 +131,7 @@ Begin VB.Form Form003a
    Begin VB.TextBox txtVIZSG_VEGE 
       Height          =   315
       Left            =   6615
-      TabIndex        =   30
+      TabIndex        =   29
       TabStop         =   0   'False
       Top             =   0
       Visible         =   0   'False
@@ -131,7 +140,7 @@ Begin VB.Form Form003a
    Begin VB.TextBox txtMINTA_ATAD_IDO 
       Height          =   315
       Left            =   3465
-      TabIndex        =   28
+      TabIndex        =   27
       TabStop         =   0   'False
       Top             =   0
       Visible         =   0   'False
@@ -183,25 +192,7 @@ Begin VB.Form Form003a
       Top             =   5670
       Width           =   1135
    End
-   Begin VB.TextBox txtMINTA_IDO 
-      BeginProperty DataFormat 
-         Type            =   1
-         Format          =   "yyyy.MM.dd HH.mm"
-         HaveTrueFalseNull=   0
-         FirstDayOfWeek  =   0
-         FirstWeekOfYear =   0
-         LCID            =   1038
-         SubFormatType   =   0
-      EndProperty
-      Height          =   315
-      Left            =   1890
-      TabIndex        =   27
-      TabStop         =   0   'False
-      Top             =   0
-      Visible         =   0   'False
-      Width           =   1515
-   End
-   Begin MSComCtl2.DTPicker datMINTA_DAT 
+   Begin MSComCtl2.DTPicker spcMINTA_DAT 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -232,7 +223,7 @@ Begin VB.Form Form003a
       Format          =   23134209
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datMINTA_TIM 
+   Begin MSComCtl2.DTPicker spcMINTA_TIM 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -263,7 +254,7 @@ Begin VB.Form Form003a
       Format          =   23134210
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datMINTA_ATAD_DAT 
+   Begin MSComCtl2.DTPicker spcMINTA_ATAD_DAT 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -294,7 +285,7 @@ Begin VB.Form Form003a
       Format          =   23134209
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datMINTA_ATAD_TIM 
+   Begin MSComCtl2.DTPicker spcMINTA_ATAD_TIM 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -325,7 +316,7 @@ Begin VB.Form Form003a
       Format          =   23134210
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datVIZSG_KEZD_DAT 
+   Begin MSComCtl2.DTPicker spcVIZSG_KEZD_DAT 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -356,7 +347,7 @@ Begin VB.Form Form003a
       Format          =   23134209
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datVIZSG_KEZD_TIM 
+   Begin MSComCtl2.DTPicker spcVIZSG_KEZD_TIM 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -387,7 +378,7 @@ Begin VB.Form Form003a
       Format          =   23134210
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datVIZSG_VEGE_DAT 
+   Begin MSComCtl2.DTPicker spcVIZSG_VEGE_DAT 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -418,7 +409,7 @@ Begin VB.Form Form003a
       Format          =   23134209
       CurrentDate     =   37013
    End
-   Begin MSComCtl2.DTPicker datVIZSG_VEGE_TIM 
+   Begin MSComCtl2.DTPicker spcVIZSG_VEGE_TIM 
       BeginProperty DataFormat 
          Type            =   0
          Format          =   "yyyy/MM/dd"
@@ -463,7 +454,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   52
+      TabIndex        =   51
       Top             =   4860
       Width           =   1500
    End
@@ -532,7 +523,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   50
+      TabIndex        =   49
       Top             =   4050
       Width           =   1605
    End
@@ -550,7 +541,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   49
+      TabIndex        =   48
       Top             =   3240
       Width           =   1605
    End
@@ -568,7 +559,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   48
+      TabIndex        =   47
       Top             =   3645
       Width           =   1605
    End
@@ -586,7 +577,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   47
+      TabIndex        =   46
       Top             =   2430
       Width           =   1605
    End
@@ -604,7 +595,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   46
+      TabIndex        =   45
       Top             =   2835
       Width           =   1605
    End
@@ -622,7 +613,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   45
+      TabIndex        =   44
       Top             =   810
       Width           =   1605
    End
@@ -640,7 +631,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   44
+      TabIndex        =   43
       Top             =   1215
       Width           =   1605
    End
@@ -658,7 +649,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   43
+      TabIndex        =   42
       Top             =   1620
       Width           =   1605
    End
@@ -676,7 +667,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   42
+      TabIndex        =   41
       Top             =   2025
       Width           =   1605
    End
@@ -694,7 +685,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   4665
-      TabIndex        =   41
+      TabIndex        =   40
       Top             =   405
       Width           =   1605
    End
@@ -729,7 +720,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   40
+      TabIndex        =   39
       Top             =   4050
       Width           =   1500
    End
@@ -747,7 +738,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   39
+      TabIndex        =   38
       Top             =   4455
       Width           =   1500
    End
@@ -765,7 +756,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   38
+      TabIndex        =   37
       Top             =   2430
       Width           =   1500
    End
@@ -783,7 +774,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   170
-      TabIndex        =   37
+      TabIndex        =   36
       Top             =   2835
       Width           =   1600
    End
@@ -801,7 +792,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   36
+      TabIndex        =   35
       Top             =   3240
       Width           =   1500
    End
@@ -819,7 +810,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   20
-      TabIndex        =   35
+      TabIndex        =   34
       Top             =   3645
       Width           =   1750
    End
@@ -837,7 +828,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   34
+      TabIndex        =   33
       Top             =   810
       Width           =   1500
    End
@@ -855,7 +846,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   90
-      TabIndex        =   33
+      TabIndex        =   32
       Top             =   405
       Width           =   1680
    End
@@ -890,7 +881,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   45
-      TabIndex        =   32
+      TabIndex        =   31
       Top             =   1215
       Width           =   1725
    End
@@ -908,7 +899,7 @@ Begin VB.Form Form003a
       EndProperty
       Height          =   240
       Left            =   270
-      TabIndex        =   31
+      TabIndex        =   30
       Top             =   2025
       Width           =   1500
    End
@@ -936,6 +927,11 @@ Private Sub cmdOK_Click()
     Screen.MousePointer = vbHourglass
     
     If mode = 0 Then
+        txtMINTA_IDO.Text = spcMINTA_TIM.Value
+        txtMINTA_ATAD_IDO.Text = spcMINTA_ATAD_TIM.Value
+        txtVIZSG_KEZD.Text = spcVIZSG_KEZD_TIM.Value
+        txtVIZSG_VEGE.Text = spcVIZSG_VEGE_TIM.Value
+ 
         Dim i As String
         i = util.RekordInsert(Me, "LABOR")
         MsgBox "Az új jegyzõkönyv száma: " & CStr(i)
@@ -951,36 +947,32 @@ Private Sub cmdOK_Click()
     Back Me
 End Sub
 
-Private Sub datMINTA_ATAD_DAT_LostFocus()
-    datMINTA_ATAD_TIM.Value = datMINTA_ATAD_DAT.Value
+Private Sub spcMINTA_ATAD_DAT_LostFocus()
+    spcMINTA_ATAD_TIM.Value = spcMINTA_ATAD_DAT.Value
 End Sub
 
-Private Sub datMINTA_ATAD_TIM_LostFocus()
-    txtMINTA_ATAD_IDO.Text = datMINTA_ATAD_TIM.Value
+Private Sub spcMINTA_ATAD_TIM_LostFocus()
+'    txtMINTA_ATAD_IDO.Text = spcMINTA_ATAD_TIM.Value
 End Sub
 
-Private Sub datMINTA_DAT_LostFocus()
-    datMINTA_TIM.Value = datMINTA_DAT.Value
+Private Sub spcMINTA_DAT_LostFocus()
+    spcMINTA_TIM.Value = spcMINTA_DAT.Value
 End Sub
 
-Private Sub datMINTA_TIM_LostFocus()
-    txtMINTA_IDO.Text = datMINTA_TIM.Value
+Private Sub spcVIZSG_KEZD_DAT_LostFocus()
+    spcVIZSG_KEZD_TIM.Value = spcVIZSG_KEZD_DAT.Value
 End Sub
 
-Private Sub datVIZSG_KEZD_DAT_LostFocus()
-    datVIZSG_KEZD_TIM.Value = datVIZSG_KEZD_DAT.Value
+Private Sub spcVIZSG_KEZD_TIM_LostFocus()
+'    txtVIZSG_KEZD.Text = spcVIZSG_KEZD_TIM.Value
 End Sub
 
-Private Sub datVIZSG_KEZD_TIM_LostFocus()
-    txtVIZSG_KEZD.Text = datVIZSG_KEZD_TIM.Value
+Private Sub spcVIZSG_VEGE_DAT_LostFocus()
+    spcVIZSG_VEGE_TIM.Value = spcVIZSG_VEGE_DAT.Value
 End Sub
 
-Private Sub datVIZSG_VEGE_DAT_LostFocus()
-    datVIZSG_VEGE_TIM.Value = datVIZSG_VEGE_DAT.Value
-End Sub
-
-Private Sub datVIZSG_VEGE_TIM_LostFocus()
-    txtVIZSG_VEGE.Text = datVIZSG_VEGE_TIM.Value
+Private Sub spcVIZSG_VEGE_TIM_LostFocus()
+'    txtVIZSG_VEGE.Text = spcVIZSG_VEGE_TIM.Value
 End Sub
 
 Private Sub Form_Activate()
@@ -995,18 +987,23 @@ Private Sub Form_Load()
     If mode <> 0 Then
         util.RekordFeltolt Me, "LABOR", mode
     Else
-        datMINTA_DAT = DateValue(Now())
-        datMINTA_DAT.Hour = 6
-        datMINTA_TIM.Hour = 6
-        datMINTA_ATAD_DAT = DateValue(Now())
-        datMINTA_ATAD_DAT.Hour = 7
-        datMINTA_ATAD_TIM.Hour = 7
-        datVIZSG_KEZD_DAT = DateValue(Now())
-        datVIZSG_KEZD_DAT.Hour = 8
-        datVIZSG_KEZD_TIM.Hour = 8
-        datVIZSG_VEGE_DAT = DateValue(Now())
-        datVIZSG_VEGE_DAT.Hour = 8
-        datVIZSG_VEGE_TIM.Hour = 8
+        dNow = DateValue(Now())
+        spcMINTA_DAT = dNow
+        spcMINTA_DAT.Hour = 6
+        spcMINTA_TIM = dNow
+        spcMINTA_TIM.Hour = 6
+        spcMINTA_ATAD_DAT = dNow
+        spcMINTA_ATAD_DAT.Hour = 7
+        spcMINTA_ATAD_TIM = dNow
+        spcMINTA_ATAD_TIM.Hour = 7
+        spcVIZSG_KEZD_DAT = dNow
+        spcVIZSG_KEZD_DAT.Hour = 8
+        spcVIZSG_KEZD_TIM = dNow
+        spcVIZSG_KEZD_TIM.Hour = 8
+        spcVIZSG_VEGE_DAT = dNow
+        spcVIZSG_VEGE_DAT.Hour = 8
+        spcVIZSG_VEGE_TIM = dNow
+        spcVIZSG_VEGE_TIM.Hour = 8
 '        txtKIALLDAT = DateValue(Now())
 '        txtMUNELV = DateValue(Now())
     End If

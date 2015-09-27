@@ -11,7 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-'Option Explicit
+Option Explicit
 
 Private m_sConnect As String
 
@@ -772,7 +772,9 @@ Public Function Jegyzokonyv(ByRef sJTIP As String, ByVal iJEGYZSZ As Integer, By
             If Right(sDocSavePath, 1) = "." Then
                 sDocSavePath = Left(sDocSavePath, Len(sDocSavePath) - 1)
             End If
-            sDocSavePath = Replace(sDocSavePath + "\", "/", ".")
+            sDat = Date
+            sDocSavePath = sDocSavePath + "\" + sDat + ". - "
+            sDocSavePath = Replace(sDocSavePath, "/", ".")
         End Select
     
     Set objWord = WordAppNewDoc(sDocPath, sDotName, CStr(iJEGYZSZ), ".doc", sDocSavePath)  'Word indítása
@@ -862,12 +864,14 @@ End Function    'OsszesitoFeltolt
 '
 '   Visszatérés:    Boolean. True, ha minden OK, egyébként False
 '
-Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
+Public Function LaborOsszesito(ByRef sDocPath As String, sDate As String) As Boolean
     On Error GoTo errLaborOsszesito
     LaborOsszesito = False
     
     Dim rstLabor As New ADODB.Recordset
-    oAdmin.ExecVal "sp_LaborOsszesito", Nothing, rstLabor
+    Dim lstParams As New Collection
+    lstParams.Add sDate, "pDATUM"
+    oAdmin.ExecVal "sp_LaborOsszesito", lstParams, rstLabor
     
     'Melyik mezõket kell cserélni és mire
     Dim lstReplace As New Collection
@@ -876,13 +880,17 @@ Public Function LaborOsszesito(ByRef sDocPath As String) As Boolean
         lstReplace.Add a, a.Name
     Next
     
+'    a.Value = sDate
+'    a.Name = "DATUM"
+'    lstReplace.Add a, a.Name
+    
     'Sablon alapján létrehozzuk a Word doksit
     Dim sDotName As String
     Dim sDocSaveName As String
     Dim sDocSavePath As String
     sDotName = "labor_o"
     sDocSavePath = sDocPath
-    sDocSaveName = "Vízvizsg.havi.össz." + CStr(Year(Now())) + Right("0" + CStr(Month(Now())), 2)
+    sDocSaveName = "Vízvizsg.havi.össz." + sDate
     
     Dim objWord As Object
     Set objWord = WordAppNewDoc(sDocPath, sDotName, sDocSaveName, ".doc", sDocSavePath)
@@ -926,16 +934,17 @@ Public Function OsszesitoKivalaszt(ByRef sDate As String, ByRef frm As Object) A
     Dim rstResult As New ADODB.Recordset
     Dim sCmbSorsz As Integer
     Dim cmb As Object
-    lstParams.Add "", "pSORSZ"
     For Each cmb In frm.Controls
         If Left(cmb.Name, 3) = "cmb" Then   'végigmegyünk az összes comboboxon
             sCmbSorsz = Right(cmb.Tag, Len(cmb.Tag) - 5)    'a nevébõl kiolvasható, melyik sorban van az adata
-            lstParams.Remove "pSORSZ"
             lstParams.Add sCmbSorsz, "pSORSZ"
+            On Error Resume Next
             If oAdmin.ExecVal("sp_GetOsszesitoSorsz", lstParams, rstResult) = True Then
                 SetComboVal cmb, rstResult("SORSZ").Value
                 cmb.Enabled = True
             End If
+            On Error GoTo errOsszesitoKivalaszt
+            lstParams.Remove "pSORSZ"
         End If
     Next
     
