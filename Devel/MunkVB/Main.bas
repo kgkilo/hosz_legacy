@@ -34,18 +34,19 @@ Sub Main()
     
     'Bejelentkezo kepernyo
     Dim bInitSuccess As Boolean
-    frmLogin.Caption = App.ProductName & " bejelentkezés innen: " & objNetUserName.ComputerName
-    frmLogin.txtUserName = objNetUserName.NetworkUserName   'get user name
-    frmLogin.Show 1
+    'frmLogin.Caption = App.ProductName & " bejelentkezés innen: " & objNetUserName.ComputerName
+    'frmLogin.txtUserName = objNetUserName.NetworkUserName   'get user name
+    'frmLogin.Show 1
     
-    Do While frmLogin.LoginSucceeded = True 'Cancel gombbal kiszallhat
+    'Do While frmLogin.LoginSucceeded = True 'Cancel gombbal kiszallhat
         'De ha az OK-t nyomta meg, megprobalunk bejelentkezni...
-        bInitSuccess = util.Init(sReportDir, sANTSZDir, iWorkMode, frmLogin.txtUserName.Text, frmLogin.txtPassword.Text)
+        'bInitSuccess = util.Init(sReportDir, sANTSZDir, iWorkMode, frmLogin.txtUserName.Text, frmLogin.txtPassword.Text)
+        bInitSuccess = util.Init(sReportDir, sANTSZDir, iWorkMode, "sa", "")
         If bInitSuccess = True Then 'Ha be tud login-elni
-            g_sUserName = frmLogin.txtUserName
+            g_sUserName = "sa" 'frmLogin.txtUserName
             Select Case iWorkMode
                 Case NORMAL
-                    FormStart.Caption = FormStart.Caption & " - " & g_sUserName
+                    'FormStart.Caption = FormStart.Caption & " - " & g_sUserName
                     FormStart.Show 0
                 Case DISZPECSER
                     Form001.Show 1
@@ -56,13 +57,13 @@ Sub Main()
                 Case VISSZAIR
                     Form001.Show 1
             End Select
-            Exit Do
-        Else    'Sikertelen SQL login
-            frmLogin.txtPassword = ""
-            frmLogin.Show 1
+            'Exit Do
+        'Else    'Sikertelen SQL login
+            'frmLogin.txtPassword = ""
+            'frmLogin.Show 1
         End If
-    Loop
-    Unload frmLogin
+    'Loop
+    'Unload frmLogin
     
 End Sub
 

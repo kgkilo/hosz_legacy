@@ -313,6 +313,7 @@ Begin VB.Form Form001a
       End
       Begin VB.OptionButton optAllapot 
          Caption         =   "Sztornó"
+         Enabled         =   0   'False
          Height          =   285
          Index           =   3
          Left            =   360
@@ -1183,6 +1184,9 @@ Private Sub Form_Load()
         'orokre sztorno marad.
         If txtAllapot = 3 Then spcALLAPOT.Enabled = False
         
+        'Visszairt munkalapnal a hely nem modosithato utolag
+        If txtAllapot = 4 Then cmdHELY.Enabled = False
+                
         txtKIALLDAT.Locked = True   'Kiallitas datuma nem javithato utolag (altalaban)
         If txtREF <> "" Then    'Ha van mar errol a munkalaprol masolat, azaz a referencia mezo nem ures
             txtNAPSZAM.Locked = True    'egy csomo minden nem javithato utolag.
