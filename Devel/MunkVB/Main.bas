@@ -6,6 +6,7 @@ Option Explicit
 Public util As Object
 Public oAdmin As CadminADO
 Public g_oKodszotar As CKodSzotar
+Public g_sUserName As String
 
 Public sConnectString As String
 Public sReportDir As String
@@ -29,20 +30,39 @@ Sub Main()
     sANTSZDir = "I:\HOSZOLG\"
     
     Set util = New CGlobal
+    Dim objNetUserName As New clsNetUserName        'define a reference to the class
     
-    util.Init sReportDir, sANTSZDir, iWorkMode
-    Select Case iWorkMode
-        Case NORMAL
-            FormStart.Show 0
-        Case DISZPECSER
-            Form001.Show 1
-        Case LABOR
-            Form003.Show 1
-        Case MLAP
-            Form001.Show 1
-        Case VISSZAIR
-            Form001.Show 1
-    End Select
+    'Bejelentkezo kepernyo
+    Dim bInitSuccess As Boolean
+    frmLogin.Caption = App.ProductName & " bejelentkezés innen: " & objNetUserName.ComputerName
+    frmLogin.txtUserName = objNetUserName.NetworkUserName   'get user name
+    frmLogin.Show 1
+    
+    Do While frmLogin.LoginSucceeded = True 'Cancel gombbal kiszallhat
+        'De ha az OK-t nyomta meg, megprobalunk bejelentkezni...
+        bInitSuccess = util.Init(sReportDir, sANTSZDir, iWorkMode, frmLogin.txtUserName.Text, frmLogin.txtPassword.Text)
+        If bInitSuccess = True Then 'Ha be tud login-elni
+            g_sUserName = frmLogin.txtUserName
+            Select Case iWorkMode
+                Case NORMAL
+                    FormStart.Caption = FormStart.Caption & " - " & g_sUserName
+                    FormStart.Show 0
+                Case DISZPECSER
+                    Form001.Show 1
+                Case LABOR
+                    Form003.Show 1
+                Case MLAP
+                    Form001.Show 1
+                Case VISSZAIR
+                    Form001.Show 1
+            End Select
+            Exit Do
+        Else    'Sikertelen SQL login
+            frmLogin.txtPassword = ""
+            frmLogin.Show 1
+        End If
+    Loop
+    Unload frmLogin
     
 End Sub
 
