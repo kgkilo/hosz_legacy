@@ -1,0 +1,161 @@
+###########################################################
+#
+# $Id$
+#
+###########################################################
+
+2006.02.12.
+X Labor jegyzokönyv készülhet az 'Odessza I. Termál' nevu helyrol is.
+X Összesítoben is jelenjen meg.
+
+	sp_FillOsszesitoSorsz	helyi munka kell!!! Odessza I. T. objid - 40214
+	sp_LaborOsszesito
+	QLABOR24
+
+X Jegyzokönyv lekérdezés dátum szurés menjen
+	sp_LekerdJegyz
+
+X Jegyzokönyv lekérdezés teljes köru
+	sp_LekerdJegyz
+
+X Labor jegyzokönyv készülhet a 'Berzsenyi kis hkp' nevu helyrol is.
+X Összesítoben is jelenjen meg.
+	QLABOR25
+	sp_LaborOsszesito
+	sp_FillOsszesitoSorsz	helyi munka kell!!! Berzsenyi kis hkp objid - 46476
+
+X Jegyzokönyv lekérdezés Találatok száma megy
+	sp_LoadJegyzDb
+
+Telepítve: 2006.02.28.
+Minden OK, összesíto eloválasztó formon a 2 új futomu nem szerepel...
+
+-----------------------------------------------------------------------------------
+2006.02.28.
+X Összesíto formon a 2 új futomu is szerepeljen
+	EXE
+
+Telepítve:
+-----------------------------------------------------------------------------------
+2006.10.17.
+X Munkalap kiállítási dátumán utólag ne lehessen változtatni.
+	sp_LoadMunkalap
+	EXE
+O Vízórás lista készítésekor a másolati munkalapok után is lehessen
+	a dátumon, típushibán, hibaleíráson módosítani.
+	sp_DuplikalMunk
+	EXE
+
+BCP muködéséhez a server propertiesben a TCP/IP és a Named Pipes protocolt Enabled-re kell rakni!
+
+Telepítve: 2007.02.20.
+-----------------------------------------------------------------------------------
+2007.02.19.
+X Munkát felvevo dolgozó neve kerüljön fel a munkalapra.
+	MLAPTAB
+	sp_WriteMlapTab
+	munuf.rpt
+	munue.rpt
+X Inaktiv berendezes nem jelenik meg a mentett munkalapokon.
+	Nem reprodukalhato... tovabbi vizsgalat szukseges
+	
+Telepítve: 2007.02.20.
+-----------------------------------------------------------------------------------
+2007.02.26.
+X Regi: KEP701 grid fejlec el van csuszva
+	sztkdll.dll
+2007.04.17.
+X Épület lekérdezést bovíteni kell 'Épület típusa' paraméterrel
+	sp_LekerdAlt
+	Q333 bovítendo: 05,333,274,'Épület típusa'
+2007.06.11.
+X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
+	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
+	a képernyon látható, aktuális, szurt adatok szerepeljenek.
+	Új: Q371, sp_Q371, TAB_kint, sp_MakeTab_kint, TAB_vissz, sp_MakeTAB_vissz
+	TABkint.rpt, TABvissz.rpt
+	KODLEIR, KODSZOT bovítése! helyben
+	05	371	Nyomtatás típusa	1	NYOMTTIP len:5			
+	05	371	mlap	1-Munkalap
+	05	371	kint	2-Kintlévõ munkalapok
+	05	371	vissz	3-Visszaírt
+	05	371	ber	4-Berendezések alapján
+2007.11.06.
+X Vízóra/plombázás másolt munkalapokat nem sorrendben írta ki
+	az összesítore. Most létrehozás dátuma alapján rendezésre kerül
+	sp_FillTabPlomb, sp_FillTabVizora
+	TESZTELNI!!! NEM OK :(
+
+Telepítve: 2007.11.08.
+-----------------------------------------------------------------------------------
+
+2007.12.02.
+X Új munkalap (Form001a) típushiba választásakor csak az elso
+	karakternél frissültek a Muvelet típusa, Karbantartás típusa,
+	Hibaleírás mezok.
+	MunkaVB.exe
+X KEP675 Karbantartási tervek: Jobb oldali listában nincs rendezés,
+	legyen ua., mint a bal oldalon.
+	sp_FillVanKarbTerv
+X Vízóra/plombázás másolt munkalapokat nem sorrendben írta ki
+	az összesítore. Most a munkalap sorszáma alapján rendezésre kerül
+	sp_FillTabPlomb, sp_FillTabVizora
+	TESZTELNI!!!
+
+Telepítve: 2008.03.28.
+-----------------------------------------------------------------------------------
+
+2008.03.29.
+X Új lekérdezéseket kell kialakítani. Mindegyiket a fo képernyorol
+	lehessen indítani, egy kiválasztó combobox alapján. A lekérdezésben
+	a képernyon látható, aktuális, szurt adatok szerepeljenek.
+	-(Berendezések alapján)
+	TAB_ber, sp_MakeTAB_ber, TABber.rpt
+	-(Elojegyzetteket)
+	TAB_eloj, sp_MakeTAB_eloj, TABeloj.rpt
+	KODSZOT bovítése! helyben
+	05	371	eloj	5-Elõjegyzett munkalapok
+X ExecVal-LoadFirstRecord egyformak, elobbit megszüntetük.
+	MunkVB.exe Sztkdll.dll
+X Indító képernyo nem modális, minimalizálható, van rajta kilépés gomb.
+	MunkVB.exe
+X Bejelentkezo ablak a Munkalap rendszerben
+	MunkVB.exe
+
+----------------------------------------------------------------------------------
+
+2013.11.12.
+2013.11.12.
+- Mezok hosszat modositani kell:
+	berendezes nev (epulnev, futomu_nev)
+	Helyben boviteni a tablakat, 50->100:
+		KAPCSTAB.MEGNEV
+		OBJEKTUM.MEGNEV
+		TAB_ber.MEGNEV
+		TAB_eloj.MEGNEV
+		TAB_kint.MEGNEV
+		TAB_vissz.MEGNEV
+		TAB_40*.NEV
+		TAB_R04.FUTOMU
+		EPULET
+	
+	MEGNEV:
+		sp_Duplikal, sp_FillEpuletByFutomu, sp_InsObjAlt, sp_LekerdKarbterv, sp_UpdObjAlt,
+		sp_LekerdHierarchia
+	EPULNEV:
+		sp_DuplikalEpul, sp_InsEpul, sp_UpdEpul
+	FUTOMU_NEV:
+		sp_GetInfoSpec,
+		sp_GetMunkalapObj,
+		sp_Jegyzokonyv,
+		sp_WriteMlapTab
+	sp_LekerdKarbterv.OBJMEGNEV, sp_LekerdKarbterv.FUTOMU
+	sp_MakeTAB_R04.FUTOMU_NEV, EPULET_NEV
+	
+	mezok helyben modositva:
+	MEGJ
+	GYSZAM
+	
+Telepítve: 2013.12.03.
+
+----------------------------------------------------------------------------------

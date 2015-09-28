@@ -13,3 +13,7 @@ TODO
 2007.02.19.
 - Lepcsohaz megszuntetese: karb.tervben nem jelennek meg a nem epulethez kotott berendezesek.
 - Torles/inaktivva tetel helyett atiras nem jo, mert elvesznek adatok! Dolgozok figyelmet felhivni erre!
+
+2013.11.12.
+- Mezok hosszat modositani kell:
+	berendezes nev, gyari tipus, gyari szam, telepitesi helyszam, epulet:utca, epulet:nev
